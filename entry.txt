@@ -1,0 +1,138 @@
+[Map]
+author = Bin
+aaa.bmp
+[Continents]
+6
+Asia 12
+Oceania 4
+Europe 7
+Africa 6
+North_America 9
+South_America 4
+[Territories]
+42
+Yakutsk 920 50 Asia 10
+Kamchatka 1000 50 Asia 10
+Ural 760 150 Asia 10
+Siberia 840 150 Asia 10
+Irkutsk 920 150 Asia 10
+Japan 1000 150 Asia 10
+Afganistan 840 250 Asia 10
+China 920 250 Asia 10
+Mongolia 1000 250 Asia 10
+Middle_East 840 350 Asia 10
+India 920 350 Asia 10
+Siam 1000 350 Asia 10
+Indonesia 920 500 Oceania 10
+New_Guinea 1000 500 Oceania 10
+Western_Austraia 920 600 Oceania 10
+Eastern_Austraia 1000 600 Oceania 10
+Iceland 500 50 Europe 10
+Scandanavia 580 50 Europe 10
+Great_Britain 500 150 Europe 10
+N_Europe 580 150 Europe 10
+Russia 660 150 Europe 10
+Western_Europe 500 250 Europe 10
+Southern_Europe 580 250 Europe 10
+North_Africa 540 400 Africa 10
+Egypt 620 400 Africa 10
+Congo 540 500 Africa 10
+East_Africa 620 500 Africa 10
+South_Africa 540 600 Africa 10
+Madagascar 620 600 Africa 10
+Alaska 240 50 North_America 10
+NW_Territory 320 50 North_America 10
+Greenland 400 50 North_America 10
+Alberta 240 150 North_America 10
+Ontario 320 150 North_America 10
+Quebec 400 150 North_America 10
+W_US 240 250 North_America 10
+E_US 320 250 North_America 10
+Central_America 240 350 North_America 10
+Venezuela 240 430 South_America 10
+Brazil 320 430 South_America 10
+Peru 240 530 South_America 10
+Argentina 320 530 South_America 10
+[Relationship]
+Yakutsk Kamchatka
+Yakutsk Siberia
+Yakutsk Irkutsk 
+Kamchatka Japan
+Kamchatka Irkutsk
+Ural Siberia
+Ural Afganistan
+Ural China
+Ural Russia
+Siberia Irkutsk 
+Siberia China
+Siberia Mongolia
+Irkutsk Japan
+Irkutsk Mongolia
+Afganistan China
+Afganistan India
+Afganistan Middle_East
+Afganistan  Russia
+China Mongolia
+China India
+China Siam
+Middle_East Russia
+Middle_East Southern_Europe
+Middle_East Egypt
+Middle_East East_Africa
+Middle_East India
+India Siam
+Siam Indonesia
+Indonesia New_Guinea
+Indonesia Western_Austraia
+New_Guinea Western_Austraia 
+New_Guinea Eastern_Austraia
+Western_Austraia Eastern_Austraia
+Russia Ural
+Russia Scandanavia
+Russia N_Europe
+Russia Southern_Europe
+Scandanavia Iceland
+Scandanavia Great_Britain
+Scandanavia N_Europe
+N_Europe Great_Britain
+N_Europe Western_Europe
+N_Europe Southern_Europe
+Southern_Europe Western_Europe
+Southern_Europe Egypt
+Western_Europe Great_Britain
+Western_Europe North_Africa
+Great_Britain Iceland
+North_Africa Egypt
+North_Africa Congo
+North_Africa East_Africa
+East_Africa Madagascar
+Congo East_Africa
+Congo South_Africa
+Congo Madagascar
+Egypt East_Africa
+South_Africa Madagascar
+Iceland Greenland
+Greenland NW_Territory
+Greenland Ontario
+Greenland Quebec
+Quebec Ontario
+Quebec NW_Territory
+Quebec Alberta
+Quebec E_US
+Ontario NW_Territory
+Ontario Alberta
+Ontario E_US
+Ontario W_US
+NW_Territory Alaska
+NW_Territory Alberta
+Alaska Alberta
+Alberta W_US
+W_US E_US
+W_US Central_America
+E_US Central_America
+Central_America Venezuela
+Venezuela Brazil
+Venezuela Peru
+Peru Brazil
+Peru Argentina
+Argentina Brazil
