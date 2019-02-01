@@ -33,7 +33,7 @@ public class Controller {
         p.determineOrder();
         p.countryAssignment();
         for(Country country : p.graph){
-            mapPanel.add(country);
+            mapPanel.add(new CountryButton(country.getX(),country.getY(),country.getName(),country.getCont(),country.getInnerDiameter(),country.getPlayer()));
 //            System.out.println(country.getBounds().x + "y is" + country.getBounds().y);
 //            country.setBounds(200,200,200,200);
         }
