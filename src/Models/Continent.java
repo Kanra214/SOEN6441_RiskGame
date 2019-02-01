@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import Game.Window;
 
 public class Continent {
-    private final static Color[] ALL_COLORS = {Color.ORANGE, Color.PINK, Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW};
+    private final static Color[] ALL_COLORS = {Color.lightGray, Color.MAGENTA, Color.CYAN, Color.GREEN, Color.YELLOW, Color.PINK};
     private String name;
     private ArrayList<Country> countries;
     private int control_value;
