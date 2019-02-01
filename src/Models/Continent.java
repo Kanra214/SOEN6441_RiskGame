@@ -26,5 +26,6 @@ public class Continent {
     public void addCountry(Country cont){
         countries.add(cont);
     }
+    public Color getContColor(){return contColor;}
 
 }

@@ -1,22 +1,25 @@
 package Models;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import Game.Window;
 import Panels.*;
 import javax.swing.*;
 
 
+
 public class Country extends JButton {
 
     private int x;
     private int y;
-    private String title;
+    private String name;
 
 
     private Continent cont;
     private Player owner;
     private int innerDiameter;
-    private final int outerDiameter = 2;
+    private int army = 1;
+
 
 
 
@@ -25,6 +28,7 @@ public class Country extends JButton {
 
     public Country(int x, int y, String title, Continent continent, int innerDiameter) {
         super(title);
+        this.name = title;
 
 
 
@@ -32,10 +36,12 @@ public class Country extends JButton {
         this.y = y;
         this.innerDiameter = innerDiameter;
         this.neighbours = new ArrayList<>();
-        this.cont = cont;
+        this.cont = continent;
 //        this.setSize(new Dimension(innerDiameter, innerDiameter));
-        this.setBounds(x,y,100,20);
-        
+        setContentAreaFilled(false);
+        this.setBounds(x,y,80,60 );
+
+
 
 
     }
@@ -51,11 +57,38 @@ public class Country extends JButton {
 
     }
     public String getName(){
-        return title;
+        return name;
     }
     public void addNeighbour(Country country){
         this.neighbours.add(country);
     }
+    protected void paintComponent(Graphics g) {
+        // if the button is pressed and ready to be released
+
+
+        if (getModel().isArmed()) {
+            g.setColor(Color.lightGray);
+        } else {
+            g.setColor(getBackground());
+        }
+
+
+//        g.fillOval(0, 0, getSize().width-1, getSize().height-1);
+
+        super.paintComponent(g);
+    }
+    protected void paintBorder(Graphics g) {
+        g.setColor(cont.getContColor());
+        g.fillRoundRect(0, 0, getSize().width-1, getSize().height-1,0,0);
+        g.setColor(getForeground());
+        g.fillRoundRect(15,15,getSize().width-31, getSize().height-31,0,0);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("default", Font.BOLD, 14));
+        g.drawString(name,20,10);
+        g.drawString("army: "+army,20,50);
+    }
+
+
 
 
 
