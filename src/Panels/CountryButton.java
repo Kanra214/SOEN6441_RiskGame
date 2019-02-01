@@ -26,13 +26,16 @@ public class CountryButton extends JButton {
         this.setBounds(x,y,80,60 );
         this.owner = player;
     }
+    public void setOwner(Player player) {
+        this.owner = player;
+        this.setOpaque(true);
+        this.setForeground(owner.getPlayerColor());
 
-//    public void setOwner(Player player) {
-//        this.owner = player;
-//        //this.setOpaque(true);
-//        this.setForeground(owner.getPlayerColor());
-//
-//    }
+
+        //1 owner color
+        System.out.println();
+
+    }
 
     protected void paintComponent(Graphics g) {
         // if the button is pressed and ready to be released
@@ -49,13 +52,20 @@ public class CountryButton extends JButton {
         super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
+        super.paintComponent(g);
+
+
         g.setColor(cont.getContColor());
-        g.fillRoundRect(0, 0, getSize().width-1, getSize().height-1,0,0);
+        g.fillRoundRect(0,0,getSize().width-1, getSize().height-1,0,0);
+
+
+        //2 owner color
         g.setColor(owner.getPlayerColor());
-        g.fillRoundRect(15,15,getSize().width-31, getSize().height-31,0,0);
+        System.out.println(owner.getPlayerColor());
+        g.fillOval(5, 5, getSize().width-10, getSize().height-10);
+
         g.setColor(Color.BLACK);
         g.setFont(new Font("default", Font.BOLD, 14));
-        g.drawString(name,20,10);
-        g.drawString("army: "+army,20,50);
+        g.drawString(""+army,20,20);
     }
 }

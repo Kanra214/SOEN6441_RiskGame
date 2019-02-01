@@ -20,7 +20,7 @@ public class Country{
     private int innerDiameter;
     private int army = 1;
 
-
+    CountryButton countryButton = new CountryButton(x, y, name, cont, innerDiameter, owner);
 
     private ArrayList<Country> neighbours;
 
@@ -41,12 +41,15 @@ public class Country{
         //this.setBounds(x,y,80,60 );
 
     }
-
+//
+//    public void serDraw(){
+//
+//    }
 
     public void setOwner(Player player) {
         this.owner = player;
-        //this.setOpaque(true);
-        //this.setForeground(owner.getPlayerColor());
+        countryButton.setOwner(owner);
+
 
     }
     public int getX(){
@@ -71,11 +74,6 @@ public class Country{
     public void addNeighbour(Country country){
         this.neighbours.add(country);
     }
-
-//
-//    public void setCountryDraw(){
-//        countryButton.paintComponents();
-//    }
 
 
 //    protected void paintComponent(Graphics g) {
