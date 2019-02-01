@@ -59,19 +59,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1211">
-              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="662">
+              <caret line="125" lean-forward="true" selection-start-line="101" selection-start-column="6" selection-end-line="125" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1367#1368#0" expanded="true" />
                 <element signature="e#1394#1395#0" expanded="true" />
                 <element signature="e#1507#1508#0" expanded="true" />
                 <element signature="e#1551#1552#0" expanded="true" />
-                <element signature="e#2211#2212#0" expanded="true" />
-                <element signature="e#2255#2256#0" expanded="true" />
-                <element signature="e#2453#2454#0" expanded="true" />
-                <element signature="e#2488#2489#0" expanded="true" />
-                <marker date="1549040278000" expanded="true" signature="1560:1924" ph="..." />
+                <marker date="1549041234000" expanded="true" signature="1560:1924" ph="..." />
               </folding>
             </state>
           </provider>
@@ -289,7 +285,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549040280778" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549041237135" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -620,19 +616,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1211">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="662">
+          <caret line="125" lean-forward="true" selection-start-line="101" selection-start-column="6" selection-end-line="125" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1367#1368#0" expanded="true" />
             <element signature="e#1394#1395#0" expanded="true" />
             <element signature="e#1507#1508#0" expanded="true" />
             <element signature="e#1551#1552#0" expanded="true" />
-            <element signature="e#2211#2212#0" expanded="true" />
-            <element signature="e#2255#2256#0" expanded="true" />
-            <element signature="e#2453#2454#0" expanded="true" />
-            <element signature="e#2488#2489#0" expanded="true" />
-            <marker date="1549040278000" expanded="true" signature="1560:1924" ph="..." />
+            <marker date="1549041234000" expanded="true" signature="1560:1924" ph="..." />
           </folding>
         </state>
       </provider>
