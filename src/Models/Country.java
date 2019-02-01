@@ -91,7 +91,7 @@ public class Country extends JButton {
 
 
         g.setColor(cont.getContColor());
-        g.fillRoundRect(0,0,getSize().width-1, getSize().height-1,0,0);
+        g.fillRoundRect(5,5,width-10, height-10,0,0);
         g.setColor(owner.getPlayerColor());
         g.fillOval(5, 5, getSize().width-10, getSize().height-10);
 
