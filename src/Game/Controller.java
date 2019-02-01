@@ -1,10 +1,14 @@
 //this is center controller
 package Game;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import Models.*;
 import java.util.ArrayList;
 import Panels.*;
+import org.w3c.dom.events.EventListener;
+
 import javax.swing.*;
 
 
@@ -18,6 +22,7 @@ public class Controller {
     }
     public void start() throws IOException {
         window.welcome();
+        Listener lis = new Listener();
 //        JPanel mainPanel = new JPanel();
         MapPanel mapPanel = new MapPanel();
 //        mapPanel.setOpaque(false);
@@ -39,6 +44,7 @@ public class Controller {
             label.setBounds(country.getX(), country.getY() - 20,150,20);
             mapPanel.add(label);
             mapPanel.add(country);
+            country.addActionListener(lis);
             mapPanel.comps.add(country);
 //
 //            System.out.println(country.getBounds().x + "y is" + country.getBounds().y);
@@ -64,6 +70,13 @@ public class Controller {
 
 
 
+    }
+    private class Listener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(e.getActionCommand());
+        }
     }
 
 
