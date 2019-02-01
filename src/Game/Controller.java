@@ -17,8 +17,11 @@ public class Controller {
     }
     public void start() throws IOException {
         window.welcome();
-        JPanel mainPanel = new JPanel();
+//        JPanel mainPanel = new JPanel();
         MapPanel mapPanel = new MapPanel();
+//        window.setLayout(null);
+//        mainPanel.setLayout(null);
+        mapPanel.setLayout(null);
 
 
         ArrayList<ArrayList> tempMap = new MapLoader().load("entry.txt");
@@ -31,9 +34,13 @@ public class Controller {
         p.countryAssignment();
         for(Country country : p.graph){
             mapPanel.add(country);
+//            System.out.println(country.getBounds().x + "y is" + country.getBounds().y);
+//            country.setBounds(200,200,200,200);
         }
-        mainPanel.add(mapPanel);
-        window.setContentPane(mainPanel);
+//        window.add(mainPanel);
+        window.add(mapPanel);
+
+
         window.setVisible(true);
 
 

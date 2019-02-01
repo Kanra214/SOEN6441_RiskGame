@@ -16,7 +16,7 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setSize(width,height);
         setResizable(false);
-        setVisible(true);
+
 
 
 
@@ -26,7 +26,7 @@ public class Window extends JFrame {
 
         Image background = ImageIO.read(new File("welcome.jpeg"));
         ImagePanel welcomePanel = new ImagePanel(background);
-        getContentPane().add(welcomePanel);
+        add(welcomePanel);
         setVisible(true);
 
 
@@ -38,6 +38,7 @@ public class Window extends JFrame {
         return input;
 
     }
+
 
 
 

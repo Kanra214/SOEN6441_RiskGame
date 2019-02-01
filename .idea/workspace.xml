@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/entry.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/MapLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Phases.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Window.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Continent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Country.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Panels/CountryButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Panels/ImagePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Panels/MapPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Game/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Game/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Game/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Game/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Models/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Models/Country.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RiskGame_personal_practice/Panels/CountryButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Panels/CountryButton.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +33,7 @@
         <counts>
           <entry key="class" value="4" />
           <entry key="iml" value="1" />
-          <entry key="java" value="25" />
+          <entry key="java" value="30" />
           <entry key="jpeg" value="3" />
           <entry key="txt" value="3" />
         </counts>
@@ -45,19 +43,19 @@
           <entry key="CLASS" value="4" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="3" />
-          <entry key="JAVA" value="25" />
+          <entry key="JAVA" value="30" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="12" />
-          <entry key="java" value="7126" />
+          <entry key="java" value="8376" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7126" />
+          <entry key="JAVA" value="8376" />
           <entry key="PLAIN_TEXT" value="12" />
         </counts>
       </usages-collector>
@@ -68,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+            <state relative-caret-position="223">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,22 +76,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaOptionPaneUI.class">
+        <entry file="file://$PROJECT_DIR$/src/Game/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="e#1062#1063#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+            <state relative-caret-position="262">
+              <caret line="37" column="49" lean-forward="true" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,10 +97,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Panels/CountryButton.java">
+        <entry file="file://$PROJECT_DIR$/src/Game/Phases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="293">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="135">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,8 +135,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaButtonUI.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1228">
-              <caret line="167" selection-start-line="167" selection-end-line="167" />
+            <state relative-caret-position="111">
+              <caret line="558" selection-start-line="558" selection-end-line="558" />
             </state>
           </provider>
         </entry>
@@ -134,8 +144,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="66" column="58" lean-forward="true" selection-start-line="66" selection-start-column="58" selection-end-line="66" selection-end-column="58" />
+            <state relative-caret-position="555">
+              <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -143,18 +153,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/entry.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game/Phases.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Panels/RoundButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#156#157#0" expanded="true" />
+                <element signature="e#188#189#0" expanded="true" />
+                <element signature="e#224#225#0" expanded="true" />
+                <element signature="e#256#257#0" expanded="true" />
+                <element signature="e#294#295#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -209,19 +220,25 @@
         <option value="$PROJECT_DIR$/src/Game/MapLoader.java" />
         <option value="$PROJECT_DIR$/src/Game/WindowObject.java" />
         <option value="$PROJECT_DIR$/src/Panels/CountryPanel.java" />
-        <option value="$PROJECT_DIR$/src/Panels/CountryButton.java" />
         <option value="$PROJECT_DIR$/src/Panels/MapPanel.java" />
         <option value="$PROJECT_DIR$/src/Models/Continent.java" />
         <option value="$PROJECT_DIR$/src/Game/Phases.java" />
+        <option value="$PROJECT_DIR$/src/Game/Test.java" />
+        <option value="$PROJECT_DIR$/src/Game/Main.java" />
+        <option value="$PROJECT_DIR$/src/Panels/CountryButton.java" />
         <option value="$PROJECT_DIR$/src/Game/Window.java" />
         <option value="$PROJECT_DIR$/src/Game/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Panels/Shapes.java" />
+        <option value="$PROJECT_DIR$/src/Panels/RoundBorder.java" />
         <option value="$PROJECT_DIR$/src/Models/Country.java" />
+        <option value="$PROJECT_DIR$/src/Panels/RoundedBorder.java" />
+        <option value="$PROJECT_DIR$/src/Panels/RoundButton.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="104" />
-    <option name="y" value="152" />
+    <option name="x" value="95" />
+    <option name="y" value="48" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -269,7 +286,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548976159918" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548983501796" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -296,6 +313,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Game.Test" />
+      <module name="RiskGame_personal_practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Window" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game.Window" />
       <module name="RiskGame_personal_practice" />
@@ -306,10 +336,12 @@
     <list>
       <item itemvalue="Application.Window" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Window" />
       </list>
     </recent_temporary>
@@ -328,7 +360,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="104" y="152" width="1280" height="777" extended-state="0" />
+    <frame x="147" y="180" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -448,22 +480,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaOptionPaneUI.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#1062#1063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entry.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaButtonUI.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="558" selection-start-line="558" selection-end-line="558" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Panels/CountryButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Continent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -478,57 +527,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaButtonUI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1228">
-          <caret line="167" selection-start-line="167" selection-end-line="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entry.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Panels/CountryButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Continent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Window.java">
+    <entry file="file://$PROJECT_DIR$/src/Game/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
+    <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="66" column="58" lean-forward="true" selection-start-line="66" selection-start-column="58" selection-end-line="66" selection-end-column="58" />
+        <state relative-caret-position="135">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -537,10 +556,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+        <state relative-caret-position="262">
+          <caret line="37" column="49" lean-forward="true" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Panels/Shapes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#163#164#0" expanded="true" />
+            <element signature="e#207#208#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Panels/RoundButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
           </folding>
         </state>
       </provider>
