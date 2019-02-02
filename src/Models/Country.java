@@ -35,6 +35,9 @@ public class Country extends JButton {
 
 
 
+
+
+
         this.x = x;
         this.y = y;
         this.innerDiameter = innerDiameter;
@@ -43,6 +46,7 @@ public class Country extends JButton {
 //        this.setSize(new Dimension(innerDiameter, innerDiameter));
         setContentAreaFilled(false);
         this.setBounds(x,y,width,height);
+
 //        setBorder(new RoundedBorder(10));
 
 

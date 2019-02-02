@@ -36,7 +36,7 @@ public class MapLoader {
                         input = reader.readLine();
                         String[] parts = input.split(" ");
                         Continent tempcont = findContinent(worldmap, parts[3]);
-                        Country tempCountry = new Country(Integer.parseInt(parts[1]), Integer.parseInt(parts[2]), parts[0], tempcont, Integer.parseInt(parts[4]));
+                        Country tempCountry = new Country((int)(Integer.parseInt(parts[1])*0.9)-100, (int)(Integer.parseInt(parts[2])*0.9), parts[0], tempcont, Integer.parseInt(parts[4]));
                         tempcont.addCountry(tempCountry);
                         graph.add(tempCountry);
 

@@ -7,6 +7,9 @@ import java.util.*;
 
 public class MapPanel extends JPanel {
     public ArrayList<Country> comps = new ArrayList<>();
+//    public MapPanel(){
+//
+//    }
 
 
 
@@ -20,9 +23,11 @@ public class MapPanel extends JPanel {
                 g.drawLine(cont.getX()+cont.getWidth()/2,cont.getY()+cont.getHeight()/2,comp.getX()+comp.getWidth()/2,comp.getY()+comp.getHeight()/2);
             }
         }
-        System.out.println("aaa");
+
 
     }
+
+
 
 
 }

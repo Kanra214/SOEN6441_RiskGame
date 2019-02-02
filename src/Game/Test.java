@@ -9,8 +9,8 @@ public class Test {
         window.setLocationRelativeTo(null);
         window.setSize(1260,785);
         window.setResizable(false);
-        window.setLayout(new GridBagLayout());
-        GridBagConstraints r =  new GridBagConstraints();
+
+
 
 
 //        JButton b = new JButton("button");
@@ -18,6 +18,10 @@ public class Test {
 
         JPanel b = new JPanel();
         JPanel c = new JPanel();
+        JPanel main = new JPanel(new GridBagLayout());
+        GridBagConstraints r =  new GridBagConstraints();
+        window.add(main);
+
 //        JPanel d = new JPanel();
         a.setBackground(Color.BLACK);
         b.setBackground(Color.RED);
@@ -35,7 +39,7 @@ public class Test {
         r.gridwidth = 3;
 
 
-        window.add(a,r);
+        main.add(a,r);
         r.ipady = 785;
         r.ipadx = 260;
         r.gridx = 3;
@@ -44,7 +48,7 @@ public class Test {
         r.gridwidth = 1;
 
 
-        window.add(b,r);
+        main.add(b,r);
         r.ipady = 185;
         r.ipadx = 1000;
         r.gridx = 0;
@@ -52,8 +56,9 @@ public class Test {
         r.gridheight = 1;
         r.gridwidth = 3;
 
-        window.add(c,r);
+        main.add(c,r);
 //        window.pack();
+
 
 
         window.setVisible(true);
