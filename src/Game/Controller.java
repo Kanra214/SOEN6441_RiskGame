@@ -45,12 +45,7 @@ public class Controller {
         }
 
         window.setVisible(true);
-
-        String input = window.promptPlayer("change color");
-        //controller通过manipulate model来改变view的一个例子
-        for(Country country : p.graph){
-            country.setOwner(p.players.get(1));
-        }
+        
 
 
 
