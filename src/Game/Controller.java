@@ -37,18 +37,24 @@ public class Controller {
         p.determineOrder();
         p.countryAssignment();
         for(Country country : p.graph){
+
             JLabel label = new JLabel(country.getName());
-            label.setBounds(country.getX(), country.getY() - 20,150,20);
+            label.setBounds(country.countryButton.getX(), country.countryButton.getY() - 20,150,20);
             window.mapPanel.add(label);
-            window.mapPanel.add(country);
-            country.addActionListener(lis);
+            window.mapPanel.add(country.countryButton);
+            country.countryButton.addActionListener(lis);
             window.mapPanel.comps.add(country);
+
 
         }
 
         window.setVisible(true);
 
-
+        String input = window.promptPlayer("change color");
+        //controller通过manipulate model来改变view的一个例子
+        for(Country country : p.graph){
+            country.setOwner(p.players.get(1));
+        }
 
 
 
