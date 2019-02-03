@@ -1,4 +1,4 @@
-package Panels;
+package View_Components;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,6 +7,7 @@ import java.util.*;
 
 public class MapPanel extends JPanel {
     public ArrayList<Country> comps = new ArrayList<>();
+
 //    public MapPanel(){
 //
 //    }
@@ -20,7 +21,7 @@ public class MapPanel extends JPanel {
         g.setColor(Color.BLACK);
         for(Country comp : comps){
             for(Country cont : comp.getNeighbours()){
-                g.drawLine(cont.getX()+cont.getWidth()/2,cont.getY()+cont.getHeight()/2,comp.getX()+comp.getWidth()/2,comp.getY()+comp.getHeight()/2);
+                g.drawLine(cont.countryButton.getX()+cont.countryButton.getWidth()/2,cont.countryButton.getY()+cont.countryButton.getHeight()/2,comp.countryButton.getX()+comp.countryButton.getWidth()/2,comp.countryButton.getY()+comp.countryButton.getHeight()/2);
             }
         }
 

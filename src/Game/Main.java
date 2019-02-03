@@ -1,5 +1,5 @@
 package Game;//this is main thread
-import Game.Controller;
+import View_Components.Window;
 
 import java.io.IOException;
 

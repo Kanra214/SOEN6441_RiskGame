@@ -1,10 +1,10 @@
-package Game;//this is window class, painting functions here
+package View_Components;//this is window class, painting functions here
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import Panels.*;
+import View_Components.*;
 
 public class Window extends JFrame {
     final static int width = 1260;
@@ -26,6 +26,7 @@ public class Window extends JFrame {
         mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints c =  new GridBagConstraints();
         mapPanel = new MapPanel();
+
         mapPanel.setPreferredSize(new Dimension(1000,600));
         phasePanel = new PhasePanel();
         phasePanel.setPreferredSize(new Dimension(1000,185));
@@ -34,6 +35,7 @@ public class Window extends JFrame {
 
         phasePanel.setBackground(Color.YELLOW);
         sidePanel.setBackground(Color.WHITE);
+        mapPanel.setBackground(Color.GREEN);
 
         mapPanel.setLayout(null);
 

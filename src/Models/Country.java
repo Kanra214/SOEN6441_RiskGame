@@ -1,12 +1,7 @@
 package Models;
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
-import Game.Window;
-import Panels.*;
-import javax.swing.*;
-import javax.swing.border.Border;
 
+import View_Components.*;
 
 
 public class Country{

@@ -1,13 +1,12 @@
 //this is center controller
 package Game;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import Models.*;
+import View_Components.Window;
+
 import java.util.ArrayList;
-import Panels.*;
-import org.w3c.dom.events.EventListener;
 
 import javax.swing.*;
 

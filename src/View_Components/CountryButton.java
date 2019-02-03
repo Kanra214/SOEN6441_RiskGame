@@ -1,12 +1,9 @@
-package Panels;
+package View_Components;
 
-import Models.Continent;
 import Models.Country;
-import Models.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class CountryButton extends JButton {
     private Country country;
@@ -17,9 +14,13 @@ public class CountryButton extends JButton {
     private int y;
 
     public CountryButton(int x, int y, Country country){
+        super(country.getName());
+        this.x = x;
+        this.y = y;
         this.country = country;
         setContentAreaFilled(false);
         setBounds(x,y,width,height);
+
 
 
 
@@ -32,20 +33,20 @@ public class CountryButton extends JButton {
     }
 
 
-    protected void paintComponent(Graphics g) {
-        // if the button is pressed and ready to be released
-
-        if (getModel().isArmed()) {
-            g.setColor(Color.lightGray);
-        } else {
-            g.setColor(getBackground());
-        }
-
-
-//        g.fillOval(0, 0, getSize().width-1, getSize().height-1);
-
-        super.paintComponent(g);
-    }
+//    protected void paintComponent(Graphics g) {
+//        // if the button is pressed and ready to be released
+//
+//        if (getModel().isArmed()) {
+//            g.setColor(Color.lightGray);
+//        } else {
+//            g.setColor(getBackground());
+//        }
+//
+//
+////        g.fillOval(0, 0, getSize().width-1, getSize().height-1);
+//
+//        super.paintComponent(g);
+//    }
     protected void paintBorder(Graphics g) {
         super.paintComponent(g);
 
@@ -58,6 +59,7 @@ public class CountryButton extends JButton {
         g.setColor(Color.BLACK);
         g.setFont(new Font("default", Font.BOLD, 14));
         g.drawString(""+country.getArmy(),20,20);
+//        System.out.println("aaa");
     }
 
 }

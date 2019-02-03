@@ -1,7 +1,6 @@
 package Models;
 import java.awt.Color;
 import java.util.ArrayList;
-import Game.Window;
 
 public class Continent {
     private final static Color[] ALL_COLORS = {Color.lightGray, Color.MAGENTA, Color.CYAN, Color.GREEN, Color.YELLOW, Color.PINK};

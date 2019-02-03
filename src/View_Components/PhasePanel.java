@@ -1,7 +1,6 @@
-package Panels;
+package View_Components;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class PhasePanel extends JPanel {
 
