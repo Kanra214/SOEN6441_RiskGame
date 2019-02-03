@@ -15,16 +15,13 @@ import javax.swing.*;
 public class Controller {
     Window window;
     Phases p;
-    public Controller(Window window){
+    public Controller(Window window) throws IOException {
         this.window = window;
+//        this.window.welcome();
 
     }
     public void start() throws IOException {
-//        window.welcome();
-//        window.showLayout();
         Listener lis = new Listener();
-
-
 
 
         ArrayList<ArrayList> tempMap = new MapLoader().load("entry.txt");

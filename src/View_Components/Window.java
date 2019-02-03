@@ -1,71 +1,73 @@
-package View_Components;//this is window class, painting functions here
+package View_Components;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import View_Components.*;
 
 public class Window extends JFrame {
-    final static int width = 1260;
-    final static int height = 785;
+    private final static int X = 0;
+    private final static int Y = 0;
+    private final static int WIDTH = 1260;
+    private final static int HEIGHT = 785;
+    private final static int MAP_X = X;
+    private final static int MAP_Y = Y;
+    private final static int MAP_WIDTH = (int)WIDTH*3/4;
+    private final static int MAP_HEIGHT = (int)HEIGHT*3/4;
+    private final static int SIDE_PANEL_X = MAP_X + MAP_WIDTH;
+    private final static int SIDE_PANEL_Y = Y;
+    private final static int SIDE_PANEL_WIDTH = WIDTH - SIDE_PANEL_X;
+    private final static int SIDE_PANEL_HEIGHT = HEIGHT - SIDE_PANEL_Y;
+    private final static int PHASE_PANEL_X = MAP_X;
+    private final static int PHASE_PANEL_Y = Y + MAP_HEIGHT;
+    private final static int PHASE_PANEL_WIDTH = MAP_WIDTH ;
+    private final static int PHASE_PANEL_HEIGHT = HEIGHT - MAP_HEIGHT;
+
+
+
+
+
     public JPanel mainPanel;
     public MapPanel mapPanel;
     public PhasePanel phasePanel;
     public SidePanel sidePanel;
 
     public Window(){
+        //window settings
         super("Risk Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
         setLocationRelativeTo(null);
-        setSize(width,height);
+        setSize(WIDTH,HEIGHT);
         setResizable(false);
+
+
+        //main panel settings
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridBagLayout());
-        GridBagConstraints c =  new GridBagConstraints();
+        mainPanel.setLayout(null);
+        mainPanel.setBounds(X,Y,WIDTH,HEIGHT);
+
+
+        //map panel settings
         mapPanel = new MapPanel();
-
-        mapPanel.setPreferredSize(new Dimension(1000,600));
-        phasePanel = new PhasePanel();
-        phasePanel.setPreferredSize(new Dimension(1000,185));
-        sidePanel = new SidePanel();
-        phasePanel.setPreferredSize(new Dimension(260,785));
-
-        phasePanel.setBackground(Color.YELLOW);
-        sidePanel.setBackground(Color.WHITE);
-        mapPanel.setBackground(Color.GREEN);
-
         mapPanel.setLayout(null);
-
-        c.ipady = 600;
-        c.ipadx = 1000;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridheight = 3;
-        c.gridwidth = 3;
+        mapPanel.setBounds(MAP_X,MAP_Y,MAP_WIDTH, MAP_HEIGHT);
 
 
-        mainPanel.add(mapPanel,c);
-        c.ipady = 785;
-        c.ipadx = 260;
-        c.gridx = 3;
-        c.gridy = 0;
-        c.gridheight = 4;
-        c.gridwidth = 1;
+        //phase panel settings
+        phasePanel = new PhasePanel();
+
+        phasePanel.setBounds(PHASE_PANEL_X,PHASE_PANEL_Y,PHASE_PANEL_WIDTH,PHASE_PANEL_HEIGHT );
+        phasePanel.setBackground(Color.YELLOW);
+        phasePanel.setLayout(new GridLayout(1,4));
+
+        //side panel settings
+        sidePanel = new SidePanel();
+        sidePanel.setBounds(SIDE_PANEL_X,SIDE_PANEL_Y,SIDE_PANEL_WIDTH,SIDE_PANEL_HEIGHT );
+        sidePanel.setBackground(Color.WHITE);
+        sidePanel.setLayout(new GridLayout(6,1));
 
 
-        mainPanel.add(sidePanel,c);
-        c.ipady = 185;
-        c.ipadx = 1000;
-        c.gridx = 0;
-        c.gridy = 3;
-        c.gridheight = 1;
-        c.gridwidth = 3;
 
-        mainPanel.add(phasePanel,c);
-        add(mainPanel);
 
 
 
@@ -75,63 +77,48 @@ public class Window extends JFrame {
         JLabel playerLabel4 = new JLabel("player4: ");
         JLabel playerLabel5 = new JLabel("player5: ");
         JLabel playerLabel6 = new JLabel("player6: ");
-        sidePanel.setLayout(new GridLayout(6,1));
-        sidePanel.setPreferredSize(new Dimension(260,750));
+
+
         sidePanel.add(playerLabel1);
         sidePanel.add(playerLabel2);
         sidePanel.add(playerLabel3);
         sidePanel.add(playerLabel4);
         sidePanel.add(playerLabel5);
         sidePanel.add(playerLabel6);
+
+
+
+
         JLabel currentPlayerLabel = new JLabel("current player: ");
-        currentPlayerLabel.setPreferredSize(new Dimension(40,40));
         JLabel currentPhaseLabel = new JLabel("curent phase: ");
-        currentPhaseLabel.setPreferredSize(new Dimension(40,40));
         JLabel unitLeftLabel = new JLabel("unit left: ");
-        unitLeftLabel.setPreferredSize(new Dimension(40,40));
         JButton completePhaseButton = new JButton("complete this phase");
-        completePhaseButton.setSize(new Dimension(20,20));
-        phasePanel.setLayout(new GridLayout(2,2));
-
-
-
 
         phasePanel.add(completePhaseButton);
         phasePanel.add(currentPlayerLabel);
         phasePanel.add(currentPhaseLabel);
         phasePanel.add(unitLeftLabel);
 
-//        pack();
-
-
-
-
-
-
-
-
-
-
+        mainPanel.add(mapPanel);
+        mainPanel.add(sidePanel);
+        mainPanel.add(phasePanel);
+        add(mainPanel);
 
 
 
 
 
     }
-//    public void showLayout(){
-//        add(mainPanel);
+
+//    public void welcome() throws IOException {
+//
+//        Image background = ImageIO.read(new File("welcome.jpeg"));
+//        ImagePanel welcomePanel = new ImagePanel(background);
+//        add(welcomePanel);
 //        setVisible(true);
 //
+//
 //    }
-    public void welcome() throws IOException {
-
-        Image background = ImageIO.read(new File("welcome.jpeg"));
-        ImagePanel welcomePanel = new ImagePanel(background);
-        add(welcomePanel);
-        setVisible(true);
-
-
-    }
 
     public String promptPlayer(String dialog) {
         String input = JOptionPane.showInputDialog(this, dialog);

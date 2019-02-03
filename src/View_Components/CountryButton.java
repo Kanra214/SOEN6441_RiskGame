@@ -6,10 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CountryButton extends JButton {
-    private Country country;
     private final int width = 50;
     private final int height = 30;
-    private int innerDiameter = 10;
+    private final int innerDiameter = 5;
+
+    private Country country;
     private int x;
     private int y;
 
@@ -52,14 +53,13 @@ public class CountryButton extends JButton {
 
 
         g.setColor(country.getCont().getContColor());
-        g.fillRoundRect(5,5,width-10, height-10,0,0);
+        g.fillRoundRect(innerDiameter,innerDiameter,width-2*innerDiameter, height-2*innerDiameter,0,0);
         g.setColor(country.getOwner().getPlayerColor());
-        g.fillOval(5, 5, getSize().width-10, getSize().height-10);
+        g.fillOval(innerDiameter, innerDiameter, getSize().width-2*innerDiameter, getSize().height-2*innerDiameter);
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("default", Font.BOLD, 14));
         g.drawString(""+country.getArmy(),20,20);
-//        System.out.println("aaa");
     }
 
 }

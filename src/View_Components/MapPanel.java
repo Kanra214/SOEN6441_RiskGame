@@ -8,12 +8,6 @@ import java.util.*;
 public class MapPanel extends JPanel {
     public ArrayList<Country> comps = new ArrayList<>();
 
-//    public MapPanel(){
-//
-//    }
-
-
-
 
     @Override
     public void paintComponent(Graphics g){

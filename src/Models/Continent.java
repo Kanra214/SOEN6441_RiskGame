@@ -9,7 +9,6 @@ public class Continent {
     private int control_value;
     private Color contColor;
     private static int colorSelector = 0;
-//    boolean check;
     public Continent(String name, int control_value){
 
         this.name = name;
