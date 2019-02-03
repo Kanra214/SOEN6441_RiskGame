@@ -28,14 +28,19 @@ public class Country{
 
     }
 
-
-
+    public void setArmy(int army) {
+        this.army = army;
+    }
 
     public void setOwner(Player player) {
         this.owner = player;
-
-
     }
+
+    public void sendArmy() {
+        this.army++;
+    }
+
+
     public String getName(){
         return name;
     }
