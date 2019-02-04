@@ -8,7 +8,7 @@ public class Phases {
     protected ArrayList<Player> players;
     protected ArrayList<Country> graph;
     protected ArrayList<Continent> worldmap;
-    protected Player current_player;
+    public Player current_player;
     protected int currentPhase;
     protected int currentTurn = 0;
 
@@ -37,16 +37,17 @@ public class Phases {
         for(int i = 0; i < numOfPlayers; i++){
             players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
         }
+
     }
 
     public int extraArmyFromContinent(Player player){
-        int reinforocement = 0;
+        int reinforcement = 0;
         for (Continent c: worldmap) {
             if(c.checkOwnership(player)){
-                reinforocement+=c.getControl_value();
+                reinforcement+=c.getControl_value();
             }
         }
-        return reinforocement;
+        return reinforcement;
     }
 
     public int getCurrentPhase() {
@@ -73,18 +74,21 @@ public class Phases {
         return current_player;
     }
 
-    public void phaseOneFirstStep (Player p){
-        int extra = extraArmyFromContinent(p);
-        p.getReinforcement(extra);
+    public void phaseOneFirstStep (Player player){
+        int extra = extraArmyFromContinent(player);
+        player.getReinforcement(extra);
         System.out.println();
-        System.out.println("Player "+p.getId()+" gets extra: "+extra);
-        System.out.println("Player "+p.getId()+" color "+ current_player.getStringColor());
-        System.out.println("Army left "+ current_player.getPlayerArmy());
+        System.out.println("Player "+player.getId()+" gets extra: "+extra);
+        System.out.println("Player "+player.getId()+" color "+ current_player.getStringColor());
+        System.out.println("Army left "+ current_player.getUnitLeft());
     }
 
     public void gameStart(){
         currentPhase = 1;
-        nextTurn();
+//        current_player = players.get(0);
+        phaseOneFirstStep(current_player);
+//        nextTurn();
+
     }
 
     public void nextPhase(){
@@ -103,14 +107,25 @@ public class Phases {
         int turn = 0;
         for (Country country : this.graph) {
             Player player = players.get(turn);
-            player.realms.add(country);
-            player.deployArmy();
+            player.getRealms().add(country);
+            player.deployArmy(country);
             country.setOwner(player);
             turnReference++;
             turn = turnReference % players.size();
         }
 
-        gameStart();
+
 
     }
+    protected void prepare(){
+        determineOrder();
+        countryAssignment();
+        current_player = players.get(0);
+        currentPhase = 0;
+
+
+    }
+
+
+
 }

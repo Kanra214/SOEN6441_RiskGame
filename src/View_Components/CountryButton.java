@@ -64,6 +64,7 @@ public class CountryButton extends JButton {
         g.setColor(Color.BLACK);
         g.setFont(new Font("default", Font.BOLD, 14));
         g.drawString(""+country.getArmy(),20,20);
+        System.out.println("=======");
     }
 
 }

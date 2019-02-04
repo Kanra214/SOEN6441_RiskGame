@@ -12,7 +12,7 @@ public class Country{
 
     private Continent cont;
     private Player owner;
-    private int army = 1;
+    private int army = 0;
 
     public CountryButton countryButton;
 
@@ -28,8 +28,8 @@ public class Country{
 
     }
 
-    public void setArmy(int army) {
-        this.army = army;
+    public void incrementArmy() {
+        this.army++;
     }
 
     public void setOwner(Player player) {
