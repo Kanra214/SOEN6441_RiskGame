@@ -14,6 +14,10 @@ public class CountryButton extends JButton {
     private int x;
     private int y;
 
+    public Country getCountry() {
+        return country;
+    }
+
     public CountryButton(int x, int y, Country country){
         super(country.getName());
         this.x = x;

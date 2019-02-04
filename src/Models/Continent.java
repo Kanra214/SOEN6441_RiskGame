@@ -9,6 +9,7 @@ public class Continent {
     private int control_value;
     private Color contColor;
     private static int colorSelector = 0;
+
     public Continent(String name, int control_value){
 
         this.name = name;
@@ -26,4 +27,14 @@ public class Continent {
     }
     public Color getContColor(){return contColor;}
 
+    public boolean checkOwnership(Player playerOwner){
+        for (Country c: countries) {
+            if (c.getOwner() != playerOwner) return false;
+        }
+        return true;
+    }
+
+    public int getControl_value() {
+        return control_value;
+    }
 }

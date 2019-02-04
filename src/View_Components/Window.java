@@ -1,6 +1,6 @@
 package View_Components;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
@@ -31,6 +31,8 @@ public class Window extends JFrame {
     public MapPanel mapPanel;
     public PhasePanel phasePanel;
     public SidePanel sidePanel;
+    public JButton completePhaseButton;
+
 
     public Window(){
         //window settings
@@ -92,7 +94,7 @@ public class Window extends JFrame {
         JLabel currentPlayerLabel = new JLabel("current player: ");
         JLabel currentPhaseLabel = new JLabel("curent phase: ");
         JLabel unitLeftLabel = new JLabel("unit left: ");
-        JButton completePhaseButton = new JButton("complete this phase");
+        completePhaseButton = new JButton("complete this phase");
 
         phasePanel.add(completePhaseButton);
         phasePanel.add(currentPlayerLabel);
