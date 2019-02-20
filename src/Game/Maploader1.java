@@ -5,9 +5,7 @@ import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Maploader1 {
@@ -110,7 +108,7 @@ public class Maploader1 {
                                         }
                                         Pattern pattern = Pattern.compile("[0-9]*");
                                         if (pattern.matcher(controlNum).matches()){
-//                                            if (!this.addContinent(continentName,Integer.parseInt(controlNum))) return false;
+                                            if (!this.addContinent(continentName,Integer.parseInt(controlNum))) return false;
                                             System.out.println(continentName + controlNum);
 
                                         }
@@ -145,19 +143,25 @@ public class Maploader1 {
                                             JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Coordinates must be integer.");
                                             return false;
                                         }
-//                                        if (!this.addCountry(countryName,belongContinentName,Integer.parseInt(countryInfo[1].trim()),
-//                                                Integer.parseInt(countryInfo[2].trim())))
-//                                            return false;
+                                        if (!this.addCountry(countryName,belongContinentName,Integer.parseInt(countryInfo[1].trim()),
+                                                Integer.parseInt(countryInfo[2].trim())))
+                                            return false;
                                         countriesList.put(countryName, new ArrayList<String>());
+
                                         for (int i=4;i<countryInfo.length;i++){
                                             if (countriesList.get(countryName).contains(countryInfo[i].trim())){
                                                 JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Duplicate record in adjacency list.");
                                                 return false;
                                             }
                                             countriesList.get(countryName).add(countryInfo[i].trim());
+
                                         }
-                                        //used to new Country
+                                        //used to new Country,
                                         addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
+                                        adjacencyList.put(countryName, new ArrayList<String>());
+                                        for (int i = 4; i < countryInfo.length; i++ ) {
+                                            adjacencyList.get(countryName).add(countryInfo[i].trim());
+                                        }
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Not enough data.");
@@ -251,6 +255,7 @@ public class Maploader1 {
         this.modified = true;
         return true;
     }
+
     //This function is used to add connection between 2 countries
     public boolean addConnection(String countryNameFrom,String countryNameTo){
         Country fromCountry = findCountry(countryNameFrom);
@@ -268,4 +273,43 @@ public class Maploader1 {
         this.modified = true;
         return true;
     }
+
+    public void BFS(Map<String,ArrayList<String>> localAdjacencyList, String sourceNode) {
+        Queue<String> queue = new LinkedList<String>();
+        HashSet<String> set = new HashSet<String>();
+        queue.offer(sourceNode);
+        set.add(sourceNode);
+        for (String node : localAdjacencyList.get(sourceNode)) {
+            if (!set.contains(node)) {
+                queue.offer(node);
+                set.add(node);
+                findCountries++;
+            }
+        }
+//        findCountryByID(sourceNode).flagDFS = true;
+//        findCountries++;
+//        for (int targetNode : localAdjacencyList.get(sourceNode)){
+//            Country targetCountry = findCountryByID(targetNode);
+//            if (!targetCountry.flagDFS){
+//                DFS(localAdjacencyList,targetNode);
+//            }
+//        }
+    }
+
+    public boolean checkConnection(Map<String,ArrayList<String>> localAdjacencyList) {
+        if (localAdjacencyList.size()==0) return true;
+        String sourceNode = "";
+        for (String loopCountry : localAdjacencyList.keySet()) {
+            if (sourceNode == "") sourceNode = loopCountry;
+            break;
+        }
+        findCountries = 0;
+        //findCountryByID(sourceNode).flagDFS = true;
+        BFS(localAdjacencyList,sourceNode);
+
+        if (findCountries==localAdjacencyList.size()) return true;
+        else return false;
+    }
+
+
 }
