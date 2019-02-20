@@ -11,17 +11,18 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Maploader1 {
-    private int globalIndex, findCountries;
+//    private int globalIndex;
+    private int findCountries;
     public String riskMapName;
     public String author;
     public String warn,image,wrap,scroll;
     public boolean modified;
     public ArrayList<Continent> continents;
     public int countryNum;
-    public Map<Integer,ArrayList<Country>> countries;
-    public Map<Integer,ArrayList<Integer>> adjacencyList;
+    public Map<String,ArrayList<Country>> countries;
+    public Map<String,ArrayList<String>> adjacencyList;
     public Maploader1(String name) {
-        this.globalIndex = 1;
+//        this.globalIndex = 1;
         this.riskMapName = name;
         this.author = "Invincible Team Four";
         this.warn = "yes";
@@ -31,8 +32,8 @@ public class Maploader1 {
         this.modified = false;
         this.continents = new ArrayList<Continent>();
         this.countryNum = 0;
-        this.countries = new HashMap<Integer,ArrayList<Country>>();
-        this.adjacencyList = new HashMap<Integer,ArrayList<Integer>>();
+        this.countries = new HashMap<String,ArrayList<Country>>();
+        this.adjacencyList = new HashMap<String,ArrayList<String>>();
 
     }
     public boolean loadMapFile(String mapFileName) {//mode 1-mapEditor 2-RiskGame
@@ -117,6 +118,8 @@ public class Maploader1 {
                                             JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Continent <"+continentName+">'s control number must be integer.");
                                             return false;
                                         }
+                                        //used to new Continent
+                                        addContinent(continentName,countryNum);
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Invalid format.");
@@ -153,6 +156,8 @@ public class Maploader1 {
                                             }
                                             countriesList.get(countryName).add(countryInfo[i].trim());
                                         }
+                                        //used to new Country
+                                        addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Not enough data.");
@@ -188,6 +193,79 @@ public class Maploader1 {
 //        }
 
 //        return checkValid(mode);
+        return true;
+    }
+    //This method used to find country
+    public Country findCountry(String countryName) {
+        for (ArrayList<Country> loopList : countries.values()) {
+            for (Country loopCountry:loopList){
+                if (loopCountry.getName().equals(countryName)){
+                    return loopCountry;
+                }
+            }
+        }
+        return null;
+    }
+    //This method is used to find Continent
+    public Continent findContinent(String continentName) {
+        for (Continent loopContinent:continents){
+            if (loopContinent.getName().equals(continentName)){
+                return loopContinent;
+            }
+        }
+        return null;
+    }
+
+
+    //The function to add new Country in existing continent
+    public boolean addCountry(String countryName,String continentName,int coordinateX, int coordinateY){
+
+        Continent targetContinent = findContinent(continentName);
+        if (targetContinent==null) {
+            JOptionPane.showMessageDialog(null,"Continnet <"+continentName+"> does not exists");
+            return false;
+        }
+
+        if (findCountry(countryName)!=null){
+            JOptionPane.showMessageDialog(null,"Country <"+countryName+"> already exists");
+            return false;
+        }
+
+        Country newCountry = new Country(coordinateX,coordinateY,countryName,targetContinent);
+        countries.get(targetContinent.getName()).add(newCountry);
+        adjacencyList.put(newCountry.getName(), new ArrayList<String>());
+        countryNum++;
+        this.modified = true;
+        return true;
+    }
+
+    //This function is used to new Continent
+    public boolean addContinent(String continentName, int controlNum){
+        if (findContinent(continentName)!=null) {
+            JOptionPane.showMessageDialog(null,"Continnet <"+continentName+"> already exists");
+            return false;
+        }
+        Continent newContinent = new Continent(continentName,controlNum);
+        continents.add(newContinent);
+        countries.put(newContinent.getName(), new ArrayList<Country>());
+        this.modified = true;
+        return true;
+    }
+    //This function is used to add connection between 2 countries
+    public boolean addConnection(String countryNameFrom,String countryNameTo){
+        Country fromCountry = findCountry(countryNameFrom);
+        if (fromCountry==null){
+            JOptionPane.showMessageDialog(null,"Country  '"+countryNameFrom+"' does not exists");
+            return false;
+        }
+        Country toCountry = findCountry(countryNameTo);
+        if (toCountry==null){
+            JOptionPane.showMessageDialog(null,"Country  '"+countryNameTo+"' does not exists");
+            return false;
+        }
+        adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
+        adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
+        this.modified = true;
         return true;
     }
 }
