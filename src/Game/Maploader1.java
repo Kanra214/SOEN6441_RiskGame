@@ -108,7 +108,7 @@ public class Maploader1 {
                                         }
                                         Pattern pattern = Pattern.compile("[0-9]*");
                                         if (pattern.matcher(controlNum).matches()){
-                                            if (!this.addContinent(continentName,Integer.parseInt(controlNum))) return false;
+//                                            if (!this.addContinent(continentName,Integer.parseInt(controlNum))) return false;
                                             System.out.println(continentName + controlNum);
 
                                         }
@@ -117,7 +117,7 @@ public class Maploader1 {
                                             return false;
                                         }
                                         //used to new Continent
-                                        addContinent(continentName,countryNum);
+                                        addContinent(continentName,Integer.parseInt(controlNum));
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Invalid format.");
@@ -143,9 +143,9 @@ public class Maploader1 {
                                             JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Coordinates must be integer.");
                                             return false;
                                         }
-                                        if (!this.addCountry(countryName,belongContinentName,Integer.parseInt(countryInfo[1].trim()),
-                                                Integer.parseInt(countryInfo[2].trim())))
-                                            return false;
+//                                        if (!this.addCountry(countryName,belongContinentName,Integer.parseInt(countryInfo[1].trim()),
+//                                                Integer.parseInt(countryInfo[2].trim())))
+//                                            return false;
                                         countriesList.put(countryName, new ArrayList<String>());
 
                                         for (int i=4;i<countryInfo.length;i++){
@@ -181,20 +181,20 @@ public class Maploader1 {
             }
         }
 
-//        for (String loopCountry : countriesList.keySet()) {
-//            ArrayList<String> neighbours = countriesList.get(loopCountry);
-//            for (String loopNeighbour:neighbours){
-//                if (!countriesList.containsKey(loopNeighbour)){
-//                    JOptionPane.showMessageDialog(null,"Fatal error: Country <"+loopNeighbour+"> in <"+loopCountry+">'s adjacency list is not exist.");
-//                    return false;
-//                }
-//                if (!countriesList.get(loopNeighbour).contains(loopCountry)){
-//                    JOptionPane.showMessageDialog(null,"Fatal error: The connection between country <"+loopCountry+"> and <"+loopNeighbour+"> is not paired.");
-//                    return false;
-//                }
-//                adjacencyList.get(findCountry(loopCountry).countryID).add(findCountry(loopNeighbour).countryID);
-//            }
-//        }
+        for (String loopCountry : countriesList.keySet()) {
+            ArrayList<String> neighbours = countriesList.get(loopCountry);
+            for (String loopNeighbour:neighbours){
+                if (!countriesList.containsKey(loopNeighbour)){
+                    JOptionPane.showMessageDialog(null,"Fatal error: Country <"+loopNeighbour+"> in <"+loopCountry+">'s adjacency list is not exist.");
+                    return false;
+                }
+                if (!countriesList.get(loopNeighbour).contains(loopCountry)){
+                    JOptionPane.showMessageDialog(null,"Fatal error: The connection between country <"+loopCountry+"> and <"+loopNeighbour+"> is not paired.");
+                    return false;
+                }
+                adjacencyList.get(findCountry(loopCountry).getName()).add(findCountry(loopNeighbour).getName());
+            }
+        }
 
 //        return checkValid(mode);
         return true;
@@ -274,6 +274,7 @@ public class Maploader1 {
         return true;
     }
 
+    //This function is used to traversal map using BFS method
     public void BFS(Map<String,ArrayList<String>> localAdjacencyList, String sourceNode) {
         Queue<String> queue = new LinkedList<String>();
         HashSet<String> set = new HashSet<String>();
@@ -286,16 +287,9 @@ public class Maploader1 {
                 findCountries++;
             }
         }
-//        findCountryByID(sourceNode).flagDFS = true;
-//        findCountries++;
-//        for (int targetNode : localAdjacencyList.get(sourceNode)){
-//            Country targetCountry = findCountryByID(targetNode);
-//            if (!targetCountry.flagDFS){
-//                DFS(localAdjacencyList,targetNode);
-//            }
-//        }
     }
 
+    //This function is used to Graph Connection
     public boolean checkConnection(Map<String,ArrayList<String>> localAdjacencyList) {
         if (localAdjacencyList.size()==0) return true;
         String sourceNode = "";
@@ -304,12 +298,47 @@ public class Maploader1 {
             break;
         }
         findCountries = 0;
-        //findCountryByID(sourceNode).flagDFS = true;
         BFS(localAdjacencyList,sourceNode);
 
         if (findCountries==localAdjacencyList.size()) return true;
         else return false;
     }
 
+    //This Function is used to check whether map is valid
+    public boolean checkValid(){
+        String errorMessage = null;
+        if ((continents.size()==0)||(adjacencyList.size()==0)){
+            errorMessage = "Error: There is no countries.\n";
+        }
+        else{
+            //Check map connectivity
+            if (!checkConnection(adjacencyList)) errorMessage="Error: The whole map is not a connected graph.\n";
+            //Check continents connectivity
+            for (Continent loopContinent: continents){
+                if (countries.get(loopContinent.getName()).size()==0){
+                    if (errorMessage == null)
+                        errorMessage = "Error: The continent <"+loopContinent.getName()+"> has no country in it.\n";
+                    else
+                        errorMessage += "Error: The continent <"+loopContinent.getName()+"> has no country in it.\n";
+                    continue;
+                }
+                Map<String,ArrayList<String>> loopAdjacencyList = new HashMap<String,ArrayList<String>>();
+                for (Country loopCountry: countries.get(loopContinent.getName())){
+                    loopAdjacencyList.put(loopCountry.getName(), new ArrayList<String>());
+                    for (String neighbour: adjacencyList.get(loopCountry.getName())){
+                        if (findCountry(neighbour).getCont().getName()==loopContinent.getName()){
+                            loopAdjacencyList.get(loopCountry.getName()).add(neighbour);
+                        }
+                    }
+                }
+                if (!checkConnection(loopAdjacencyList)){
+                    if (errorMessage == null)
+                        errorMessage="Error: The continent <"+loopContinent.getName()+"> is not a connected graph.\n";
+                    else errorMessage+="Error: The continent <"+loopContinent.getName()+"> is not a connected graph.\n";
+                }
+            }
+        }
 
+        return true;
+    }
 }
