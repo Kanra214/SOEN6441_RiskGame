@@ -268,9 +268,26 @@ public class MapEdit {
             return false;
         }
         adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
+        fromCountry.addNeighbour(toCountry);      
         adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
+        toCountry.addNeighbour(fromCountry);
         this.modified = true;
         return true;
+    }
+    
+    //This is used for return the country information to mapEditor 
+    public String showCountries() {
+    	
+    	String info="";
+    	for (ArrayList<Country> loopList : countries.values()) {
+            for (Country loopCountry:loopList){
+                
+            	info=info+"\r\n"+loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY()+"-"+loopCountry.getContName()+"-"+loopCountry.printNeighbors();
+                // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
+                
+            }
+        }
+    	return info;
     }
 
     //This function is used to traversal map using BFS method
