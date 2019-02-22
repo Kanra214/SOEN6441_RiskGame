@@ -3,6 +3,11 @@ import Models.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * In Game package and this class is for Game process control.
+ * @author Team36
+ * @version 1.1
+ */
 public class Phases {
     protected int numOfPlayers;
     protected ArrayList<Player> players;

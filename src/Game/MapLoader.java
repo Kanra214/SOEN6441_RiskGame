@@ -7,6 +7,11 @@ import Models.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+/**
+ * In Game package and this class is for loading the map
+ * @author Team36
+ * @version 1.1
+ */
 public class MapLoader {
     public String author;
     public String mapname;

@@ -8,6 +8,11 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
+/**
+ * In Game package and this class is for loading the map
+ * @author Team36
+ * @version 1.1
+ */
 public class Maploader1 {
 //    private int globalIndex;
     private int findCountries;

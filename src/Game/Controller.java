@@ -1,4 +1,3 @@
-//this is center controller
 package Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,12 +11,21 @@ import java.util.ArrayList;
 import javax.swing.*;
 import View_Components.Window;
 
-
-
+/**
+ * This class is for Game process displays
+ * @author Team36
+ * @version 1.1
+ */
 public class Controller {
     Window window;
     Phases p;
     Listener lis;
+
+    /**
+     * Constructor
+     * @param window is main window
+     * @throws IOException
+     */
     public Controller(Window window) throws IOException {
         this.window = new Window();
 
@@ -26,6 +34,11 @@ public class Controller {
 //        this.window.welcome();
 
     }
+
+    /**
+     * This function is for game start
+     * @throws IOException
+     */
     public void start() throws IOException {
 
 
@@ -52,8 +65,11 @@ public class Controller {
 
 
 
-
     }
+
+    /**
+     * This function is for loading the slide bar of window
+     */
     private void prepareGame(){
         lis = new Listener(p);
         p.prepare();
@@ -85,6 +101,9 @@ public class Controller {
     }
 
 
+    /**
+     * This class is for lisenter
+     */
     public class Listener implements ActionListener{
         private Phases phase;
         public Listener(Phases phase){
@@ -98,6 +117,10 @@ public class Controller {
 //
 //        }
 
+        /**
+         * This function is for phases displays
+         * @param e is ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
             int phaseNow = phase.currentPhase;
             int turnNow = phase.currentTurn;
