@@ -1,32 +1,26 @@
 package Models;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class MapEdit {
-    //    private int globalIndex;
     private int findCountries;
     public String riskMapName;
     public String author;
     public String warn,image,wrap,scroll;
-    public boolean modified;
     public ArrayList<Continent> continents;
     public int countryNum;
     public Map<String,ArrayList<Country>> countries;
     public Map<String,ArrayList<String>> adjacencyList;
     public MapEdit(String name) {
-//        this.globalIndex = 1;
         this.riskMapName = name;
         this.author = "Invincible Team Four";
         this.warn = "yes";
         this.wrap = "no";
         this.image = "none";
         this.scroll = "none";
-        this.modified = false;
         this.continents = new ArrayList<Continent>();
         this.countryNum = 0;
         this.countries = new HashMap<String,ArrayList<Country>>();
@@ -155,7 +149,7 @@ public class MapEdit {
                                             countriesList.get(countryName).add(countryInfo[i].trim());
 
                                         }
-                                        //used to new Country,
+                                        //used to new Country, add connection between country
                                         addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
                                         adjacencyList.put(countryName, new ArrayList<String>());
                                         for (int i = 4; i < countryInfo.length; i++ ) {
@@ -195,7 +189,6 @@ public class MapEdit {
             }
         }
 
-//        return checkValid(mode);
         return true;
     }
     //This method used to find country
@@ -238,7 +231,6 @@ public class MapEdit {
         countries.get(targetContinent.getName()).add(newCountry);
         adjacencyList.put(newCountry.getName(), new ArrayList<String>());
         countryNum++;
-        this.modified = true;
         return true;
     }
 
@@ -251,7 +243,6 @@ public class MapEdit {
         Continent newContinent = new Continent(continentName,controlNum);
         continents.add(newContinent);
         countries.put(newContinent.getName(), new ArrayList<Country>());
-        this.modified = true;
         return true;
     }
 
@@ -269,7 +260,6 @@ public class MapEdit {
         }
         adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
         adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
-        this.modified = true;
         return true;
     }
 
@@ -337,7 +327,59 @@ public class MapEdit {
                 }
             }
         }
+        if (errorMessage != null) {
+            JOptionPane.showMessageDialog(null,errorMessage);
+            return false;
+        }
 
+        return true;
+    }
+    //This function is used to write txt file
+    public boolean saveToFile(String mapFileName) {
+        File outputFile = new File(mapFileName);
+        FileWriter fw = null;
+        try{
+            if (outputFile.exists()&&outputFile.isFile()) {
+                outputFile.delete();
+            }
+            outputFile.createNewFile();
+            fw = new FileWriter(outputFile.getAbsoluteFile(),false);
+            fw.write("[Map]\r\n");
+            fw.write("author="+this.author+"\r\n");
+            fw.write("warn="+this.warn+"\r\n");
+            fw.write("image="+this.image+"\r\n");
+            fw.write("wrap="+this.wrap+"\r\n");
+            fw.write("scroll="+this.scroll+"\r\n");
+            fw.write("\r\n");
+            fw.write("[Continents]\r\n");
+            for (Continent loopContinent : continents){
+                fw.write(loopContinent.getName()+"="+loopContinent.getControl_value()+"\r\n");
+            }
+            fw.write("\r\n");
+            fw.write("[Territories]\r\n");
+            for (Continent loopContinent : continents){
+                for (Country loopCountry : countries.get(loopContinent.getName())){
+                    ArrayList<String> neighbours = adjacencyList.get(loopCountry.getName());
+                    fw.write(loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopContinent.getName());
+                    for (String neighbour : neighbours){
+                        fw.write(","+findCountry(neighbour).getName());
+                    }
+                    fw.write("\r\n");
+                }
+                fw.write("\r\n");
+            }
+            fw.close();
+            this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
+        }catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fw != null)fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return false;
+            }
+        }
         return true;
     }
 }
