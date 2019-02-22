@@ -7,6 +7,11 @@ import Models.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+/**
+ * In Game package and this class is for loading the map
+ * @author Team36
+ * @version 1.1
+ */
 public class MapLoader {
     public String author;
     public String mapname;
@@ -36,7 +41,7 @@ public class MapLoader {
                         input = reader.readLine();
                         String[] parts = input.split(" ");
                         Continent tempcont = findContinent(worldmap, parts[3]);
-                        Country tempCountry = new Country((int)(Integer.parseInt(parts[1])*0.9)-100, (int)(Integer.parseInt(parts[2])*0.9), parts[0], tempcont, Integer.parseInt(parts[4]));
+                        Country tempCountry = new Country((int)(Integer.parseInt(parts[1])*0.9)-100, (int)(Integer.parseInt(parts[2])*0.9), parts[0], tempcont);
                         tempcont.addCountry(tempCountry);
                         graph.add(tempCountry);
 

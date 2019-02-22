@@ -8,11 +8,13 @@ public class Country{
 
 
     private String name;
-    private int X,Y;
+
 
     private Continent cont;
     private Player owner;
     private int army = 0;
+    private int X = 0;
+    private int Y = 0;
 
     public CountryButton countryButton;
 
@@ -22,8 +24,8 @@ public class Country{
     public Country(int x, int y, String name, Continent continent) {
         this.name = name;
         this.cont = continent;
-        this.X = x;
-        this.Y = y;
+        X=x;
+        Y=y;
         countryButton = new CountryButton(x,y,this);
 
         this.neighbours = new ArrayList<>();
@@ -48,12 +50,24 @@ public class Country{
     }
 
     public ArrayList<Country> getNeighbours(){return neighbours;}
+    public String printNeighbors() {
+    	String reNei="";
+    	for(Country nei: getNeighbours()) {
+    		reNei=reNei+nei.getName();
+    	}
+    	return reNei;
+    }
+    
     public void addNeighbour(Country country) {
         this.neighbours.add(country);
     }
 
     public Continent getCont() {
         return cont;
+    }
+    
+    public String getContName() {
+        return cont.getName();
     }
 
 
@@ -64,14 +78,12 @@ public class Country{
     public int getArmy(){
         return army;
     }
-    public int getX() {
+    public int getX(){
         return X;
     }
-
-    public int getY() {
+    public int getY(){
         return Y;
     }
-
 
 
 
