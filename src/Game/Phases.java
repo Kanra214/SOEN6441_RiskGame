@@ -35,7 +35,8 @@ public class Phases {
     public void addPlayers(int numOfPlayers){
         this.numOfPlayers = numOfPlayers;
         for(int i = 0; i < numOfPlayers; i++){
-            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
+//            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
+            players.add(new Player(i, 7));
         }
     }
 
@@ -63,10 +64,14 @@ public class Phases {
 
     public void nextTurn(){
         currentTurn++;
-        current_player = players.get(currentTurn%numOfPlayers);
+        current_player = players.get(currentTurn % numOfPlayers);
         if (currentPhase == 1){
             phaseOneFirstStep(current_player);
         }
+        if (currentPhase == 3){
+            phaseThreeFirstStep();
+        }
+
     }
 
     public Player getCurrent_player() {
@@ -82,13 +87,23 @@ public class Phases {
         System.out.println("Army left "+ current_player.getPlayerArmy());
     }
 
+    public void phaseThreeFirstStep (){
+        System.out.println();
+        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
+    }
+
     public void gameStart(){
         currentPhase = 1;
         nextTurn();
     }
 
     public void nextPhase(){
-        currentPhase = (currentPhase+1)%3 + 1;
+        this.currentPhase ++;
+        if (currentPhase == 4) this.currentPhase = 1;
+
+        if (currentPhase == 3){
+            phaseThreeFirstStep();
+        }
     }
 
 

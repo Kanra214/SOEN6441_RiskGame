@@ -40,6 +40,8 @@ public class Country{
         this.army++;
     }
 
+    public void deployArmy(){ this .army--;}
+
 
     public String getName(){
         return name;
@@ -62,11 +64,6 @@ public class Country{
     public int getArmy(){
         return army;
     }
-
-
-
-
-
 
 }
 

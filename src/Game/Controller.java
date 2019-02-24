@@ -59,6 +59,8 @@ public class Controller {
     }
     public class Listener implements ActionListener{
         private Phases phase;
+        private Country chosenFrom = null;
+        private Country chosenTo = null;
         public Listener(Phases phase){
             this.phase = phase;
         }
@@ -70,16 +72,18 @@ public class Controller {
 //
 //        }
 
+
+
         public void actionPerformed(ActionEvent e) {
             int phaseNow = phase.currentPhase;
             int turnNow = phase.currentTurn;
+
             System.out.println();
 
 
             System.out.println("Phase "+phaseNow);
             System.out.println("Turn "+ turnNow);
             if (phaseNow == 1){ // reinforcement phase
-
 
                 if(e.getSource() instanceof CountryButton) {
                     System.out.print (e.getActionCommand()+" army count:");
@@ -100,11 +104,58 @@ public class Controller {
                         phase.nextTurn();
                         phase.innerTurn = 0;
                     } else {
-                        System.out.println("Phase 2");
+                        System.out.println("\n Moving to Phase 2");
                         phase.nextPhase();
                     }
                 }
 
+            }
+
+            if (phaseNow == 3){
+//                phase.phaseTwoFirstStep();
+                // start phase 2 player chooses his country (territory)
+                if (chosenFrom == null){
+                    if(e.getSource() instanceof CountryButton) {
+                        chosenFrom = ((CountryButton) e.getSource()).getCountry();
+                        if (chosenFrom.getOwner() == phase.getCurrent_player()) { // this country belong to a player
+                            // from here on we already chosen 1 country from and we deduct 1 army from him
+                            chosenFrom.deployArmy();
+
+                            phase.innerTurn ++; // counter to keep track of operations
+                        } else {
+                            chosenFrom = null;
+                            System.out.println("This is not your country, pick another one");
+                        }
+                    }
+                } else {
+                    // here if from was chosen
+                    if(e.getSource() instanceof CountryButton) {
+                        chosenTo = ((CountryButton) e.getSource()).getCountry();
+                        if (chosenTo != chosenFrom && chosenTo.getOwner() == phase.getCurrent_player()){
+                            chosenTo.sendArmy();
+                            System.out.println("Successfully sent army from "+chosenFrom.getName() + " to " + chosenTo.getName());
+
+                            chosenFrom = null;
+                            chosenTo = null;
+                        } else {
+                            //somehow we chose the same country or not belonging to us
+                            //for now we only send 1 army each time
+
+                            chosenTo = null;
+                        }
+                    }
+                }
+
+            }
+
+            if (phaseNow == 2){
+                System.out.println("in phase 2");
+            }
+            // button van only be used not on phase 1
+            if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
+                System.out.println("Complete is called");
+                if (phaseNow == 2) phase.nextPhase();
+                if (phaseNow == 3) phase.nextTurn();
             }
 
 
