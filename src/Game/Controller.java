@@ -1,3 +1,4 @@
+//this is center controller
 package Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,70 +10,31 @@ import View_Components.Window;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import View_Components.Window;
 
-/**
- * This class is for Game process displays
- * @author Team36
- * @version 1.1
- */
+
+
 public class Controller {
     Window window;
     Phases p;
-    Listener lis;
-
-    /**
-     * Constructor
-     * @param window is main window
-     * @throws IOException
-     */
     public Controller(Window window) throws IOException {
-        this.window = new Window();
-
-
+        this.window = window;
 
 //        this.window.welcome();
 
     }
-
-    /**
-     * This function is for game start
-     * @throws IOException
-     */
     public void start() throws IOException {
 
 
 
         ArrayList<ArrayList> tempMap = new MapLoader().load("entry.txt");
 
-        int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players? Please enter an integer from 2 to 6"));
+        int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
         p = new Phases(tempMap.get(0), tempMap.get(1));
-
-
+        Listener lis = new Listener(p);
 
         p.addPlayers(numOfPlayers);
-        System.out.println("number of players: " + numOfPlayers);
-        prepareGame();
-
-
-        window.completePhaseButton.addActionListener(lis);
-
-        window.setVisible(true);
-
-
-
-
-
-
-
-    }
-
-    /**
-     * This function is for loading the slide bar of window
-     */
-    private void prepareGame(){
-        lis = new Listener(p);
-        p.prepare();
+        p.determineOrder();
+        p.countryAssignment();
         for(Country country : p.graph){
             JLabel label = new JLabel(country.getName());
             label.setBounds(country.countryButton.getX(), country.countryButton.getY() - 20,150,20);
@@ -83,29 +45,22 @@ public class Controller {
 
 
         }
+        window.completePhaseButton.addActionListener(lis);
 
-        for(int i = 0; i < p.players.size(); i++){
-            Player player = p.players.get(i);
-            window.playerLabels[i].setText("<html>Player " + player.getId() + ":<br>" +
-                    "Units: " + player.getUnitsOnMap() + "<br>" +
-                    "Countries: " + player.getRealms().size() + "<br>" +
-                    "Cards </html>");//put card info here later
-        }
-        window.currentPhaseLabel.setText("Current phase: " + p.currentPhase);
-        window.currentPlayerLabel.setText("<html>Current player: " + p.current_player.getId() + "<br>Your color: " +
-                p.current_player.getStringColor() + "</html");
-        window.unitLeftLabel.setText("Unit left: " + p.current_player.getUnitLeft());
+        window.setVisible(true);
+
+
+
+
+
 
 
 
     }
-
-
-    /**
-     * This class is for lisenter
-     */
     public class Listener implements ActionListener{
         private Phases phase;
+        private Country chosenFrom = null;
+        private Country chosenTo = null;
         public Listener(Phases phase){
             this.phase = phase;
         }
@@ -117,48 +72,30 @@ public class Controller {
 //
 //        }
 
-        /**
-         * This function is for phases displays
-         * @param e is ActionEvent
-         */
+
+
         public void actionPerformed(ActionEvent e) {
             int phaseNow = phase.currentPhase;
             int turnNow = phase.currentTurn;
+
             System.out.println();
 
 
             System.out.println("Phase "+phaseNow);
             System.out.println("Turn "+ turnNow);
-            if(p.currentPhase == 0 && e.getSource() instanceof CountryButton && ((CountryButton) e.getSource()).getCountry().getOwner() == p.current_player){
-                if(p.current_player.armyLeft()){
-                    p.current_player.deployArmy(((CountryButton) e.getSource()).getCountry());
-
-                }
-                else if(p.current_player == p.players.get(p.players.size()-1)){//all players are ready
-                    p.gameStart();
-                }
-                else{
-                    p.nextTurn();
-
-                }
-
-            }
             if (phaseNow == 1){ // reinforcement phase
-                window.promptPlayer("phase is one");
-
 
                 if(e.getSource() instanceof CountryButton) {
-                    Country chosen = ((CountryButton) e.getSource()).getCountry();
-                    System.out.print (chosen+" army count:" + chosen.getArmy() + "\n");
-//                    System.out.println(((CountryButton) e.getSource()).getCountry().getArmy());
+                    System.out.print (e.getActionCommand()+" army count:");
+                    System.out.println(((CountryButton) e.getSource()).getCountry().getArmy());
 
-//                    Country chosen = ((CountryButton) e.getSource()).getCountry();
-                    if (chosen.getOwner() == phase.getCurrent_player()){ // this country belong to current player
-                        phase.getCurrent_player().deployArmy(chosen);
-//                        chosen.sendArmy();
+                    Country chosen = ((CountryButton) e.getSource()).getCountry();
+                    if (chosen.getOwner() == phase.getCurrent_player()){ // this country belong to a player
+                        phase.getCurrent_player().deployArmy();
+                        chosen.sendArmy();
                         phase.innerTurn ++;
                         System.out.println("Inner turn "+phase.innerTurn);
-                        System.out.println("Army left "+ phase.current_player.getUnitLeft());
+                        System.out.println("Army left "+ phase.current_player.getPlayerArmy());
                     }
                 }
 
@@ -167,11 +104,58 @@ public class Controller {
                         phase.nextTurn();
                         phase.innerTurn = 0;
                     } else {
-                        System.out.println("Phase 2");
+                        System.out.println("\n Moving to Phase 2");
                         phase.nextPhase();
                     }
                 }
 
+            }
+
+            if (phaseNow == 3){
+//                phase.phaseTwoFirstStep();
+                // start phase 2 player chooses his country (territory)
+                if (chosenFrom == null){
+                    if(e.getSource() instanceof CountryButton) {
+                        chosenFrom = ((CountryButton) e.getSource()).getCountry();
+                        if (chosenFrom.getOwner() == phase.getCurrent_player()) { // this country belong to a player
+                            // from here on we already chosen 1 country from and we deduct 1 army from him
+                            chosenFrom.deployArmy();
+
+                            phase.innerTurn ++; // counter to keep track of operations
+                        } else {
+                            chosenFrom = null;
+                            System.out.println("This is not your country, pick another one");
+                        }
+                    }
+                } else {
+                    // here if from was chosen
+                    if(e.getSource() instanceof CountryButton) {
+                        chosenTo = ((CountryButton) e.getSource()).getCountry();
+                        if (chosenTo != chosenFrom && chosenTo.getOwner() == phase.getCurrent_player()){
+                            chosenTo.sendArmy();
+                            System.out.println("Successfully sent army from "+chosenFrom.getName() + " to " + chosenTo.getName());
+
+                            chosenFrom = null;
+                            chosenTo = null;
+                        } else {
+                            //somehow we chose the same country or not belonging to us
+                            //for now we only send 1 army each time
+
+                            chosenTo = null;
+                        }
+                    }
+                }
+
+            }
+
+            if (phaseNow == 2){
+                System.out.println("in phase 2");
+            }
+            // button van only be used not on phase 1
+            if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
+                System.out.println("Complete is called");
+                if (phaseNow == 2) phase.nextPhase();
+                if (phaseNow == 3) phase.nextTurn();
             }
 
 

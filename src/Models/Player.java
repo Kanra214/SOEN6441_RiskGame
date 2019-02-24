@@ -10,9 +10,8 @@ public class Player {
 
     private Color playerColor;
     private int unassigned_armies;
-    private ArrayList<Country> realms;
-    private int id;//this is primary key for players
-    private int unitsOnMap = 0;
+    public ArrayList<Country> realms;
+    int id;//this is primary key for players
 
     public Player(int id, int army) {
         this.id = id;
@@ -48,23 +47,14 @@ public class Player {
         this.unassigned_armies += extra;
     }
 
-    public int getUnitLeft() {
+    public int getPlayerArmy() {
         return unassigned_armies;
     }
 
-    public void deployArmy(Country country){
+    public void deployArmy(){
         if(armyLeft()) {
-            country.incrementArmy();
             unassigned_armies--;
-            unitsOnMap++;
         }
     }
 
-    public int getUnitsOnMap() {
-        return unitsOnMap;
-    }
-
-    public ArrayList<Country> getRealms() {
-        return realms;
-    }
 }

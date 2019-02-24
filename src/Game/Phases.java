@@ -3,17 +3,12 @@ import Models.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * In Game package and this class is for Game process control.
- * @author Team36
- * @version 1.1
- */
 public class Phases {
     protected int numOfPlayers;
     protected ArrayList<Player> players;
     protected ArrayList<Country> graph;
     protected ArrayList<Continent> worldmap;
-    public Player current_player;
+    protected Player current_player;
     protected int currentPhase;
     protected int currentTurn = 0;
 
@@ -40,19 +35,19 @@ public class Phases {
     public void addPlayers(int numOfPlayers){
         this.numOfPlayers = numOfPlayers;
         for(int i = 0; i < numOfPlayers; i++){
-            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
+//            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
+            players.add(new Player(i, 7));
         }
-
     }
 
     public int extraArmyFromContinent(Player player){
-        int reinforcement = 0;
+        int reinforocement = 0;
         for (Continent c: worldmap) {
             if(c.checkOwnership(player)){
-                reinforcement+=c.getControl_value();
+                reinforocement+=c.getControl_value();
             }
         }
-        return reinforcement;
+        return reinforocement;
     }
 
     public int getCurrentPhase() {
@@ -69,35 +64,46 @@ public class Phases {
 
     public void nextTurn(){
         currentTurn++;
-        current_player = players.get(currentTurn%numOfPlayers);
+        current_player = players.get(currentTurn % numOfPlayers);
         if (currentPhase == 1){
             phaseOneFirstStep(current_player);
         }
+        if (currentPhase == 3){
+            phaseThreeFirstStep();
+        }
+
     }
 
     public Player getCurrent_player() {
         return current_player;
     }
 
-    public void phaseOneFirstStep (Player player){
-        int extra = extraArmyFromContinent(player);
-        player.getReinforcement(extra);
+    public void phaseOneFirstStep (Player p){
+        int extra = extraArmyFromContinent(p);
+        p.getReinforcement(extra);
         System.out.println();
-        System.out.println("Player "+player.getId()+" gets extra: "+extra);
-        System.out.println("Player "+player.getId()+" color "+ current_player.getStringColor());
-        System.out.println("Army left "+ current_player.getUnitLeft());
+        System.out.println("Player "+p.getId()+" gets extra: "+extra);
+        System.out.println("Player "+p.getId()+" color "+ current_player.getStringColor());
+        System.out.println("Army left "+ current_player.getPlayerArmy());
+    }
+
+    public void phaseThreeFirstStep (){
+        System.out.println();
+        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
     }
 
     public void gameStart(){
         currentPhase = 1;
-//        current_player = players.get(0);
-        phaseOneFirstStep(current_player);
-//        nextTurn();
-
+        nextTurn();
     }
 
     public void nextPhase(){
-        currentPhase = (currentPhase+1)%3 + 1;
+        this.currentPhase ++;
+        if (currentPhase == 4) this.currentPhase = 1;
+
+        if (currentPhase == 3){
+            phaseThreeFirstStep();
+        }
     }
 
 
@@ -112,25 +118,14 @@ public class Phases {
         int turn = 0;
         for (Country country : this.graph) {
             Player player = players.get(turn);
-            player.getRealms().add(country);
-            player.deployArmy(country);
+            player.realms.add(country);
+            player.deployArmy();
             country.setOwner(player);
             turnReference++;
             turn = turnReference % players.size();
         }
 
-
-
-    }
-    protected void prepare(){
-        determineOrder();
-        countryAssignment();
-        current_player = players.get(0);
-        currentPhase = 0;
-
+        gameStart();
 
     }
-
-
-
 }
