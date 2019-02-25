@@ -36,6 +36,9 @@ public class Country{
         this.army++;
     }
 
+
+    public void deployArmy(){ this .army--;}
+
     public void setOwner(Player player) {
         this.owner = player;
     }
@@ -57,7 +60,7 @@ public class Country{
     	}
     	return reNei;
     }
-    
+
     public void addNeighbour(Country country) {
         this.neighbours.add(country);
     }
@@ -65,7 +68,7 @@ public class Country{
     public Continent getCont() {
         return cont;
     }
-    
+
     public String getContName() {
         return cont.getName();
     }
