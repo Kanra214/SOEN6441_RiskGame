@@ -1,9 +1,11 @@
 package Models;
 
-import jdk.nashorn.internal.ir.IfNode;
-
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Player {
     private static Color[] ALL_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.LIGHT_GRAY, Color.ORANGE};
@@ -66,5 +68,39 @@ public class Player {
 
     public ArrayList<Country> getRealms() {
         return realms;
+    }
+
+    //This function is used to in Phase3 whether player can move army from one country to another;
+    public boolean findPath(Country sourceCountry, Country targetCountry) {
+        for (Country loopCountry : realms) {
+            if (!loopCountry.getName().equals(sourceCountry.getName())) {
+                JOptionPane.showMessageDialog(null, "Country  '" + loopCountry.getName() + "' does not belong to this player");
+                return false;
+            }
+            if (!loopCountry.getName().equals(targetCountry.getName())) {
+                JOptionPane.showMessageDialog(null, "Country  '" + loopCountry.getName() + "' does not belong to this player");
+                return false;
+            }
+        }
+
+        Queue<Country> queue = new LinkedList<Country>();
+        HashSet<String> set = new HashSet<String>();
+        queue.offer(sourceCountry);
+        set.add(sourceCountry.getName());
+        while (!queue.isEmpty()) {
+            Country tempCountry = queue.poll();
+            if (tempCountry.getName().equals(targetCountry.getName())) {
+                return true;
+            }
+            for (Country loopCountry : realms) {
+                    if (!set.contains(loopCountry.getName())) {
+                        queue.offer(loopCountry);
+                        set.add(loopCountry.getName());
+                    }
+            }
+
+        }
+        JOptionPane.showMessageDialog(null,"There isn't existing path between two countries");
+        return false;
     }
 }
