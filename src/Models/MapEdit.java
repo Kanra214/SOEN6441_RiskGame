@@ -110,7 +110,7 @@ public class MapEdit {
                                             return false;
                                         }
                                         //used to new Continent
-                                        addContinent(continentName,Integer.parseInt(controlNum));
+//                                        addContinent(continentName,Integer.parseInt(controlNum));
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Invalid format.");
@@ -150,11 +150,11 @@ public class MapEdit {
 
                                         }
                                         //used to new Country, add connection between country
-                                        addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
-                                        adjacencyList.put(countryName, new ArrayList<String>());
-                                        for (int i = 4; i < countryInfo.length; i++ ) {
-                                            adjacencyList.get(countryName).add(countryInfo[i].trim());
-                                        }
+//                                        addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
+//                                        adjacencyList.put(countryName, new ArrayList<String>());
+//                                        for (int i = 4; i < countryInfo.length; i++ ) {
+//                                            adjacencyList.get(countryName).add(countryInfo[i].trim());
+//                                        }
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Not enough data.");
@@ -286,6 +286,7 @@ public class MapEdit {
         HashSet<String> set = new HashSet<String>();
         queue.offer(sourceNode);
         set.add(sourceNode);
+        findCountries++;
         for (String node : localAdjacencyList.get(sourceNode)) {
             if (!set.contains(node)) {
                 queue.offer(node);
@@ -318,6 +319,7 @@ public class MapEdit {
         }
         else{
             //Check map connectivity
+            System.out.println(1);
             if (!checkConnection(adjacencyList)) errorMessage="Error: The whole map is not a connected graph.\n";
             //Check continents connectivity
             for (Continent loopContinent: continents){
@@ -353,49 +355,56 @@ public class MapEdit {
     }
     //This function is used to write txt file
     public boolean saveToFile(String mapFileName) {
-        File outputFile = new File(mapFileName);
-        FileWriter fw = null;
-        try{
-            if (outputFile.exists()&&outputFile.isFile()) {
-                outputFile.delete();
-            }
-            outputFile.createNewFile();
-            fw = new FileWriter(outputFile.getAbsoluteFile(),false);
-            fw.write("[Map]\r\n");
-            fw.write("author="+this.author+"\r\n");
-            fw.write("warn="+this.warn+"\r\n");
-            fw.write("image="+this.image+"\r\n");
-            fw.write("wrap="+this.wrap+"\r\n");
-            fw.write("scroll="+this.scroll+"\r\n");
-            fw.write("\r\n");
-            fw.write("[Continents]\r\n");
-            for (Continent loopContinent : continents){
-                fw.write(loopContinent.getName()+"="+loopContinent.getControl_value()+"\r\n");
-            }
-            fw.write("\r\n");
-            fw.write("[Territories]\r\n");
-            for (Continent loopContinent : continents){
-                for (Country loopCountry : countries.get(loopContinent.getName())){
-                    ArrayList<String> neighbours = adjacencyList.get(loopCountry.getName());
-                    fw.write(loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopContinent.getName());
-                    for (String neighbour : neighbours){
-                        fw.write(","+findCountry(neighbour).getName());
+        boolean flag = checkValid();
+        if (flag == false) {
+            return false;
+        }
+        else{
+            File outputFile = new File(mapFileName);
+            FileWriter fw = null;
+            try{
+                if (outputFile.exists()&&outputFile.isFile()) {
+                    outputFile.delete();
+                }
+                outputFile.createNewFile();
+                fw = new FileWriter(outputFile.getAbsoluteFile(),false);
+                fw.write("[Map]\r\n");
+                fw.write("author="+this.author+"\r\n");
+                fw.write("warn="+this.warn+"\r\n");
+                fw.write("image="+this.image+"\r\n");
+                fw.write("wrap="+this.wrap+"\r\n");
+                fw.write("scroll="+this.scroll+"\r\n");
+                fw.write("\r\n");
+                fw.write("[Continents]\r\n");
+                for (Continent loopContinent : continents){
+                    fw.write(loopContinent.getName()+"="+loopContinent.getControl_value()+"\r\n");
+                }
+                fw.write("\r\n");
+                fw.write("[Territories]\r\n");
+                for (Continent loopContinent : continents){
+                    for (Country loopCountry : countries.get(loopContinent.getName())){
+                        ArrayList<String> neighbours = adjacencyList.get(loopCountry.getName());
+                        fw.write(loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopContinent.getName());
+                        for (String neighbour : neighbours){
+                            fw.write(","+findCountry(neighbour).getName());
+                        }
+                        fw.write("\r\n");
                     }
                     fw.write("\r\n");
                 }
-                fw.write("\r\n");
+                fw.close();
+                this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
+            }catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (fw != null)fw.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    return false;
+                }
             }
-            fw.close();
-            this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
-        }catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fw != null)fw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                return false;
-            }
+
         }
         return true;
     }
