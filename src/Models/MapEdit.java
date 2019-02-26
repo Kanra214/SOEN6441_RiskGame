@@ -11,6 +11,8 @@ public class MapEdit {
     public String author;
     public String warn,image,wrap,scroll;
     public ArrayList<Continent> continents;
+    public ArrayList<Continent> allContinents;
+    public ArrayList<Country> allCountries;;
     public int countryNum;
     public Map<String,ArrayList<Country>> countries;
     public Map<String,ArrayList<String>> adjacencyList;
@@ -101,8 +103,7 @@ public class MapEdit {
                                         }
                                         Pattern pattern = Pattern.compile("[0-9]*");
                                         if (pattern.matcher(controlNum).matches()){
-//                                            if (!this.addContinent(continentName,Integer.parseInt(controlNum))) return false;
-                                            System.out.println(continentName + controlNum);
+                                            if (!this.addContinent(continentName,Integer.parseInt(controlNum))) return false;
 
                                         }
                                         else {
@@ -136,9 +137,9 @@ public class MapEdit {
                                             JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Coordinates must be integer.");
                                             return false;
                                         }
-//                                        if (!this.addCountry(countryName,belongContinentName,Integer.parseInt(countryInfo[1].trim()),
-//                                                Integer.parseInt(countryInfo[2].trim())))
-//                                            return false;
+                                        if (!this.addCountry(countryName,belongContinentName,Integer.parseInt(countryInfo[1].trim()),
+                                                Integer.parseInt(countryInfo[2].trim())))
+                                            return false;
                                         countriesList.put(countryName, new ArrayList<String>());
 
                                         for (int i=4;i<countryInfo.length;i++){
@@ -149,6 +150,7 @@ public class MapEdit {
                                             countriesList.get(countryName).add(countryInfo[i].trim());
 
                                         }
+//                                        System.out.println(1);
                                         //used to new Country, add connection between country
 //                                        addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
 //                                        adjacencyList.put(countryName, new ArrayList<String>());
@@ -164,6 +166,7 @@ public class MapEdit {
                     }
                 }
             }
+            System.out.println(1);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -188,6 +191,7 @@ public class MapEdit {
                 adjacencyList.get(findCountry(loopCountry).getName()).add(findCountry(loopNeighbour).getName());
             }
         }
+//        System.out.println(1);
 
         return true;
     }
@@ -280,6 +284,14 @@ public class MapEdit {
     	return info;
     }
 
+    //This fuction is used to clear map
+    public void clear() {
+        continents.clear();
+        countries.clear();
+        adjacencyList.clear();
+    }
+
+
     //This function is used to traversal map using BFS method
     public void BFS(Map<String,ArrayList<String>> localAdjacencyList, String sourceNode) {
         Queue<String> queue = new LinkedList<String>();
@@ -287,11 +299,14 @@ public class MapEdit {
         queue.offer(sourceNode);
         set.add(sourceNode);
         findCountries++;
-        for (String node : localAdjacencyList.get(sourceNode)) {
-            if (!set.contains(node)) {
-                queue.offer(node);
-                set.add(node);
-                findCountries++;
+        while(!queue.isEmpty()) {
+            String tempCountry = queue.poll();
+            for (String node : localAdjacencyList.get(tempCountry)) {
+                if (!set.contains(node)) {
+                    queue.offer(node);
+                    set.add(node);
+                    findCountries++;
+                }
             }
         }
     }
