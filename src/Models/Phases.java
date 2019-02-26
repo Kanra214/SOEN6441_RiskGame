@@ -1,18 +1,20 @@
-package Game;//this is logic, controller calls phases parts through the game
+package Models;//this is logic, controller calls phases parts through the game
 import Models.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
 
-public class Phases {
-    protected int numOfPlayers;
-    protected ArrayList<Player> players;
-    protected ArrayList<Country> graph;
-    protected ArrayList<Continent> worldmap;
-    protected Player current_player;
-    protected int currentPhase;
-    protected int currentTurn = 0;
+public class Phases extends Observable {
+    public int numOfPlayers;
+    public ArrayList<Player> players;
+    public ArrayList<Country> graph;
+    public ArrayList<Continent> worldmap;
+    public Player current_player;
+    public int currentPhase;
+    public int currentTurn = 0;
+    protected boolean viewIsConnected = false;
 
-    protected int innerTurn = 0;
+    public int innerTurn = 0;
 
     public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap){
 
@@ -35,8 +37,8 @@ public class Phases {
     public void addPlayers(int numOfPlayers){
         this.numOfPlayers = numOfPlayers;
         for(int i = 0; i < numOfPlayers; i++){
-//            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
-            players.add(new Player(i, 7));
+            players.add(new Player(i, getInitialArmyCount(numOfPlayers),this));
+//            players.add(new Player(i, 7));
         }
     }
 
@@ -55,22 +57,29 @@ public class Phases {
     }
 
     public void setCurrentPhase(int currentPhase) {
+
         this.currentPhase = currentPhase;
+
+        updateWindow();
+
     }
 
     public int getCurrentTurn() {
         return currentTurn;
     }
-
+    //next player
     public void nextTurn(){
         currentTurn++;
-        current_player = players.get(currentTurn % numOfPlayers);
+        current_player = players.get(currentTurn % numOfPlayers);//first player is players[1]
+        //check extra armies
         if (currentPhase == 1){
             phaseOneFirstStep(current_player);
         }
+
         if (currentPhase == 3){
             phaseThreeFirstStep();
         }
+        updateWindow();
 
     }
 
@@ -78,6 +87,7 @@ public class Phases {
         return current_player;
     }
 
+    //determine if anyone gets extra armies
     public void phaseOneFirstStep (Player p){
         int extra = extraArmyFromContinent(p);
         p.getReinforcement(extra);
@@ -93,7 +103,7 @@ public class Phases {
     }
 
     public void gameStart(){
-        currentPhase = 1;
+        setCurrentPhase(1);
         nextTurn();
     }
 
@@ -108,24 +118,40 @@ public class Phases {
 
 
 
-    protected void determineOrder(){//determine the round robin order for players by changing the order in the players field
+    public void determineOrder(){//determine the round robin order for players by changing the order in the players field
         Collections.shuffle(players);
 
     }
-    protected void countryAssignment() {
+    public void countryAssignment() {
         Collections.shuffle(this.graph);
         int turnReference = 0;
         int turn = 0;
         for (Country country : this.graph) {
             Player player = players.get(turn);
-            player.realms.add(country);
-            player.deployArmy();
             country.setOwner(player);
+            player.deployArmy(country);
             turnReference++;
             turn = turnReference % players.size();
         }
 
+
         gameStart();
 
     }
+    protected void updateWindow(){
+        if(viewIsConnected) {
+            setChanged();
+            notifyObservers();
+        }
+    }
+
+    public void connectView(){
+        viewIsConnected = true;
+        updateWindow();
+    }
+
+
+
+
+
 }

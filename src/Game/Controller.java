@@ -30,12 +30,16 @@ public class Controller {
 
         int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
         p = new Phases(tempMap.get(0), tempMap.get(1));
-        Listener lis = new Listener(p);
+        p.addObserver(window);
 
+        Listener lis = new Listener(p);
         p.addPlayers(numOfPlayers);
         p.determineOrder();
-        p.countryAssignment();
+
         for(Country country : p.graph){
+            country.setPhase(p);
+
+            //draw the countries on the mapPanel
             JLabel label = new JLabel(country.getName());
             label.setBounds(country.countryButton.getX(), country.countryButton.getY() - 20,150,20);
             window.mapPanel.add(label);
@@ -45,7 +49,9 @@ public class Controller {
 
 
         }
-        window.completePhaseButton.addActionListener(lis);
+        p.countryAssignment();
+        p.connectView();
+        window.phasePanel.completePhaseButton.addActionListener(lis);
 
         window.setVisible(true);
 
@@ -91,8 +97,8 @@ public class Controller {
 
                     Country chosen = ((CountryButton) e.getSource()).getCountry();
                     if (chosen.getOwner() == phase.getCurrent_player()){ // this country belong to a player
-                        phase.getCurrent_player().deployArmy();
-                        chosen.sendArmy();
+                        phase.getCurrent_player().deployArmy(chosen);
+//                        chosen.sendArmy();
                         phase.innerTurn ++;
                         System.out.println("Inner turn "+phase.innerTurn);
                         System.out.println("Army left "+ phase.current_player.getPlayerArmy());
