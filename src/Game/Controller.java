@@ -90,21 +90,23 @@ public class Controller {
                     System.out.println(((CountryButton) e.getSource()).getCountry().getArmy());
 
                     Country chosen = ((CountryButton) e.getSource()).getCountry();
-                    if (chosen.getOwner() == phase.getCurrent_player()){ // this country belong to a player
+                    if (chosen.getOwner() == phase.getCurrent_player() && phase.current_player.armyLeft()){ // this country belong to a player
                         phase.getCurrent_player().deployArmy();
                         chosen.sendArmy();
                         phase.innerTurn ++;
                         System.out.println("Inner turn "+phase.innerTurn);
                         System.out.println("Army left "+ phase.current_player.getPlayerArmy());
+                    } else {
+                        System.out.println("This is not your country");
                     }
                 }
 
                 if(!phase.current_player.armyLeft()){ // out of army to assign
-                    if (turnNow / phase.numOfPlayers == 0){
+                    if (turnNow <= phase.numOfPlayers){
                         phase.nextTurn();
                         phase.innerTurn = 0;
                     } else {
-                        System.out.println("\n Moving to Phase 2");
+                        System.out.println("\nMoving to Phase 2");
                         phase.nextPhase();
                     }
                 }
@@ -117,30 +119,37 @@ public class Controller {
                 if (chosenFrom == null){
                     if(e.getSource() instanceof CountryButton) {
                         chosenFrom = ((CountryButton) e.getSource()).getCountry();
-                        if (chosenFrom.getOwner() == phase.getCurrent_player()) { // this country belong to a player
-                            // from here on we already chosen 1 country from and we deduct 1 army from him
-                            chosenFrom.deployArmy();
-
-                            phase.innerTurn ++; // counter to keep track of operations
+                        if (chosenFrom.getOwner() == phase.getCurrent_player()){
+                            if(chosenFrom.getArmy() > 1) { // this country belong to a player and has more than 1 army
+                                // from here on we already chosen 1 country from
+                                chosenFrom.deployArmy();
+                                phase.innerTurn++; // counter to keep track of operations
+                            } else {
+                                System.out.println("This country doesn't have enough army");
+                            }
                         } else {
                             chosenFrom = null;
                             System.out.println("This is not your country, pick another one");
+                            System.out.println("Current player "+phase.current_player.getId());
                         }
                     }
                 } else {
                     // here if from was chosen
                     if(e.getSource() instanceof CountryButton) {
                         chosenTo = ((CountryButton) e.getSource()).getCountry();
-                        if (chosenTo != chosenFrom && chosenTo.getOwner() == phase.getCurrent_player()){
+                        if (chosenTo != chosenFrom && chosenTo.getOwner() == phase.getCurrent_player()
+                                && phase.getCurrent_player().findPath(chosenFrom, chosenTo) // there is a path
+                        ){
+//                            chosenFrom.deployArmy();
                             chosenTo.sendArmy();
                             System.out.println("Successfully sent army from "+chosenFrom.getName() + " to " + chosenTo.getName());
 
+                            phase.innerTurn ++; // counter to keep track of operations
                             chosenFrom = null;
                             chosenTo = null;
                         } else {
                             //somehow we chose the same country or not belonging to us
                             //for now we only send 1 army each time
-
                             chosenTo = null;
                         }
                     }
@@ -154,6 +163,11 @@ public class Controller {
             // button van only be used not on phase 1
             if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
                 System.out.println("Complete is called");
+
+                if (chosenFrom != null){
+                    chosenFrom.sendArmy();
+                }
+
                 if (phaseNow == 2) phase.nextPhase();
                 if (phaseNow == 3) phase.nextTurn();
             }

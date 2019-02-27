@@ -35,8 +35,8 @@ public class Phases {
     public void addPlayers(int numOfPlayers){
         this.numOfPlayers = numOfPlayers;
         for(int i = 0; i < numOfPlayers; i++){
-//            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
-            players.add(new Player(i, 7));
+            players.add(new Player(i, getInitialArmyCount(numOfPlayers)));
+//            players.add(new Player(i, 8));
         }
     }
 
@@ -65,13 +65,8 @@ public class Phases {
     public void nextTurn(){
         currentTurn++;
         current_player = players.get(currentTurn % numOfPlayers);
-        if (currentPhase == 1){
-            phaseOneFirstStep(current_player);
-        }
-        if (currentPhase == 3){
-            phaseThreeFirstStep();
-        }
-
+        currentPhase = 1;
+        phaseOneFirstStep(current_player);
     }
 
     public Player getCurrent_player() {
@@ -85,11 +80,16 @@ public class Phases {
         System.out.println("Player "+p.getId()+" gets extra: "+extra);
         System.out.println("Player "+p.getId()+" color "+ current_player.getStringColor());
         System.out.println("Army left "+ current_player.getPlayerArmy());
+        if (!current_player.armyLeft()){
+            System.out.println("No army for this player:" +
+                    "\nMoving to the next phase");
+            nextPhase();
+        }
     }
 
     public void phaseThreeFirstStep (){
         System.out.println();
-        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
+        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor() + " phase 3");
     }
 
     public void gameStart(){
@@ -122,6 +122,7 @@ public class Phases {
             player.deployArmy();
             country.setOwner(player);
             turnReference++;
+            country.incrementArmy();
             turn = turnReference % players.size();
         }
 
