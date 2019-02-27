@@ -58,7 +58,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     MapEdit mapedit =new MapEdit("Mapedit");
     
     
-    private JFrame frame;
+    public JFrame frame;
 
     /**
      * Launch the application.
@@ -242,7 +242,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                     o.printNeighbors();
                     System.out.println();
                     
-            	} 		
+            	} 	
+            	mapedit.saveToFile("nm");
             	break;
             	
             	case 5:

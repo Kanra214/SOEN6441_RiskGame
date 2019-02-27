@@ -6,16 +6,21 @@ import java.io.IOException;
 import Models.*;
 import View_Components.CountryButton;
 import View_Components.Window;
+import View_Components.StartManu;
 
 import java.util.ArrayList;
 
 import javax.swing.*;
 
+import MapEditor.MapEditorGUI;
 
 
 public class Controller {
     Window window;
     Phases p;
+    StartManu startmanu;
+    MapEditorGUI mapeditor; 
+    
     public Controller(Window window) throws IOException {
         this.window = window;
 
@@ -161,6 +166,67 @@ public class Controller {
 
 
         }
+    }
+    
+    public void startManu() throws IOException {
+    	startmanu = new StartManu("Risk Manu",20,30,300,400);    	
+    	startmanu.setVisible(true);
+    	
+    	startManuAction lisStart = new startManuAction(1);
+    	startManuAction lisEditMap = new startManuAction(2);
+    	startManuAction lisInstruction = new startManuAction(3);
+    	startManuAction lisExit = new startManuAction(4);
+    	
+    	startmanu.startGame.addActionListener(lisStart);
+    	startmanu.editMap.addActionListener(lisEditMap);
+    	startmanu.instructions.addActionListener(lisInstruction);
+    	startmanu.exit.addActionListener(lisExit);
+    	
+    	
+    }
+    public class startManuAction implements ActionListener{
+
+    	private int buttonFlag;
+    	public startManuAction(int buttonFlag) {
+    		this.buttonFlag = buttonFlag;
+    	}
+    	
+  
+    	
+    	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		  	switch (buttonFlag){
+	    	
+	    	case 1:
+				try {
+					start();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				startmanu.setVisible(false);			
+	    	break;
+	    	
+	    	case 2:
+	    		mapeditor = new MapEditorGUI();
+	    		mapeditor.frame.setVisible(true);
+	    		startmanu.setVisible(false);	
+	    	break;
+	    	
+	    	case 4:
+	    		startmanu.dispose();
+	    	
+	    		
+	    	break;
+	    		
+	    	
+	    	}
+			
+		}  
+    	
     }
     public void start() throws IOException {
 
