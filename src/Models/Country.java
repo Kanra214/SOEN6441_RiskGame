@@ -40,6 +40,7 @@ public class Country {
     }
     public void increaseArmy(){
         this.army++;
+        p.updateWindow();
     }
 
     public void increaseArmy(int i) throws IncreaseZeroArmyException {
