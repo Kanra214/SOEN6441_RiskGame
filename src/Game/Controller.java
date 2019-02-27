@@ -192,21 +192,15 @@ public class Controller {
     
     
 	public boolean ChooseFile() {
-		//filechooser=new FileChooser();
 
-		//System.out.print(filechooser.getFName());
-		
-		
 		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
 		int returnValue = jfc.showOpenDialog(null);
-		// int returnValue = jfc.showSaveDialog(null);
+
 
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = jfc.getSelectedFile();
-			//System.out.println(selectedFile.getName());
-			filename=selectedFile.getName();
-			//System.out.println(filename);
+			filename=selectedFile.getName();		
 		}
 
 		return true;
@@ -263,7 +257,7 @@ public class Controller {
     }
     public void start() throws IOException {
 
-	
+    	System.out.println(filename);
         ArrayList<ArrayList> tempMap = new MapLoader().load(filename);
 
         int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));

@@ -28,7 +28,7 @@ public class MapLoader {
    //Don't use this function
     public ArrayList<ArrayList> load(String filePath) throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("entry.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String input = reader.readLine();
         if (input.equals("[Map]")) {
             author = reader.readLine().trim();
