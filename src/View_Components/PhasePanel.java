@@ -34,7 +34,7 @@ public class PhasePanel extends JPanel {
 
         }
 
-        if(currentPhase == 3) completePhaseButton.setEnabled(true);
+//        if(currentPhase == 3) completePhaseButton.setEnabled(true);
 
     }
 

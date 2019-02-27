@@ -30,6 +30,7 @@ public class CountryButton extends JButton {
 
 
     }
+
     public int getX(){
         return x;
     }

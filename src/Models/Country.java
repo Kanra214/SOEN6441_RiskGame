@@ -38,18 +38,29 @@ public class Country {
     public void setPhase(Phases p){
         this.p = p;
     }
-
-    public void incrementArmy() {
-
+    public void increaseArmy(){
         this.army++;
+    }
+
+    public void increaseArmy(int i) throws IncreaseZeroArmyException {
+        if(i < 1){
+            throw new IncreaseZeroArmyException(4);
+        }
+
+        this.army += i;
 
         p.updateWindow();
     }
 
 //whats this
-    public void deployArmy(){
-        this.army--;
-        p.updateWindow();
+    public void decreaseArmy(int i) throws OutOfArmyException {
+        if(this.army <= i){
+            throw new OutOfArmyException(0);
+        }
+        else {
+            this.army -= i;
+            p.updateWindow();
+        }
 
     }
 
@@ -60,9 +71,9 @@ public class Country {
         p.updateWindow();
     }
 
-    public void sendArmy() {
-        this.army++;
-    }
+//    public void sendArmy() {
+//        this.army++;
+//    }
 
 
     public String getName(){

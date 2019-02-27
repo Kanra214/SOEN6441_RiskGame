@@ -65,8 +65,11 @@ public class Phases extends Observable {
     public void nextTurn(){
         currentTurn++;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
-        currentPhase = 1;
-        phaseOneFirstStep();
+
+//        currentPhase = 1; //this is commented because nextTurn doesnt mean phase = 1, might still phase = 0
+        if(currentPhase == 1) {
+            phaseOneFirstStep();
+        }
 
 //        if (currentPhase == 3){
 //            phaseThreeFirstStep();
@@ -88,11 +91,11 @@ public class Phases extends Observable {
         System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
         System.out.println("Army left "+ current_player.getPlayerArmy());
     }
-
-    public void phaseThreeFirstStep (){
-        System.out.println();
-        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
-    }
+//what doest this do?
+//    public void phaseThreeFirstStep (){
+//        System.out.println();
+//        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
+//    }
 
     public void gameStart(){
         nextPhase();
@@ -101,8 +104,9 @@ public class Phases extends Observable {
     public void nextPhase(){
         switch(currentPhase){
             case 0:
-                if(currentTurn >= numOfPlayers){
-                    currentPhase++;
+                if(currentTurn >= numOfPlayers - 1){
+                    currentPhase = 1;
+
                 }
                 nextTurn();
 
@@ -120,9 +124,9 @@ public class Phases extends Observable {
 
         }
 
-        if (currentPhase == 3){
-            phaseThreeFirstStep();
-        }
+//        if (currentPhase == 3){
+//            phaseThreeFirstStep();
+//        }
 
         updateWindow();
 
@@ -142,7 +146,7 @@ public class Phases extends Observable {
         int turn = 0;
         for (Country country : this.graph) {
             Player player = players.get(turn);
-//            player.realms.add(country); // not needed?
+//            player.realms.add(country); // not needed? no because country.setOwner does this too
             country.setOwner(player);
             player.deployArmy(country);
             turnReference++;
@@ -163,6 +167,14 @@ public class Phases extends Observable {
     public void connectView(){
         viewIsConnected = true;
         updateWindow();
+    }
+
+    public boolean countryBelongsToCurrentPlayer(Country country) {
+
+        if(current_player.realms.contains(country)) {
+            return true;
+        }
+        return false;
     }
 
 

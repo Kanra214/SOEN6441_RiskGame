@@ -2,6 +2,7 @@ package Models;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -40,7 +41,7 @@ public class Player {
     }
 
     public boolean armyLeft(){
-        return unassigned_armies != 0;
+        return unassigned_armies > 0;
     }
 
     public Color getPlayerColor() {
@@ -62,19 +63,31 @@ public class Player {
     }
 
 
-    public void deployArmy(Country country){
-        if(armyLeft() && realms.contains(country)) {
-            setUnassigned_armies(unassigned_armies - 1);
-            incrementMapArmies();
-            country.incrementArmy();
+    public void deployArmy(Country country)  {
+        if(realms.contains(country)) {
+            if(armyLeft()) {
+                setUnassigned_armies(unassigned_armies - 1);
+                incrementMapArmies();
+                country.increaseArmy();
 
+            }
+            if(!armyLeft()) {
+
+                p.nextPhase();
+            }
+
+
+
+        }
+        else{
+            System.out.println("not a country of current player");
         }
     }
     private void incrementMapArmies() {
         mapArmies++;
         p.updateWindow();
 
-        System.out.println("notified");
+
     }
 
     public void setUnassigned_armies(int unassigned_armies) {
@@ -84,37 +97,69 @@ public class Player {
     }
 
     //This function is used to in Phase3 whether player can move army from one country to another;
-    public boolean findPath(Country sourceCountry, Country targetCountry) {
-        for (Country loopCountry : realms) {
-            if (!loopCountry.getName().equals(sourceCountry.getName())) {
-                JOptionPane.showMessageDialog(null, "Country  '" + loopCountry.getName() + "' does not belong to this player");
-                return false;
-            }
-            if (!loopCountry.getName().equals(targetCountry.getName())) {
-                JOptionPane.showMessageDialog(null, "Country  '" + loopCountry.getName() + "' does not belong to this player");
-                return false;
-            }
-        }
+    public boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
+//        for (Country loopCountry : realms) {
+//            if (!loopCountry.getName().equals(sourceCountry.getName())) {
+//                JOptionPane.showMessageDialog(null, "Country  '" + loopCountry.getName() + "' does not belong to this player");
+//                return false;
+//            }
+//            if (!loopCountry.getName().equals(targetCountry.getName())) {
+//                JOptionPane.showMessageDialog(null, "Country  '" + loopCountry.getName() + "' does not belong to this player");
+//                return false;
+//            }
+//        }
+        if (realms.contains(sourceCountry) && realms.contains(targetCountry)) {
+            if(sourceCountry != targetCountry){
+                Queue<Country> queue = new LinkedList<Country>();
+                HashSet<String> set = new HashSet<String>();
+                queue.offer(sourceCountry);
+                set.add(sourceCountry.getName());
+                while (!queue.isEmpty()) {
+                    Country tempCountry = queue.poll();
+                    if (tempCountry.getName().equals(targetCountry.getName())) {
+                        return true;
+                    }
+                    for (Country loopCountry : realms) {
+                        if (!set.contains(loopCountry.getName())) {
+                            queue.offer(loopCountry);
+                            set.add(loopCountry.getName());
+                        }
+                    }
 
-        Queue<Country> queue = new LinkedList<Country>();
-        HashSet<String> set = new HashSet<String>();
-        queue.offer(sourceCountry);
-        set.add(sourceCountry.getName());
-        while (!queue.isEmpty()) {
-            Country tempCountry = queue.poll();
-            if (tempCountry.getName().equals(targetCountry.getName())) {
-                return true;
-            }
-            for (Country loopCountry : realms) {
-                if (!set.contains(loopCountry.getName())) {
-                    queue.offer(loopCountry);
-                    set.add(loopCountry.getName());
                 }
+                return false;
+            }
+            else{
+                throw new SourceIsTargetException(3);
             }
 
+
         }
-        JOptionPane.showMessageDialog(null,"There isn't existing path between two countries");
-        return false;
+        else{
+            throw new CountryNotInRealms(2);
+        }
+
+
+    }
+
+
+
+    public void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, IncreaseZeroArmyException {
+
+        if(findPath(from, to)){
+
+
+            from.decreaseArmy(num);
+            to.increaseArmy(num);
+            p.nextPhase();
+
+        }
+        else{
+            throw new NoSuchPathException(1);
+        }
+
+
+
     }
 
 }

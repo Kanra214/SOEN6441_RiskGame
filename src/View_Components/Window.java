@@ -144,6 +144,9 @@ public class Window extends JFrame implements Observer {
         return input;
 
     }
+    public void showMsg(String dialog){
+        JOptionPane.showMessageDialog(this, dialog);
+    }
 
 
     @Override
