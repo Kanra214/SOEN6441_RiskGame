@@ -36,10 +36,12 @@ public class Controller {
         p.addPlayers(numOfPlayers);
         p.determineOrder();
 
+        //draw the countries on the mapPanel
+
         for(Country country : p.graph){
             country.setPhase(p);
 
-            //draw the countries on the mapPanel
+
             JLabel label = new JLabel(country.getName());
             label.setBounds(country.countryButton.getX(), country.countryButton.getY() - 20,150,20);
             window.mapPanel.add(label);
@@ -50,8 +52,10 @@ public class Controller {
 
         }
         p.countryAssignment();
-        p.connectView();
+
         window.phasePanel.completePhaseButton.addActionListener(lis);
+        p.connectView();//after this updating window is enabled
+
 
         window.setVisible(true);
 
@@ -71,12 +75,6 @@ public class Controller {
             this.phase = phase;
         }
 
-        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.print (e.getActionCommand()+" army count:");
-//            if(e.getSource() instanceof CountryButton) System.out.println(((CountryButton) e.getSource()).getCountry().getArmy());
-//
-//        }
 
 
 
@@ -89,7 +87,7 @@ public class Controller {
 
             System.out.println("Phase "+phaseNow);
             System.out.println("Turn "+ turnNow);
-            if (phaseNow == 1){ // reinforcement phase
+            if (phaseNow == 1 || phaseNow == 0){ // deploy army
 
                 if(e.getSource() instanceof CountryButton) {
                     System.out.print (e.getActionCommand()+" army count:");
@@ -99,20 +97,21 @@ public class Controller {
                     if (chosen.getOwner() == phase.getCurrent_player()){ // this country belong to a player
                         phase.getCurrent_player().deployArmy(chosen);
 //                        chosen.sendArmy();
-                        phase.innerTurn ++;
-                        System.out.println("Inner turn "+phase.innerTurn);
+//                        phase.innerTurn ++;
+//                        System.out.println("Inner turn "+phase.innerTurn);
                         System.out.println("Army left "+ phase.current_player.getPlayerArmy());
                     }
                 }
 
                 if(!phase.current_player.armyLeft()){ // out of army to assign
-                    if (turnNow / phase.numOfPlayers == 0){
-                        phase.nextTurn();
-                        phase.innerTurn = 0;
-                    } else {
-                        System.out.println("\n Moving to Phase 2");
-                        phase.nextPhase();
-                    }
+//                    if (phaseNow == 0){
+//                        phase.nextTurn();
+////                        phase.innerTurn = 0;
+//                    } else {
+//                        System.out.println("\n Moving to Phase 2");
+//                        phase.nextPhase();
+//                    }
+                    p.nextPhase();
                 }
 
             }
@@ -127,7 +126,7 @@ public class Controller {
                             // from here on we already chosen 1 country from and we deduct 1 army from him
                             chosenFrom.deployArmy();
 
-                            phase.innerTurn ++; // counter to keep track of operations
+//                            phase.innerTurn ++; // counter to keep track of operations
                         } else {
                             chosenFrom = null;
                             System.out.println("This is not your country, pick another one");
@@ -158,10 +157,12 @@ public class Controller {
                 System.out.println("in phase 2");
             }
             // button van only be used not on phase 1
-            if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
+//            if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
+            if(e.getSource() == window.phasePanel.completePhaseButton){
                 System.out.println("Complete is called");
-                if (phaseNow == 2) phase.nextPhase();
-                if (phaseNow == 3) phase.nextTurn();
+                p.nextPhase();
+//                if (phaseNow == 2) phase.nextPhase();
+//                if (phaseNow == 3) phase.nextTurn();
             }
 
 

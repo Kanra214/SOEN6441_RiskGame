@@ -26,11 +26,19 @@ public class PhasePanel extends JPanel {
         currentPhaseLabel.setText("<html><body><h1>Current Phase : " + phaseToString(currentPhase) + "</h1></body><html>");
         currentPlayerLabel.setText("<html><body><h1>Current Player : "  + currentPlayer.getId() + "</h1></body><html>");
         unitLeftLabel.setText("<html><body><h1>Unassigned Armies: " + currentPlayer.getPlayerArmy()+ "</h1></body><html>");
+        if(currentPhase != 2){//not attack phase, disable the button
+            completePhaseButton.setEnabled(false);
+        }
+        else{
+            completePhaseButton.setEnabled(true);
+
+        }
 
     }
 
     private String phaseToString(int currentPhase){
         switch (currentPhase){
+            case 0: return "Startup Phase";
             case 1: return "Reinforcement Phase";
             case 2: return "Attack Phase";
             case 3: return "Fortification Phase";

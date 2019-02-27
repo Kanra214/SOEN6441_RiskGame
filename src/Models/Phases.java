@@ -10,11 +10,11 @@ public class Phases extends Observable {
     public ArrayList<Country> graph;
     public ArrayList<Continent> worldmap;
     public Player current_player;
-    public int currentPhase;
-    public int currentTurn = 0;
+    public int currentPhase = 0;
+    public int currentTurn = -1;
     protected boolean viewIsConnected = false;
 
-    public int innerTurn = 0;
+//    public int innerTurn = 0;
 
     public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap){
 
@@ -56,13 +56,7 @@ public class Phases extends Observable {
         return currentPhase;
     }
 
-    public void setCurrentPhase(int currentPhase) {
 
-        this.currentPhase = currentPhase;
-
-        updateWindow();
-
-    }
 
     public int getCurrentTurn() {
         return currentTurn;
@@ -70,16 +64,13 @@ public class Phases extends Observable {
     //next player
     public void nextTurn(){
         currentTurn++;
-        current_player = players.get(currentTurn % numOfPlayers);//first player is players[1]
-        //check extra armies
-        if (currentPhase == 1){
-            phaseOneFirstStep(current_player);
-        }
+        current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
+        phaseOneFirstStep();
 
-        if (currentPhase == 3){
-            phaseThreeFirstStep();
-        }
-        updateWindow();
+//        if (currentPhase == 3){
+//            phaseThreeFirstStep();
+//        }
+
 
     }
 
@@ -88,12 +79,12 @@ public class Phases extends Observable {
     }
 
     //determine if anyone gets extra armies
-    public void phaseOneFirstStep (Player p){
-        int extra = extraArmyFromContinent(p);
-        p.getReinforcement(extra);
+    public void phaseOneFirstStep (){
+        int extra = extraArmyFromContinent(current_player);
+        current_player.getReinforcement(extra);
         System.out.println();
-        System.out.println("Player "+p.getId()+" gets extra: "+extra);
-        System.out.println("Player "+p.getId()+" color "+ current_player.getStringColor());
+        System.out.println("Player "+current_player.getId()+" gets extra: "+extra);
+        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
         System.out.println("Army left "+ current_player.getPlayerArmy());
     }
 
@@ -103,17 +94,34 @@ public class Phases extends Observable {
     }
 
     public void gameStart(){
-        setCurrentPhase(1);
-        nextTurn();
+        nextPhase();
     }
 
     public void nextPhase(){
-        this.currentPhase ++;
-        if (currentPhase == 4) this.currentPhase = 1;
+        switch(currentPhase){
+            case 0:
+                if(currentTurn >= numOfPlayers){
+                    currentPhase++;
+                }
+                nextTurn();
 
-        if (currentPhase == 3){
-            phaseThreeFirstStep();
+                break;
+            case 1:
+                currentPhase++;
+                break;
+            case 2:
+                currentPhase++;
+                break;
+            case 3:
+                currentPhase = 1;
+                nextTurn();
+
+
         }
+        updateWindow();
+
+
+
     }
 
 
@@ -149,6 +157,7 @@ public class Phases extends Observable {
         viewIsConnected = true;
         updateWindow();
     }
+
 
 
 
