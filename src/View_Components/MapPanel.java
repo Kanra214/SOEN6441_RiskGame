@@ -9,6 +9,7 @@ public class MapPanel extends JPanel {
     public ArrayList<Country> comps = new ArrayList<>();
 
 
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
