@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import View_Components.*;
 
 
-public class Country{
+public class Country {
 
 
     private String name;
+    private Phases p;
+
 
 
     private Continent cont;
@@ -15,6 +17,7 @@ public class Country{
     private int army = 0;
     private int X = 0;
     private int Y = 0;
+
 
     public CountryButton countryButton;
 
@@ -30,17 +33,31 @@ public class Country{
 
         this.neighbours = new ArrayList<>();
 
+
+    }
+    public void setPhase(Phases p){
+        this.p = p;
     }
 
     public void incrementArmy() {
+
         this.army++;
+
+        p.updateWindow();
     }
 
+//whats this
+    public void deployArmy(){
+        this.army--;
+        p.updateWindow();
 
-    public void deployArmy(){ this .army--;}
+    }
 
     public void setOwner(Player player) {
+
         this.owner = player;
+        player.realms.add(this);
+        p.updateWindow();
     }
 
     public void sendArmy() {
@@ -62,7 +79,9 @@ public class Country{
     }
 
     public void addNeighbour(Country country) {
+
         this.neighbours.add(country);
+
     }
 
     public Continent getCont() {
