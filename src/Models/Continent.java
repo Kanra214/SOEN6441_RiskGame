@@ -34,6 +34,10 @@ public class Continent {
         return true;
     }
 
+    public ArrayList<Country> getCountries() {
+        return countries;
+    }
+
     public int getControl_value() {
         return control_value;
     }

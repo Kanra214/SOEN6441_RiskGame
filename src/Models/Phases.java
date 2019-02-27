@@ -65,6 +65,7 @@ public class Phases extends Observable {
     public void nextTurn(){
         currentTurn++;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
+        currentPhase = 1;
         phaseOneFirstStep();
 
 //        if (currentPhase == 3){
@@ -118,6 +119,11 @@ public class Phases extends Observable {
 
 
         }
+
+        if (currentPhase == 3){
+            phaseThreeFirstStep();
+        }
+
         updateWindow();
 
 
@@ -136,6 +142,7 @@ public class Phases extends Observable {
         int turn = 0;
         for (Country country : this.graph) {
             Player player = players.get(turn);
+//            player.realms.add(country); // not needed?
             country.setOwner(player);
             player.deployArmy(country);
             turnReference++;

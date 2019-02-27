@@ -6,6 +6,7 @@ import java.io.IOException;
 import Models.*;
 import View_Components.CountryButton;
 import View_Components.Window;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.ArrayList;
 
@@ -104,29 +105,24 @@ public class Controller {
                 }
 
                 if(!phase.current_player.armyLeft()){ // out of army to assign
-//                    if (phaseNow == 0){
-//                        phase.nextTurn();
-////                        phase.innerTurn = 0;
-//                    } else {
-//                        System.out.println("\n Moving to Phase 2");
-//                        phase.nextPhase();
-//                    }
                     p.nextPhase();
                 }
 
             }
 
             if (phaseNow == 3){
-//                phase.phaseTwoFirstStep();
                 // start phase 2 player chooses his country (territory)
                 if (chosenFrom == null){
                     if(e.getSource() instanceof CountryButton) {
                         chosenFrom = ((CountryButton) e.getSource()).getCountry();
                         if (chosenFrom.getOwner() == phase.getCurrent_player()) { // this country belong to a player
-                            // from here on we already chosen 1 country from and we deduct 1 army from him
-                            chosenFrom.deployArmy();
-
-//                            phase.innerTurn ++; // counter to keep track of operations
+                            if (chosenFrom.getArmy() > 1){
+                                // from here on we already chosen 1 country from and we deduct 1 army from him
+                                chosenFrom.deployArmy();
+                            } else {
+                                chosenFrom = null;
+                                System.out.println("Don't have enough army to send");
+                            }
                         } else {
                             chosenFrom = null;
                             System.out.println("This is not your country, pick another one");
@@ -136,7 +132,9 @@ public class Controller {
                     // here if from was chosen
                     if(e.getSource() instanceof CountryButton) {
                         chosenTo = ((CountryButton) e.getSource()).getCountry();
-                        if (chosenTo != chosenFrom && chosenTo.getOwner() == phase.getCurrent_player()){
+                        if (chosenTo != chosenFrom && chosenTo.getOwner() == phase.getCurrent_player()
+//                                && phase.getCurrent_player().findPath(chosenFrom, chosenTo) // there is a path
+                        ){
                             chosenTo.sendArmy();
                             System.out.println("Successfully sent army from "+chosenFrom.getName() + " to " + chosenTo.getName());
 
@@ -160,7 +158,16 @@ public class Controller {
 //            if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
             if(e.getSource() == window.phasePanel.completePhaseButton){
                 System.out.println("Complete is called");
-                p.nextPhase();
+
+                //deicded to cancel reinforcement turn while a country was selected
+                if(chosenFrom != null) {
+                    chosenFrom.sendArmy();
+                    chosenFrom = null;
+                }
+
+                if (phaseNow != 1) p.nextPhase();
+
+
 //                if (phaseNow == 2) phase.nextPhase();
 //                if (phaseNow == 3) phase.nextTurn();
             }
