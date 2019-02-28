@@ -1,13 +1,17 @@
 [Map]
-author=Sean O'Connor
-image=world.bmp
-wrap=no
-scroll=horizontal
+author=Invincible Team Four
 warn=yes
+image=none
+wrap=no
+scroll=none
 
 [Continents]
 zz=1
+aa=2
 
 [Territories]
-a,401,189,zz,b,
-b,523,229,zz,a,
+a,401,189,zz,b,b
+b,523,229,zz,a,a,xx,xx
+
+xx,463,291,aa,b,b
+

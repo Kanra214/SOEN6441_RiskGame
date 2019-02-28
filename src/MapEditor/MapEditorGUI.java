@@ -268,13 +268,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	break;
             	
             	case 5:
-            	System.out.print(toolFlag);	
-            	Graphics g2 =paintPanel.getGraphics();
-            	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
-            	mapedit.clear();
-            	graph.clear();
-            	countries.clear();
-            	continents.clear();
+            	mapclear();
             	showinfo();  
             	break;
             	
@@ -314,12 +308,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         
         clearMap.addMouseListener(new MouseAdapter() {
        	 public void mouseClicked(MouseEvent e) {  
-       		Graphics g2 =paintPanel.getGraphics();
-        	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
-        	countries.clear();
-        	continents.clear();
-        	graph.clear();
-        	mapedit.clear();
+       		mapclear();
         	showinfo();  
        	 	}
         });
@@ -352,9 +341,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           	 public void mouseClicked(MouseEvent e) {  
           		
           		 fc = new FileChooser();
-          		 fc.ChooseFile();
+          		 if(fc.ChooseFile()) mapclear();
           		 String filename = fc.filename;
           		 loadmap(filename);
+          		 
           		 showinfo();  
           	 	}
            });
@@ -384,6 +374,15 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     	
     }
     
+    private void mapclear() {
+	Graphics g2 =paintPanel.getGraphics();
+	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
+	countries.clear();
+	continents.clear();
+	graph.clear();
+	mapedit.clear();
+	//showinfo();  
+	}
     
     //private method used for load map
     private void loadmap(String filename) {
