@@ -120,9 +120,16 @@ public class Player {
                         return true;
                     }
                     for (Country loopCountry : realms) {
-                        if (!set.contains(loopCountry.getName())) {
-                            queue.offer(loopCountry);
-                            set.add(loopCountry.getName());
+                        for (Country neighbour : tempCountry.getNeighbours()){
+                            if (!neighbour.getName().equals(loopCountry.getName())){
+                                continue;
+                            }
+                            else{
+                                if (!set.contains(neighbour.getName())) {
+                                    queue.offer(neighbour);
+                                    set.add(neighbour.getName());
+                                }
+                            }
                         }
                     }
 
