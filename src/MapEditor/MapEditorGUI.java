@@ -269,7 +269,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                 		"wrap=no\r\n" + 
                 		"scroll=horizontal\r\n" + 
                 		"warn=yes\r\n" + 
-                		"\r\n" + "[Countries]\r\n" + mapedit.showCountries());
+                		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
+                		"\r\n" + "[Territories]\r\n" + mapedit.showCountries());
             	
             	break;
                 
