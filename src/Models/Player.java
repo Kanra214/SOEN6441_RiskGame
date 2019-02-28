@@ -71,10 +71,10 @@ public class Player {
                 country.increaseArmy();
 
             }
-            if(!armyLeft()) {
-
-                p.nextPhase();
-            }
+//            if(!armyLeft()) {
+//
+//                p.nextPhase();
+//            }
 
 
 
@@ -151,7 +151,7 @@ public class Player {
 
 
 
-    public void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, IncreaseZeroArmyException {
+    public void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
 
         if(findPath(from, to)){
 

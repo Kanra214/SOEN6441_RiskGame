@@ -46,6 +46,12 @@ public class Controller {
 
 //            System.out.println("Phase "+p.currentPhase);
 //            System.out.println("Turn "+ p.currentTurn);
+            if(e.getSource() == window.phasePanel.completePhaseButton){
+                System.out.println("Complete is called");
+                p.nextPhase();
+//                if (phaseNow == 2) phase.nextPhase();
+//                if (phaseNow == 3) phase.nextTurn();
+            }
             if (p.currentPhase == 1 || p.currentPhase == 0){ // deploy army
 
                 if(e.getSource() instanceof CountryButton) {
@@ -157,15 +163,11 @@ public class Controller {
             }
             // button van only be used not on phase 1
 //            if (e.getActionCommand() == "complete this phase" && phaseNow != 1){
-            if(e.getSource() == window.phasePanel.completePhaseButton){
-                System.out.println("Complete is called");
-                p.nextPhase();
-//                if (phaseNow == 2) phase.nextPhase();
-//                if (phaseNow == 3) phase.nextTurn();
-            }
+
 
 
         }
+
     }
     
     public void startManu() throws IOException {

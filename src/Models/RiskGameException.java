@@ -36,9 +36,9 @@ class SourceIsTargetException extends RiskGameException{
     }
 }
 //4
-class IncreaseZeroArmyException extends RiskGameException{
+class MoveAtLeastOneArmyException extends RiskGameException{
 
-    public IncreaseZeroArmyException(int type) {
+    public MoveAtLeastOneArmyException(int type) {
         super(type);
     }
 }

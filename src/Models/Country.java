@@ -43,25 +43,37 @@ public class Country {
         p.updateWindow();
     }
 
-    public void increaseArmy(int i) throws IncreaseZeroArmyException {
+    public void increaseArmy(int i) throws MoveAtLeastOneArmyException {
         if(i < 1){
-            throw new IncreaseZeroArmyException(4);
+            throw new MoveAtLeastOneArmyException(4);
+
+
+        }
+        else{
+            this.army += i;
+            p.updateWindow();
         }
 
-        this.army += i;
 
-        p.updateWindow();
+
+
     }
 
 //whats this
-    public void decreaseArmy(int i) throws OutOfArmyException {
+    public void decreaseArmy(int i) throws OutOfArmyException, MoveAtLeastOneArmyException {
+        if(i < 1){
+            throw new MoveAtLeastOneArmyException(4);
+        }
         if(this.army <= i){
             throw new OutOfArmyException(0);
         }
+
+
         else {
             this.army -= i;
             p.updateWindow();
         }
+
 
     }
 
