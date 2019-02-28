@@ -48,8 +48,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     String name1,name2,filename;
     ArrayList<Country> graph = new ArrayList<>();
     ArrayList<ArrayList> tempMap;
-  	ArrayList<Country> countries;                   	
-  	ArrayList<Continent> continents;
+  	ArrayList<Country> countries = new ArrayList<>();                   	
+  	ArrayList<Continent> continents = new ArrayList<>(); ;
     Country FromCountry,ToCountry;
     Continent NewContinent;
     
@@ -248,7 +248,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	case 3:
                 String continentName=setCountryName("Enter CountinentName");
                 int controlNum=setContNum("Enter ControlNumber");
+                tempcont =new Continent(continentName, controlNum);
             	mapedit.addContinent(continentName, controlNum);
+            	continents.add(tempcont);
             	showinfo();  
        
             	break;
@@ -260,7 +262,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                     System.out.println();
                     
             	} 	
-            	mapedit.saveToFile("nm");
+            	
+            	String nm = JOptionPane.showInputDialog("Input the file name");
+            	mapedit.saveToFile(nm+".txt");
             	break;
             	
             	case 5:
@@ -299,7 +303,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         
         saveMap.addMouseListener(new MouseAdapter() {
         	 public void mouseClicked(MouseEvent e) {  
-        		 if(mapedit.saveToFile("nm")) {
+        		 
+        		String nm = JOptionPane.showInputDialog("Input the file name");
+                	
+        		 if(mapedit.saveToFile(nm+".txt")) {
         		 JOptionPane.showMessageDialog(null,"Successfully Saved");
         		 }
         		}

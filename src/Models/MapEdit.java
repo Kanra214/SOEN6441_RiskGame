@@ -390,6 +390,7 @@ public class MapEdit {
             return false;
         }
         else{
+        	
             File outputFile = new File(mapFileName);
             FileWriter fw = null;
             try{
@@ -422,6 +423,7 @@ public class MapEdit {
                     }
                     fw.write("\r\n");
                 }
+                fw.flush();
                 fw.close();
                 //this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
             }catch (IOException e) {

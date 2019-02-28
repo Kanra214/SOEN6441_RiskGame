@@ -1,0 +1,13 @@
+[Map]
+author=Sean O'Connor
+image=world.bmp
+wrap=no
+scroll=horizontal
+warn=yes
+
+[Continents]
+zz=1
+
+[Territories]
+a,401,189,zz,b,
+b,523,229,zz,a,
