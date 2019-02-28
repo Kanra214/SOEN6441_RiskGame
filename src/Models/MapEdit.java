@@ -266,7 +266,7 @@ public class MapEdit {
         adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
         fromCountry.addNeighbour(toCountry);      
         adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
-        //toCountry.addNeighbour(fromCountry);
+        toCountry.addNeighbour(fromCountry);
         return true;
     }
     
@@ -277,10 +277,7 @@ public class MapEdit {
          
         	for (ArrayList<Country> loopList : countries.values()) {
                 for (Country loopCountry:loopList){  
-    		info=info+loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopCountry.getContName()+","+loopCountry.printNeighbors()+"\r\n";
-                // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
-    		//System.out.println(info);
-            
+    		info=info+loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopCountry.getContName()+","+loopCountry.printNeighbors()+"\r\n";           
                 	}
                 }
         	
@@ -426,7 +423,7 @@ public class MapEdit {
                     fw.write("\r\n");
                 }
                 fw.close();
-                this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
+                //this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
             }catch (IOException e) {
                 e.printStackTrace();
             } finally {

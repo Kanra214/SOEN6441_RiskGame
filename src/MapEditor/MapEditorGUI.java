@@ -40,36 +40,27 @@ import Models.Country;
 
 public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionListener,MouseListener{
 
-    public String setCountryName(String dialog) {
-        String input = JOptionPane.showInputDialog(dialog);
-        return input;
-    }	
-    
-    public String setContName(String dialog) {
-        String input = JOptionPane.showInputDialog(dialog);
-        return input;
-    }	
-    
-    public int setContNum(String dialog) {
-        int input = Integer.parseInt(JOptionPane.showInputDialog(dialog));
-        return input;
-    }
-	
-    
-    Panel toolPanel,paintPanel;
-    Country FromCountry,ToCountry;
-    Button addCountry,addNeighbor,saveMap,clearMap,addContinent,showInfo,loadMap,editInfo;
+
+
     int toolFlag=0;
     int x1,y1,x2,y2;
     int radius=15;
     String name1,name2,filename;
-    Continent NewContinent;
-    FileChooser fc;
     ArrayList<Country> graph = new ArrayList<>();
     ArrayList<ArrayList> tempMap;
+  	ArrayList<Country> countries;                   	
+  	ArrayList<Continent> continents;
+    Country FromCountry,ToCountry;
+    Continent NewContinent;
+    
+    Panel toolPanel,paintPanel;
+    Button addCountry,addNeighbor,saveMap,clearMap,addContinent,showInfo,loadMap,editInfo;
+    JTextArea TerrTextField;
+    FileChooser fc;
+
     MapEdit mapedit =new MapEdit("Mapedit");
-    
-    
+
+
     public JFrame frame;
 
     /**
@@ -126,7 +117,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         loadMap=new Button("loadMap");
         editInfo=new Button("editInfo");
         
-        final JTextArea TerrTextField= new JTextArea(30,15);
+        TerrTextField= new JTextArea(30,15);
         TerrTextField.setFont(new Font(null, Font.PLAIN, 16));
         JScrollPane js=new JScrollPane(TerrTextField);
         js.setHorizontalScrollBarPolicy(
@@ -163,6 +154,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 
         final JPanel panel = new JPanel();
       
+        /**
+         * Add listeners to paintPanel.
+         */
         paintPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {           	
@@ -204,26 +198,26 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                  		//System.out.println("catch2");
                  		name2=o.getName();
                  		ToCountry=o;
-                 		ToCountry.addNeighbour(FromCountry);
                  		
+                 		ToCountry.addNeighbour(FromCountry);
+                 		FromCountry.addNeighbour(ToCountry);
                  		mapedit.addConnection(name1, name2);
                  		
                  		for(Country o2 : graph) {
                  			if(o2.getName().equals(name1)) {
-                 				o2.addNeighbour(FromCountry);
+                 				//o2.addNeighbour(FromCountry);
                  			}
                  		}                		
                  		System.out.println("catch"+name2);
                  	}                 	
                  }  
-                
+                showinfo();  
                 g2.drawLine(FromCountry.getX()+radius,FromCountry.getY()+radius , ToCountry.getX()+radius, ToCountry.getY()+radius);
             	break;
                                 
             }
             }
-            
-            
+                        
             @Override
             public void mouseClicked(MouseEvent e) {
             	
@@ -245,17 +239,17 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                 
                 g.drawString(""+tempCountry.getName(),e.getX(),e.getY());
                 graph.add(tempCountry);
+                countries.add(tempCountry);
+                showinfo();  
 
-                //print info
-                for(Country o : graph) {
-                	System.out.println(o.getX()+"-"+o.getY()+"-"+o.getName()+"-"+o.getCont());
-                }
+             
                 break;
                 
             	case 3:
                 String continentName=setCountryName("Enter CountinentName");
                 int controlNum=setContNum("Enter ControlNumber");
             	mapedit.addContinent(continentName, controlNum);
+            	showinfo();  
        
             	break;
                 
@@ -275,49 +269,51 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
             	mapedit.clear();
             	graph.clear();
+            	countries.clear();
+            	continents.clear();
+            	showinfo();  
             	break;
             	
             	case 6:           		
-            	TerrTextField.setText("[Map]\r\n" + 
-                		"author=Sean O'Connor\r\n" + 
-                		"image=world.bmp\r\n" + 
-                		"wrap=no\r\n" + 
-                		"scroll=horizontal\r\n" + 
-                		"warn=yes\r\n" + 
-                		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
-                		"\r\n" + "[Territories]\r\n" + mapedit.showCountries());
+            	showinfo();  
             	
             	break;                               
             }
             
             }
-            
-
-                              
+                                         
             });
+        
+        /**
+         * Add listener to buttons.
+         */
+        
         addContinent.addMouseListener(new MouseAdapter() {
-       	 public void mouseClicked(MouseEvent e) {  
-             String continentName=setCountryName("Enter CountinentName");
-             int controlNum=setContNum("Enter ControlNumber");
-         	 mapedit.addContinent(continentName, controlNum);
-       		 
-       	 	}
+	       	 public void mouseClicked(MouseEvent e) {  
+	             String continentName=setCountryName("Enter CountinentName");
+	             int controlNum=setContNum("Enter ControlNumber");
+	         	 mapedit.addContinent(continentName, controlNum);
+	         	 showinfo();
+	       	 	}
         });
         
         saveMap.addMouseListener(new MouseAdapter() {
         	 public void mouseClicked(MouseEvent e) {  
-        		 mapedit.saveToFile("nm");
-        		 
-        	 }
+        		 if(mapedit.saveToFile("nm")) {
+        		 JOptionPane.showMessageDialog(null,"Successfully Saved");
+        		 }
+        		}
         });
         
         clearMap.addMouseListener(new MouseAdapter() {
        	 public void mouseClicked(MouseEvent e) {  
        		Graphics g2 =paintPanel.getGraphics();
         	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
-        	
+        	countries.clear();
+        	continents.clear();
         	graph.clear();
         	mapedit.clear();
+        	showinfo();  
        	 	}
         });
         
@@ -351,102 +347,87 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           		 fc = new FileChooser();
           		 fc.ChooseFile();
           		 String filename = fc.filename;
-          		 
-         		tempMap = new MapLoader().loadMap(filename);
-        		
-          		// System.out.println(tempMap.size());
-          	ArrayList<Country> countries = tempMap.get(0);                   	
-          	ArrayList<Continent> continents = tempMap.get(1);
-          	
-          	for(Continent ct : continents) {
-          		mapedit.addContinent(ct.getName(), ct.getControl_value());
-          	}
-          	
-          	for(Country comp : countries) {
-          		Graphics g =paintPanel.getGraphics();  
-                g.drawOval(comp.getX(), comp.getY(), 30, 30);
-                g.drawString(""+comp.getName(),comp.getX(),comp.getY());
-                graph.add(comp);
-                mapedit.addCountry(comp.getName(), comp.getContName(), comp.getX(), comp.getY());
-                for(Country cont : comp.getNeighbours()){
-                    g.drawLine(cont.getX()+radius,cont.getY()+radius,comp.getX()+radius,comp.getY()+radius);
-                    //mapedit.addConnection(comp.getName(), cont.getName());
-                }
-          	}
-          	
-          	for(Country comp : countries) {
-                for(Country cont : comp.getNeighbours()){
-                    //g.drawLine(cont.getX()+radius,cont.getY()+radius,comp.getX()+radius,comp.getY()+radius);
-                    mapedit.addConnection(comp.getName(), cont.getName());
-                }
-          	}
-          		
-          	TerrTextField.setText("[Map]\r\n" + 
-             		"author=Sean O'Connor\r\n" + 
-             		"image=world.bmp\r\n" + 
-             		"wrap=no\r\n" + 
-             		"scroll=horizontal\r\n" + 
-             		"warn=yes\r\n" + 
-             		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
-             		"\r\n" + "[Territories]\r\n" + mapedit.showCountries()); 
-
-          		 
-          	
+          		 loadmap(filename);
+          		 showinfo();  
           	 	}
            });
         
         showInfo.addMouseListener(new MouseAdapter() {
         	
         	 public void mouseClicked(MouseEvent e) {            		
-             	TerrTextField.setText("[Map]\r\n" + 
-                 		"author=Sean O'Connor\r\n" + 
-                 		"image=world.bmp\r\n" + 
-                 		"wrap=no\r\n" + 
-                 		"scroll=horizontal\r\n" + 
-                 		"warn=yes\r\n" + 
-                 		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
-                 		"\r\n" + "[Territories]\r\n" + mapedit.showCountries());            
+        		 showinfo();           
         	 }
         	
         });
+        
+        
         frame.getContentPane().add(panel, BorderLayout.CENTER);
     }
 
     
+    private void showinfo() {
+     	TerrTextField.setText("[Map]\r\n" + 
+        		"author=Sean O'Connor\r\n" + 
+        		"image=world.bmp\r\n" + 
+        		"wrap=no\r\n" + 
+        		"scroll=horizontal\r\n" + 
+        		"warn=yes\r\n" + 
+        		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
+        		"\r\n" + "[Territories]\r\n" + MapshowCountries());
+    	
+    }
+    
+    
+    //private method used for load map
     private void loadmap(String filename) {
-    	 
-		
 			
-				tempMap = new MapLoader().loadMap(filename);
+		tempMap = new MapLoader().loadMap(filename);
 		
 		
   		// System.out.println(tempMap.size());
-  	ArrayList<Country> countries = tempMap.get(0);                   	
-  	ArrayList<Continent> continents = tempMap.get(1);
+	  	countries = tempMap.get(0);                   	
+	  	continents = tempMap.get(1);
   	
-  	for(Continent ct : continents) {
-  		mapedit.addContinent(ct.getName(), ct.getControl_value());
-  	}
-  	
-  	for(Country comp : countries) {
-  		Graphics g =paintPanel.getGraphics();  
-        g.drawOval(comp.getX(), comp.getY(), 30, 30);
-        g.drawString(""+comp.getName(),comp.getX(),comp.getY());
-        graph.add(comp);
-        mapedit.addCountry(comp.getName(), comp.getContName(), comp.getX(), comp.getY());
-        for(Country cont : comp.getNeighbours()){
-            g.drawLine(cont.getX()+radius,cont.getY()+radius,comp.getX()+radius,comp.getY()+radius);
-            //mapedit.addConnection(comp.getName(), cont.getName());
-        }
-  	}
-  	
-  	for(Country comp : countries) {
-        for(Country cont : comp.getNeighbours()){
-            //g.drawLine(cont.getX()+radius,cont.getY()+radius,comp.getX()+radius,comp.getY()+radius);
-            mapedit.addConnection(comp.getName(), cont.getName());
-        }
-  	}
-  	
+	  	for(Continent ct : continents) {
+	  		mapedit.addContinent(ct.getName(), ct.getControl_value());
+	  	}
+	  	
+	  	for(Country comp : countries) {
+	  		System.out.println("neighbor"+comp.getNeighbours().size());
+	  		
+	  		Graphics g =paintPanel.getGraphics();  
+	        g.drawOval(comp.getX(), comp.getY(), 30, 30);
+	        g.drawString(""+comp.getName(),comp.getX(),comp.getY());
+	        graph.add(comp);
+	        mapedit.addCountry(comp.getName(), comp.getContName(), comp.getX(), comp.getY());
+	        for(Country cont : comp.getNeighbours()){
+	            g.drawLine(cont.getX()+radius,cont.getY()+radius,comp.getX()+radius,comp.getY()+radius);
+	            //mapedit.addConnection(comp.getName(), cont.getName());
+	        }
+	  	}
+	  	
+	  	for(Country comp : countries) {
+	        for(Country cont : comp.getNeighbours()){
+	            //g.drawLine(cont.getX()+radius,cont.getY()+radius,comp.getX()+radius,comp.getY()+radius);
+	            mapedit.addConnection(comp.getName(), cont.getName());
+	        }
+	  	} 	
+    }
+    
+    private String MapshowCountries() {
+    	
+    	String info="";
+         
+        
+                for (Country loopCountry:countries){  
+    		info=info+loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopCountry.getContName()+","+loopCountry.printNeighbors()+"\r\n";
+                // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
+    		//System.out.println(info);
+            
+                	}
+                
+        	
+    	return info;
     }
     
     
@@ -480,10 +461,23 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 	
 	        
 	}
+	//Used for entering information
+    public String setCountryName(String dialog) {
+        String input = JOptionPane.showInputDialog(dialog);
+        return input;
+    }	
+    
+    public String setContName(String dialog) {
+        String input = JOptionPane.showInputDialog(dialog);
+        return input;
+    }	
+    
+    public int setContNum(String dialog) {
+        int input = Integer.parseInt(JOptionPane.showInputDialog(dialog));
+        return input;
+    }
 	
-	private void mapLoader() {
-		
-	}
+
 	
 
 	@Override
