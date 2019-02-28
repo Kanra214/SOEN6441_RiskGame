@@ -2,15 +2,18 @@
 package Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import Models.*;
 import View_Components.CountryButton;
+
 import View_Components.Window;
 import View_Components.StartManu;
 
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 
 import MapEditor.MapEditorGUI;
 
@@ -20,6 +23,8 @@ public class Controller {
     Phases p;
     StartManu startmanu;
     MapEditorGUI mapeditor; 
+
+    String filename ;
     
     public Controller(Window window) throws IOException {
         this.window = window;
@@ -186,6 +191,18 @@ public class Controller {
     	
     	
     }
+    
+    
+	public boolean ChooseFile() {
+		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		int returnValue = jfc.showOpenDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = jfc.getSelectedFile();
+			filename=selectedFile.getName();		
+		}
+		return true;
+	}
+    
     public class startManuAction implements ActionListener{
 
     	private int buttonFlag;
@@ -193,8 +210,7 @@ public class Controller {
     		this.buttonFlag = buttonFlag;
     	}
     	
-  
-    	
+
     	
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -203,19 +219,25 @@ public class Controller {
 		  	switch (buttonFlag){
 	    	
 	    	case 1:
+	    		if(ChooseFile()) {
+	    			startmanu.dispose();		    			
 				try {
 					start();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				startmanu.setVisible(false);			
+				startmanu.dispose();	
+				
+		}
+		 
+	    		
 	    	break;
 	    	
 	    	case 2:
 	    		mapeditor = new MapEditorGUI();
 	    		mapeditor.frame.setVisible(true);
-	    		startmanu.setVisible(false);	
+	    		startmanu.dispose();	
 	    	break;
 	    	
 	    	case 4:
@@ -232,9 +254,8 @@ public class Controller {
     }
     public void start() throws IOException {
 
-
-
-        ArrayList<ArrayList> tempMap = new MapLoader().load("entry.txt");
+    	System.out.println(filename);
+        ArrayList<ArrayList> tempMap = new MapLoader().load(filename);
 
         int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
         p = new Phases(tempMap.get(0), tempMap.get(1));
@@ -266,15 +287,6 @@ public class Controller {
 
 
         window.setVisible(true);
-
-
-
-
-
-
-
-
-
 
 
 

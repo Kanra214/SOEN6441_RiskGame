@@ -16,6 +16,7 @@ public class MapEdit {
     public int countryNum;
     public Map<String,ArrayList<Country>> countries;
     public Map<String,ArrayList<String>> adjacencyList;
+	
     public MapEdit(String name) {
         this.riskMapName = name;
         this.author = "Invincible Team Four";
@@ -273,16 +274,30 @@ public class MapEdit {
     public String showCountries() {
     	
     	String info="";
-    	for (ArrayList<Country> loopList : countries.values()) {
-            for (Country loopCountry:loopList){
-                
-            	info=info+"\r\n"+loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY()+"-"+loopCountry.getContName()+"-"+loopCountry.printNeighbors();
+         
+        	for (ArrayList<Country> loopList : countries.values()) {
+                for (Country loopCountry:loopList){  
+    		info=info+loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopCountry.getContName()+","+loopCountry.printNeighbors()+"\r\n";           
+                	}
+                }
+        	
+    	return info;
+    }
+    
+    //This is used for return the continent information to mapEditor 
+    public String showContinents() {
+    	
+    	String info="";
+    	for (Continent loopContinent:continents) {
+            	info=info+loopContinent.getName()+"="+loopContinent.getControl_value()+"\r\n";
+            	
                 // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
                 
             }
-        }
+        
     	return info;
     }
+    
 
     //This fuction is used to clear map
     public void clear() {
@@ -408,7 +423,7 @@ public class MapEdit {
                     fw.write("\r\n");
                 }
                 fw.close();
-                this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
+                //this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
             }catch (IOException e) {
                 e.printStackTrace();
             } finally {

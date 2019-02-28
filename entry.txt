@@ -2,13 +2,13 @@
 author = Bin
 aaa.bmp
 [Continents]
-6
 Asia 12
 Oceania 4
 Europe 7
 Africa 6
 North_America 9
 South_America 4
+
 [Territories]
 42
 Yakutsk 920 50 Asia 10
@@ -53,6 +53,8 @@ Venezuela 240 430 South_America 10
 Brazil 320 430 South_America 10
 Peru 240 530 South_America 10
 Argentina 320 530 South_America 10
+
+
 [Relationship]
 Yakutsk Kamchatka
 Yakutsk Siberia

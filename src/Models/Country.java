@@ -19,31 +19,28 @@ public class Country {
     private int Y = 0;
 
 
-    public CountryButton countryButton;
-
     private ArrayList<Country> neighbours;
 
-
+//public constructor because mapLoader needs this
     public Country(int x, int y, String name, Continent continent) {
         this.name = name;
         this.cont = continent;
         X=x;
         Y=y;
-        countryButton = new CountryButton(x,y,this);
 
         this.neighbours = new ArrayList<>();
 
 
     }
-    public void setPhase(Phases p){
+    protected void setPhase(Phases p){
         this.p = p;
     }
-    public void increaseArmy(){
+    protected void increaseArmy(){
         this.army++;
         p.updateWindow();
     }
 
-    public void increaseArmy(int i) throws MoveAtLeastOneArmyException {
+    protected void increaseArmy(int i) throws MoveAtLeastOneArmyException {
         if(i < 1){
             throw new MoveAtLeastOneArmyException(4);
 
@@ -60,7 +57,7 @@ public class Country {
     }
 
 //whats this
-    public void decreaseArmy(int i) throws OutOfArmyException, MoveAtLeastOneArmyException {
+    protected void decreaseArmy(int i) throws OutOfArmyException, MoveAtLeastOneArmyException {
         if(i < 1){
             throw new MoveAtLeastOneArmyException(4);
         }
@@ -77,7 +74,7 @@ public class Country {
 
     }
 
-    public void setOwner(Player player) {
+    protected void setOwner(Player player) {
 
         this.owner = player;
         player.realms.add(this);
@@ -94,14 +91,18 @@ public class Country {
     }
 
     public ArrayList<Country> getNeighbours(){return neighbours;}
+    
     public String printNeighbors() {
     	String reNei="";
     	for(Country nei: getNeighbours()) {
-    		reNei=reNei+nei.getName();
+    		System.out.println(nei.getName()+" "+getNeighbours().size());
+    		reNei=reNei+nei.getName()+",";
+
+    		System.out.println(reNei);
     	}
     	return reNei;
     }
-
+//public because MapLoader needs this
     public void addNeighbour(Country country) {
 
         this.neighbours.add(country);

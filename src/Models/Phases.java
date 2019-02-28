@@ -5,25 +5,29 @@ import java.util.Collections;
 import java.util.Observable;
 
 public class Phases extends Observable {
-    public int numOfPlayers;
-    public ArrayList<Player> players;
-    public ArrayList<Country> graph;
-    public ArrayList<Continent> worldmap;
-    public Player current_player;
-    public int currentPhase = 0;
-    public int currentTurn = -1;
-    protected boolean viewIsConnected = false;
+    private int numOfPlayers;
+    private ArrayList<Player> players;
+    private ArrayList<Country> graph;
+    private ArrayList<Continent> worldmap;
+    private Player current_player;
+    private int currentPhase = 0;
+    private int currentTurn = -1;
+    private boolean viewIsConnected = false;
 
 //    public int innerTurn = 0;
 
-    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap){
+    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap) {
 
         this.graph = graph;
         this.worldmap = worldMap;
         players = new ArrayList<>();
+        //give each country access to this so they can update the view
+        for (Country country : graph) {
+            country.setPhase(this);
+        }
     }
 
-    int getInitialArmyCount(int number){
+    private int getInitialArmyCount(int number){
         switch (number){
             case 6: return 20;
             case 5: return 25;
@@ -34,15 +38,24 @@ public class Phases extends Observable {
         }
     }
 
-    public void addPlayers(int numOfPlayers){
+    public void gameSetUp(int numOfPlayers){
         this.numOfPlayers = numOfPlayers;
         for(int i = 0; i < numOfPlayers; i++){
             players.add(new Player(i, getInitialArmyCount(numOfPlayers),this));
 //            players.add(new Player(i, 7));
         }
+        determineOrder();
+        countryAssignment();
+        nextPhase();
+    }
+    public ArrayList<Country> getGraph(){
+        return graph;
+    }
+    public ArrayList<Player> getPlayers(){
+        return players;
     }
 
-    public int extraArmyFromContinent(Player player){
+    private int extraArmyFromContinent(Player player){
         int reinforocement = 0;
         for (Continent c: worldmap) {
             if(c.checkOwnership(player)){
@@ -58,11 +71,11 @@ public class Phases extends Observable {
 
 
 
-    public int getCurrentTurn() {
-        return currentTurn;
-    }
+//    public int getCurrentTurn() {
+//        return currentTurn;
+//    }
     //next player
-    public void nextTurn(){
+    private void nextTurn(){
         currentTurn++;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
 
@@ -83,13 +96,13 @@ public class Phases extends Observable {
     }
 
     //determine if anyone gets extra armies
-    public void phaseOneFirstStep (){
+    private void phaseOneFirstStep (){
         int extra = extraArmyFromContinent(current_player);
         current_player.getReinforcement(extra);
-        System.out.println();
-        System.out.println("Player "+current_player.getId()+" gets extra: "+extra);
-        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
-        System.out.println("Army left "+ current_player.getPlayerArmy());
+//        System.out.println();
+//        System.out.println("Player "+current_player.getId()+" gets extra: "+extra);
+//        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
+//        System.out.println("Army left "+ current_player.getPlayerArmy());
     }
 //what doest this do?
 //    public void phaseThreeFirstStep (){
@@ -97,9 +110,6 @@ public class Phases extends Observable {
 //        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
 //    }
 
-    public void gameStart(){
-        nextPhase();
-    }
 
     public void nextPhase(){
         switch(currentPhase){
@@ -136,11 +146,11 @@ public class Phases extends Observable {
 
 
 
-    public void determineOrder(){//determine the round robin order for players by changing the order in the players field
+    private void determineOrder(){//determine the round robin order for players by changing the order in the players field
         Collections.shuffle(players);
 
     }
-    public void countryAssignment() {
+    private void countryAssignment() {
         Collections.shuffle(this.graph);
         int turnReference = 0;
         int turn = 0;
@@ -154,7 +164,7 @@ public class Phases extends Observable {
         }
 
 
-        gameStart();
+
 
     }
     protected void updateWindow(){
@@ -169,13 +179,23 @@ public class Phases extends Observable {
         updateWindow();
     }
 
-    public boolean countryBelongsToCurrentPlayer(Country country) {
 
-        if(current_player.realms.contains(country)) {
-            return true;
-        }
-        return false;
+
+    public void startUpPhase(Country chosen){
+
+        current_player.deployArmy(chosen);
     }
+    public void reinforcementPhase(Country chosen){
+        current_player.deployArmy(chosen);
+    }
+    public void attackPhase(){
+        System.out.println("in phase 2");
+    }
+
+    public void fortificatePhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
+        current_player.fortificate(from, to, num);
+    }
+
 
 
 
