@@ -227,9 +227,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	graph.clear();
             	break;
             	
-            	case 6:
-            		
-            		
+            	case 6:           		
             	TerrTextField.setText("[Map]\r\n" + 
                 		"author=Sean O'Connor\r\n" + 
                 		"image=world.bmp\r\n" + 
@@ -239,9 +237,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                 		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
                 		"\r\n" + "[Territories]\r\n" + mapedit.showCountries());
             	
-            	break;
-                
-                
+            	break;                               
             }
             
             }
@@ -280,9 +276,40 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             }
                               
             });
+        
+        saveMap.addMouseListener(new MouseAdapter() {
+        	 public void mouseClicked(MouseEvent e) {  
+        		 mapedit.saveToFile("nm");
+        	 }
+        });
+        
+        clearMap.addMouseListener(new MouseAdapter() {
+       	 public void mouseClicked(MouseEvent e) {  
+       		Graphics g2 =panel.getGraphics();
+        	g2.clearRect(0,0,panel.getSize().width,panel.getSize().height);
+        	graph.clear();
+       	 	}
+        });
+        
+        showInfo.addMouseListener(new MouseAdapter() {
+        	
+        	 public void mouseClicked(MouseEvent e) {            		
+             	TerrTextField.setText("[Map]\r\n" + 
+                 		"author=Sean O'Connor\r\n" + 
+                 		"image=world.bmp\r\n" + 
+                 		"wrap=no\r\n" + 
+                 		"scroll=horizontal\r\n" + 
+                 		"warn=yes\r\n" + 
+                 		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
+                 		"\r\n" + "[Territories]\r\n" + mapedit.showCountries());            
+        	 }
+        	
+        });
         frame.getContentPane().add(panel, BorderLayout.CENTER);
     }
 
+    
+    
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
