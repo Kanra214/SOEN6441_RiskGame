@@ -266,7 +266,7 @@ public class MapEdit {
         adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
         fromCountry.addNeighbour(toCountry);      
         adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
-        toCountry.addNeighbour(fromCountry);
+        //toCountry.addNeighbour(fromCountry);
         return true;
     }
     
@@ -279,10 +279,11 @@ public class MapEdit {
                 for (Country loopCountry:loopList){  
     		info=info+loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopCountry.getContName()+","+loopCountry.printNeighbors()+"\r\n";
                 // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
-                
+    		//System.out.println(info);
             
                 	}
                 }
+        	
     	return info;
     }
     

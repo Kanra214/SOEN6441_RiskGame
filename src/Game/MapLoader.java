@@ -20,6 +20,7 @@ public class MapLoader {
     ArrayList<Continent> worldmap = new ArrayList<>();
     ArrayList<Country> graph = new ArrayList<>();
     ArrayList<ArrayList> result = new ArrayList<>();
+    String country_value;
     public MapLoader() {
         map = new MapEdit("a");
     }
@@ -31,32 +32,75 @@ public class MapLoader {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String input = reader.readLine();
         if (input.equals("[Map]")) {
+        	
             author = reader.readLine().trim();
             mapname = reader.readLine().trim();
+            System.out.println("readmap");
             if (reader.readLine().trim().equals("[Continents]")) {
-                int numberOfContinents = Integer.parseInt(reader.readLine().trim());
-                for (int i = 0; i < numberOfContinents; i++) {
-                    String country_value = reader.readLine();
-                    String[] parts = country_value.split(" ");
+            	System.out.println("cont");
+                //int numberOfContinents = Integer.parseInt(reader.readLine().trim());
+                //while(reader.readLine().trim().equals("[Territories]")==false)
+                	while ((country_value = reader.readLine()) != null) {
+                    //country_value = reader.readLine();
+                    String[] parts = country_value.split("=");
+                    System.out.println(parts.length);
+                    if(parts.length==1)break;
                     int control_value = Integer.parseInt(parts[1]);
-
-
+                    System.out.println(parts[0]+" "+parts[1]);
                     worldmap.add(new Continent(parts[0], control_value));
                 }
                 if (reader.readLine().equals("[Territories]")) {
-                    int numberOfTerritories = Integer.parseInt(reader.readLine().trim());
-                    for (int i = 0; i < numberOfTerritories; i++) {
-                        input = reader.readLine();
-                        String[] parts = input.split(" ");
+                	
+                   // int numberOfTerritories = Integer.parseInt(reader.readLine().trim());
+                	while ((input = reader.readLine()) != null) {
+                        //input = reader.readLine();
+                        System.out.println(input);
+                        String[] parts = input.split(",");
+                        System.out.println(parts.length);
+                        if(parts.length==1)break;
                         Continent tempcont = findContinent(worldmap, parts[3]);
-                        Country tempCountry = new Country((int)(Integer.parseInt(parts[1])*0.9)-100, (int)(Integer.parseInt(parts[2])*0.9), parts[0], tempcont);
+                        Country tempCountry = new Country((int)(Integer.parseInt(parts[1])*0.9)-100, (int)(Integer.parseInt(parts[2])*0.9), parts[0], tempcont);                      
                         tempcont.addCountry(tempCountry);
                         graph.add(tempCountry);
 
-
-
                     }
-                    if (reader.readLine().equals("[Relationship]")) {
+                	BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
+                	boolean rflag=true;
+					while(rflag==true) {
+                		input = reader2.readLine();
+                		System.out.println(input);
+                		if(input.equals("[Territories]")){
+                			rflag=false;
+                		}
+                		System.out.println(rflag);
+                	}
+                   
+                     	while ((input = reader2.readLine()) != null) {
+                     		 System.out.println(input);
+                     		Country tm1 = null, tm2 = null;
+                            //input = reader2.readLine();
+                            String[] parts = input.split(",");
+                    	  for(int i=4;i<parts.length;i++) {                          	
+                            for (Country o : graph) {
+
+                                if (parts[0].equals(o.getName())) {
+                                    tm1 = o;
+                                }
+                                if (parts[i].equals(o.getName())) {
+                                    tm2 = o;
+                                }
+                                if (tm1 != null && tm2 != null) {
+//                                  handler.addAtPos(new Relations((int) tm1.getX() + tm1.getValue() * 5 / 2, (int) tm1.getY() + tm1.getValue() * 5 / 2, (int) tm2.getX() + tm1.getValue() * 5 / 2, (int) tm2.getY() + tm1.getValue() * 5 / 2, ID.Relation), current);
+//                                      handler.addObject(new Relations((int)tm1.getX()+tm1.getValue()*5/2, (int)tm1.getY()+tm1.getValue()*5/2, (int)tm2.getX()+tm1.getValue()*5/2, (int)tm2.getY()+tm1.getValue()*5/2, ID.Relation));
+                                  tm1.addNeighbour(tm2);
+                                  tm2.addNeighbour(tm1);
+
+                              }
+
+                            }
+                          }
+                     	}
+                     	/*
                         input = reader.readLine();
                         while (input != null) {
                             String[] parts = input.split(" ");
@@ -81,16 +125,16 @@ public class MapLoader {
 
                             input = reader.readLine();
                         }
-//                        ArrayList<ArrayList> result = new ArrayList<>();
+//                        
+ * 
+ */
+                     	ArrayList<ArrayList> result = new ArrayList<>();
                         result.add(graph);
                         result.add(worldmap);
                         return result;
 
                     }
-                } else {
-                    System.err.println("Wrong Format3");
-                    System.exit(0);
-                }
+             
             } else {
                 System.err.println("Wrong Format2");
                 System.exit(0);
@@ -122,6 +166,7 @@ public class MapLoader {
         Map<String,ArrayList<Country>> countries ;
         Map<String,ArrayList<String>> adjacencyList;
         map.loadMapFile(mapName);
+        
         countries = map.countries;
         adjacencyList = map.adjacencyList;
         worldmap = map.continents;

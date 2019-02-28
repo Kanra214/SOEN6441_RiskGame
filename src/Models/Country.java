@@ -82,10 +82,14 @@ public class Country {
     }
 
     public ArrayList<Country> getNeighbours(){return neighbours;}
+    
     public String printNeighbors() {
     	String reNei="";
     	for(Country nei: getNeighbours()) {
-    		reNei=reNei+nei.getName();
+    		System.out.println(nei.getName()+" "+getNeighbours().size());
+    		reNei=reNei+nei.getName()+",";
+    		
+    		System.out.println(reNei);
     	}
     	return reNei;
     }
