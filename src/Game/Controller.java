@@ -192,17 +192,12 @@ public class Controller {
     
     
 	public boolean ChooseFile() {
-
 		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
 		int returnValue = jfc.showOpenDialog(null);
-
-
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = jfc.getSelectedFile();
 			filename=selectedFile.getName();		
 		}
-
 		return true;
 	}
     
@@ -222,7 +217,7 @@ public class Controller {
 		  	switch (buttonFlag){
 	    	
 	    	case 1:
-		if(ChooseFile()) {
+	    		if(ChooseFile()) {
 	    			startmanu.dispose();		    			
 				try {
 					start();
