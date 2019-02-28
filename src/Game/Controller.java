@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import Models.*;
 import View_Components.CountryButton;
-import View_Components.FileChooser;
+
 import View_Components.Window;
 import View_Components.StartManu;
 
@@ -23,7 +23,7 @@ public class Controller {
     Phases p;
     StartManu startmanu;
     MapEditorGUI mapeditor; 
-    FileChooser filechooser;
+
     String filename ;
     
     public Controller(Window window) throws IOException {

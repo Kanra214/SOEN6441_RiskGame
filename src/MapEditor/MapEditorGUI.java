@@ -26,6 +26,7 @@ import java.awt.Button;
 
 
 import Models.MapEdit;
+import Models.Continent;
 import Models.Country;
 
 
@@ -50,11 +51,13 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 	
     
     Panel toolPanel;
+    Country FromCountry,ToCountry;
     Button addCountry,addNeighbor,saveMap,clearMap,addContinent,showInfo;
     int toolFlag=0;
     int x1,y1,x2,y2;
     String name1,name2;
-    ArrayList<MapCountry> graph = new ArrayList<>();
+    Continent NewContinent;
+    ArrayList<Country> graph = new ArrayList<>();
     MapEdit mapedit =new MapEdit("Mapedit");
     
     
@@ -149,12 +152,13 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	switch(toolFlag){ 
 	              
             	case 2:
-                for(MapCountry o : graph) {
+                for(Country o : graph) {
                    //System.out.println(o.getX()+"-"+o.getY()+"-"+o.getName()+"-"+o.getCont());
                 	
                 	if(o.getX()<x1&x1<=o.getX()+30&y1>o.getY()&y1<o.getY()+30) {
                 		//System.out.println("catch");
                 		name1=o.getName();
+                		FromCountry=o;
                 		System.out.println("catch"+name1);
                 	}
                 	
@@ -172,19 +176,20 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	System.out.println(x1);	
             	Graphics g2 =panel.getGraphics();
             	g2.drawLine(x1, y1, x2, y2);
-                for(MapCountry o : graph) {
-                    //System.out.println(o.getX()+"-"+o.getY()+"-"+o.getName()+"-"+o.getCont());
+                for(Country o : graph) {
+                   
                  	
                  	if(o.getX()<x2&x2<o.getX()+30&y2>o.getY()&y2<o.getY()+30) {
                  		//System.out.println("catch2");
                  		name2=o.getName();
-                 		o.addNeighbour(name1);
+                 		ToCountry=o;
+                 		ToCountry.addNeighbour(FromCountry);
                  		
                  		mapedit.addConnection(name1, name2);
                  		
-                 		for(MapCountry o2 : graph) {
+                 		for(Country o2 : graph) {
                  			if(o2.getName().equals(name1)) {
-                 				o2.addNeighbour(name2);
+                 				o2.addNeighbour(FromCountry);
                  			}
                  		}                		
                  		System.out.println("catch"+name2);
@@ -212,11 +217,13 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                 //Create new country
                 
                 
-                MapCountry tempCountry = new MapCountry(e.getX(),e.getY(),Countryname,Continentname,10);
+               
                 String Countryname=setCountryName("Enter countryname");
-                tempCountry.setName(Countryname);
+                //tempCountry.setName(Countryname);
                 String Contname=setCountryName("Enter continentname");
-                tempCountry.setContinent(Contname);
+                //tempCountry.setContinent(Contname);
+                Continent tempcont=mapedit.findContinent(Contname);
+                Country tempCountry = new Country(e.getX(),e.getY(),Countryname,tempcont);
                 
                 mapedit.addCountry(Countryname, Contname, e.getX(), e.getY());
                 
@@ -224,7 +231,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                 graph.add(tempCountry);
 
                 //print info
-                for(MapCountry o : graph) {
+                for(Country o : graph) {
                 	System.out.println(o.getX()+"-"+o.getY()+"-"+o.getName()+"-"+o.getCont());
                 }
                 break;
@@ -237,8 +244,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	break;
                 
             	case 4:
-            	for(MapCountry o : graph) {
-                    System.out.println(o.getX()+"-"+o.getY()+"-"+o.getName()+"-"+o.getCont());
+            	for(Country o : graph) {
+                    System.out.println(o.getX()+"-"+o.getY()+"-"+o.getName()+"-"+o.getCont().getName());
                     o.printNeighbors();
                     System.out.println();
                     
