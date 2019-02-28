@@ -52,7 +52,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     
     Panel toolPanel;
     Country FromCountry,ToCountry;
-    Button addCountry,addNeighbor,saveMap,clearMap,addContinent,showInfo;
+    Button addCountry,addNeighbor,saveMap,clearMap,addContinent,showInfo,loadMap;
     int toolFlag=0;
     int x1,y1,x2,y2;
     String name1,name2;
@@ -112,6 +112,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         clearMap = new Button("ClearMap");
         addContinent = new Button("AddContinent");
         showInfo = new Button("ShowInfo");
+        loadMap=new Button("loadMap");
         
         final JTextArea TerrTextField= new JTextArea(20,15);
         TerrTextField.setFont(new Font(null, Font.PLAIN, 16));
@@ -128,6 +129,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         clearMap.addActionListener(this);
         addContinent.addActionListener(this);
         showInfo.addActionListener(this);
+        loadMap.addActionListener(this);
         
         toolPanel.add(addCountry);
         toolPanel.add(addNeighbor);
@@ -135,6 +137,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         toolPanel.add(saveMap);
         toolPanel.add(clearMap);
         toolPanel.add(showInfo);
+        toolPanel.add(loadMap);
+        
         frame.add(toolPanel,BorderLayout.NORTH);
         frame.add(js,BorderLayout.EAST);
        // setBounds(60,60,900,600); setVisible(true);
@@ -167,44 +171,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                                 
             }
             }
-            public void mouseReleased(MouseEvent e) {            	
-            	x2=e.getX();
-            	y2=e.getY();           	
-            	switch(toolFlag){ 
-            	              
-            	case 2:
-            	System.out.println(x1);	
-            	Graphics g2 =panel.getGraphics();
-            	g2.drawLine(x1, y1, x2, y2);
-                for(Country o : graph) {
-                   
-                 	
-                 	if(o.getX()<x2&x2<o.getX()+30&y2>o.getY()&y2<o.getY()+30) {
-                 		//System.out.println("catch2");
-                 		name2=o.getName();
-                 		ToCountry=o;
-                 		ToCountry.addNeighbour(FromCountry);
-                 		
-                 		mapedit.addConnection(name1, name2);
-                 		
-                 		for(Country o2 : graph) {
-                 			if(o2.getName().equals(name1)) {
-                 				o2.addNeighbour(FromCountry);
-                 			}
-                 		}                		
-                 		System.out.println("catch"+name2);
-                 	}                 	
-                 }           	
-            	break;
-                                
-            }
-            }
             
-            
-            
-            });
-        
-        panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
             	
@@ -278,11 +245,41 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             }
             
             }
-        });
-        
-        
-        
-        
+            
+            public void mouseReleased(MouseEvent e) {            	
+            	x2=e.getX();
+            	y2=e.getY();           	
+            	switch(toolFlag){ 
+            	              
+            	case 2:
+            	System.out.println(x1);	
+            	Graphics g2 =panel.getGraphics();
+            	g2.drawLine(x1, y1, x2, y2);
+                for(Country o : graph) {
+                   
+                 	
+                 	if(o.getX()<x2&x2<o.getX()+30&y2>o.getY()&y2<o.getY()+30) {
+                 		//System.out.println("catch2");
+                 		name2=o.getName();
+                 		ToCountry=o;
+                 		ToCountry.addNeighbour(FromCountry);
+                 		
+                 		mapedit.addConnection(name1, name2);
+                 		
+                 		for(Country o2 : graph) {
+                 			if(o2.getName().equals(name1)) {
+                 				o2.addNeighbour(FromCountry);
+                 			}
+                 		}                		
+                 		System.out.println("catch"+name2);
+                 	}                 	
+                 }           	
+            	break;
+                                
+            }
+            }
+                              
+            });
         frame.getContentPane().add(panel, BorderLayout.CENTER);
     }
 
@@ -306,6 +303,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 
 		if(e.getSource()==showInfo)//
 		{toolFlag = 6;}
+		
+		if(e.getSource()==loadMap)//
+		{toolFlag = 7;}
+	
 	
 	        
 	}
