@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CountryButton extends JButton {
-    private final int width = 50;
-    private final int height = 30;
+    protected final int width = 50;
+    protected final int height = 30;
     private final int innerDiameter = 5;
 
     private Country country;
@@ -18,10 +18,10 @@ public class CountryButton extends JButton {
         return country;
     }
 
-    public CountryButton(int x, int y, Country country){
+    public CountryButton(Country country){
         super(country.getName());
-        this.x = x;
-        this.y = y;
+        this.x = country.getX();
+        this.y = country.getY();
         this.country = country;
         setContentAreaFilled(false);
         setBounds(x,y,width,height);

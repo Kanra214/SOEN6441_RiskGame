@@ -25,7 +25,7 @@ public class SidePanel extends JPanel {
 
     protected void setContext(ArrayList<Player> players){
         for(int i = 0; i < players.size(); i++){
-            playerLabels[i].setBackground(players.get(i).playerColor);
+            playerLabels[i].setBackground(players.get(i).getPlayerColor());
             playerLabels[i].setText(getPlayerInfo(players.get(i)));
 
 
@@ -34,7 +34,7 @@ public class SidePanel extends JPanel {
     private String getPlayerInfo(Player player){
           return    "<html><body>" +
                     "<h3>Player " + player.getId() + "</h3>" +
-                    "<p>Countries: " + player.realms.size() + "<br>" +
+                    "<p>Countries: " + player.getRealms().size() + "<br>" +
                     "Total number of armies in the map: " + player.getMapArmies() + "<br>" +
                     "Card " + "</p>" +
                     "</body></html>";

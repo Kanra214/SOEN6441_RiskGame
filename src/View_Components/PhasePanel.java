@@ -22,10 +22,10 @@ public class PhasePanel extends JPanel {
     }
 
     protected void setContext(int currentPhase, Player currentPlayer){
-        this.setBackground(currentPlayer.playerColor);
+        this.setBackground(currentPlayer.getPlayerColor());
         currentPhaseLabel.setText("<html><body><h1>Current Phase : " + phaseToString(currentPhase) + "</h1></body><html>");
         currentPlayerLabel.setText("<html><body><h1>Current Player : "  + currentPlayer.getId() + "</h1></body><html>");
-        unitLeftLabel.setText("<html><body><h1>Unassigned Armies: " + currentPlayer.getPlayerArmy()+ "</h1></body><html>");
+        unitLeftLabel.setText("<html><body><h1>Unassigned Armies: " + currentPlayer.getUnassigned_armies()+ "</h1></body><html>");
 
         if(currentPhase == 2 || currentPhase == 3){
             completePhaseButton.setEnabled(true);

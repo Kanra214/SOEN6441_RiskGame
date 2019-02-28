@@ -6,7 +6,12 @@ import Models.*;
 import java.util.*;
 
 public class MapPanel extends JPanel {
-    public ArrayList<Country> comps = new ArrayList<>();
+    public ArrayList<Country> comps = new ArrayList<>();//world map
+    public ArrayList<CountryButton> cbs = new ArrayList<>();
+
+    public void addCb(CountryButton cb){
+        cbs.add(cb);
+    }
 
 
 
@@ -16,9 +21,12 @@ public class MapPanel extends JPanel {
         g.setColor(Color.BLACK);
         for(Country comp : comps){
             for(Country cont : comp.getNeighbours()){
-                g.drawLine(cont.countryButton.getX()+cont.countryButton.getWidth()/2,cont.countryButton.getY()+cont.countryButton.getHeight()/2,comp.countryButton.getX()+comp.countryButton.getWidth()/2,comp.countryButton.getY()+comp.countryButton.getHeight()/2);
+                g.drawLine(cont.getX()+CountryButton.WIDTH/2,cont.getY()+CountryButton.HEIGHT/2,comp.getX()+CountryButton.WIDTH/2,comp.getY()+CountryButton.HEIGHT/2);
             }
+
+
         }
+
 
 
     }
