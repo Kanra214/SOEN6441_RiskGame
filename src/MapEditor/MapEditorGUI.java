@@ -129,7 +129,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         addCountry.addActionListener(this);
         addNeighbor.addActionListener(this);
         saveMap.addActionListener(this);
-        clearMap.addActionListener(this);
+        //clearMap.addActionListener(this);
         addContinent.addActionListener(this);
         showInfo.addActionListener(this);
         loadMap.addActionListener(this);
@@ -202,7 +202,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                  		ToCountry.addNeighbour(FromCountry);
                  		FromCountry.addNeighbour(ToCountry);
                  		mapedit.addConnection(name1, name2);
-                 		
+                 		mapedit.addConnection(name2, name1);
                  		for(Country o2 : graph) {
                  			if(o2.getName().equals(name1)) {
                  				//o2.addNeighbour(FromCountry);
@@ -248,9 +248,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	case 3:
                 String continentName=setCountryName("Enter CountinentName");
                 int controlNum=setContNum("Enter ControlNumber");
-                tempcont =new Continent(continentName, controlNum);
+                Continent tempcont2 =new Continent(continentName, controlNum);
             	mapedit.addContinent(continentName, controlNum);
-            	continents.add(tempcont);
+            	continents.add(tempcont2);
             	showinfo();  
        
             	break;
@@ -288,10 +288,17 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         
         addContinent.addMouseListener(new MouseAdapter() {
 	       	 public void mouseClicked(MouseEvent e) {  
-	             String continentName=setCountryName("Enter CountinentName");
-	             int controlNum=setContNum("Enter ControlNumber");
-	         	 mapedit.addContinent(continentName, controlNum);
-	         	 showinfo();
+	             //String continentName=setCountryName("Enter CountinentName");
+	             //int controlNum=setContNum("Enter ControlNumber");
+	         	// mapedit.addContinent(continentName, controlNum);
+	         	
+	       		 	String continentName=setCountryName("Enter CountinentName");
+	                int controlNum=setContNum("Enter ControlNumber");
+	                Continent tempcont2 =new Continent(continentName, controlNum);
+	            	mapedit.addContinent(continentName, controlNum);
+	            	continents.add(tempcont2);
+	            	showinfo(); 
+	         	 
 	       	 	}
         });
         
@@ -364,11 +371,11 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     
     private void showinfo() {
      	TerrTextField.setText("[Map]\r\n" + 
-        		"author=Sean O'Connor\r\n" + 
-        		"image=world.bmp\r\n" + 
-        		"wrap=no\r\n" + 
-        		"scroll=horizontal\r\n" + 
+        		"author=Invincible Team Four\r\n" + 
         		"warn=yes\r\n" + 
+        		"image=none\r\n" + 
+        		"wrap=no\r\n" + 
+        		"scroll=none\r\n" + 
         		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
         		"\r\n" + "[Territories]\r\n" + MapshowCountries());
     	
