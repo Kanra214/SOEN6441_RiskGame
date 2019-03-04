@@ -34,7 +34,7 @@ public class Phases extends Observable {
             case 4: return 30;
             case 3: return 35;
             case 2: return 45;
-            default: return 0;
+            default: return 100;
         }
     }
 
@@ -55,7 +55,7 @@ public class Phases extends Observable {
         return players;
     }
 
-    private int extraArmyFromContinent(Player player){
+    public int extraArmyFromContinent(Player player){
         int reinforocement = 0;
         for (Continent c: worldmap) {
             if(c.checkOwnership(player)){
@@ -104,7 +104,7 @@ public class Phases extends Observable {
 //        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
 //        System.out.println("Army left "+ current_player.getPlayerArmy());
     }
-//what doest this do?
+//what doest this do?  its not needed now, just to know who is playing right now
 //    public void phaseThreeFirstStep (){
 //        System.out.println();
 //        System.out.println("Player "+current_player.getId()+" color "+ current_player.getStringColor());
