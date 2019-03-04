@@ -342,7 +342,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           		 
   	            FileWriter writer = new FileWriter(fc.filepath,false);  	            
   	            writer.write(newInfo);  	            
-  	            writer.flush();//刷新内存，将内存中的数据立刻写出。
+  	            writer.flush();//??????????????????????????????????
   	            writer.close();
   	        } catch (IOException e2) {
   	            e2.printStackTrace();

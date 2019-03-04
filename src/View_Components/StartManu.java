@@ -15,7 +15,7 @@ public class StartManu extends JFrame{
 
 		public StartManu() { 
 			
-		} //ÖØÔØ¹¹ÔìÆ÷ 
+		} //?????????? 
 		public StartManu(String s,int x,int y,int w,int h) { 
 		    super(s);
 			//this.init(s); 
