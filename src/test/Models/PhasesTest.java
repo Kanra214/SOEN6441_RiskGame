@@ -2,6 +2,7 @@ package test.Models;
 
 import Game.MapLoader;
 import Models.Phases;
+import Models.Player;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -19,7 +20,7 @@ public class PhasesTest {
         ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
         System.out.println("Inside before");
         p = new Phases(tempMap.get(0), tempMap.get(1));
-        p.gameSetUp(1);
+
     }
 
     @After
@@ -27,8 +28,37 @@ public class PhasesTest {
         System.out.println("Inside after");
     }
 
+    /**
+     *
+     * method: extraArmyFromContinent(Player player)
+     */
     @Test
     public void extraArmyFromContinent() throws Exception {
+        p.gameSetUp(1);
         assertEquals(p.extraArmyFromContinent(p.getCurrent_player()),44);
+    }
+
+
+    /**
+     *
+     * method: reinforcementArmy(Player player)
+     */
+    @Test
+    public void reinforcementArmy() throws Exception {
+        p.gameSetUp(1);
+        assertEquals(p.reinforcementArmy(p.getCurrent_player()), 63);
+
+    }
+
+    /**
+     *
+     * method: reinforcementArmy(Player player)
+     */
+    @Test
+    public void extraArmyFromContinent_whenHeOwns1() throws Exception {
+        Player n = new Player(0,0,p);
+        p.getGraph().get(0).setOwner(n);
+        assertEquals(p.reinforcementArmy(n), 3);
+
     }
 }

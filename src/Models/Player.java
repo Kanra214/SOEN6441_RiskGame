@@ -25,7 +25,7 @@ public class Player {
 
 
 
-    protected Player(int id, int army, Phases p) {
+    public Player(int id, int army, Phases p) {
         this.id = id;
         this.realms = new ArrayList<>();
         this.unassigned_armies = army;

@@ -74,7 +74,7 @@ public class Country {
 
     }
 
-    protected void setOwner(Player player) {
+    public void setOwner(Player player) {
         this.owner = player;
         player.realms.add(this);
         p.updateWindow();

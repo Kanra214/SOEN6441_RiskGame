@@ -8,7 +8,7 @@ import java.util.Observable;
  * This class that controls logic of the game
  */
 public class Phases extends Observable {
-    private int numOfPlayers;
+    private int numOfPlayers = 1;
     private ArrayList<Player> players;
     private ArrayList<Country> graph;
     private ArrayList<Continent> worldmap;
@@ -19,8 +19,12 @@ public class Phases extends Observable {
 
 //    public int innerTurn = 0;
 
+    /**
+     * Constructor for phases class
+     * @param graph List of countries on the map
+     * @param worldMap List of Continent on the map
+     */
     public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap) {
-
         this.graph = graph;
         this.worldmap = worldMap;
         players = new ArrayList<>();
@@ -55,7 +59,6 @@ public class Phases extends Observable {
         nextPhase();
     }
 
-
     /**
      * Gets list of countries
      * @return ArrayList of country
@@ -76,29 +79,30 @@ public class Phases extends Observable {
 
     /**
      * Gets reinforcements from all continents that the player owns
-     * @param player
+     * @param player    which player to check
      * @return int Reinforcements that the player gets from owning the whole continent
      */
     public int extraArmyFromContinent(Player player){
-        int reinforocement = 0;
+        int reinforcement = 0;
         for (Continent c: worldmap) {
             if(c.checkOwnership(player)){
-                reinforocement+=c.getControl_value();
+                reinforcement+=c.getControl_value();
             }
         }
-        return reinforocement;
+        return reinforcement;
     }
 
 
     /**
-     * Get reinforcements accordint to the number of countries that the player owns
-     * @param player
-     * @return int  number of all countries
+     * Get reinforcements according to the number of countries and continents that the player owns
+     * @param player    which player to check
+     * @return int  number of all countries devided by 3 plus army from continent
      */
-    public int reinforecementArmy(Player player){
-        return player.realms.size() / 3;
+    public int reinforcementArmy(Player player){
+        int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
+        if (reinforcement < 3) reinforcement = 3;
+        return reinforcement;
     }
-
 
 
     public int getCurrentPhase() {
@@ -123,12 +127,11 @@ public class Phases extends Observable {
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
     private void phaseOneFirstStep () {
-        int extra = extraArmyFromContinent(current_player);
-        int reinforce = reinforecementArmy(current_player);
-        if (extra + reinforce == 0) {
+        int reinforce = reinforcementArmy(current_player);
+        if (reinforce == 0) {
             current_player.getReinforcement(3);
         }
-        current_player.getReinforcement(extra + reinforce);
+        current_player.getReinforcement(reinforce);
     }
 
 
@@ -179,10 +182,6 @@ public class Phases extends Observable {
             turnReference++;
             turn = turnReference % players.size();
         }
-
-
-
-
     }
 
 
