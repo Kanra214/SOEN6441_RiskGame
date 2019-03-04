@@ -144,7 +144,7 @@ public class Controller {
     
     
 	public boolean ChooseFile() {
-		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		JFileChooser jfc = new JFileChooser(".");
 		int returnValue = jfc.showOpenDialog(null);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = jfc.getSelectedFile();

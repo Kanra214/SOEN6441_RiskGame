@@ -35,12 +35,24 @@ import Models.MapEdit;
 import Models.Continent;
 import Models.Country;
 
-
+/**
+ * In MapEditor package and this class is used for edit the map via GUI approach
+ * 
+ * @author Team36
+ * @version 1.1
+ */
 
 
 public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionListener,MouseListener{
 
-
+    /**
+     * Paramaters Setting.
+     * 
+     * graph the list to store countries when creating map
+     * countries the list to store countries when loading map
+     * continents the list to store continents  when loading map
+     * 
+     */
 
     int toolFlag=0;
     int x1,y1,x2,y2;
@@ -48,8 +60,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     String name1,name2,filename;
     ArrayList<Country> graph = new ArrayList<>();
     ArrayList<ArrayList> tempMap;
-  	ArrayList<Country> countries;                   	
-  	ArrayList<Continent> continents;
+  	ArrayList<Country> countries = new ArrayList<>();                   	
+  	ArrayList<Continent> continents = new ArrayList<>(); ;
     Country FromCountry,ToCountry;
     Continent NewContinent;
     
@@ -129,7 +141,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         addCountry.addActionListener(this);
         addNeighbor.addActionListener(this);
         saveMap.addActionListener(this);
-        clearMap.addActionListener(this);
+        //clearMap.addActionListener(this);
         addContinent.addActionListener(this);
         showInfo.addActionListener(this);
         loadMap.addActionListener(this);
@@ -202,7 +214,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                  		ToCountry.addNeighbour(FromCountry);
                  		FromCountry.addNeighbour(ToCountry);
                  		mapedit.addConnection(name1, name2);
-                 		
+                 		mapedit.addConnection(name2, name1);
                  		for(Country o2 : graph) {
                  			if(o2.getName().equals(name1)) {
                  				//o2.addNeighbour(FromCountry);
@@ -248,7 +260,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             	case 3:
                 String continentName=setCountryName("Enter CountinentName");
                 int controlNum=setContNum("Enter ControlNumber");
+                Continent tempcont2 =new Continent(continentName, controlNum);
             	mapedit.addContinent(continentName, controlNum);
+            	continents.add(tempcont2);
             	showinfo();  
        
             	break;
@@ -260,17 +274,13 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                     System.out.println();
                     
             	} 	
-            	mapedit.saveToFile("nm");
+            	
+            	String nm = JOptionPane.showInputDialog("Input the file name");
+            	mapedit.saveToFile(nm+".txt");
             	break;
             	
             	case 5:
-            	System.out.print(toolFlag);	
-            	Graphics g2 =paintPanel.getGraphics();
-            	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
-            	mapedit.clear();
-            	graph.clear();
-            	countries.clear();
-            	continents.clear();
+            	mapclear();
             	showinfo();  
             	break;
             	
@@ -290,16 +300,26 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         
         addContinent.addMouseListener(new MouseAdapter() {
 	       	 public void mouseClicked(MouseEvent e) {  
-	             String continentName=setCountryName("Enter CountinentName");
-	             int controlNum=setContNum("Enter ControlNumber");
-	         	 mapedit.addContinent(continentName, controlNum);
-	         	 showinfo();
+	             //String continentName=setCountryName("Enter CountinentName");
+	             //int controlNum=setContNum("Enter ControlNumber");
+	         	// mapedit.addContinent(continentName, controlNum);
+	         	
+	       		 	String continentName=setCountryName("Enter CountinentName");
+	                int controlNum=setContNum("Enter ControlNumber");
+	                Continent tempcont2 =new Continent(continentName, controlNum);
+	            	mapedit.addContinent(continentName, controlNum);
+	            	continents.add(tempcont2);
+	            	showinfo(); 
+	         	 
 	       	 	}
         });
         
         saveMap.addMouseListener(new MouseAdapter() {
         	 public void mouseClicked(MouseEvent e) {  
-        		 if(mapedit.saveToFile("nm")) {
+        		 
+        		String nm = JOptionPane.showInputDialog("Input the file name");
+                	
+        		 if(mapedit.saveToFile(nm+".txt")) {
         		 JOptionPane.showMessageDialog(null,"Successfully Saved");
         		 }
         		}
@@ -307,12 +327,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         
         clearMap.addMouseListener(new MouseAdapter() {
        	 public void mouseClicked(MouseEvent e) {  
-       		Graphics g2 =paintPanel.getGraphics();
-        	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
-        	countries.clear();
-        	continents.clear();
-        	graph.clear();
-        	mapedit.clear();
+       		mapclear();
         	showinfo();  
        	 	}
         });
@@ -326,7 +341,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           		 
   	            FileWriter writer = new FileWriter(fc.filepath,false);  	            
   	            writer.write(newInfo);  	            
-  	            writer.flush();//???????????????????????????
+  	            writer.flush();//刷新内存，将内存中的数据立刻写出。
   	            writer.close();
   	        } catch (IOException e2) {
   	            e2.printStackTrace();
@@ -345,9 +360,11 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           	 public void mouseClicked(MouseEvent e) {  
           		
           		 fc = new FileChooser();
-          		 fc.ChooseFile();
+          	
+          		 if(fc.ChooseFile()) mapclear();
           		 String filename = fc.filename;
           		 loadmap(filename);
+          		 
           		 showinfo();  
           	 	}
            });
@@ -367,16 +384,25 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     
     private void showinfo() {
      	TerrTextField.setText("[Map]\r\n" + 
-        		"author=Sean O'Connor\r\n" + 
-        		"image=world.bmp\r\n" + 
-        		"wrap=no\r\n" + 
-        		"scroll=horizontal\r\n" + 
+        		"author=Invincible Team Four\r\n" + 
         		"warn=yes\r\n" + 
+        		"image=none\r\n" + 
+        		"wrap=no\r\n" + 
+        		"scroll=none\r\n" + 
         		"\r\n" + "[Continents]\r\n" +mapedit.showContinents()+
         		"\r\n" + "[Territories]\r\n" + MapshowCountries());
     	
     }
     
+    private void mapclear() {
+	Graphics g2 =paintPanel.getGraphics();
+	g2.clearRect(0,0,paintPanel.getSize().width,paintPanel.getSize().height);
+	countries.clear();
+	continents.clear();
+	graph.clear();
+	mapedit.clear();
+	//showinfo();  
+	}
     
     //private method used for load map
     private void loadmap(String filename) {
@@ -430,7 +456,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     	return info;
     }
     
-    
+    /**
+     * Set different flag for buttons
+     */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
