@@ -1,3 +1,4 @@
+
 package MapEditor;
 
 import java.awt.EventQueue;
@@ -564,4 +565,5 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 	}
 
 }
+
 

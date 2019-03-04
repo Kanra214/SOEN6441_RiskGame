@@ -1,17 +1,11 @@
+
 package View_Components;
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.InputEvent; 
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu; 
-import javax.swing.JMenuBar; 
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke; 
-import com.sun.glass.events.KeyEvent; 
+
+ 
 public class StartManu extends JFrame{
 
 	    public JPanel startPanel;
@@ -21,7 +15,7 @@ public class StartManu extends JFrame{
 
 		public StartManu() { 
 			
-		} //????????? 
+		} //÷ÿ‘ÿππ‘Ï∆˜ 
 		public StartManu(String s,int x,int y,int w,int h) { 
 		    super(s);
 			//this.init(s); 
@@ -62,4 +56,5 @@ public class StartManu extends JFrame{
 
 
 	
+
 

@@ -265,8 +265,8 @@ public class MapEdit {
         }
         adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
         fromCountry.addNeighbour(toCountry);      
-        adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
-        toCountry.addNeighbour(fromCountry);
+        //adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
+        //toCountry.addNeighbour(fromCountry);
         return true;
     }
     
@@ -390,6 +390,7 @@ public class MapEdit {
             return false;
         }
         else{
+        	
             File outputFile = new File(mapFileName);
             FileWriter fw = null;
             try{
@@ -416,12 +417,14 @@ public class MapEdit {
                         ArrayList<String> neighbours = adjacencyList.get(loopCountry.getName());
                         fw.write(loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopContinent.getName());
                         for (String neighbour : neighbours){
+                        	System.out.println("the nofc"+neighbour);
                             fw.write(","+findCountry(neighbour).getName());
                         }
                         fw.write("\r\n");
                     }
                     fw.write("\r\n");
                 }
+                fw.flush();
                 fw.close();
                 //this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
             }catch (IOException e) {
