@@ -35,12 +35,24 @@ import Models.MapEdit;
 import Models.Continent;
 import Models.Country;
 
-
+/**
+ * In MapEditor package and this class is used for edit the map via GUI approach
+ * 
+ * @author Team36
+ * @version 1.1
+ */
 
 
 public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionListener,MouseListener{
 
-
+    /**
+     * Paramaters Setting.
+     * 
+     * graph the list to store countries when creating map
+     * countries the list to store countries when loading map
+     * continents the list to store continents  when loading map
+     * 
+     */
 
     int toolFlag=0;
     int x1,y1,x2,y2;
@@ -348,6 +360,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           	 public void mouseClicked(MouseEvent e) {  
           		
           		 fc = new FileChooser();
+          	
           		 if(fc.ChooseFile()) mapclear();
           		 String filename = fc.filename;
           		 loadmap(filename);
@@ -443,7 +456,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     	return info;
     }
     
-    
+    /**
+     * Set different flag for buttons
+     */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
