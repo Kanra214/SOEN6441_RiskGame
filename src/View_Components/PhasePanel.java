@@ -32,7 +32,7 @@ public class PhasePanel extends JPanel {
 
         }
         //phase 0 and phase 1 when no army, enable button
-        else if(!currentPlayer.armyLeft()){
+        else if(!currentPlayer.isArmyLeft()){
             completePhaseButton.setEnabled(true);
         }
         else{

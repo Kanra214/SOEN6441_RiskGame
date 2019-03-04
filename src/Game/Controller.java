@@ -13,7 +13,6 @@ import View_Components.StartManu;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 
 import MapEditor.MapEditorGUI;
 
@@ -70,7 +69,7 @@ public class Controller {
                         chosenTo = chosen;
                         int num = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
                         try {
-                            p.fortificatePhase(chosenFrom, chosenTo, num);
+                            p.fortificationsPhase(chosenFrom, chosenTo, num);
                             chosenFrom = null;
                             chosenTo = null;
                         } catch (RiskGameException ex) {
@@ -205,7 +204,9 @@ public class Controller {
 
     	System.out.println(filename);
         ArrayList<ArrayList> tempMap = new MapLoader().loadMap(filename);
-
+        if (tempMap.isEmpty()){
+            System.exit(0);
+        }
         int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
         p = new Phases(tempMap.get(0), tempMap.get(1));
         p.addObserver(window);

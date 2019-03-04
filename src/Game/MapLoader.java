@@ -26,8 +26,10 @@ public class MapLoader {
     public ArrayList<ArrayList> loadMap(String mapName){
         Map<String,ArrayList<Country>> countries ;
         Map<String,ArrayList<String>> adjacencyList;
-        map.loadMapFile(mapName);
-        
+        boolean flag = map.loadMapFile(mapName);
+        if (flag == false) {
+            return null;
+        }
         countries = map.countries;
         adjacencyList = map.adjacencyList;
         worldmap = map.continents;

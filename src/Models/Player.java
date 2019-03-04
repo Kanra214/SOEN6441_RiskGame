@@ -1,3 +1,7 @@
+/**
+ * <h1>Player</h1>
+ * This class give the player with specific characteristics
+ */
 package Models;
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,27 +34,39 @@ public class Player {
 
     }
 
-//    public String getStringColor(){
-//        if (playerColor == Color.RED) return "red";
-//        if (playerColor == Color.BLUE) return "blue";
-//        if (playerColor == Color.GREEN) return "green";
-//        if (playerColor == Color.YELLOW) return "yellow";
-//        if (playerColor == Color.LIGHT_GRAY) return "light gray";
-//        if (playerColor == Color.ORANGE) return "orange";
-//        return "uknown";
-//    }
+
+    /**
+     * Gets all the controlled countries of the player
+     * @return ArrayList of countries he controls
+     */
     public ArrayList<Country> getRealms() {
         return realms;
     }
+
+
+    /**
+     * Gets the player color
+     * @return Color    color of the player
+     */
     public Color getPlayerColor() {
         return playerColor;
     }
 
+
+    /**
+     * Gets the player ID
+     * @return int  Player ID
+     */
     public int getId() {
         return id;
     }
 
-    public boolean armyLeft(){
+
+    /**
+     * Determines if the player still have unassigned armies
+     * @return boolean True if there is still some army left and False otherwise
+     */
+    public boolean isArmyLeft(){
         return unassigned_armies > 0;
     }
 
@@ -75,7 +91,7 @@ public class Player {
 
     protected void deployArmy(Country country)  {
         if(realms.contains(country)) {
-            if(armyLeft()) {
+            if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
                 incrementMapArmies();
                 country.increaseArmy();
@@ -84,7 +100,7 @@ public class Player {
             else{
                 System.out.println("out of armies");
             }
-//            if(!armyLeft()) {
+//            if(!isArmyLeft()) {
 //
 //                p.nextPhase();
 //            }
