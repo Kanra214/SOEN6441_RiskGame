@@ -11,6 +11,14 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * reinforcement Tester.
+ *
+ * @author <Khang>
+ * @since <pre>Mar 3, 2019</pre>
+ * @version 1.0
+ */
+
 public class PhasesTest {
     Phases p;
 
