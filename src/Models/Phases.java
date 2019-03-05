@@ -17,8 +17,6 @@ public class Phases extends Observable {
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
 
-//    public int innerTurn = 0;
-
     /**
      * Constructor for phases class
      * @param graph List of countries on the map

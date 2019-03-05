@@ -24,7 +24,12 @@ public class Player {
     private int id;//this is primary key for players
 
 
-
+    /**
+     * Constructor
+     * @param id player's id
+     * @param army player's army number
+     * @param p player's current phase
+     */
     public Player(int id, int army, Phases p) {
         this.id = id;
         this.realms = new ArrayList<>();
