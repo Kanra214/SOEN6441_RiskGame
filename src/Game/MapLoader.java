@@ -9,20 +9,27 @@ import java.io.FileReader;
 import java.util.Map;
 
 /**
- * In Game package and this class is for loading the map
- * @author Team36
- * @version 1.1
+ * <h1>MapLoader</h1>
+ * This class is for load the map
  */
 public class MapLoader {
     public MapEdit map;
     ArrayList<Continent> worldmap = new ArrayList<>();
     ArrayList<Country> graph = new ArrayList<>();
     ArrayList<ArrayList> result = new ArrayList<>();
+
+    /**
+     * Constructor
+     */
     public MapLoader() {
         map = new MapEdit("a");
     }
 
-    // This function is used to load map start game(include map validation)
+    /**
+     * This function is used to load map start game(include map validation)
+     * @param mapName name of map
+     * @return map swich to a ArrayList
+     */
     public ArrayList<ArrayList> loadMap(String mapName){
         Map<String,ArrayList<Country>> countries ;
         Map<String,ArrayList<String>> adjacencyList;

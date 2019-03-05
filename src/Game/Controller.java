@@ -16,7 +16,10 @@ import javax.swing.*;
 
 import MapEditor.MapEditorGUI;
 
-
+/**
+ * <h1>Controller</h1>
+ * This class is for controller, control the process of game
+ */
 public class Controller {
     Window window;
     Phases p;
@@ -24,13 +27,23 @@ public class Controller {
     MapEditorGUI mapeditor; 
 
     String filename ;
-    
+
+    /**
+     * Constructor
+     * @param window current panel
+     * @throws IOException
+     */
     public Controller(Window window) throws IOException {
         this.window = window;
 
 //        this.window.welcome();
 
     }
+
+    /**
+     * <h1>Listener</h1>
+     * This class is for listen process of game
+     */
     class Listener implements ActionListener{
 //        private Phases phase;
         private Country chosenFrom = null;
@@ -40,8 +53,10 @@ public class Controller {
         }
 
 
-
-
+        /**
+         * Pop-up window
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
 
 
@@ -120,7 +135,11 @@ public class Controller {
 
 
     }
-    
+
+    /**
+     * Start Menu
+     * @throws IOException
+     */
     public void startManu() throws IOException {
     	startmanu = new StartManu("Risk Manu",20,30,300,400);    	
     	startmanu.setVisible(true);
@@ -137,8 +156,11 @@ public class Controller {
     	
     	
     }
-    
-    
+
+    /**
+     * Check file is correct or not
+     * @return boolean
+     */
 	public boolean ChooseFile() {
 		JFileChooser jfc = new JFileChooser(".");
 
@@ -149,7 +171,10 @@ public class Controller {
 		}
 		return true;
 	}
-    
+
+    /**
+     * Start Menu action control
+     */
     public class startManuAction implements ActionListener{
 
     	private int buttonFlag;
@@ -200,6 +225,10 @@ public class Controller {
     	
     }
 
+    /**
+     * Start game
+     * @throws IOException
+     */
     public void start() throws IOException {
 
     	System.out.println(filename);

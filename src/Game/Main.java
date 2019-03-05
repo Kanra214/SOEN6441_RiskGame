@@ -10,6 +10,11 @@ import java.io.IOException;
  * @version 1.1
  */
 public class Main {
+    /**
+     * This is main
+     * @param args args
+     * @throws IOException
+     */
     public static void main(String args[]) throws IOException {
         Controller controller = new Controller(new Window());
         controller.startManu();

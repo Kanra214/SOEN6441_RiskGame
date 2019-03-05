@@ -45,8 +45,8 @@ public class Country {
     }
 
     /**
-     *
-     * @param p
+     * Set current phase
+     * @param p current phase
      */
     protected void setPhase(Phases p){
         this.p = p;
