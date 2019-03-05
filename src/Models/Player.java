@@ -75,15 +75,8 @@ public class Player {
         return unassigned_armies > 0;
     }
 
-//    public Color getPlayerColor() {
-//        return playerColor;
-//    }
-
     protected void getReinforcement(int extra){
-
         this.setUnassigned_armies(unassigned_armies + extra);
-
-
     }
 
     public int getUnassigned_armies() {

@@ -1,11 +1,11 @@
-package Models;//this is logic, controller calls phases parts through the game
+package Models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
-
 /**
  * <h1>Phase</h1>
  * This class that controls logic of the game
+ *
  */
 public class Phases extends Observable {
     private int numOfPlayers = 1;
@@ -18,7 +18,7 @@ public class Phases extends Observable {
     private boolean viewIsConnected = false;
 
     /**
-     * Constructor for phases class
+     * Constructor
      * @param graph List of countries on the map
      * @param worldMap List of Continent on the map
      */

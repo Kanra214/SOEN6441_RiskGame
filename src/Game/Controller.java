@@ -35,9 +35,6 @@ public class Controller {
      */
     public Controller(Window window) throws IOException {
         this.window = window;
-
-//        this.window.welcome();
-
     }
 
     /**
@@ -45,37 +42,24 @@ public class Controller {
      * This class is for listen process of game
      */
     class Listener implements ActionListener{
-//        private Phases phase;
         private Country chosenFrom = null;
         private Country chosenTo = null;
-        private Listener(){
-
-        }
-
 
         /**
          * Pop-up window
          * @param e ActionEvent
          */
         public void actionPerformed(ActionEvent e) {
-
-
             System.out.println();
-
-
-//            System.out.println("Phase "+p.currentPhase);
-//            System.out.println("Turn "+ p.currentTurn);
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
                 p.nextPhase();
-//                if (phaseNow == 2) phase.nextPhase();
-//                if (phaseNow == 3) phase.nextTurn();
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
                 if (p.getCurrentPhase() == 0) {
                     p.startUpPhase(chosen);
-                } else if (p.getCurrentPhase() == 1) { // deploy army
+                } else if (p.getCurrentPhase() == 1) {
                     p.reinforcementPhase(chosen);
                 } else if (p.getCurrentPhase() == 3) {
                     if (chosenFrom == null) {
@@ -120,20 +104,11 @@ public class Controller {
 
                     }
                 }
-                else {//phase 2
-
+                else {
                     p.attackPhase();
-
                 }
-
-
             }
         }
-
-
-
-
-
     }
 
     /**
@@ -178,47 +153,44 @@ public class Controller {
     public class startManuAction implements ActionListener{
 
     	private int buttonFlag;
+
+        /**
+         * sets the buttonFlag
+         * @param buttonFlag    int representing which button was pressed
+         */
     	public startManuAction(int buttonFlag) {
     		this.buttonFlag = buttonFlag;
     	}
-    	
 
-    	
+
+        /**
+         * performs different operation depending on which button was pressed in the start menu
+         * @param e button
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
 		  	switch (buttonFlag){
-	    	
 	    	case 1:
 	    		if(ChooseFile()) {
-	    			startmanu.dispose();		    			
-				try {
-					start();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				startmanu.dispose();	
-				
-		}
-		 
-	    		
-	    	break;
-	    	
+                    startmanu.dispose();
+                    try {
+                        start();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    startmanu.dispose();
+                }
+	    	    break;
+
 	    	case 2:
 	    		mapeditor = new MapEditorGUI();
 	    		mapeditor.frame.setVisible(true);
 	    		startmanu.dispose();	
-	    	break;
-	    	
+	    	    break;
+
 	    	case 4:
 	    		startmanu.dispose();
-	    	
-	    		
-	    	break;
-	    		
-	    	
+	    	    break;
 	    	}
 			
 		}  
@@ -242,28 +214,13 @@ public class Controller {
         Listener lis = new Listener();
         p.gameSetUp(numOfPlayers);
 
-        //draw the countries on the mapPanel
         window.drawMapPanel(p);
 
         for(CountryButton cb : window.mapPanel.cbs) {
             cb.addActionListener(lis);
         }
-
         window.phasePanel.completePhaseButton.addActionListener(lis);
         p.connectView();//after this updating window is enabled
-
-
         window.setVisible(true);
-
-
-
     }
-
-
-
-
-
-
-
-
 }
