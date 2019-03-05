@@ -77,7 +77,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     public JFrame frame;
 
     /**
-     * Launch the application.
+     * Launch the application and test MapGUI individually.
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -171,6 +171,13 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
          * Add listeners to paintPanel.
          */
         paintPanel.addMouseListener(new MouseAdapter() {
+        	
+        	
+            /**
+             * mousePressed method is the listener for select the country on panel
+             * 
+             */
+  
             @Override
             public void mousePressed(MouseEvent e) {           	
             	x1=e.getX();
@@ -186,7 +193,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                 		//System.out.println("catch");
                 		name1=o.getName();
                 		FromCountry=o;
-                		System.out.println("catch"+name1);
+                		//System.out.println("catch"+name1);
                 	}
                 	
                 }              
@@ -194,7 +201,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                                 
             }
             }
-            
+            /**
+             * mouseReleased method is the listener for select the other country on panel
+             * 
+             */
             public void mouseReleased(MouseEvent e) {            	
             	x2=e.getX();
             	y2=e.getY();           	
@@ -231,6 +241,11 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             }
             }
                         
+            /**
+             * mouseClicked method is the listener for addCountry,
+             * saveMap,clearMap,addContinent,showInfo, buttons 
+             * 
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
             	
@@ -300,6 +315,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
          */
         
         addContinent.addMouseListener(new MouseAdapter() {
+            /**
+             * mouseClicked listener for adding continent.
+             */
+        	
 	       	 public void mouseClicked(MouseEvent e) {  
 	             //String continentName=setCountryName("Enter CountinentName");
 	             //int controlNum=setContNum("Enter ControlNumber");
@@ -316,6 +335,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         });
         
         saveMap.addMouseListener(new MouseAdapter() {
+        	
+            /**
+             * mouseClicked listener for saving map.
+             */
         	 public void mouseClicked(MouseEvent e) {  
         		 
         		String nm = JOptionPane.showInputDialog("Input the file name");
@@ -327,6 +350,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         });
         
         clearMap.addMouseListener(new MouseAdapter() {
+        	
+            /**
+             * mouseClicked listener for clearing map.
+             */
        	 public void mouseClicked(MouseEvent e) {  
        		mapclear();
         	showinfo();  
@@ -334,6 +361,10 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         });
         
         editInfo.addMouseListener(new MouseAdapter() {
+        	
+            /**
+             * mouseClicked listener for editing map.
+             */
           	 public void mouseClicked(MouseEvent e) {  
           		String newInfo=TerrTextField.getText();
           		//TerrTextField.setText(newInfo);
@@ -342,7 +373,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           		 
   	            FileWriter writer = new FileWriter(fc.filepath,false);  	            
   	            writer.write(newInfo);  	            
-  	            writer.flush();//??????????????????????????????????
+  	            writer.flush();
   	            writer.close();
   	        } catch (IOException e2) {
   	            e2.printStackTrace();
@@ -358,6 +389,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
              });
         
         loadMap.addMouseListener(new MouseAdapter() {
+            /**
+             * mouseClicked listener for loading map.
+             */
           	 public void mouseClicked(MouseEvent e) {  
           		
           		 fc = new FileChooser();
@@ -371,7 +405,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
            });
         
         showInfo.addMouseListener(new MouseAdapter() {
-        	
+            /**
+             * mouseClicked listener for updating information in text area.
+             */
         	 public void mouseClicked(MouseEvent e) {            		
         		 showinfo();           
         	 }
@@ -444,16 +480,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
     private String MapshowCountries() {
     	
     	String info="";
-         
-        
-                for (Country loopCountry:countries){  
+    	for (Country loopCountry:countries){  
     		info=info+loopCountry.getName()+","+loopCountry.getX()+","+loopCountry.getY()+","+loopCountry.getContName()+","+loopCountry.printNeighbors()+"\r\n";
-                // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
-    		//System.out.println(info);
-            
-                	}
-                
-        	
+         }                 	
     	return info;
     }
     
