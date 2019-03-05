@@ -1,6 +1,4 @@
-/**
- * This is center Controller class
- */
+//this is center controller
 package Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,37 +6,70 @@ import java.io.File;
 import java.io.IOException;
 import Models.*;
 import View_Components.CountryButton;
+
 import View_Components.Window;
 import View_Components.StartManu;
+
 import java.util.ArrayList;
+
 import javax.swing.*;
+
 import MapEditor.MapEditorGUI;
 
-
+/**
+ * <h1>Controller</h1>
+ * This class is for controller, control the process of game
+ */
 public class Controller {
     Window window;
     Phases p;
     StartManu startmanu;
-    MapEditorGUI mapeditor;
+    MapEditorGUI mapeditor; 
+
     String filename ;
 
     /**
-     * Constructor for Controller
-     * @param window main window
+     * Constructor
+     * @param window current panel
+     * @throws IOException
      */
-    public Controller(Window window) {
+    public Controller(Window window) throws IOException {
         this.window = window;
+
+//        this.window.welcome();
+
     }
 
+    /**
+     * <h1>Listener</h1>
+     * This class is for listen process of game
+     */
     class Listener implements ActionListener{
+//        private Phases phase;
         private Country chosenFrom = null;
         private Country chosenTo = null;
+        private Listener(){
 
+        }
+
+
+        /**
+         * Pop-up window
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
+
+
             System.out.println();
+
+
+//            System.out.println("Phase "+p.currentPhase);
+//            System.out.println("Turn "+ p.currentTurn);
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
                 p.nextPhase();
+//                if (phaseNow == 2) phase.nextPhase();
+//                if (phaseNow == 3) phase.nextTurn();
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
@@ -58,6 +89,8 @@ public class Controller {
                             chosenTo = null;
                         } catch (RiskGameException ex) {
                             String errorMsg;
+
+
                             switch (ex.type) {
                                 case 0:
                                     errorMsg = "Out of army.";
@@ -77,24 +110,34 @@ public class Controller {
 
                                 default:
                                     errorMsg = "Unknown.";
+
                             }
+
                             window.showMsg(errorMsg + " Try again please.");
                             chosenFrom = null;
                             chosenTo = null;
                         }
+
                     }
                 }
                 else {//phase 2
+
                     p.attackPhase();
+
                 }
+
+
             }
         }
+
+
+
+
+
     }
 
-
-
     /**
-     * Create a start menu with 4 options
+     * Start Menu
      * @throws IOException
      */
     public void startManu() throws IOException {
@@ -115,8 +158,8 @@ public class Controller {
     }
 
     /**
-     * choose map to load
-     * @return True if the map is chosen
+     * Check file is correct or not
+     * @return boolean
      */
 	public boolean ChooseFile() {
 		JFileChooser jfc = new JFileChooser(".");
@@ -128,44 +171,39 @@ public class Controller {
 		}
 		return true;
 	}
-    
+
+    /**
+     * Start Menu action control
+     */
     public class startManuAction implements ActionListener{
 
     	private int buttonFlag;
-
-        /**
-         * sets the buttonFlag
-         * @param buttonFlag which action to do
-         */
     	public startManuAction(int buttonFlag) {
-    	    this.buttonFlag = buttonFlag;
+    		this.buttonFlag = buttonFlag;
     	}
+    	
 
-
-        /**
-         * Logic behind each button pressed:
-         * <ul>
-         *   <li>1) start button to start the game</li>
-         *   <li>2) map editor to create your own map</li>
-         *   <li>3) instructions to get the rules</li>
-         *   <li>4) exit game</li>
-         * </ul>
-         * @param e button clicked
-         */
+    	
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
 		  	switch (buttonFlag){
+	    	
 	    	case 1:
 	    		if(ChooseFile()) {
-	    		    startmanu.dispose();
-                    try {
-                        start();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                    startmanu.dispose();
-		        }
+	    			startmanu.dispose();		    			
+				try {
+					start();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				startmanu.dispose();	
+				
+		}
 		 
+	    		
 	    	break;
 	    	
 	    	case 2:
@@ -176,8 +214,11 @@ public class Controller {
 	    	
 	    	case 4:
 	    		startmanu.dispose();
+	    	
+	    		
 	    	break;
-
+	    		
+	    	
 	    	}
 			
 		}  
@@ -185,7 +226,7 @@ public class Controller {
     }
 
     /**
-     * Start the game
+     * Start game
      * @throws IOException
      */
     public void start() throws IOException {

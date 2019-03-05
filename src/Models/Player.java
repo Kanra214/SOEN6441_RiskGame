@@ -25,10 +25,10 @@ public class Player {
 
 
     /**
-     *
-     * @param id player ID
-     * @param army initial army count for the player
-     * @param p Phase for player to update window
+     * Constructor
+     * @param id player's id
+     * @param army player's army number
+     * @param p player's current phase
      */
     public Player(int id, int army, Phases p) {
         this.id = id;
@@ -42,7 +42,7 @@ public class Player {
 
     /**
      * Gets all the controlled countries of the player
-     * @return ArrayList of countries the player controls
+     * @return ArrayList of countries he controls
      */
     public ArrayList<Country> getRealms() {
         return realms;
@@ -50,8 +50,8 @@ public class Player {
 
 
     /**
-     * Gets the player's color
-     * @return Color of the player
+     * Gets the player color
+     * @return Color    color of the player
      */
     public Color getPlayerColor() {
         return playerColor;
@@ -60,7 +60,7 @@ public class Player {
 
     /**
      * Gets the player ID
-     * @return int - Player ID
+     * @return int  Player ID
      */
     public int getId() {
         return id;
@@ -69,57 +69,54 @@ public class Player {
 
     /**
      * Determines if the player still have unassigned armies
-     * @return True if there is still some army left and False otherwise
+     * @return boolean True if there is still some army left and False otherwise
      */
     public boolean isArmyLeft(){
         return unassigned_armies > 0;
     }
 
+//    public Color getPlayerColor() {
+//        return playerColor;
+//    }
 
-    /**
-     *
-     * @param reinforcements reinforcement army for the current player
-     */
-    protected void getReinforcement(int reinforcements){
-        this.setUnassigned_armies(unassigned_armies + reinforcements);
+    protected void getReinforcement(int extra){
+
+        this.setUnassigned_armies(unassigned_armies + extra);
+
+
     }
-
 
     public int getUnassigned_armies() {
         return unassigned_armies;
     }
-
-
-    /**
-     * Get total deployed army belonging to the current player on the map
-     * @return the total number of armies this player owns on the world map(excluding unassigned_armies)
-     */
     public int getMapArmies(){
         return mapArmies;
     }
 
 
-    /**
-     * Assigns free army to the country
-     * @param country to which country is the player assigning his army
-     */
     protected void deployArmy(Country country)  {
         if(realms.contains(country)) {
             if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
                 incrementMapArmies();
                 country.increaseArmy();
+
             }
             else{
                 System.out.println("out of armies");
             }
+//            if(!isArmyLeft()) {
+//
+//                p.nextPhase();
+//            }
+
+
+
         }
         else{
             System.out.println("not a country of current player");
         }
     }
-
-
     private void incrementMapArmies() {
         mapArmies++;
         p.updateWindow();
@@ -130,18 +127,10 @@ public class Player {
     private void setUnassigned_armies(int unassigned_armies) {
         this.unassigned_armies = unassigned_armies;
         p.updateWindow();
+
     }
 
-
-
-    /**
-     * This function is used to in Phase3 whether player can move army from one country to another;
-     * @param sourceCountry from country
-     * @param targetCountry to country
-     * @return True/False if there is a path between source country to the target country by going through the countries he owns
-     * @throws CountryNotInRealms
-     * @throws SourceIsTargetException
-     */
+    //This function is used to in Phase3 whether player can move army from one country to another;
     private boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
 
         if (realms.contains(sourceCountry) && realms.contains(targetCountry)) {
@@ -175,29 +164,27 @@ public class Player {
             else{
                 throw new SourceIsTargetException(3);
             }
+
+
         }
         else{
             throw new CountryNotInRealms(2);
         }
+
+
     }
 
 
-    /**
-     * Move army from one Country to another
-     * @param from from which country
-     * @param to to which country
-     * @param num what number of army
-     * @throws CountryNotInRealms
-     * @throws OutOfArmyException
-     * @throws NoSuchPathException
-     * @throws SourceIsTargetException
-     * @throws MoveAtLeastOneArmyException
-     */
+
     protected void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
+
         if(findPath(from, to)){
+
+
             from.decreaseArmy(num);
             to.increaseArmy(num);
             p.nextPhase();
+
         }
         else{
             throw new NoSuchPathException(1);

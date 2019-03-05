@@ -5,6 +5,10 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
+/**
+ * <h1>FileChooser</h1>
+ * This class is for choose lap for the game
+ */
 public class FileChooser {
 
 	public String filename,filepath;
