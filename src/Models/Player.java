@@ -9,6 +9,10 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * <h1>Player</h1>
+ * This class that controls logic of the Player
+ */
 public class Player {
     //view needs unassigned_armies, mapArmies, id, playerColor
 

@@ -6,7 +6,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 /**
- * This class controls logic of MapEdit
+ * <h1>MapEdit</h1>
+ * This class that controls logic of MapEdit
  */
 public class MapEdit {
     private int findCountries;
