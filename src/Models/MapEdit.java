@@ -11,12 +11,14 @@ public class MapEdit {
     public String author;
     public String warn,image,wrap,scroll;
     public ArrayList<Continent> continents;
-    public ArrayList<Continent> allContinents;
-    public ArrayList<Country> allCountries;;
     public int countryNum;
     public Map<String,ArrayList<Country>> countries;
     public Map<String,ArrayList<String>> adjacencyList;
-	
+
+    /**
+     * This is constructor
+     * @param name name of the map
+     */
     public MapEdit(String name) {
         this.riskMapName = name;
         this.author = "Invincible Team Four";
@@ -30,6 +32,12 @@ public class MapEdit {
         this.adjacencyList = new HashMap<String,ArrayList<String>>();
 
     }
+
+    /**
+     * This function is used to map validation
+     * @param mapFileName name of the map
+     * @return boolean
+     */
     public boolean loadMapFile(String mapFileName) {//mode 1-mapEditor 2-RiskGame
         BufferedReader br = null;
         String inputLine = null;
@@ -111,8 +119,6 @@ public class MapEdit {
                                             JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Continent <"+continentName+">'s control number must be integer.");
                                             return false;
                                         }
-                                        //used to new Continent
-//                                        addContinent(continentName,Integer.parseInt(controlNum));
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Invalid format.");
@@ -151,13 +157,6 @@ public class MapEdit {
                                             countriesList.get(countryName).add(countryInfo[i].trim());
 
                                         }
-//                                        System.out.println(1);
-                                        //used to new Country, add connection between country
-//                                        addCountry(countryInfo[0],countryInfo[3],Integer.parseInt(countryInfo[1]),Integer.parseInt(countryInfo[2]));
-//                                        adjacencyList.put(countryName, new ArrayList<String>());
-//                                        for (int i = 4; i < countryInfo.length; i++ ) {
-//                                            adjacencyList.get(countryName).add(countryInfo[i].trim());
-//                                        }
                                     }
                                     else{
                                         JOptionPane.showMessageDialog(null,"Fatal error in line "+rowNumber+": Not enough data.");
@@ -192,11 +191,14 @@ public class MapEdit {
                 adjacencyList.get(findCountry(loopCountry).getName()).add(findCountry(loopNeighbour).getName());
             }
         }
-//        System.out.println(1);
-
         return true;
     }
-    //This method used to find country
+
+    /**
+     * This function is used to find country
+     * @param countryName country name we want to find
+     * @return Country
+     */
     public Country findCountry(String countryName) {
         for (ArrayList<Country> loopList : countries.values()) {
             for (Country loopCountry:loopList){
@@ -207,7 +209,12 @@ public class MapEdit {
         }
         return null;
     }
-    //This method is used to find Continent
+
+    /**
+     * This function is used to find Continent
+     * @param continentName continent name we want to find
+     * @return boolean
+     */
     public Continent findContinent(String continentName) {
         for (Continent loopContinent:continents){
             if (loopContinent.getName().equals(continentName)){
@@ -217,8 +224,14 @@ public class MapEdit {
         return null;
     }
 
-
-    //The function to add new Country in existing continent
+    /**
+     * The function to add new Country in existing continent
+     * @param countryName The name of country want to add
+     * @param continentName The name of existing continent country belong to
+     * @param coordinateX The X coordinate of country
+     * @param coordinateY The Y coordinate of country
+     * @return boolean
+     */
     public boolean addCountry(String countryName,String continentName,int coordinateX, int coordinateY){
 
         Continent targetContinent = findContinent(continentName);
@@ -239,7 +252,12 @@ public class MapEdit {
         return true;
     }
 
-    //This function is used to new Continent
+    /**
+     * This function is used to new Continent
+     * @param continentName The name of continent want to add
+     * @param controlNum The control value of continent
+     * @return boolean
+     */
     public boolean addContinent(String continentName, int controlNum){
         if (findContinent(continentName)!=null) {
             JOptionPane.showMessageDialog(null,"Continnet <"+continentName+"> already exists");
@@ -251,7 +269,12 @@ public class MapEdit {
         return true;
     }
 
-    //This function is used to add connection between 2 countries
+    /**
+     * This function is used to add connection between 2 countries
+     * @param countryNameFrom The name of the country want to add from
+     * @param countryNameTo The name of the country want to add to
+     * @return boolean
+     */
     public boolean addConnection(String countryNameFrom,String countryNameTo){
         Country fromCountry = findCountry(countryNameFrom);
         if (fromCountry==null){
@@ -264,13 +287,15 @@ public class MapEdit {
             return false;
         }
         adjacencyList.get(fromCountry.getName()).add(toCountry.getName());
-        fromCountry.addNeighbour(toCountry);      
-        //adjacencyList.get(toCountry.getName()).add(fromCountry.getName());
-        //toCountry.addNeighbour(fromCountry);
+        fromCountry.addNeighbour(toCountry);
         return true;
     }
-    
-    //This is used for return the country information to mapEditor 
+
+    /**
+     * This function is used for return the country information to mapEditor
+     * @return info
+     */
+
     public String showCountries() {
     	
     	String info="";
@@ -283,31 +308,36 @@ public class MapEdit {
         	
     	return info;
     }
-    
-    //This is used for return the continent information to mapEditor 
+
+    /**
+     * This is used for return the continent information to mapEditor
+     * @return info
+     */
     public String showContinents() {
     	
     	String info="";
     	for (Continent loopContinent:continents) {
             	info=info+loopContinent.getName()+"="+loopContinent.getControl_value()+"\r\n";
-            	
-                // System.out.println(loopCountry.getName()+"-"+loopCountry.getX()+"-"+loopCountry.getY());
-                
+
             }
         
     	return info;
     }
-    
 
-    //This fuction is used to clear map
+    /**
+     * This fuction is used to clear map
+     */
     public void clear() {
         continents.clear();
         countries.clear();
         adjacencyList.clear();
     }
 
-
-    //This function is used to traversal map using BFS method
+    /**
+     * This function is used to traversal map using BFS method
+     * @param localAdjacencyList Map used to store country
+     * @param sourceNode start Node
+     */
     public void BFS(Map<String,ArrayList<String>> localAdjacencyList, String sourceNode) {
         Queue<String> queue = new LinkedList<String>();
         HashSet<String> set = new HashSet<String>();
@@ -326,7 +356,11 @@ public class MapEdit {
         }
     }
 
-    //This function is used to Graph Connection
+    /**
+     * This function is used to Graph Connection
+     * @param localAdjacencyList Map used to store country
+     * @return boolean
+     */
     public boolean checkConnection(Map<String,ArrayList<String>> localAdjacencyList) {
         if (localAdjacencyList.size()==0) return true;
         String sourceNode = "";
@@ -341,6 +375,10 @@ public class MapEdit {
         else return false;
     }
 
+    /**
+     * This Function is used to check whether map is valid
+     * @return boolean
+     */
     //This Function is used to check whether map is valid
     public boolean checkValid(){
         String errorMessage = null;
@@ -383,7 +421,12 @@ public class MapEdit {
 
         return true;
     }
-    //This function is used to write txt file
+
+    /**
+     * This function is used to write txt file
+     * @param mapFileName The written txt file name
+     * @return boolean
+     */
     public boolean saveToFile(String mapFileName) {
         boolean flag = checkValid();
         if (flag == false) {
@@ -426,7 +469,6 @@ public class MapEdit {
                 }
                 fw.flush();
                 fw.close();
-                //this.riskMapName = (mapFileName.substring(mapFileName.lastIndexOf("\\")+1,mapFileName.lastIndexOf(".")));
             }catch (IOException e) {
                 e.printStackTrace();
             } finally {
