@@ -5,6 +5,9 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
+/**
+ * This class controls logic of MapEdit
+ */
 public class MapEdit {
     private int findCountries;
     public String riskMapName;
