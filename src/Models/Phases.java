@@ -103,6 +103,10 @@ public class Phases extends Observable {
     }
 
 
+    /**
+     * get current Phase
+     * @return current phase
+     */
     public int getCurrentPhase() {
         return currentPhase;
     }
@@ -117,6 +121,10 @@ public class Phases extends Observable {
     }
 
 
+    /**
+     * Gets current player
+     * @return current player
+     */
     public Player getCurrent_player() {
         return current_player;
     }

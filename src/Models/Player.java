@@ -18,17 +18,16 @@ public class Player {
 
     private static Color[] ALL_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.LIGHT_GRAY, Color.ORANGE};
     private Phases p;
-
-
-
     private Color playerColor;
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
+    private int id;//this is primary key for players
+
     /**
      * Array list of controlled territories of the player
      */
     protected ArrayList<Country> realms;
-    private int id;//this is primary key for players
+
 
 
     /**
@@ -82,18 +81,35 @@ public class Player {
         return unassigned_armies > 0;
     }
 
+    /**
+     * Set unassigned armies to the player
+     * @param extra number of army give to the player
+     */
     protected void getReinforcement(int extra){
         this.setUnassigned_armies(unassigned_armies + extra);
     }
 
+    /**
+     * Get unassigned army
+     * @return number of army left
+     */
     public int getUnassigned_armies() {
         return unassigned_armies;
     }
+
+    /**
+     * Get all armies currently on the map
+     * @return number of armies currently assigned to countries owned by the player
+     */
     public int getMapArmies(){
         return mapArmies;
     }
 
 
+    /**
+     * Send army to the country
+     * @param country to where army will be sent
+     */
     protected void deployArmy(Country country)  {
         if(realms.contains(country)) {
             if(isArmyLeft()) {
@@ -110,6 +126,7 @@ public class Player {
             System.out.println("not a country of current player");
         }
     }
+
     private void incrementMapArmies() {
         mapArmies++;
         p.updateWindow();
