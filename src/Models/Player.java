@@ -24,6 +24,9 @@ public class Player {
     private Color playerColor;
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
+    /**
+     * Array list of controlled territories of the player
+     */
     protected ArrayList<Country> realms;
     private int id;//this is primary key for players
 
@@ -55,7 +58,7 @@ public class Player {
 
     /**
      * Gets the player color
-     * @return Color    color of the player
+     * @return Color of the player
      */
     public Color getPlayerColor() {
         return playerColor;
