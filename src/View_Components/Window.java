@@ -8,9 +8,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
-//import java.util.Observable;
-//import java.util.Observer;
 
+/**
+ * <h1>Window</h1>
+ * This class is used as the window to contain game view components
+ */
 public class Window extends JFrame implements Observer {
     private final static int X = 0;
     private final static int Y = 0;
@@ -44,10 +46,9 @@ public class Window extends JFrame implements Observer {
     private SidePanel sidePanel;
 
 
-
-
-
-
+    /**
+     * This is constructor
+     */
     public Window(){
         //window settings
         super("Risk Game");
@@ -87,36 +88,6 @@ public class Window extends JFrame implements Observer {
 
 
 
-
-//        playerLabels[0] = new JLabel();
-//        playerLabels[1] = new JLabel();
-//        playerLabels[2] = new JLabel();
-//        playerLabels[3] = new JLabel();
-//        playerLabels[4] = new JLabel();
-//        playerLabels[5] = new JLabel();
-
-
-
-//        sidePanel.add(playerLabels[0]);
-//        sidePanel.add(playerLabels[1]);
-//        sidePanel.add(playerLabels[2]);
-//        sidePanel.add(playerLabels[3]);
-//        sidePanel.add(playerLabels[4]);
-//        sidePanel.add(playerLabels[5]);
-
-
-
-
-//        currentPlayerLabel = new JLabel();
-//        currentPhaseLabel = new JLabel();
-//        unitLeftLabel = new JLabel();
-//        completePhaseButton = new JButton("complete this phase");
-
-//        phasePanel.add(completePhaseButton);
-//        phasePanel.add(currentPlayerLabel);
-//        phasePanel.add(currentPhaseLabel);
-//        phasePanel.add(unitLeftLabel);
-
         mainPanel.add(mapPanel);
         mainPanel.add(sidePanel);
         mainPanel.add(phasePanel);
@@ -128,29 +99,34 @@ public class Window extends JFrame implements Observer {
 
     }
 
-//    public void welcome() throws IOException {
-//
-//        Image background = ImageIO.read(new File("welcome.jpeg"));
-//        ImagePanel welcomePanel = new ImagePanel(background);
-//        add(welcomePanel);
-//        setVisible(true);
-//
-//
-//    }
 
-
+    /**
+     * Prompt for user input
+     * @param dialog dialog shown to the user
+     * @return user input
+     */
     public String promptPlayer(String dialog) {
         String input = JOptionPane.showInputDialog(this, dialog);
 
         return input;
 
     }
+
+    /**
+     * Show message on the screen
+     * @param dialog dialog shown to the user
+     */
     public void showMsg(String dialog){
         JOptionPane.showMessageDialog(this, dialog);
     }
 
 
     @Override
+    /**
+     * update this window
+     * @param o Observer object
+     * @param arg other argument
+     */
     public void update(Observable o, Object arg) {
 
         Phases p = (Phases)o;
@@ -164,6 +140,11 @@ public class Window extends JFrame implements Observer {
 
 
     }
+
+    /**
+     * Draw countries on MapPanel
+     * @param p Phases object
+     */
     public void drawMapPanel(Phases p){
         for(Country country : p.getGraph()){
 //            country.setPhase(p);
