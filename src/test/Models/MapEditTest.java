@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 /** 
 * MapEdit Tester. 
 * 
-* @author <Bin>
+* @author Bin
 * @since <pre>Mar 3, 2019</pre> 
 * @version 1.0 
 */ 

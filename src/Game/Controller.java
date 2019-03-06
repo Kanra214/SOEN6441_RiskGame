@@ -31,9 +31,8 @@ public class Controller {
     /**
      * Constructor
      * @param window current panel
-     * @throws IOException
      */
-    public Controller(Window window) throws IOException {
+    public Controller(Window window) {
         this.window = window;
     }
 
@@ -113,9 +112,8 @@ public class Controller {
 
     /**
      * Start Menu
-     * @throws IOException
      */
-    public void startManu() throws IOException {
+    public void startManu(){
     	startmanu = new StartManu("Risk Manu",20,30,300,400);    	
     	startmanu.setVisible(true);
     	
@@ -199,7 +197,7 @@ public class Controller {
 
     /**
      * Start game
-     * @throws IOException
+     * @throws IOException map loading exception
      */
     public void start() throws IOException {
 

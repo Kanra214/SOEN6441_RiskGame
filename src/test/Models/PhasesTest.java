@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * reinforcement Tester.
  *
- * @author <Khang>
+ * @author Khang
  * @since <pre>Mar 3, 2019</pre>
  * @version 1.0
  */
@@ -23,7 +23,7 @@ public class PhasesTest {
     Phases p;
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         System.out.println("1.map");
         ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
         System.out.println("Inside before");
@@ -32,7 +32,7 @@ public class PhasesTest {
     }
 
     @After
-    public void after() throws Exception {
+    public void after() {
         System.out.println("Inside after");
     }
 
@@ -41,7 +41,7 @@ public class PhasesTest {
      * method: extraArmyFromContinent(Player player)
      */
     @Test
-    public void extraArmyFromContinent() throws Exception {
+    public void extraArmyFromContinent() {
         p.gameSetUp(1);
         assertEquals(p.extraArmyFromContinent(p.getCurrent_player()),44);
     }
@@ -52,7 +52,7 @@ public class PhasesTest {
      * method: reinforcementArmy(Player player)
      */
     @Test
-    public void reinforcementArmy() throws Exception {
+    public void reinforcementArmy() {
         p.gameSetUp(1);
         assertEquals(p.reinforcementArmy(p.getCurrent_player()), 63);
 
@@ -63,7 +63,7 @@ public class PhasesTest {
      * method: reinforcementArmy(Player player)
      */
     @Test
-    public void extraArmyFromContinent_whenHeOwns1() throws Exception {
+    public void extraArmyFromContinent_whenHeOwns1() {
         Player n = new Player(0,0,p);
         p.getGraph().get(0).setOwner(n);
         assertEquals(p.reinforcementArmy(n), 3);

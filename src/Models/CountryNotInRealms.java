@@ -9,7 +9,6 @@ public class CountryNotInRealms extends RiskGameException{
 
 	public CountryNotInRealms(int type) {
 		super(type);
-		// TODO Auto-generated constructor stub
 	}
 
 }

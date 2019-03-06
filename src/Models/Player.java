@@ -145,8 +145,8 @@ public class Player {
      * @param sourceCountry The source country
      * @param targetCountry The target country
      * @return True if it is possible to transfer between given countries
-     * @throws CountryNotInRealms
-     * @throws SourceIsTargetException
+     * @throws CountryNotInRealms   country does not belong to the current player
+     * @throws SourceIsTargetException  source and target are the same
      */
     private boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
 
@@ -195,11 +195,11 @@ public class Player {
      * @param from - from which country army is being taken
      * @param to - to which country army is being send
      * @param num - number of the army to transfer
-     * @throws CountryNotInRealms
-     * @throws OutOfArmyException
-     * @throws NoSuchPathException
-     * @throws SourceIsTargetException
-     * @throws MoveAtLeastOneArmyException
+     * @throws CountryNotInRealms   country not owned by the player
+     * @throws OutOfArmyException   not enough army to transfer
+     * @throws NoSuchPathException  no path from owned countries between country
+     * @throws SourceIsTargetException  source country and target country is the same
+     * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
     protected void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
 

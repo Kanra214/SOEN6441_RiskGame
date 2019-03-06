@@ -241,11 +241,11 @@ public class Phases extends Observable {
      * @param from  Country from where army will be deducted
      * @param to    Country from where army will be sent
      * @param num   int number of armies to send
-     * @throws SourceIsTargetException
-     * @throws MoveAtLeastOneArmyException
-     * @throws CountryNotInRealms
-     * @throws OutOfArmyException
-     * @throws NoSuchPathException
+     * @throws CountryNotInRealms   country not owned by the player
+     * @throws OutOfArmyException   not enough army to transfer
+     * @throws NoSuchPathException  no path from owned countries between country
+     * @throws SourceIsTargetException  source country and target country is the same
+     * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
