@@ -1,5 +1,6 @@
 package Models;
 
+
 public class RiskGameException extends Exception {
     public int type;
     public RiskGameException(int type){
@@ -23,14 +24,14 @@ class NoSuchPathException extends RiskGameException{
 }
 //2
 
-/*
+
 class CountryNotInRealms extends RiskGameException{
 
     public CountryNotInRealms(int type) {
         super(type);
     }
 }
-*/
+
 //3
 class SourceIsTargetException extends RiskGameException{
 
