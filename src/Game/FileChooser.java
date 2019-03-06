@@ -12,6 +12,11 @@ import javax.swing.JFileChooser;
 public class FileChooser {
 
 	public String filename,filepath;
+
+	/**
+	 * This function is for choosing a map
+	 * @return true if chosen.
+	 */
 	public boolean ChooseFile() {
 		JFileChooser jfc = new JFileChooser(".");
 

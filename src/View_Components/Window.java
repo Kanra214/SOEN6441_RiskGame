@@ -120,13 +120,10 @@ public class Window extends JFrame implements Observer {
         JOptionPane.showMessageDialog(this, dialog);
     }
 
-
-    @Override
     /**
-     * update this window
-     * @param o Observer object
-     * @param arg other argument
+     * Update this window
      */
+    @Override
     public void update(Observable o, Object arg) {
 
         Phases p = (Phases)o;

@@ -171,14 +171,12 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
          * Add listeners to paintPanel.
          */
         paintPanel.addMouseListener(new MouseAdapter() {
-        	
-        	
-            /**
-             * mousePressed method is the listener for select the country on panel
-             * 
-             */
-  
+
             @Override
+			/**
+			 * mousePressed method is the listener for select the country on panel
+			 *
+			 */
             public void mousePressed(MouseEvent e) {           	
             	x1=e.getX();
             	y1=e.getY();
@@ -203,7 +201,6 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
             }
             /**
              * mouseReleased method is the listener for select the other country on panel
-             * 
              */
             public void mouseReleased(MouseEvent e) {            	
             	x2=e.getX();
@@ -240,13 +237,12 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
                                 
             }
             }
-                        
-            /**
-             * mouseClicked method is the listener for addCountry,
-             * saveMap,clearMap,addContinent,showInfo, buttons 
-             * 
-             */
+
             @Override
+			/**
+			 * mouseClicked method is the listener for addCountry,
+			 * saveMap,clearMap,addContinent,showInfo, buttons
+			 */
             public void mouseClicked(MouseEvent e) {
             	
             	switch(toolFlag){ 
@@ -476,8 +472,8 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 	        }
 	  	} 	
     }
-    
-    private String MapshowCountries() {
+
+	private String MapshowCountries() {
     	
     	String info="";
     	for (Country loopCountry:countries){  
@@ -520,42 +516,69 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 	        
 	}
 	//Used for entering information
+
+	/**
+	 * Set country's name
+	 * @param dialog name of country
+	 * @return name of country
+	 */
     public String setCountryName(String dialog) {
         String input = JOptionPane.showInputDialog(dialog);
         return input;
-    }	
-    
-    public String setContName(String dialog) {
+    }
+
+	/**
+	 * Set continent's name
+	 * @param dialog name of continent
+	 * @return name of continent
+	 */
+	public String setContName(String dialog) {
         String input = JOptionPane.showInputDialog(dialog);
         return input;
-    }	
-    
-    public int setContNum(String dialog) {
+    }
+
+	/**
+	 * Countrol value for continent
+	 * @param dialog value of control
+	 * @return value of control
+	 */
+	public int setContNum(String dialog) {
         int input = Integer.parseInt(JOptionPane.showInputDialog(dialog));
         return input;
     }
-	
 
-	
 
+
+	/**
+	 * Dose Nothing
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Dose Nothing
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Dose Nothing
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Get coordinate of the mouse press
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -564,6 +587,9 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 		
 	}
 
+	/**
+	 * Get coordinate of the mouse release
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		x2=e.getX();
@@ -571,23 +597,35 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
 		
 	}
 
+	/**
+	 * Dose Nothing
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Dose Nothing
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	/**
+	 * Update graphics
+	 * @param g graphics
+	 */
 	public void update(Graphics g)
 	{
 	paint(g);
 	}
-	
+	/**
+	 * Dose Nothing
+	 */
 	public void paint(Graphics g)
 	{
 		

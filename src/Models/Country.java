@@ -61,7 +61,7 @@ public class Country {
     }
 
     /**
-     * Increase army number after moving
+     * Increase army number by specific amount
      * @param i The number of army moved
      * @throws MoveAtLeastOneArmyException
      */
@@ -84,7 +84,7 @@ public class Country {
 //whats this
 
     /**
-     * After move army, the ary number should be decrease in previous country
+     * Decrease army number by specific amount
      * @param i The number of army moved
      * @throws OutOfArmyException
      * @throws MoveAtLeastOneArmyException

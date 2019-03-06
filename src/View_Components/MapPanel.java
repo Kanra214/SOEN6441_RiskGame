@@ -26,7 +26,6 @@ public class MapPanel extends JPanel {
     @Override
     /**
      * Drawing method to draw the relations between countries
-     * @param g Graphics object
      */
     public void paintComponent(Graphics g){
         super.paintComponent(g);

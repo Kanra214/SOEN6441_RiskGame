@@ -111,7 +111,7 @@ public class Controller {
     }
 
     /**
-     * Start Menu
+     * This is a function create Start Menu box.
      */
     public void startManu(){
     	startmanu = new StartManu("Risk Manu",20,30,300,400);    	
