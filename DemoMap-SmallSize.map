@@ -1,0 +1,22 @@
+[Map]
+author=Invincible Team Four
+warn=yes
+image=none
+wrap=no
+scroll=none
+
+[Continents]
+cont1=5
+cont2=5
+cont3=15
+
+[Territories]
+c1,442,171,cont1,c2,c3,c5
+c5,420,109,cont1,c1
+
+c2,557,211,cont2,c1,c6
+c6,662,203,cont2,c2
+
+c3,401,276,cont3,c4,c1
+c4,517,320,cont3,c3
+
