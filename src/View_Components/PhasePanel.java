@@ -4,12 +4,19 @@ import Models.Player;
 
 import javax.swing.*;
 
+/**
+ * <h1>PhasePanel</h1>
+ * This is a JPanel showing information about current phase
+ */
 public class PhasePanel extends JPanel {
     private JLabel currentPhaseLabel;
     private JLabel currentPlayerLabel;
     private JLabel unitLeftLabel;
     public JButton completePhaseButton;
 
+    /**
+     * This is constructor
+     */
     protected PhasePanel(){
         currentPlayerLabel = new JLabel();
         currentPhaseLabel = new JLabel();
@@ -21,6 +28,11 @@ public class PhasePanel extends JPanel {
         add(unitLeftLabel);
     }
 
+    /**
+     * Set context of this PhasePanel
+     * @param currentPhase int representing current phase
+     * @param currentPlayer Player which is current player
+     */
     protected void setContext(int currentPhase, Player currentPlayer){
         this.setBackground(currentPlayer.getPlayerColor());
         currentPhaseLabel.setText("<html><body><h1>Current Phase : " + phaseToString(currentPhase) + "</h1></body><html>");
@@ -44,6 +56,11 @@ public class PhasePanel extends JPanel {
 
     }
 
+    /**
+     * Convert currentPhase int representation to string representation
+     * @param currentPhase int representing current phase
+     * @return string representation
+     */
     private String phaseToString(int currentPhase){
         switch (currentPhase){
             case 0: return "Startup Phase";

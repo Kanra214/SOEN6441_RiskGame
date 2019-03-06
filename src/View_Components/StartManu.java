@@ -5,7 +5,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
- 
+/**
+ * <h1>StartManu</h1>
+ * This class is start menu window that will be shown at the beginning of this game
+ */
 public class StartManu extends JFrame{
 
 	    public JPanel startPanel;
@@ -13,9 +16,21 @@ public class StartManu extends JFrame{
 	    private int buttonH=30;
 	    private int buttonW=120;
 
-		public StartManu() { 
+	/**
+	 * This is constructor
+	 */
+	public StartManu() {
 			
-		} //?????????? 
+		}
+
+	/**
+	 * This is constructor used in the project
+	 * @param s title of this StartManu
+	 * @param x x coordinate of this StartManu
+	 * @param y y coordinate of this StartManu
+	 * @param w width of this StartManu
+	 * @param h height of this StartManu
+	 */
 		public StartManu(String s,int x,int y,int w,int h) { 
 		    super(s);
 			//this.init(s); 
@@ -45,10 +60,13 @@ public class StartManu extends JFrame{
 	        add(startPanel);
 	        
 	        
-		} 
-	
-		
-		 public static void main(String[] args) {
+		}
+
+	/**
+	 * Main method
+	 * @param args args in main method
+	 */
+	public static void main(String[] args) {
 		    	StartManu mwnd=new StartManu("Risk Manu",20,30,300,400);
 		    	mwnd.setVisible(true);
 		    }

@@ -5,9 +5,16 @@ import Models.Player;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * <h1>SidePanel</h1>
+ * This class is to used to show information about players
+ */
 public class SidePanel extends JPanel {
     private JLabel[] playerLabels = new JLabel[6];
 
+    /**
+     * This is constructor
+     */
     protected SidePanel(){
         playerLabels[0] = new JLabel();
         playerLabels[1] = new JLabel();
@@ -23,6 +30,10 @@ public class SidePanel extends JPanel {
         add(playerLabels[5]);
     }
 
+    /**
+     * Set context of this SidePanel
+     * @param players ArrayList of Players
+     */
     protected void setContext(ArrayList<Player> players){
         for(int i = 0; i < players.size(); i++){
             playerLabels[i].setBackground(players.get(i).getPlayerColor());
@@ -31,6 +42,12 @@ public class SidePanel extends JPanel {
 
         }
     }
+
+    /**
+     * Get player's information
+     * @param player info from whom you want to show
+     * @return String representation of player
+     */
     private String getPlayerInfo(Player player){
           return    "<html><body>" +
                     "<h3>Player " + player.getId() + "</h3>" +

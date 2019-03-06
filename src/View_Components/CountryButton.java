@@ -5,6 +5,11 @@ import Models.Country;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * <h1>CountryButton</h1>
+ * This class is for CountryButton object
+ * CountryButtons are buttons on the window representing countries and receiving user actions
+ */
 public class CountryButton extends JButton {
     protected final int width = 50;
     protected final int height = 30;
@@ -14,10 +19,19 @@ public class CountryButton extends JButton {
     private int x;
     private int y;
 
+    /**
+     * Get country
+     * @return country
+     */
     public Country getCountry() {
         return country;
     }
 
+
+    /**
+     * This is constructor
+     * @param country Country object this instance is associated with
+     */
     public CountryButton(Country country){
         super(country.getName());
         this.x = country.getX();
@@ -31,28 +45,26 @@ public class CountryButton extends JButton {
 
     }
 
+    /**
+     * Get x
+     * @return x
+     */
     public int getX(){
         return x;
     }
+
+    /**
+     * Get y
+     * @return y
+     */
     public int getY(){
         return y;
     }
 
-
-//    protected void paintComponent(Graphics g) {
-//        // if the button is pressed and ready to be released
-//
-//        if (getModel().isArmed()) {
-//            g.setColor(Color.lightGray);
-//        } else {
-//            g.setColor(getBackground());
-//        }
-//
-//
-////        g.fillOval(0, 0, getSize().width-1, getSize().height-1);
-//
-//        super.paintComponent(g);
-//    }
+    /**
+     * Drawing method to draw the buttons
+     * @param g Graphics object
+     */
     protected void paintBorder(Graphics g) {
         super.paintComponent(g);
 
@@ -65,7 +77,6 @@ public class CountryButton extends JButton {
         g.setColor(Color.BLACK);
         g.setFont(new Font("default", Font.BOLD, 14));
         g.drawString(""+country.getArmy(),20,20);
-//        System.out.println("=======");
     }
 
 }
