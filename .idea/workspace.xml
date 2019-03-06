@@ -3,7 +3,74 @@
   <component name="ChangeListManager">
     <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Models/PhasesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Models/PhasesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/Controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/Controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/Controller.startManuAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/Controller.startManuAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/FileChooser.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/FileChooser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/MapLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/MapLoader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Game/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorGUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorGUI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorText.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorText.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/Continent.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Continent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/Country.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Country.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/CountryNotInRealms.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/CountryNotInRealms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/MapEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/MapEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/Phases.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Phases.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/RiskGameException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/RiskGameException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/Models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/CountryButton.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/CountryButton.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/ImagePanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/ImagePanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/MapPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/MapPanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/PhasePanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/PhasePanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/SidePanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/SidePanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/StartManu.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/StartManu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/Window.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/Window.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-18.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-19.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/MapEditTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/MapEditTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/PhasesTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/PhasesTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,16 +119,16 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="55" />
+          <entry key="JAVA" value="56" />
           <entry key="PLAIN_TEXT" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4906" />
-          <entry key="PLAIN_TEXT" value="98" />
+          <entry key="JAVA" value="5270" />
+          <entry key="PLAIN_TEXT" value="115" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -89,22 +156,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -113,7 +168,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/Models/MapEditTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="103">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="14" selection-end-column="3" />
+              <caret line="8" selection-start-line="8" selection-end-line="14" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,11 +185,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+            <state relative-caret-position="488">
+              <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -143,10 +198,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javadoc/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-13">
-              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -160,34 +224,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorText.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+            <state relative-caret-position="194">
+              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
+        <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="82" column="61" selection-start-line="82" selection-start-column="61" selection-end-line="82" selection-end-column="61" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#1277#1278#0" expanded="true" />
-                <element signature="e#1306#1307#0" expanded="true" />
-                <element signature="e#1433#1434#0" expanded="true" />
-                <element signature="e#1467#1468#0" expanded="true" />
-                <element signature="e#1566#1567#0" expanded="true" />
-                <element signature="e#1591#1592#0" expanded="true" />
-                <element signature="e#1784#1785#0" expanded="true" />
-                <element signature="e#1828#1829#0" expanded="true" />
-                <element signature="e#1877#1878#0" expanded="true" />
-                <element signature="e#1945#1946#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -264,11 +318,11 @@
         <option value="$PROJECT_DIR$/src/Models/PhasesTest.java" />
         <option value="$PROJECT_DIR$/src/Game/MapLoader.java" />
         <option value="$PROJECT_DIR$/src/Models/Country.java" />
-        <option value="$PROJECT_DIR$/src/Models/Player.java" />
         <option value="$PROJECT_DIR$/src/Game/Controller.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
         <option value="$PROJECT_DIR$/src/Game/Main.java" />
         <option value="$PROJECT_DIR$/src/test/Models/PhasesTest.java" />
+        <option value="$PROJECT_DIR$/src/Models/Player.java" />
       </list>
     </option>
   </component>
@@ -357,7 +411,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551752636985" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551833784741" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -389,40 +443,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/FileChooser.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/MapLoader.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$5.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$6.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$7.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$8.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Continent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Country.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/CountryNotInRealms.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/MapEdit.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/MoveAtLeastOneArmyException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/NoSuchPathException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/OutOfArmyException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/RiskGameException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/SourceIsTargetException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/MapPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PhasePanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/StartManu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PhasesTest.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/MapEdit.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Game/MapLoader.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Player.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/View_Components/MapPanel.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -437,7 +459,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/IncreaseZeroArmyException.class</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -629,7 +650,7 @@
       <workItem from="1550810518369" duration="3531000" />
       <workItem from="1551664849734" duration="789000" />
       <workItem from="1551665834813" duration="1696000" />
-      <workItem from="1551827677064" duration="415000" />
+      <workItem from="1551827677064" duration="1601000" />
     </task>
     <task id="LOCAL-00001" summary="Doc for Phases">
       <created>1551737223469</created>
@@ -673,7 +694,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551752631339</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="test java doc">
+      <created>1551829764690</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1551829764690</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -709,7 +737,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24455000" />
+    <option name="totallyTimeSpent" value="25641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -724,14 +752,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.18019801" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17951807" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.106024094" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3284974" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -811,7 +839,8 @@
     <MESSAGE value="Doc for Phases" />
     <MESSAGE value="added test cases for reinforcement phase" />
     <MESSAGE value="java doc on controller, player, phases" />
-    <option name="LAST_COMMIT_MESSAGE" value="java doc on controller, player, phases" />
+    <MESSAGE value="test java doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="test java doc" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -896,13 +925,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Test.java" />
-    <entry file="file://$PROJECT_DIR$/javadoc/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/entry.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -993,31 +1015,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="82" column="61" selection-start-line="82" selection-start-column="61" selection-end-line="82" selection-end-column="61" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1277#1278#0" expanded="true" />
-            <element signature="e#1306#1307#0" expanded="true" />
-            <element signature="e#1433#1434#0" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#1566#1567#0" expanded="true" />
-            <element signature="e#1591#1592#0" expanded="true" />
-            <element signature="e#1784#1785#0" expanded="true" />
-            <element signature="e#1828#1829#0" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1945#1946#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1027,7 +1028,7 @@
     <entry file="file://$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1051,7 +1052,7 @@
     <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13">
-          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1072,7 +1073,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/Models/MapEditTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="14" selection-end-column="3" />
+          <caret line="8" selection-start-line="8" selection-end-line="14" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1081,9 +1082,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="488">
+          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
           <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javadoc/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
