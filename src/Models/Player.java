@@ -127,7 +127,14 @@ public class Player {
 
     }
 
-    //This function is used to in Phase3 whether player can move army from one country to another;
+    /**
+     * This function is used to in Phase3 whether player can move army from one country to another;
+     * @param sourceCountry The start country
+     * @param targetCountry The target country
+     * @return boolean
+     * @throws CountryNotInRealms
+     * @throws SourceIsTargetException
+     */
     private boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
 
         if (realms.contains(sourceCountry) && realms.contains(targetCountry)) {
