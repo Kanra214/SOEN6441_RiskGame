@@ -343,7 +343,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
         		 
         		String nm = JOptionPane.showInputDialog("Input the file name");
                 	
-        		 if(mapedit.saveToFile(nm+".txt")) {
+        		 if(mapedit.saveToFile(nm+".map")) {
         		 JOptionPane.showMessageDialog(null,"Successfully Saved");
         		 }
         		}
@@ -399,7 +399,7 @@ public class MapEditorGUI extends JFrame implements ActionListener,MouseMotionLi
           		 if(fc.ChooseFile()) mapclear();
           		 String filename = fc.filename;
           		 loadmap(filename);
-          		 
+          		 mapedit.checkValid();
           		 showinfo();  
           	 	}
            });
