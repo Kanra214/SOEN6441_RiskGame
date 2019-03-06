@@ -24,6 +24,9 @@ public class Player {
     private Color playerColor;
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
+    /**
+     * Array list of controlled territories of the player
+     */
     protected ArrayList<Country> realms;
     private int id;//this is primary key for players
 
@@ -55,7 +58,7 @@ public class Player {
 
     /**
      * Gets the player color
-     * @return Color    color of the player
+     * @return Color of the player
      */
     public Color getPlayerColor() {
         return playerColor;
@@ -64,7 +67,7 @@ public class Player {
 
     /**
      * Gets the player ID
-     * @return int  Player ID
+     * @return Player ID
      */
     public int getId() {
         return id;
@@ -73,7 +76,7 @@ public class Player {
 
     /**
      * Determines if the player still have unassigned armies
-     * @return boolean True if there is still some army left and False otherwise
+     * @return True if there is still some army left and False otherwise
      */
     public boolean isArmyLeft(){
         return unassigned_armies > 0;
@@ -97,17 +100,10 @@ public class Player {
                 setUnassigned_armies(unassigned_armies - 1);
                 incrementMapArmies();
                 country.increaseArmy();
-
             }
             else{
                 System.out.println("out of armies");
             }
-//            if(!isArmyLeft()) {
-//
-//                p.nextPhase();
-//            }
-
-
 
         }
         else{
@@ -127,7 +123,14 @@ public class Player {
 
     }
 
-    //This function is used to in Phase3 whether player can move army from one country to another;
+    /**
+     * This function is used during the fortification phase to decide whether a player can move army from one country to another;
+     * @param sourceCountry The source country
+     * @param targetCountry The target country
+     * @return True if it is possible to transfer between given countries
+     * @throws CountryNotInRealms
+     * @throws SourceIsTargetException
+     */
     private boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
 
         if (realms.contains(sourceCountry) && realms.contains(targetCountry)) {
@@ -161,8 +164,6 @@ public class Player {
             else{
                 throw new SourceIsTargetException(3);
             }
-
-
         }
         else{
             throw new CountryNotInRealms(2);
@@ -172,23 +173,27 @@ public class Player {
     }
 
 
-
+    /**
+     * Transfers army from one country to another during the fortification phase
+     * @param from - from which country army is being taken
+     * @param to - to which country army is being send
+     * @param num - number of the army to transfer
+     * @throws CountryNotInRealms
+     * @throws OutOfArmyException
+     * @throws NoSuchPathException
+     * @throws SourceIsTargetException
+     * @throws MoveAtLeastOneArmyException
+     */
     protected void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
 
         if(findPath(from, to)){
-
-
             from.decreaseArmy(num);
             to.increaseArmy(num);
             p.nextPhase();
-
         }
         else{
             throw new NoSuchPathException(1);
         }
-
-
-
     }
 
 }

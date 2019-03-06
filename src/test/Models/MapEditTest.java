@@ -114,6 +114,12 @@ public void testAddContinent() throws Exception {
 @Test
 public void testAddConnection() throws Exception {
 //TODO: Test goes here...
+    map.loadMapFile("1.map");
+    assertEquals(true,map.addConnection("Left_Wing1","Left_Wing2"));
+    assertEquals(false,map.addConnection("Territory01","Territory03"));
+    map.clear();
+
+
 }
 
 
