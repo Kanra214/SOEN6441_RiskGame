@@ -186,9 +186,7 @@ public class Controller {
                     startmanu.dispose();
                     break;
             }
-
         }
-
     }
 
     /**
