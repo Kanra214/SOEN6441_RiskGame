@@ -57,8 +57,4 @@ public class SidePanel extends JPanel {
                     "</body></html>";
 
     }
-
-
-
-
 }

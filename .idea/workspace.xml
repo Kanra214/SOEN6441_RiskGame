@@ -3,84 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/Controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/Controller.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/Controller.startManuAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/Controller.startManuAction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/FileChooser.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/FileChooser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/MapLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/MapLoader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Game/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Game/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorGUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorGUI.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorText.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/MapEditorText.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/MapEditor/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/MapEditor/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/Continent.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Continent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/Country.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Country.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/MapEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/MapEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/Phases.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Phases.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/Player.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/RiskGameException.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/RiskGameException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/Models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/Models/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/CountryButton.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/CountryButton.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/ImagePanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/ImagePanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/MapPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/MapPanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/PhasePanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/PhasePanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/SidePanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/SidePanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/StartManu.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/StartManu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/Window.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/Window.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/View_Components/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/View_Components/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-14.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-16.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-17.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-18.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-19.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/MapEditTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/MapEditTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/PhasesTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/PhasesTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javadoc/test/Models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/test/Models/package-tree.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/FileChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/FileChooser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapEditor/MapEditorText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapEditor/MapEditorText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/MapEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/MapEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/PlayerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Components/CountryButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/CountryButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Components/MapPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/MapPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Components/PhasePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/PhasePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Components/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/SidePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Components/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Models/MapEditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Models/MapEditTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,13 +67,13 @@
           <entry key="CLASS" value="2" />
           <entry key="HTML" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="58" />
+          <entry key="JAVA" value="77" />
           <entry key="PLAIN_TEXT" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6029" />
+          <entry key="JAVA" value="6130" />
           <entry key="PLAIN_TEXT" value="115" />
         </counts>
       </usages-collector>
@@ -151,11 +89,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MapEditTest.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/Models/MapEditTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+            <state relative-caret-position="421">
+              <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -163,92 +101,99 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhasesTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View_Components/ImagePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileChooser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game/FileChooser.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View_Components/PhasePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="560">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SidePanel.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View_Components/SidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="560">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartManu.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
+            <state relative-caret-position="-306">
               <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View_Components/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1830">
-              <caret line="124" column="7" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
+            <state relative-caret-position="560">
+              <caret line="155" selection-start-line="155" selection-end-line="155" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View_Components/MapPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2185">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View_Components/CountryButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+            <state relative-caret-position="630">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Phases.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="244" column="7" selection-start-line="244" selection-start-column="7" selection-end-line="244" selection-end-column="7" />
+            <state relative-caret-position="221">
+              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
+                <element signature="e#567#568#0" expanded="true" />
+                <element signature="e#594#595#0" expanded="true" />
+                <element signature="e#864#865#0" expanded="true" />
+                <element signature="e#891#892#0" expanded="true" />
+                <element signature="e#1063#1064#0" expanded="true" />
+                <element signature="e#1090#1091#0" expanded="true" />
+                <element signature="e#1372#1373#0" expanded="true" />
+                <element signature="e#1399#1400#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhasePanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View_Components/PhasePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapEditorGUI.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="553" column="7" selection-start-line="553" selection-start-column="7" selection-end-line="553" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -323,28 +268,28 @@
         <option value="$PROJECT_DIR$/src/Game/Test.java" />
         <option value="$PROJECT_DIR$/src/View_Components/UnitLeftLabel.java" />
         <option value="$PROJECT_DIR$/src/Game/Maploader1.java" />
-        <option value="$PROJECT_DIR$/src/View_Components/SidePanel.java" />
         <option value="$PROJECT_DIR$/src/Game/Phases.java" />
         <option value="$PROJECT_DIR$/src/Models/Continent.java" />
-        <option value="$PROJECT_DIR$/src/View_Components/CountryButton.java" />
-        <option value="$PROJECT_DIR$/src/View_Components/PhasePanel.java" />
-        <option value="$PROJECT_DIR$/src/test/Models/MapEditTest.java" />
         <option value="$PROJECT_DIR$/src/test/Models/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/Models/PhasesTest.java" />
         <option value="$PROJECT_DIR$/src/Game/MapLoader.java" />
-        <option value="$PROJECT_DIR$/src/Game/Main.java" />
         <option value="$PROJECT_DIR$/src/test/Models/PhasesTest.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
-        <option value="$PROJECT_DIR$/src/Models/Player.java" />
         <option value="$PROJECT_DIR$/src/Models/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
-        <option value="$PROJECT_DIR$/src/Models/Country.java" />
-        <option value="$PROJECT_DIR$/src/Game/FileChooser.java" />
-        <option value="$PROJECT_DIR$/src/Models/MapEdit.java" />
         <option value="$PROJECT_DIR$/src/MapEditor/MapEditorText.java" />
-        <option value="$PROJECT_DIR$/src/View_Components/MapPanel.java" />
-        <option value="$PROJECT_DIR$/src/View_Components/Window.java" />
+        <option value="$PROJECT_DIR$/src/test/Models/MapEditTest.java" />
+        <option value="$PROJECT_DIR$/src/Game/FileChooser.java" />
+        <option value="$PROJECT_DIR$/src/Game/Main.java" />
         <option value="$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java" />
+        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
+        <option value="$PROJECT_DIR$/src/View_Components/CountryButton.java" />
+        <option value="$PROJECT_DIR$/src/Models/Country.java" />
+        <option value="$PROJECT_DIR$/src/Models/MapEdit.java" />
+        <option value="$PROJECT_DIR$/src/Models/Player.java" />
+        <option value="$PROJECT_DIR$/src/View_Components/MapPanel.java" />
+        <option value="$PROJECT_DIR$/src/View_Components/PhasePanel.java" />
+        <option value="$PROJECT_DIR$/src/View_Components/SidePanel.java" />
+        <option value="$PROJECT_DIR$/src/View_Components/Window.java" />
       </list>
     </option>
   </component>
@@ -353,9 +298,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
@@ -366,6 +308,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -377,6 +320,11 @@
               <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="SOEN6441_RiskGame" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN6441_RiskGame" type="462c0819:PsiDirectoryNode" />
+              <item name="javadoc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
@@ -424,12 +372,16 @@
               <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
+            <path>
+              <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -439,7 +391,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551913127107" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551917227632" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -473,6 +425,9 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game.Main" />
       <module name="SOEN6441_RiskGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="MapEditTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SOEN6441_RiskGame" />
@@ -482,20 +437,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test.Models" />
       <option name="MAIN_CLASS_NAME" value="test.Models.MapEditTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="PhasesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SOEN6441_RiskGame" />
@@ -505,20 +453,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test.Models" />
       <option name="MAIN_CLASS_NAME" value="test.Models.PhasesTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="PhasesTest.extraArmyFromContinent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SOEN6441_RiskGame" />
@@ -528,20 +469,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test.Models" />
       <option name="MAIN_CLASS_NAME" value="test.Models.PhasesTest" />
       <option name="METHOD_NAME" value="extraArmyFromContinent" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="PhasesTest.extraArmyFromContinent_whenHeOwns1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SOEN6441_RiskGame" />
@@ -551,20 +487,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="test.Models" />
       <option name="MAIN_CLASS_NAME" value="test.Models.PhasesTest" />
       <option name="METHOD_NAME" value="extraArmyFromContinent_whenHeOwns1" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
@@ -698,93 +629,41 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28821000" />
+    <option name="totallyTimeSpent" value="30023000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3284974" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1416309" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3072546" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.328877" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.259375" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24959612" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1423462" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.51686746" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3284974" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.14216867" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3284974" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24959612" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="right" id="Database" order="8" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24959612" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2609375" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.23613086" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.329927" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -826,37 +705,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="test java doc" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1063">
-          <caret line="112" column="10" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/CountryNotInRealms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/MapEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-508">
-          <caret line="433" column="19" selection-start-line="433" selection-start-column="19" selection-end-line="433" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="180" column="12" selection-start-line="180" selection-start-column="12" selection-end-line="180" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1035">
@@ -887,7 +735,7 @@
     <entry file="file://$PROJECT_DIR$/RiskGame_personal_practice.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Test.java" />
+    <entry file="file://$PROJECT_DIR$/src/Game/test.java" />
     <entry file="file://$PROJECT_DIR$/entry.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -929,10 +777,139 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/CountryNotInRealms.java" />
+    <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-995">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Continent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/FileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#2252#2253#0" expanded="true" />
+            <element signature="e#2271#2272#0" expanded="true" />
+            <element signature="e#7468#8078#0" expanded="true" />
+            <element signature="e#8077#8078#0" expanded="true" />
+            <element signature="e#8109#8424#0" expanded="true" />
+            <element signature="e#8423#8424#0" expanded="true" />
+            <element signature="e#8456#8622#0" expanded="true" />
+            <element signature="e#8621#8622#0" expanded="true" />
+            <element signature="e#8654#9312#0" expanded="true" />
+            <element signature="e#9311#9312#0" expanded="true" />
+            <element signature="e#9343#9642#0" expanded="true" />
+            <element signature="e#9641#9642#0" expanded="true" />
+            <element signature="e#9674#9845#0" expanded="true" />
+            <element signature="e#9844#9845#0" expanded="true" />
+            <element signature="e#14262#14263#0" expanded="true" />
+            <element signature="e#14277#14278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2560">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
+            <element signature="e#4971#4972#0" expanded="true" />
+            <element signature="e#5023#5024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-265">
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/MapEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5155">
+          <caret line="108" column="40" selection-start-line="108" selection-start-column="40" selection-end-line="108" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2695">
+          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="203" column="85" selection-start-line="203" selection-start-column="85" selection-end-line="203" selection-end-column="85" />
+        <state relative-caret-position="-2185">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -942,39 +919,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="81" column="34" selection-start-line="81" selection-start-column="34" selection-end-line="81" selection-end-column="34" />
+        <state relative-caret-position="221">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
           <folding>
-            <element signature="e#218#219#0" expanded="true" />
-            <element signature="e#250#251#0" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#839#840#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-            <element signature="e#1430#1431#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1603#1604#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
+            <element signature="e#1063#1064#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1372#1373#0" expanded="true" />
+            <element signature="e#1399#1400#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Continent.java">
+    <entry file="file://$PROJECT_DIR$/src/test/Models/MapEditTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-223">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-757">
-          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
+        <state relative-caret-position="421">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -983,147 +948,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/CountryButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/ImagePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/MapEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-536">
-          <caret line="431" column="40" selection-start-line="431" selection-start-column="40" selection-end-line="431" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-995">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Models/MapEditTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="630">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/MapPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="495">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/MapLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/View_Components/ImagePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        <state relative-caret-position="60">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/PhasePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="244" column="7" selection-start-line="244" selection-start-column="7" selection-end-line="244" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="560">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/SidePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="560">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
+        <state relative-caret-position="-306">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="124" column="7" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/FileChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MapEditor/MapEditorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="553" column="7" selection-start-line="553" selection-start-column="7" selection-end-line="553" selection-end-column="7" />
+        <state relative-caret-position="560">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
         </state>
       </provider>
     </entry>

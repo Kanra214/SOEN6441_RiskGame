@@ -14,8 +14,6 @@ import java.util.Queue;
  * This class that controls logic of the Player
  */
 public class Player {
-    //view needs unassigned_armies, mapArmies, id, playerColor
-
     private static Color[] ALL_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.LIGHT_GRAY, Color.ORANGE};
     private Phases p;
     private Color playerColor;

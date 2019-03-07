@@ -116,11 +116,6 @@ public class Country {
         p.updateWindow();
     }
 
-//    public void sendArmy() {
-//        this.army++;
-//    }
-
-
     /**
      * Get country's name
      * @return name of country
@@ -149,7 +144,6 @@ public class Country {
     	}
     	return reNei;
     }
-//public because MapLoader needs this
 
     /**
      * Add neighbour relationship

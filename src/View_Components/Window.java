@@ -144,21 +144,13 @@ public class Window extends JFrame implements Observer {
      */
     public void drawMapPanel(Phases p){
         for(Country country : p.getGraph()){
-//            country.setPhase(p);
-
-
             JLabel label = new JLabel(country.getName());
             label.setBounds(country.getX(), country.getY() - 20,150,20);
             mapPanel.add(label);
             CountryButton cb = new CountryButton(country);
             mapPanel.add(cb);
             mapPanel.addCb(cb);
-//            country.countryButton.addActionListener(lis);
             mapPanel.comps.add(country);
-
-
         }
     }
-
-
 }

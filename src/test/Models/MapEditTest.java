@@ -34,7 +34,6 @@ public void after() throws Exception {
 */ 
 @Test
 public void testLoadMapFile() throws Exception {
-//TODO: Test goes here...
     assertEquals(true,map.loadMapFile("1.map"));
     map.clear();
     assertEquals(false,map.loadMapFile("2.map"));

@@ -28,7 +28,5 @@ public class FileChooser {
 		}
 		return true;
 	}
-	
-	
-	
+
 }

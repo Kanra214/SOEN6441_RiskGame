@@ -50,10 +50,6 @@ public class PhasePanel extends JPanel {
         else{
             completePhaseButton.setEnabled(false);
         }
-
-
-
-
     }
 
     /**
@@ -70,8 +66,4 @@ public class PhasePanel extends JPanel {
             default: return "UnKnown";
         }
     }
-
-
-
-
 }

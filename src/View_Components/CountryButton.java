@@ -46,9 +46,6 @@ public class CountryButton extends JButton {
         setContentAreaFilled(false);
         setBounds(x,y,width,height);
 
-
-
-
     }
 
     /**

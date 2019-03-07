@@ -19,8 +19,5 @@ public class Main {
         Controller controller = new Controller(new Window());
         controller.startManu();
 
-
-
-
     }
 }
