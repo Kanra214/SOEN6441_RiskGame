@@ -6,6 +6,9 @@ import Models.Phases;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,8 +19,11 @@ import java.util.Observer;
 public class Window extends JFrame implements Observer {
     private final static int X = 0;
     private final static int Y = 0;
-    private final static int WIDTH = 1260;
-    private final static int HEIGHT = 785;
+    private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//    private final static int WIDTH = 1260;
+//    private final static int HEIGHT = 785;
+    private final static int WIDTH = (int) screenSize.getWidth();
+    private final static int HEIGHT = (int) screenSize.getHeight();
     private final static int MAP_X = X;
     private final static int MAP_Y = Y;
     private final static int MAP_WIDTH = (int)WIDTH*3/4;
@@ -54,7 +60,22 @@ public class Window extends JFrame implements Observer {
         super("Risk Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setSize(WIDTH,HEIGHT);
+//        setSize(WIDTH,HEIGHT);
+        
+        //set full size
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setUndecorated(true);
+        
+        //escape the program by pressing escape key
+        InputMap im = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap am = getRootPane().getActionMap();
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "cancel");
+        am.put("cancel", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
         setResizable(false);
 
 

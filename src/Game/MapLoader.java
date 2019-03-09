@@ -38,11 +38,15 @@ public class MapLoader {
         countries = map.countries;
         adjacencyList = map.adjacencyList;
         worldmap = map.continents;
+        
+ 
+
         for (ArrayList<Country> tempCountryList : countries.values()){
             for (Country tempCountry : tempCountryList){
                 graph.add(tempCountry);
             }
         }
+
         for (Continent tempContinent : worldmap) {
             for (String continentname : countries.keySet()) {
                 if (tempContinent.getName().equals(continentname)) {
@@ -70,6 +74,7 @@ public class MapLoader {
 
         result.add(graph);
         result.add(worldmap);
+
         System.out.println(1);
         return result;
     }
