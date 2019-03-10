@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="" />
+    <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/RiskGameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/RiskGameException.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,11 +80,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-428">
-              <caret line="117" column="126" selection-start-line="117" selection-start-column="126" selection-end-line="117" selection-end-column="126" />
+            <state relative-caret-position="288">
+              <caret line="135" column="63" selection-start-line="135" selection-start-column="63" selection-end-line="135" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#735#736#0" expanded="true" />
@@ -91,12 +96,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Phases.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="237" column="197" selection-start-line="237" selection-start-column="197" selection-end-line="237" selection-end-column="197" />
+            <state relative-caret-position="185">
+              <caret line="221" column="62" selection-start-line="221" selection-start-column="62" selection-end-line="221" selection-end-column="62" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -106,8 +112,8 @@
       <file leaf-file-name="RiskGameException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="121" column="26" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="26" />
+            <state relative-caret-position="221">
+              <caret line="151" column="30" selection-start-line="151" selection-start-column="6" selection-end-line="151" selection-end-column="30" />
               <folding>
                 <element signature="e#270#271#0" expanded="true" />
                 <element signature="e#302#303#0" expanded="true" />
@@ -125,18 +131,33 @@
                 <element signature="e#2260#2261#0" expanded="true" />
                 <element signature="e#2517#2518#0" expanded="true" />
                 <element signature="e#2544#2545#0" expanded="true" />
+                <element signature="e#2790#2791#0" expanded="true" />
+                <element signature="e#2817#2818#0" expanded="true" />
+                <element signature="e#3065#3066#0" expanded="true" />
+                <element signature="e#3092#3093#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
+      <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="231" column="38" selection-start-line="231" selection-start-column="38" selection-end-line="231" selection-end-column="38" />
+            <state relative-caret-position="165">
+              <caret line="91" column="31" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="31" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Phases.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="143">
+              <caret line="237" column="111" selection-start-line="237" selection-start-column="111" selection-end-line="237" selection-end-column="111" />
+              <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -156,10 +177,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>startM</find>
-      <find>incre</find>
-      <find>addCountry</find>
-      <find>addConti</find>
       <find>setCountry</find>
       <find>mouse</find>
       <find>update</find>
@@ -186,6 +203,10 @@
       <find>listener</find>
       <find>fortificationsPhase</find>
       <find>MoveAtLeastOneArmyException</find>
+      <find>0</find>
+      <find>type</find>
+      <find>OutOfArmyException</find>
+      <find>throw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -604,7 +625,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43578000" />
+    <option name="totallyTimeSpent" value="45841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -966,20 +987,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1513">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="165">
+          <caret line="91" column="31" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="231" column="38" selection-start-line="231" selection-start-column="38" selection-end-line="231" selection-end-column="38" />
+        <state relative-caret-position="143">
+          <caret line="237" column="111" selection-start-line="237" selection-start-column="111" selection-end-line="237" selection-end-column="111" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -987,8 +1007,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="121" column="26" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="26" />
+        <state relative-caret-position="221">
+          <caret line="151" column="30" selection-start-line="151" selection-start-column="6" selection-end-line="151" selection-end-column="30" />
           <folding>
             <element signature="e#270#271#0" expanded="true" />
             <element signature="e#302#303#0" expanded="true" />
@@ -1006,30 +1026,35 @@
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2517#2518#0" expanded="true" />
             <element signature="e#2544#2545#0" expanded="true" />
+            <element signature="e#2790#2791#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#3065#3066#0" expanded="true" />
+            <element signature="e#3092#3093#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="221" column="62" selection-start-line="221" selection-start-column="62" selection-end-line="221" selection-end-column="62" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-428">
-          <caret line="117" column="126" selection-start-line="117" selection-start-column="126" selection-end-line="117" selection-end-column="126" />
+        <state relative-caret-position="288">
+          <caret line="135" column="63" selection-start-line="135" selection-start-column="63" selection-end-line="135" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#735#736#0" expanded="true" />
             <element signature="e#771#772#0" expanded="true" />
             <element signature="e#5028#5029#0" expanded="true" />
             <element signature="e#5080#5081#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="237" column="197" selection-start-line="237" selection-start-column="197" selection-end-line="237" selection-end-column="197" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

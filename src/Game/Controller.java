@@ -117,21 +117,9 @@ public class Controller {
 
                             //Added three exceptions AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner needs more
                             switch (ex.type) {
-                                case 0:
-                                    errorMsg = "Out of army.";
-                                    break;
 //                                case 1:
 //                                    errorMsg = "No such path.";
 //                                    break;
-//                                case 2:
-//                                    errorMsg = "Not in realms.";
-//                                    break;
-                                case 3:
-                                    errorMsg = "The source cannot be the target.";
-                                    break;
-                                case 4:
-                                    errorMsg = "At lease move one army.";
-                                    break;
                                 case 5:
                                     errorMsg = "Army at least two in this country.";
                                     break;
@@ -140,6 +128,12 @@ public class Controller {
                                     break;
                                 case 7:
                                     errorMsg = "You can't attack to your country.";
+                                    break;
+                                case 8:
+                                    errorMsg = "Out of army.";
+                                    break;
+                                case 9:
+                                    errorMsg = "At lease choose one army.";
                                     break;
 
                                 default:

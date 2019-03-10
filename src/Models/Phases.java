@@ -235,7 +235,7 @@ public class Phases extends Observable {
     //public void attackPhase(){
 //        System.out.println("in phase 2");
 //    }
-    public void attackPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, OutOfArmyException, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
+    public void attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
         current_player.attack(from, to, num);
     }
 

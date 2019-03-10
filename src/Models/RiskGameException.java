@@ -128,3 +128,33 @@ class AttackedCountryOwner extends RiskGameException{
         super(type);
     }
 }
+
+//8
+
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class AttackOutOfArmy extends RiskGameException{
+    /**
+     * Constuctor
+     * @param type 8 for this type
+     */
+    public AttackOutOfArmy(int type) {
+        super(type);
+    }
+}
+
+//9
+
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class AttackMoveAtLeastOneArmy extends RiskGameException{
+    /**
+     * Constuctor
+     * @param type 9 for this type
+     */
+    public AttackMoveAtLeastOneArmy(int type) {
+        super(type);
+    }
+}

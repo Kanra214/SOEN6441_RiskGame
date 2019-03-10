@@ -211,13 +211,21 @@ public class Player {
         }
     }
 
-    private boolean countryValidation(Country sourceCountry, Country targetCountry) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner{
+    private boolean countryValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner, AttackOutOfArmy, AttackMoveAtLeastOneArmy{
         if (sourceCountry.getArmy() > 1){
             if (sourceCountry.getOwner() == this){
                 if (targetCountry.getOwner() != this){
-                    return true;
+                    if (num < sourceCountry.getArmy()){
+                        if (num > 0){
+                            return true;
+                        }else{
+                            throw new AttackMoveAtLeastOneArmy( 9);
+                        }
+                    }else {
+                        throw new AttackOutOfArmy( 8);
+                    }
                 }else {
-                    throw new AttackingCountryOwner( 7);
+                    throw new AttackedCountryOwner( 7);
                 }
             }else {
                 throw new AttackingCountryOwner( 6);
@@ -227,9 +235,9 @@ public class Player {
         }
     }
 
-    protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, OutOfArmyException, SourceIsTargetException, MoveAtLeastOneArmyException {
+    protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
 
-        if (countryValidation(from, to)){
+        if (countryValidation(from, to, num)){
             System.out.println(num);
         }
 
