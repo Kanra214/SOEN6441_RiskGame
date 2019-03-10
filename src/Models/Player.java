@@ -232,14 +232,7 @@ public class Player {
         if (countryValidation(from, to)){
             System.out.println(num);
         }
-//        if(findPath(from, to)){
-//            from.decreaseArmy(num);
-//            to.increaseArmy(num);
-//            p.nextPhase();
-//        }
-//        else{
-//            throw new NoSuchPathException(1);
-//        }
+
     }
 
 }

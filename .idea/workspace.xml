@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/FileChooser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/FileChooser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/MapLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/MapLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Continent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Continent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Country.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/PlayerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CountryButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CountryButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/MapPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/MapPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PhasePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PhasePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/MapEditTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/MapEditTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/RiskGameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/RiskGameException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/CountryButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/CountryButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/Window.java" afterDir="false" />
-    </list>
+    <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -109,10 +75,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
+            <state relative-caret-position="-428">
               <caret line="117" column="126" selection-start-line="117" selection-start-column="126" selection-end-line="117" selection-end-column="126" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -125,10 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Phases.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Phases.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
+            <state relative-caret-position="131">
               <caret line="237" column="197" selection-start-line="237" selection-start-column="197" selection-end-line="237" selection-end-column="197" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -638,7 +604,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43348000" />
+    <option name="totallyTimeSpent" value="43578000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -1019,16 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="237" column="197" selection-start-line="237" selection-start-column="197" selection-end-line="237" selection-end-column="197" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1056,7 +1012,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
+        <state relative-caret-position="-428">
           <caret line="117" column="126" selection-start-line="117" selection-start-column="126" selection-end-line="117" selection-end-column="126" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1064,6 +1020,16 @@
             <element signature="e#771#772#0" expanded="true" />
             <element signature="e#5028#5029#0" expanded="true" />
             <element signature="e#5080#5081#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="237" column="197" selection-start-line="237" selection-start-column="197" selection-end-line="237" selection-end-column="197" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
