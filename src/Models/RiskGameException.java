@@ -83,3 +83,48 @@ class MoveAtLeastOneArmyException extends RiskGameException{
         super(type);
     }
 }
+
+//5
+
+/**
+ * Exception thrown when attack phase, army at least two in attacking country
+ */
+class AttackCountryArmyMoreThanOne extends RiskGameException{
+    /**
+     * Constuctor
+     * @param type 5 for this type
+     */
+    public AttackCountryArmyMoreThanOne(int type) {
+        super(type);
+    }
+}
+
+//6
+
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class AttackingCountryOwner extends RiskGameException{
+    /**
+     * Constuctor
+     * @param type 6 for this type
+     */
+    public AttackingCountryOwner(int type) {
+        super(type);
+    }
+}
+
+//7
+
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class AttackedCountryOwner extends RiskGameException{
+    /**
+     * Constuctor
+     * @param type 7 for this type
+     */
+    public AttackedCountryOwner(int type) {
+        super(type);
+    }
+}

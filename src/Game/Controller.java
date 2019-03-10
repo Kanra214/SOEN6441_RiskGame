@@ -102,7 +102,57 @@ public class Controller {
 
                     }
                 } else {
-                    p.attackPhase();
+                    System.out.println("Phase attack");
+                    if (chosenFrom == null) {
+                        chosenFrom = chosen;
+                    } else {
+                        chosenTo = chosen;
+                        int num = Integer.parseInt(window.promptPlayer("How many armies to choose? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+                        try {
+                            p.attackPhase(chosenFrom, chosenTo, num);
+                            chosenFrom = null;
+                            chosenTo = null;
+                        } catch (RiskGameException ex) {
+                            String errorMsg;
+
+                            //Added three exceptions AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner needs more
+                            switch (ex.type) {
+                                case 0:
+                                    errorMsg = "Out of army.";
+                                    break;
+//                                case 1:
+//                                    errorMsg = "No such path.";
+//                                    break;
+//                                case 2:
+//                                    errorMsg = "Not in realms.";
+//                                    break;
+                                case 3:
+                                    errorMsg = "The source cannot be the target.";
+                                    break;
+                                case 4:
+                                    errorMsg = "At lease move one army.";
+                                    break;
+                                case 5:
+                                    errorMsg = "Army at least two in this country.";
+                                    break;
+                                case 6:
+                                    errorMsg = "This country doesn't belong you.";
+                                    break;
+                                case 7:
+                                    errorMsg = "You can't attack to your country.";
+                                    break;
+
+                                default:
+                                    errorMsg = "Unknown.";
+
+                            }
+
+                            window.showMsg(errorMsg + " Try again please.");
+                            chosenFrom = null;
+                            chosenTo = null;
+                        }
+
+                    }
                 }
             }
         }

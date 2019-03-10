@@ -204,9 +204,12 @@ public class Country {
         return Y;
     }
 
-
-
-
-
+    /**
+     * get Phase object
+     * @return get current phase
+     */
+    public Phases getP() {
+        return p;
+    }
 }
 

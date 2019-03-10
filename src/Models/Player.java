@@ -211,4 +211,35 @@ public class Player {
         }
     }
 
+    private boolean countryValidation(Country sourceCountry, Country targetCountry) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner{
+        if (sourceCountry.getArmy() > 1){
+            if (sourceCountry.getOwner() == this){
+                if (targetCountry.getOwner() != this){
+                    return true;
+                }else {
+                    throw new AttackingCountryOwner( 7);
+                }
+            }else {
+                throw new AttackingCountryOwner( 6);
+            }
+        }else{
+            throw new AttackCountryArmyMoreThanOne( 5);
+        }
+    }
+
+    protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, OutOfArmyException, SourceIsTargetException, MoveAtLeastOneArmyException {
+
+        if (countryValidation(from, to)){
+            System.out.println(num);
+        }
+//        if(findPath(from, to)){
+//            from.decreaseArmy(num);
+//            to.increaseArmy(num);
+//            p.nextPhase();
+//        }
+//        else{
+//            throw new NoSuchPathException(1);
+//        }
+    }
+
 }
