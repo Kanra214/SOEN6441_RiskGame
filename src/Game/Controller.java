@@ -115,7 +115,7 @@ public class Controller {
                         } catch (RiskGameException ex) {
                             String errorMsg;
 
-                            //Added three exceptions AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner needs more
+                            //Added several exceptions, needs more
                             switch (ex.type) {
 //                                case 1:
 //                                    errorMsg = "No such path.";

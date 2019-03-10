@@ -81,8 +81,6 @@ public class Country {
 
     }
 
-//whats this
-
     /**
      * Decrease army number by specific amount
      * @param i The number of army moved

@@ -235,6 +235,18 @@ public class Phases extends Observable {
     //public void attackPhase(){
 //        System.out.println("in phase 2");
 //    }
+
+    /**
+     * Attack phase
+     * @param from  Country from where army will attacking
+     * @param to    Country from where army will be attacked
+     * @param num   int number of armies to choose
+     * @throws AttackMoveAtLeastOneArmy army at least one
+     * @throws AttackOutOfArmy out of army number in attacking country
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner the owner of attacking country must be current player
+     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     */
     public void attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
         current_player.attack(from, to, num);
     }

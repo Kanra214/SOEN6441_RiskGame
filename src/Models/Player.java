@@ -211,6 +211,18 @@ public class Player {
         }
     }
 
+    /**
+     * For checking validation in attack phase
+     * @param sourceCountry source country
+     * @param targetCountry target country
+     * @param num number of attacking army
+     * @return true for validation
+     * @throws AttackMoveAtLeastOneArmy army at least one
+     * @throws AttackOutOfArmy out of army number in attacking country
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner the owner of attacking country must be current player
+     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     */
     private boolean countryValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner, AttackOutOfArmy, AttackMoveAtLeastOneArmy{
         if (sourceCountry.getArmy() > 1){
             if (sourceCountry.getOwner() == this){
@@ -235,6 +247,17 @@ public class Player {
         }
     }
 
+    /**
+     * Attack phase
+     * @param from source country
+     * @param to target country
+     * @param num the numebr of attacking army
+     * @throws AttackMoveAtLeastOneArmy army at least one
+     * @throws AttackOutOfArmy out of army number in attacking country
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner the owner of attacking country must be current player
+     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     */
     protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
 
         if (countryValidation(from, to, num)){
