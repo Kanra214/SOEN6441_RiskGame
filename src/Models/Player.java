@@ -4,10 +4,7 @@
  */
 package Models;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * <h1>Player</h1>
@@ -261,9 +258,101 @@ public class Player {
     protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
 
         if (countryValidation(from, to, num)){
-            System.out.println(num);
+            System.out.println("Attack army:" +num);
+            int results = attackSimulation(from, to, num);
+            if (results > 0){
+                System.out.println("Win");
+            }else{
+                System.out.println("Lose");
+            }
         }
 
+    }
+
+    protected ArrayList<Integer> DiceArray (int digits){
+        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
+        for (int i =0; i < digits; i++){
+            int Dice = (int)(Math.random()*6)+1;
+            DiceArray.add(Dice);
+        }
+        Collections.sort(DiceArray, Collections.reverseOrder());
+        return DiceArray;
+    }
+
+    protected int attackSimulation(Country from, Country to, int num){
+        int liveArmy = num;
+        int defenceArmy = to.getArmy();
+
+        while (liveArmy != 0 && defenceArmy !=0){
+            if (liveArmy > 2) {
+                if (defenceArmy >= 2) {
+                    ArrayList<Integer> attackDice = DiceArray(3);
+                    ArrayList<Integer> defenceDice = DiceArray(2);
+                    if (attackDice.get(0) > defenceDice.get(0)) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                    if (attackDice.get(1) > defenceDice.get(1)) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                } else {
+                    ArrayList<Integer> attackDice = DiceArray(3);
+                    int defenceDice1 = (int) (Math.random() * 6) + 1;
+                    if (attackDice.get(0) > defenceDice1) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                }
+            } else if (liveArmy == 2) {
+                if (defenceArmy >= 2) {
+                    ArrayList<Integer> attackDice = DiceArray(2);
+                    ArrayList<Integer> defenceDice = DiceArray(2);
+                    if (attackDice.get(0) > defenceDice.get(0)) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                    if (attackDice.get(1) > defenceDice.get(1)) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                } else {
+                    ArrayList<Integer> attackDice = DiceArray(2);
+                    int defenceDice1 = (int) (Math.random() * 6) + 1;
+                    if (attackDice.get(0) > defenceDice1) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                }
+            } else if (liveArmy == 1) {
+                if (defenceArmy >= 2) {
+                    int attackDice1 = (int) (Math.random() * 6) + 1;
+                    ArrayList<Integer> defenceDice = DiceArray(2);
+                    if (attackDice1 > defenceDice.get(0)) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                } else {
+                    int attackDice1 = (int) (Math.random() * 6) + 1;
+                    int defenceDice1 = (int) (Math.random() * 6) + 1;
+                    if (attackDice1 > defenceDice1) {
+                        defenceArmy --;
+                    } else {
+                        liveArmy --;
+                    }
+                }
+            }
+        }
+        System.out.println("attack:"+liveArmy);
+        System.out.println("defence:"+defenceArmy);
+        return liveArmy;
     }
 
 }
