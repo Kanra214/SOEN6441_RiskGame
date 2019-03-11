@@ -255,16 +255,24 @@ public class Player {
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
+    protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy, OutOfArmyException, MoveAtLeastOneArmyException {
 
         if (countryValidation(from, to, num)){
             System.out.println("Attack army:" +num);
-            int results = attackSimulation(from, to, num);
-            if (results > 0){
+            ArrayList<Integer> results = attackSimulation(to, num);
+
+            //Conquest
+            if (results.get(0) > 0){
                 System.out.println("Win");
-            }else{
+                from.attackDecreaseArmy(num - results.get(0));
+                to.setOwner(this);
+                to.attackDecreaseArmy(to.getArmy());
+            }else {
                 System.out.println("Lose");
+                from.attackDecreaseArmy(num);
+                to.attackDecreaseArmy(to.getArmy() - results.get(1));
             }
+
         }
 
     }
@@ -278,8 +286,9 @@ public class Player {
         Collections.sort(DiceArray, Collections.reverseOrder());
         return DiceArray;
     }
-
-    protected int attackSimulation(Country from, Country to, int num){
+//Results: first: rest of attacking second: rest of attacked
+    protected ArrayList<Integer> attackSimulation(Country to, int num){
+        ArrayList<Integer> results = new ArrayList<>();
         int liveArmy = num;
         int defenceArmy = to.getArmy();
 
@@ -350,9 +359,11 @@ public class Player {
                 }
             }
         }
+        results.add(liveArmy);
+        results.add(defenceArmy);
         System.out.println("attack:"+liveArmy);
         System.out.println("defence:"+defenceArmy);
-        return liveArmy;
+        return results;
     }
 
 }

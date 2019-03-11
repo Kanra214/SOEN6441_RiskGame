@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Models/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -80,7 +82,7 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="17">
               <caret line="117" column="55" selection-start-line="117" selection-start-column="55" selection-end-line="117" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -96,8 +98,8 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-671">
-              <caret line="291" column="36" selection-start-line="291" selection-start-column="36" selection-end-line="291" selection-end-column="36" />
+            <state relative-caret-position="310">
+              <caret line="272" column="69" selection-start-line="272" selection-start-column="69" selection-end-line="272" selection-end-column="69" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -110,8 +112,8 @@
       <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="329">
+              <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,8 +124,8 @@
       <file leaf-file-name="Phases.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="240" column="41" selection-start-line="240" selection-start-column="41" selection-end-line="240" selection-end-column="41" />
+            <state relative-caret-position="524">
+              <caret line="249" column="235" selection-start-line="249" selection-start-column="235" selection-end-line="249" selection-end-column="235" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -265,9 +267,9 @@
         <option value="$PROJECT_DIR$/src/View_Components/CountryButton.java" />
         <option value="$PROJECT_DIR$/src/View_Components/Window.java" />
         <option value="$PROJECT_DIR$/src/Models/RiskGameException.java" />
+        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
         <option value="$PROJECT_DIR$/src/Models/Country.java" />
-        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
         <option value="$PROJECT_DIR$/src/Models/Player.java" />
       </list>
     </option>
@@ -623,7 +625,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54853000" />
+    <option name="totallyTimeSpent" value="57298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -631,7 +633,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3284974" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32716927" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -1012,20 +1014,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="240" column="41" selection-start-line="240" selection-start-column="41" selection-end-line="240" selection-end-column="41" />
+        <state relative-caret-position="524">
+          <caret line="249" column="235" selection-start-line="249" selection-start-column="235" selection-end-line="249" selection-end-column="235" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1034,7 +1026,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="17">
           <caret line="117" column="55" selection-start-line="117" selection-start-column="55" selection-end-line="117" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1046,10 +1038,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-671">
-          <caret line="291" column="36" selection-start-line="291" selection-start-column="36" selection-end-line="291" selection-end-column="36" />
+        <state relative-caret-position="310">
+          <caret line="272" column="69" selection-start-line="272" selection-start-column="69" selection-end-line="272" selection-end-column="69" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />

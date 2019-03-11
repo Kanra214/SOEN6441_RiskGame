@@ -103,6 +103,10 @@ public class Country {
 
 
     }
+    protected void attackDecreaseArmy(int i){
+        this.army -= i;
+        p.updateWindow();
+    }
 
     /**
      * Set owner to country
