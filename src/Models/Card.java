@@ -5,13 +5,13 @@ public class Card {
 	private String[] cardType= {"Infantry","Cavalry","Artillery"};
 	private int[] cardNumber= {0,0,0}; 
 	  
-	public Card(int playerID) {
-		
+	public Card() {
+		//int playerID
 	}
 	
 	public void addCard() {
 		int randCID=(int) Math.floor(3*Math.random());
-		System.out.println(randCID);
+		System.out.println("This card will add to "+randCID);
 		cardNumber[randCID]++;
 	}
 	
@@ -39,23 +39,31 @@ public class Card {
 	
 	//0 for 3 card of different types,1 for 3 cards of the same type,2 for both,-1 for other 
 	public int checkCardType() {
-		int tempType=-1;
+		int[] tempType= {-1,-1};
  
 		
-		if(cardSum()==5) {
-			return 2;
+	
+		
+
+		if(cardNumber[0]!=0&&cardNumber[1]!=0&&cardNumber[2]!=0) {
+			tempType[0]=1;
 		}
 		
-		if(cardNumber[0]==3||cardNumber[1]==3||cardNumber[2]==3) {
+		if(cardNumber[0]>=3||cardNumber[1]>=3||cardNumber[2]>=3) {
+			tempType[1]=1;
+		}
+		
+		
+		if(tempType[0]+tempType[1]==2) {
+			return 2;
+		}else if(tempType[0]==1) {
+			return 0;
+		}
+		else if(tempType[1]==1) {
 			return 1;
 		}
 		
-		if(cardNumber[0]!=0||cardNumber[1]!=0||cardNumber[2]!=0) {
-			return 0;
-		}
-		
-		
-		return tempType;
+		return -1;
 		
 	}
 	

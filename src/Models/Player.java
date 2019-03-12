@@ -19,6 +19,7 @@ public class Player {
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
     private int id;//this is primary key for players
+    private Card card;
 
     /**
      * Array list of controlled territories of the player
@@ -39,6 +40,7 @@ public class Player {
         this.unassigned_armies = army;
         this.playerColor = ALL_COLORS[id];
         this.p = p;
+        //this.card=card;
 
     }
 
@@ -103,6 +105,12 @@ public class Player {
     }
 
 
+    public void showPlayerCards() {
+    	card.showCards();
+    }
+    
+    
+    
     /**
      * Send army to the country
      * @param country to where army will be sent

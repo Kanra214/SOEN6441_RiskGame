@@ -50,7 +50,8 @@ public class Phases extends Observable {
     public void gameSetUp(int numOfPlayers){
         this.numOfPlayers = numOfPlayers;
         for(int i = 0; i < numOfPlayers; i++){
-            players.add(new Player(i, getInitialArmyCount(numOfPlayers),this));
+           
+			players.add(new Player(i, getInitialArmyCount(numOfPlayers),this));
         }
         determineOrder();
         countryAssignment();
