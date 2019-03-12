@@ -3,6 +3,8 @@
  * This class give the player with specific characteristics
  */
 package Models;
+import View_Components.Window;
+
 import java.awt.*;
 import java.util.*;
 
@@ -208,6 +210,12 @@ public class Player {
         }
     }
 
+    protected void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
+        System.out.println("attackAssign:" + num);
+        from.decreaseArmy(num);
+        to.increaseArmy(num);
+    }
+
     /**
      * For checking validation in attack phase
      * @param sourceCountry source country
@@ -248,15 +256,17 @@ public class Player {
      * Attack phase
      * @param from source country
      * @param to target country
-     * @param num the numebr of attacking army
+     * @param num the number of attacking army
+     * @return true for conquest successful
      * @throws AttackMoveAtLeastOneArmy army at least one
      * @throws AttackOutOfArmy out of army number in attacking country
      * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    protected void attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy, OutOfArmyException, MoveAtLeastOneArmyException {
+    protected boolean attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
 
+        boolean conquest = false;
         if (countryValidation(from, to, num)){
             System.out.println("Attack army:" +num);
             ArrayList<Integer> results = attackSimulation(to, num);
@@ -267,14 +277,16 @@ public class Player {
                 from.attackDecreaseArmy(num - results.get(0));
                 to.setOwner(this);
                 to.attackDecreaseArmy(to.getArmy());
-            }else {
+                conquest = true;
+
+            } else {
                 System.out.println("Lose");
                 from.attackDecreaseArmy(num);
                 to.attackDecreaseArmy(to.getArmy() - results.get(1));
             }
 
         }
-
+        return conquest;
     }
 
     protected ArrayList<Integer> DiceArray (int digits){

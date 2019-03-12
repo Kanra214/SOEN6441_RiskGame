@@ -247,10 +247,12 @@ public class Phases extends Observable {
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    public void attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner, OutOfArmyException, MoveAtLeastOneArmyException {
-        current_player.attack(from, to, num);
+    public boolean attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
+        return current_player.attack(from, to, num);
     }
-
+    public void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
+        current_player.attackAssign(from, to, num);
+    }
 
     /**
      * Sends army from one country to another
@@ -266,10 +268,6 @@ public class Phases extends Observable {
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
     }
-
-
-
-
 
 
 

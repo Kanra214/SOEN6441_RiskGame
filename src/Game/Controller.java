@@ -109,7 +109,34 @@ public class Controller {
                         chosenTo = chosen;
                         int num = Integer.parseInt(window.promptPlayer("How many armies to choose? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
                         try {
-                            p.attackPhase(chosenFrom, chosenTo, num);
+                            if (p.attackPhase(chosenFrom, chosenTo, num)){
+                                System.out.println("conquest");
+                                int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+                                try {
+                                    p.attackAssign(chosenFrom, chosenTo, assignArmy);
+                                }catch (RiskGameException ex){
+                                    String errorMsg;
+
+                                    switch (ex.type) {
+
+                                        case 0:
+                                            errorMsg = "Out of army.";
+                                            chosenFrom.armyMinusOne();
+                                            chosenTo.setDefualtArmy();
+                                            break;
+                                        case 4:
+                                            errorMsg = "At lease move one army.";
+                                            chosenFrom.armyMinusOne();
+                                            chosenTo.setDefualtArmy();
+                                            break;
+
+                                        default:
+                                            errorMsg = "Unknown.";
+
+                                    }
+                                    window.showMsg(errorMsg + " Already set to default army 1.");
+                                }
+                            }
                             chosenFrom = null;
                             chosenTo = null;
                         } catch (RiskGameException ex) {

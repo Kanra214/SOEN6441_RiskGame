@@ -107,6 +107,18 @@ public class Country {
         this.army -= i;
         p.updateWindow();
     }
+    protected void attackIncreaseArmy(int i){
+        this.army += i;
+        p.updateWindow();
+    }
+    public void setDefualtArmy(){
+        this.army = 1;
+    }
+
+    public void armyMinusOne() {
+        army = this.army - 1;
+        //p.updateWindow();
+    }
 
     /**
      * Set owner to country
