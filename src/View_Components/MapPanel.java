@@ -26,7 +26,6 @@ public class MapPanel extends JPanel {
     @Override
     /**
      * Drawing method to draw the relations between countries
-     * @param g Graphics object
      */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -35,15 +34,6 @@ public class MapPanel extends JPanel {
             for(Country cont : comp.getNeighbours()){
                 g.drawLine(cont.getX()+CountryButton.WIDTH/2+15,cont.getY()+CountryButton.HEIGHT/2+15,comp.getX()+CountryButton.WIDTH/2+15,comp.getY()+CountryButton.HEIGHT/2+15);
             }
-
-
         }
-
-
-
     }
-
-
-
-
 }

@@ -229,7 +229,7 @@ public class MapEdit {
     }
 
     /**
-     * The function to add new Country in existing continent
+     * The function to add new Country to an existing continent
      * @param countryName The name of country want to add
      * @param continentName The name of existing continent country belong to
      * @param coordinateX The X coordinate of country
@@ -257,7 +257,7 @@ public class MapEdit {
     }
 
     /**
-     * This function is used to new Continent
+     * This function is used to create a Continent
      * @param continentName The name of continent want to add
      * @param controlNum The control value of continent
      * @return boolean
@@ -381,7 +381,7 @@ public class MapEdit {
 
     /**
      * This Function is used to check whether map is valid
-     * @return boolean
+     * @return boolean, true for valid
      */
     //This Function is used to check whether map is valid
     public boolean checkValid(){
@@ -429,7 +429,7 @@ public class MapEdit {
     /**
      * This function is used to write txt file
      * @param mapFileName The written txt file name
-     * @return boolean
+     * @return boolean, true for success
      */
     public boolean saveToFile(String mapFileName) {
         boolean flag = checkValid();

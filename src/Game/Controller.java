@@ -1,20 +1,19 @@
-//this is center controller
 package Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import Models.*;
 import View_Components.CountryButton;
-
 import View_Components.Window;
 import View_Components.StartManu;
-
 import java.util.ArrayList;
 
-import javax.swing.*;
-
+import Models.Phases;
+import Models.Country;
+import Models.RiskGameException;
 import MapEditor.MapEditorGUI;
+
+import javax.swing.*;
 
 /**
  * <h1>Controller</h1>
@@ -24,16 +23,15 @@ public class Controller {
     Window window;
     Phases p;
     StartManu startmanu;
-    MapEditorGUI mapeditor; 
+    MapEditorGUI mapeditor;
 
-    String filename ;
+    String filename;
 
     /**
      * Constructor
      * @param window current panel
-     * @throws IOException
      */
-    public Controller(Window window) throws IOException {
+    public Controller(Window window) {
         this.window = window;
     }
 
@@ -41,7 +39,7 @@ public class Controller {
      * <h1>Listener</h1>
      * This class is for listen process of game
      */
-    class Listener implements ActionListener{
+    class Listener implements ActionListener {
         private Country chosenFrom = null;
         private Country chosenTo = null;
 
@@ -103,116 +101,181 @@ public class Controller {
                         }
 
                     }
-                }
-                else {
-                    p.attackPhase();
+                } else {
+                    System.out.println("Phase attack");
+                    if (chosenFrom == null) {
+                        chosenFrom = chosen;
+                    } else {
+                        chosenTo = chosen;
+                        int num = Integer.parseInt(window.promptPlayer("How many armies to choose? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+                        try {
+                            if (p.attackPhase(chosenFrom, chosenTo, num)){
+                                System.out.println("conquest");
+                                int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+                                try {
+                                    p.attackAssign(chosenFrom, chosenTo, assignArmy);
+                                }catch (RiskGameException ex){
+                                    String errorMsg;
+
+                                    switch (ex.type) {
+
+                                        case 0:
+                                            errorMsg = "Out of army.";
+                                            chosenFrom.armyMinusOne();
+                                            chosenTo.setDefualtArmy();
+                                            break;
+                                        case 4:
+                                            errorMsg = "At lease move one army.";
+                                            chosenFrom.armyMinusOne();
+                                            chosenTo.setDefualtArmy();
+                                            break;
+
+                                        default:
+                                            errorMsg = "Unknown.";
+
+                                    }
+                                    window.showMsg(errorMsg + " Already set to default army 1.");
+                                }
+                            }
+                            chosenFrom = null;
+                            chosenTo = null;
+                        } catch (RiskGameException ex) {
+                            String errorMsg;
+
+                            //Added several exceptions, needs more
+                            switch (ex.type) {
+//                                case 1:
+//                                    errorMsg = "No such path.";
+//                                    break;
+                                case 5:
+                                    errorMsg = "Army at least two in this country.";
+                                    break;
+                                case 6:
+                                    errorMsg = "This country doesn't belong you.";
+                                    break;
+                                case 7:
+                                    errorMsg = "You can't attack to your country.";
+                                    break;
+                                case 8:
+                                    errorMsg = "Out of army.";
+                                    break;
+                                case 9:
+                                    errorMsg = "At lease choose one army.";
+                                    break;
+
+                                default:
+                                    errorMsg = "Unknown.";
+
+                            }
+
+                            window.showMsg(errorMsg + " Try again please.");
+                            chosenFrom = null;
+                            chosenTo = null;
+                        }
+
+                    }
                 }
             }
         }
     }
 
     /**
-     * Start Menu
-     * @throws IOException
+     * This is a function create Start Menu box.
      */
-    public void startManu() throws IOException {
-    	startmanu = new StartManu("Risk Manu",20,30,300,400);    	
-    	startmanu.setVisible(true);
-    	
-    	startManuAction lisStart = new startManuAction(1);
-    	startManuAction lisEditMap = new startManuAction(2);
-    	startManuAction lisInstruction = new startManuAction(3);
-    	startManuAction lisExit = new startManuAction(4);
-    	
-    	startmanu.startGame.addActionListener(lisStart);
-    	startmanu.editMap.addActionListener(lisEditMap);
-    	startmanu.instructions.addActionListener(lisInstruction);
-    	startmanu.exit.addActionListener(lisExit);
-    	
-    	
+    public void startManu() {
+        startmanu = new StartManu("Risk Manu", 20, 30, 300, 400);
+        startmanu.setVisible(true);
+
+        startManuAction lisStart = new startManuAction(1);
+        startManuAction lisEditMap = new startManuAction(2);
+        startManuAction lisInstruction = new startManuAction(3);
+        startManuAction lisExit = new startManuAction(4);
+
+        startmanu.startGame.addActionListener(lisStart);
+        startmanu.editMap.addActionListener(lisEditMap);
+        startmanu.instructions.addActionListener(lisInstruction);
+        startmanu.exit.addActionListener(lisExit);
     }
 
     /**
      * Check file is correct or not
      * @return boolean
      */
-	public boolean ChooseFile() {
-		JFileChooser jfc = new JFileChooser(".");
+    public boolean ChooseFile() {
+        JFileChooser jfc = new JFileChooser(".");
 
-		int returnValue = jfc.showOpenDialog(null);
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = jfc.getSelectedFile();
-			filename=selectedFile.getName();		
-		}
-		return true;
-	}
+        int returnValue = jfc.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = jfc.getSelectedFile();
+            filename = selectedFile.getName();
+        }
+        return true;
+    }
 
     /**
      * Start Menu action control
      */
-    public class startManuAction implements ActionListener{
+    public class startManuAction implements ActionListener {
 
-    	private int buttonFlag;
+        private int buttonFlag;
 
         /**
          * sets the buttonFlag
          * @param buttonFlag    int representing which button was pressed
          */
-    	public startManuAction(int buttonFlag) {
-    		this.buttonFlag = buttonFlag;
-    	}
+        public startManuAction(int buttonFlag) {
+            this.buttonFlag = buttonFlag;
+        }
 
 
         /**
          * performs different operation depending on which button was pressed in the start menu
          * @param e button
          */
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		  	switch (buttonFlag){
-	    	case 1:
-	    		if(ChooseFile()) {
-                    startmanu.dispose();
-                    try {
-                        start();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (buttonFlag) {
+                case 1:
+                    if (ChooseFile()) {
+                        startmanu.dispose();
+                        try {
+                            start();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                        startmanu.dispose();
                     }
+                    break;
+
+                case 2:
+                    mapeditor = new MapEditorGUI();
+                    mapeditor.frame.setVisible(true);
                     startmanu.dispose();
-                }
-	    	    break;
+                    break;
 
-	    	case 2:
-	    		mapeditor = new MapEditorGUI();
-	    		mapeditor.frame.setVisible(true);
-	    		startmanu.dispose();	
-	    	    break;
-
-	    	case 4:
-	    		startmanu.dispose();
-	    	    break;
-	    	}
-			
-		}  
-    	
+                case 4:
+                    startmanu.dispose();
+                    break;
+            }
+        }
     }
 
     /**
      * Start game
-     * @throws IOException
+     * @throws IOException map loading exception
      */
     public void start() throws IOException {
 
-    	System.out.println(filename);
-        ArrayList<ArrayList> tempMap = new MapLoader().loadMap(filename);
-        if (tempMap.isEmpty()){
+        System.out.println(filename);
+        ArrayList < ArrayList > tempMap = new MapLoader().loadMap(filename);
+        if (tempMap.isEmpty()) {
             System.exit(0);
         }
-        
+
         int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
-        if(numOfPlayers>6||numOfPlayers<2) {
-        	JOptionPane.showMessageDialog(null,"Wrong number of Players");
-        	System.exit(0);
+        if (numOfPlayers > 6 || numOfPlayers < 2) {
+            JOptionPane.showMessageDialog(null, "Wrong number of Players");
+            System.exit(0);
         }
         p = new Phases(tempMap.get(0), tempMap.get(1));
         p.addObserver(window);
@@ -221,11 +284,11 @@ public class Controller {
 
         window.drawMapPanel(p);
 
-        for(CountryButton cb : window.mapPanel.cbs) {
+        for (CountryButton cb: window.mapPanel.cbs) {
             cb.addActionListener(lis);
         }
         window.phasePanel.completePhaseButton.addActionListener(lis);
-        p.connectView();//after this updating window is enabled
+        p.connectView(); //after this updating window is enabled
         window.setVisible(true);
     }
 }

@@ -1,0 +1,15 @@
+[Map]
+author = Bin
+aaa.bmp
+[Continents]
+1
+Asia 12
+
+[Territories]
+2
+Yakutsk 920 50 Asia 
+Kamchatka 1000 50 Asia 
+
+[Relationship]
+Yakutsk Kamchatka
+

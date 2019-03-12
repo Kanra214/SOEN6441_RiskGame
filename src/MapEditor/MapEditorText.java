@@ -6,9 +6,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MapEditor
+ * Logics for map editor
+ */
 public class MapEditorText extends JFrame{
-	
-	
+
+	/**
+	 * Logics for map editor
+	 */
     public MapEditorText() {
         //JFrame jf = new JFrame("MapEditor");
         super("MapEditor");

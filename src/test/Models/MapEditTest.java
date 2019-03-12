@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 /** 
 * MapEdit Tester. 
 * 
-* @author <Bin>
+* @author Bin
 * @since <pre>Mar 3, 2019</pre> 
 * @version 1.0 
 */ 
@@ -34,7 +34,6 @@ public void after() throws Exception {
 */ 
 @Test
 public void testLoadMapFile() throws Exception {
-//TODO: Test goes here...
     assertEquals(true,map.loadMapFile("1.map"));
     map.clear();
     assertEquals(false,map.loadMapFile("2.map"));

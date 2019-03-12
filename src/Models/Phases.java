@@ -232,8 +232,26 @@ public class Phases extends Observable {
     /**
      * Attack phase
      */
-    public void attackPhase(){
-        System.out.println("in phase 2");
+    //public void attackPhase(){
+//        System.out.println("in phase 2");
+//    }
+
+    /**
+     * Attack phase
+     * @param from  Country from where army will attacking
+     * @param to    Country from where army will be attacked
+     * @param num   int number of armies to choose
+     * @throws AttackMoveAtLeastOneArmy army at least one
+     * @throws AttackOutOfArmy out of army number in attacking country
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner the owner of attacking country must be current player
+     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     */
+    public boolean attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
+        return current_player.attack(from, to, num);
+    }
+    public void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
+        current_player.attackAssign(from, to, num);
     }
 
     /**
@@ -241,19 +259,15 @@ public class Phases extends Observable {
      * @param from  Country from where army will be deducted
      * @param to    Country from where army will be sent
      * @param num   int number of armies to send
-     * @throws SourceIsTargetException
-     * @throws MoveAtLeastOneArmyException
-     * @throws CountryNotInRealms
-     * @throws OutOfArmyException
-     * @throws NoSuchPathException
+     * @throws CountryNotInRealms   country not owned by the player
+     * @throws OutOfArmyException   not enough army to transfer
+     * @throws NoSuchPathException  no path from owned countries between country
+     * @throws SourceIsTargetException  source country and target country is the same
+     * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
     }
-
-
-
-
 
 
 

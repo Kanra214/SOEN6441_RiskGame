@@ -1,18 +1,23 @@
 package Models;
 import java.awt.Color;
+import java.util.Random;
+
+
+
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * <h1>Continent</h1>
  * This class is for continent object
  */
 public class Continent {
-    private final static Color[] ALL_COLORS = {Color.lightGray, Color.MAGENTA, Color.CYAN, Color.GREEN, Color.YELLOW, Color.PINK};
+//    private final static Color[] ALL_COLORS = {Color.lightGray, Color.MAGENTA, Color.CYAN, Color.GREEN, Color.YELLOW, Color.PINK};
     private String name;
     private ArrayList<Country> countries;
     private int control_value;
     private Color contColor;
-    private static int colorSelector = 0;
+    private static HashSet<Color> colorSet = new HashSet<>();;
 //public because mapLoader needs this
 
     /**
@@ -25,8 +30,8 @@ public class Continent {
         this.name = name;
 
         this.control_value = control_value;
-        this.contColor = ALL_COLORS[colorSelector];
-        colorSelector = (colorSelector+1) % 6;
+        this.contColor = chooseColor();
+//        colorSelector = (colorSelector+1) % 6;
         countries = new ArrayList<>();
     }
 
@@ -78,5 +83,20 @@ public class Continent {
      */
     public int getControl_value() {
         return control_value;
+    }
+    
+    private Color chooseColor() {
+    	Random rand = new Random();
+    	while(true) {
+	    	float r = rand.nextFloat();
+	    	float g = rand.nextFloat();
+	    	float b = rand.nextFloat();
+	    	Color randColor = new Color(r,g,b);
+	    	if(!colorSet.contains(randColor)) {
+	    		colorSet.add(randColor);
+	    		return randColor;
+	    	}
+    	}
+    	
     }
 }

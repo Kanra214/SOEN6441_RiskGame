@@ -61,7 +61,7 @@ public class Country {
     }
 
     /**
-     * Increase army number after moving
+     * Increase army number by specific amount
      * @param i The number of army moved
      * @throws MoveAtLeastOneArmyException
      */
@@ -81,10 +81,8 @@ public class Country {
 
     }
 
-//whats this
-
     /**
-     * After move army, the ary number should be decrease in previous country
+     * Decrease army number by specific amount
      * @param i The number of army moved
      * @throws OutOfArmyException
      * @throws MoveAtLeastOneArmyException
@@ -105,6 +103,22 @@ public class Country {
 
 
     }
+    protected void attackDecreaseArmy(int i){
+        this.army -= i;
+        p.updateWindow();
+    }
+    protected void attackIncreaseArmy(int i){
+        this.army += i;
+        p.updateWindow();
+    }
+    public void setDefualtArmy(){
+        this.army = 1;
+    }
+
+    public void armyMinusOne() {
+        army = this.army - 1;
+        //p.updateWindow();
+    }
 
     /**
      * Set owner to country
@@ -115,11 +129,6 @@ public class Country {
         player.realms.add(this);
         p.updateWindow();
     }
-
-//    public void sendArmy() {
-//        this.army++;
-//    }
-
 
     /**
      * Get country's name
@@ -149,7 +158,6 @@ public class Country {
     	}
     	return reNei;
     }
-//public because MapLoader needs this
 
     /**
      * Add neighbour relationship
@@ -210,9 +218,12 @@ public class Country {
         return Y;
     }
 
-
-
-
-
+    /**
+     * get Phase object
+     * @return get current phase
+     */
+    public Phases getP() {
+        return p;
+    }
 }
 

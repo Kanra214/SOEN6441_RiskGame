@@ -11,7 +11,13 @@ import java.awt.*;
  * CountryButtons are buttons on the window representing countries and receiving user actions
  */
 public class CountryButton extends JButton {
+    /**
+     * width of the button
+     */
     protected final int width = 50;
+    /**
+     * height of the button
+     */
     protected final int height = 30;
     private final int innerDiameter = 5;
 
@@ -39,9 +45,6 @@ public class CountryButton extends JButton {
         this.country = country;
         setContentAreaFilled(false);
         setBounds(x,y,width,height);
-
-
-
 
     }
 
@@ -76,6 +79,7 @@ public class CountryButton extends JButton {
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("default", Font.BOLD, 14));
+
         g.drawString(""+country.getArmy(),20,20);
     }
 
