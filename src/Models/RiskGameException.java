@@ -23,14 +23,14 @@ class NoSuchPathException extends RiskGameException{
 }
 //2
 
-/*
+
 class CountryNotInRealms extends RiskGameException{
 
     public CountryNotInRealms(int type) {
         super(type);
     }
 }
-*/
+
 //3
 class SourceIsTargetException extends RiskGameException{
 
