@@ -28,11 +28,12 @@ public class Controller {
     StartManu startmanu;
     MapEditorGUI mapeditor;
     CardExchangeView cardexchange;
-    Player player;
 
     String filename;
 
     int count_conquest = 0;
+    boolean allOut = false;
+    boolean conquest_flag;
     /**
      * Constructor
      * @param window current panel
@@ -117,18 +118,20 @@ public class Controller {
                     if(!checkAttack(p.getCurrent_player())){
                         p.nextPhase();
                     }
-                    
+
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
                     } else {
                         chosenTo = chosen;
-                        int num = Integer.parseInt(window.promptPlayer("How many armies to choose? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+                        int numAttack = Integer.parseInt(window.promptPlayer("Attacker: How many armies? max: 3, min: 1"));
+                        int numDefence = Integer.parseInt(window.promptPlayer("Defender: How many armies to choose? max: 2, min: 1"));
                         try {
-                            boolean flag = p.attackPhase(chosenFrom, chosenTo, num);
-                            if (flag){
-                                count_conquest ++;
+                            if (allOut){
+                                conquest_flag = p.attackAll(chosenFrom, chosenTo, chosenFrom.getArmy() - 1);
+                            }else {
+                                conquest_flag = p.attack(chosenFrom, chosenTo, numAttack, numDefence);
                             }
-                            if (flag){
+                            if (conquest_flag){
                                 int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
                                 try {
                                     p.attackAssign(chosenFrom, chosenTo, assignArmy);
@@ -155,7 +158,7 @@ public class Controller {
                                     window.showMsg(errorMsg + " Already set to default army 1.");
                                 }
                             }
-                            System.out.println("Conquest:" + count_conquest);
+                            System.out.println("Conquest");
                             chosenFrom = null;
                             chosenTo = null;
                         } catch (RiskGameException ex) {
