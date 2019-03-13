@@ -62,7 +62,7 @@ public class Controller {
                 if (p.getCurrentPhase() == 0) {
                     p.startUpPhase(chosen);
                 } else if (p.getCurrentPhase() == 1) {
-                	cardexchange.setVisible(true);
+//                	cardexchange.setVisible(true);
                     p.reinforcementPhase(chosen);
                     
                 } else if (p.getCurrentPhase() == 3) {
@@ -109,7 +109,7 @@ public class Controller {
                     }
                 } else {
                 	
-                	cardexchange.setVisible(false);
+//                	cardexchange.setVisible(false);
                     System.out.println("Phase attack");
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
@@ -285,7 +285,7 @@ public class Controller {
             JOptionPane.showMessageDialog(null, "Wrong number of Players");
             System.exit(0);
         }
-        p = new Phases(tempMap.get(0), tempMap.get(1));
+        p = new Phases(tempMap.get(0), tempMap.get(1), cardexchange);
         p.addObserver(window);
         p.addObserver(cardexchange);
         Listener lis = new Listener();

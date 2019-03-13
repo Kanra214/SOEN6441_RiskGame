@@ -1,4 +1,6 @@
 package Models;
+import View_Components.CardExchangeView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -16,13 +18,15 @@ public class Phases extends Observable {
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
+    private CardExchangeView cardView;
 
     /**
      * Constructor
      * @param graph List of countries on the map
      * @param worldMap List of Continent on the map
      */
-    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap) {
+    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap, CardExchangeView cardView) {
+        this.cardView = cardView;
         this.graph = graph;
         this.worldmap = worldMap;
         players = new ArrayList<>();
@@ -133,7 +137,13 @@ public class Phases extends Observable {
     /**
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
-    private void phaseOneFirstStep () {
+    private void phaseOneFirstStep() {
+        if (current_player.getCards().checkCardSum()){
+            cardView.setVisible(true);
+            //TODO: dialog window asking what to do
+            cardView.setVisible(false);
+
+        }
         int reinforce = reinforcementArmy(current_player);
         if (reinforce == 0) {
             current_player.getReinforcement(3);

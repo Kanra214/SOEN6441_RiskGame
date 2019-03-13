@@ -3,7 +3,6 @@
  * This class give the player with specific characteristics
  */
 package Models;
-import View_Components.Window;
 
 import java.awt.*;
 import java.util.*;
@@ -19,14 +18,20 @@ public class Player {
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
     private int id;//this is primary key for players
-    private Card card;
+    private Card cards;
 
     /**
      * Array list of controlled territories of the player
      */
     protected ArrayList<Country> realms;
 
-
+    /**
+     * get all the cards of the player
+     * @return cards
+     */
+    public Card getCards() {
+        return cards;
+    }
 
     /**
      * Constructor
@@ -40,7 +45,7 @@ public class Player {
         this.unassigned_armies = army;
         this.playerColor = ALL_COLORS[id];
         this.p = p;
-        this.card=new Card();
+        this.cards =new Card();
 
     }
 
@@ -106,26 +111,26 @@ public class Player {
 
 
     public String showPlayerCardsName(int cardID) {
-    	return card.showCardsName(cardID);
+    	return cards.showCardsName(cardID);
     	
     }
     
     public int showPlayerCards(int cardID) {
-    	return card.showCardsNumber(cardID);
+    	return cards.showCardsNumber(cardID);
     	
     }
     
     public int[] showAllcards() {
-    	return card.cardAll();
+    	return cards.cardAll();
     }
     
     public void addPlayerOneCard() {
-    	card.addCard();
+    	cards.addCard();
     }
     
     public void receiveEnemyCards(int[]enemycards) {
     	
-    	card.addCard(enemycards);
+    	cards.addCard(enemycards);
     }
     
     public void addPlayerArmyByCard(int cardTurn) {
