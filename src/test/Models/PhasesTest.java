@@ -3,6 +3,7 @@ package test.Models;
 import Game.MapLoader;
 import Models.Phases;
 import Models.Player;
+import View_Components.CardExchangeView;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -26,8 +27,9 @@ public class PhasesTest {
     public void before() {
         System.out.println("1.map");
         ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
+        CardExchangeView cardExchangeView = new CardExchangeView();
         System.out.println("Inside before");
-        p = new Phases(tempMap.get(0), tempMap.get(1));
+        p = new Phases(tempMap.get(0), tempMap.get(1),cardExchangeView);
 
     }
 
