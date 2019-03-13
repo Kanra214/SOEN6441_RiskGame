@@ -1,0 +1,20 @@
+[Map]
+author=Invincible Team Four
+warn=yes
+image=none
+wrap=no
+scroll=none
+
+[Continents]
+aa=3
+bb=10
+cc=7
+dd=4
+
+[Territories]
+1,430,178,aa,2,4,5,
+2,591,141,aa,1,6,
+3,736,337,bb,7,4,
+4,472,295,bb,1,3,
+5,357,330,cc,1,6,
+7,680,289,dd,6,3,

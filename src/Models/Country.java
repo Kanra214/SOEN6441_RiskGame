@@ -55,9 +55,24 @@ public class Country {
     /**
      * Increase army number in panel
      */
-    protected void increaseArmy(){
+    protected void incrementArmy(){
         this.army++;
         p.updateWindow();
+    }
+    protected void decrementArmy() throws OutOfArmyException {
+        if(this.army <= 1){
+            if(p.getCurrentPhase() == 2){
+                this.army = 0;
+                p.updateWindow();
+                throw new OutOfArmyException(0);
+            }
+
+        }
+        else{
+            this.army --;
+            p.updateWindow();
+        }
+
     }
 
     /**
@@ -89,10 +104,16 @@ public class Country {
      */
     protected void decreaseArmy(int i) throws OutOfArmyException, MoveAtLeastOneArmyException {
         if(i < 1){
+
             throw new MoveAtLeastOneArmyException(4);
+
+
         }
         if(this.army <= i){
+
             throw new OutOfArmyException(0);
+
+
         }
 
 
@@ -105,7 +126,7 @@ public class Country {
     }
     protected void attackDecreaseArmy(int i){
         this.army -= i;
-        p.updateWindow();
+//        p.updateWindow();
     }
     protected void attackIncreaseArmy(int i){
         this.army += i;

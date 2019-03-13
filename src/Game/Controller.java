@@ -4,16 +4,12 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-import Models.Player;
-import View_Components.CardExchangeView;
+import Models.*;
 import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
 import java.util.ArrayList;
 
-import Models.Phases;
-import Models.Country;
-import Models.RiskGameException;
 import MapEditor.MapEditorGUI;
 
 import javax.swing.*;
@@ -27,20 +23,15 @@ public class Controller {
     Phases p;
     StartManu startmanu;
     MapEditorGUI mapeditor;
-    CardExchangeView cardexchange;
 
     String filename;
 
-    int count_conquest = 0;
-    boolean allOut = false;
-    private boolean conquest_flag = false;
     /**
      * Constructor
      * @param window current panel
      */
     public Controller(Window window) {
         this.window = window;
-        this.cardexchange = new CardExchangeView();
     }
 
     /**
@@ -110,118 +101,78 @@ public class Controller {
 
                     }
                 } else {
-                	
-                	cardexchange.setVisible(false);
                     System.out.println("Phase attack");
-
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
                     } else {
                         chosenTo = chosen;
-                        int numAttack = Integer.parseInt(window.promptPlayer("Attacker: How many armies? max: 3, min: 1"));
-                        int numDefence = Integer.parseInt(window.promptPlayer("Defender: How many armies to choose? max: 2, min: 1"));
+
+                        String attackerInput = window.promptPlayer("How many dice to roll? max: " + Math.min(chosenFrom.getArmy(),3) + ", min: 1. Input nothing to turn on the all-out mode.");
                         try {
-                            if (allOut){
-                                conquest_flag = p.attackAll(chosenFrom, chosenTo, chosenFrom.getArmy() - 1);
-                            }else {
-                                conquest_flag = p.attack(chosenFrom, chosenTo, numAttack, numDefence);
-                            }
-                            if (conquest_flag){
-                                int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
-                                try {
-                                    p.attackAssign(chosenFrom, chosenTo, assignArmy);
-                                }catch (RiskGameException ex){
-                                    String errorMsg;
+                            if (attackerInput == "") {//turn on the all-out mode
+                                p.allOutMode();
+                            } else {
+                                int attackDice = Integer.parseInt(attackerInput);
 
-                                    switch (ex.type) {
+//                        if(chosenFrom)
+//                        String[] attackOptions = new String[Math.min(chosenFrom.getArmy(),3) + 1];
+//                        for(int i = 0; i < attackOptions.length; i++){
+//                            attackOptions[i] = "" + i;
+//
+//                        }
+//                        String selection = window.selectionBox("How many dice to roll?",  );
 
-                                        case 0:
-                                            errorMsg = "Out of army.";
-                                            chosenFrom.armyMinusOne();
-                                            chosenTo.setDefualtArmy();
-                                            break;
-                                        case 4:
-                                            errorMsg = "At lease move one army.";
-                                            chosenFrom.armyMinusOne();
-                                            chosenTo.setDefualtArmy();
-                                            break;
 
-                                        default:
-                                            errorMsg = "Unknown.";
+                                System.out.println("conquest");
+                                int defendDice = Integer.parseInt(window.promptPlayer("How many dice to roll? max: " + Math.min(chosenFrom.getArmy(), 2) + ", min: 1"));
+                                if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                    chosenFrom = null;
+                                    chosenTo = null;
 
-                                    }
-                                    window.showMsg(errorMsg + " Already set to default army 1.");
                                 }
-                            }
-                            System.out.println("Conquest");
-                            chosenFrom = null;
-                            chosenTo = null;
-                        } catch (RiskGameException ex) {
-                            String errorMsg;
 
-                            //Added several exceptions, needs more
-                            switch (ex.type) {
-//                                case 1:
-//                                    errorMsg = "No such path.";
-//                                    break;
-                                case 5:
-                                    errorMsg = "Army at least two in this country.";
-                                    break;
-                                case 6:
-                                    errorMsg = "This country doesn't belong you.";
-                                    break;
-                                case 7:
-                                    errorMsg = "You can't attack to your country.";
-                                    break;
-                                case 8:
-                                    errorMsg = "Out of army.";
-                                    break;
-                                case 9:
-                                    errorMsg = "At lease choose one army.";
-                                    break;
+                                //                                p.attackAssign(chosenFrom, chosenTo, assignArmy);
 
-                                default:
-                                    errorMsg = "Unknown.";
+//                                        window.showMsg(errorMsg + " Already set to default army 1.");
                             }
+                        } catch (MoveAtLeastOneArmyException e1) {
+                            e1.printStackTrace();
+                        } catch (AttackCountryArmyMoreThanOne attackCountryArmyMoreThanOne) {
+                            attackCountryArmyMoreThanOne.printStackTrace();
+                        } catch (WrongDiceNumber wrongDiceNumber) {
+                            wrongDiceNumber.printStackTrace();
+                        } catch (AttackedCountryOwner attackedCountryOwner) {
+                            attackedCountryOwner.printStackTrace();
+                        } catch (AttackMoveAtLeastOneArmy attackMoveAtLeastOneArmy) {
+                            attackMoveAtLeastOneArmy.printStackTrace();
+                        } catch (AttackOutOfArmy attackOutOfArmy) {
+                            attackOutOfArmy.printStackTrace();
+                        } catch (AttackingCountryOwner attackingCountryOwner) {
+                            attackingCountryOwner.printStackTrace();
+                        }
+
+
+                        chosenFrom = null;
+                        chosenTo = null;
+
+                        String errorMsg;
+
+                        //Added several exceptions, needs more
+
+
+                    }
+
                             window.showMsg(errorMsg + " Try again please.");
                             chosenFrom = null;
                             chosenTo = null;
                         }
-                        if(p.isOwnerOfAllCountries(p.getCurrent_player())){
-                            System.out.println("Winner is Player "+p.getCurrent_player().getId());
-                            System.exit(0);
-                        }
-                        if(!checkAttack(p.getCurrent_player())){
-                            p.nextPhase();
-                        }
+
                     }
                 }
             }
-        }
-    }
 
-    protected boolean checkAttack(Player player){
-        boolean val = true;
-        int count_army = 0;
-        int count_owner = 0;
-        for (Country country : player.getRealms()){
-            if (country.getArmy() == 1){
-                count_army ++;
-            }
-            for (Country nei : country.getNeighbours()){
-                if (nei.getOwner() != player){
-                    count_owner ++;
-                }
-            }
-        }
-        if (count_army == player.getRealms().size()){
-            val = false;
-        }
-        if (count_owner == 0){
-            val = false;
-        }
-        return val;
-    }
+
+
     /**
      * This is a function create Start Menu box.
      */
@@ -320,9 +271,8 @@ public class Controller {
             JOptionPane.showMessageDialog(null, "Wrong number of Players");
             System.exit(0);
         }
-        p = new Phases(tempMap.get(0), tempMap.get(1), cardexchange);
+        p = new Phases(tempMap.get(0), tempMap.get(1));
         p.addObserver(window);
-        p.addObserver(cardexchange);
         Listener lis = new Listener();
         p.gameSetUp(numOfPlayers);
 
@@ -334,6 +284,5 @@ public class Controller {
         window.phasePanel.completePhaseButton.addActionListener(lis);
         p.connectView(); //after this updating window is enabled
         window.setVisible(true);
-        
     }
 }

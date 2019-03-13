@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,10 +22,10 @@ public class Window extends JFrame implements Observer {
     private final static int Y = 0;
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    private final static int WIDTH = 1060;
-    private final static int HEIGHT = 685;
-//    private final static int WIDTH = (int) screenSize.getWidth();
-//    private final static int HEIGHT = (int) screenSize.getHeight();
+//    private final static int WIDTH = 1060;
+//    private final static int HEIGHT = 685;
+    private final static int WIDTH = (int) screenSize.getWidth();
+    private final static int HEIGHT = (int) screenSize.getHeight();
 
     private final static int MAP_X = X;
     private final static int MAP_Y = Y;
@@ -143,6 +144,16 @@ public class Window extends JFrame implements Observer {
     public void showMsg(String dialog){
         JOptionPane.showMessageDialog(this, dialog);
     }
+//    public String selectionBox(String question, String[] options){
+//        JDialog.setDefaultLookAndFeelDecorated(true);
+//
+//        String initialSelection = options[0];
+//        String selection = (String) JOptionPane.showInputDialog(null, question,
+//                "", JOptionPane.QUESTION_MESSAGE, null, options, initialSelection);
+////        System.out.println(selection);
+//        return selection;
+//    }
+
 
     /**
      * Update this window
@@ -177,4 +188,5 @@ public class Window extends JFrame implements Observer {
             mapPanel.comps.add(country);
         }
     }
+
 }
