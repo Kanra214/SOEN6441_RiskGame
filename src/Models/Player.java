@@ -40,7 +40,7 @@ public class Player {
         this.unassigned_armies = army;
         this.playerColor = ALL_COLORS[id];
         this.p = p;
-        //this.card=card;
+        this.card=new Card();
 
     }
 
@@ -105,10 +105,19 @@ public class Player {
     }
 
 
-    public void showPlayerCards() {
-    	card.showCards();
+    public String showPlayerCardsName(int cardID) {
+    	return card.showCardsName(cardID);
+    	
     }
     
+    public int showPlayerCards(int cardID) {
+    	return card.showCardsNumber(cardID);
+    	
+    }
+    
+    public void addPlayerCard() {
+    	card.addCard();
+    }
     
     
     /**

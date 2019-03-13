@@ -2,7 +2,7 @@ package Models;
 
 public class Card {
 	private int playerID;
-	private String[] cardType= {"Infantry","Cavalry","Artillery"};
+	private String[] cardName= {"Infantry","Cavalry","Artillery"};
 	private int[] cardNumber= {0,0,0}; 
 	  
 	public Card() {
@@ -15,11 +15,14 @@ public class Card {
 		cardNumber[randCID]++;
 	}
 	
-	public void showCards() {
+	public int showCardsNumber(int cardID) {
+		/*
 		for(int i=0;i<3;i++) {
-			System.out.println(cardType[i]);
+			System.out.println(cardName[i]);
 			System.out.println(cardNumber[i]);
 		}
+		*/
+		return cardNumber[cardID];
 	}
 	
 	public int cardSum() {
@@ -40,11 +43,6 @@ public class Card {
 	//0 for 3 card of different types,1 for 3 cards of the same type,2 for both,-1 for other 
 	public int checkCardType() {
 		int[] tempType= {-1,-1};
- 
-		
-	
-		
-
 		if(cardNumber[0]!=0&&cardNumber[1]!=0&&cardNumber[2]!=0) {
 			tempType[0]=1;
 		}
@@ -70,29 +68,40 @@ public class Card {
 	
 	
 	//By calling this method card number will decrease 
-	public boolean exchangeCard(boolean exchangeType) {
+	public boolean exchangeCard(int exchangeType) {
 		//0 for 3 card of different types,1 for 3 cards of the same type 
-		if(checkCardType()!=0||checkCardType() !=1 ) {
+		if(checkCardType()==-1 ) {
 			return false;
 		}
 				
-		if(exchangeType==true) {
-			for(int i=0;i<3;i++) {				
-			cardNumber[i]--;
-			}			
+		if(exchangeType==0) {
+			if(checkCardType()==0) {
+				for(int i=0;i<3;i++) {				
+					cardNumber[i]--;
+					}
+				return true;
+			}else return false;
+	
 		}
-		else {
+		else if(exchangeType==1){
+			if(checkCardType()==1) {
 			for(int i=0;i<3;i++) {				
-				if(cardNumber[i]==3) {
-				
+				if(cardNumber[i]>=3) {				
 					cardNumber[i]-=3;
 				}
-			}	
+				return true;
+			}
+			}else return false;	
 		}
 		
 		return true;
 		
 		
+	}
+
+	public String showCardsName(int cardID) {
+		
+		return cardName[cardID];
 	}
 	
 	
