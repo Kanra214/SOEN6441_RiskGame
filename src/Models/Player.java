@@ -291,7 +291,8 @@ public class Player {
      * Attack phase
      * @param from source country
      * @param to target country
-     * @param num the number of attacking army
+     * @param numAttack the number of attacking army
+     * @param numDefence the number of defence army
      * @return true for conquest successful
      * @throws AttackMoveAtLeastOneArmy army at least one
      * @throws AttackOutOfArmy out of army number in attacking country
@@ -299,26 +300,38 @@ public class Player {
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    protected boolean attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
+    protected boolean attack(Country from, Country to, int numAttack, int numDefence) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
 
         boolean conquest = false;
-        if (countryValidation(from, to, num)){
-            System.out.println("Attack army:" +num);
-            ArrayList<Integer> results = attackSimulation(to, num);
+        ArrayList<Integer> results = new ArrayList<Integer>();
+        if (countryValidation(from, to, numAttack)){
+            System.out.println("Attack army:" + numAttack);
+            System.out.println("Defence army: "+ numDefence);
+            if (numDefence == -1){
+                results = attackSimulation(to, numAttack);
+                //Conquest
+                if (results.get(0) > 0){
+                    System.out.println("Win");
+                    from.attackDecreaseArmy(numAttack - results.get(0));
+                    to.setOwner(this);
+                    to.attackDecreaseArmy(to.getArmy());
+                    conquest = true;
 
-            //Conquest
-            if (results.get(0) > 0){
-                System.out.println("Win");
-                from.attackDecreaseArmy(num - results.get(0));
-                to.setOwner(this);
-                to.attackDecreaseArmy(to.getArmy());
-                conquest = true;
-
-            } else {
-                System.out.println("Lose");
-                from.attackDecreaseArmy(num);
-                to.attackDecreaseArmy(to.getArmy() - results.get(1));
+                } else {
+                    System.out.println("Lose");
+                    from.attackDecreaseArmy(numAttack);
+                    to.attackDecreaseArmy(to.getArmy() - results.get(1));
+                }
+            }else {
+                results = attackNormal(numAttack, numDefence);
+                from.attackDecreaseArmy(numAttack - results.get(0));
+                to.attackDecreaseArmy(numDefence - results.get(1));
+                if (to.getArmy() == 0){
+                    to.setOwner(this);
+                    conquest = true;
+                }
             }
+
 
         }
         return conquest;
@@ -419,6 +432,31 @@ public class Player {
         }
         results.add(liveArmy);
         results.add(defenceArmy);
+        return results;
+    }
+    protected ArrayList<Integer> attackNormal(int numAttack, int numDefence){
+        ArrayList<Integer> results = new ArrayList<>();
+        if (numAttack == 3){
+            if (numDefence == 2){
+                results = compareThreetoTwo(3, 2);
+            }else {
+                results = compareThreetoOne(3,1);
+            }
+        }
+        if (numAttack == 2){
+            if (numDefence == 2){
+                results = compareTwotoTwo(2, 2);
+            }else {
+                results = compareTwotoOne(2,1);
+            }
+        }
+        if (numAttack == 1){
+            if (numDefence == 2){
+                results = compareOnetoTwo(1, 2);
+            }else {
+                results = compareOnetoOne(1,1);
+            }
+        }
         return results;
     }
 //Results: first: rest of attacking second: rest of attacked

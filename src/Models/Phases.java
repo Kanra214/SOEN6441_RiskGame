@@ -259,9 +259,14 @@ public class Phases extends Observable {
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    public boolean attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
-        return current_player.attack(from, to, num);
+    public boolean attackAll(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
+        return current_player.attack(from, to, num, -1);
     }
+
+    public boolean attack(Country from, Country to, int numAttack, int numDefence) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
+        return current_player.attack(from, to, numAttack, numDefence);
+    }
+
     public void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
         current_player.attackAssign(from, to, num);
     }
