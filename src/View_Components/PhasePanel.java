@@ -3,6 +3,7 @@ package View_Components;
 import Models.Player;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * <h1>PhasePanel</h1>
@@ -11,7 +12,7 @@ import javax.swing.*;
 public class PhasePanel extends JPanel {
     private JLabel currentPhaseLabel;
     private JLabel currentPlayerLabel;
-    private JLabel unitLeftLabel;
+    private JLabel detailLabel;
     public JButton completePhaseButton;
 
     /**
@@ -20,12 +21,12 @@ public class PhasePanel extends JPanel {
     protected PhasePanel(){
         currentPlayerLabel = new JLabel();
         currentPhaseLabel = new JLabel();
-        unitLeftLabel = new JLabel();
+        detailLabel = new JLabel();
         completePhaseButton = new JButton("complete this phase");
         add(completePhaseButton);
         add(currentPlayerLabel);
         add(currentPhaseLabel);
-        add(unitLeftLabel);
+        add(detailLabel);
     }
 
     /**
@@ -35,9 +36,24 @@ public class PhasePanel extends JPanel {
      */
     protected void setContext(int currentPhase, Player currentPlayer){
         this.setBackground(currentPlayer.getPlayerColor());
-        currentPhaseLabel.setText("<html><body><h1>Current Phase : " + phaseToString(currentPhase) + "</h1></body><html>");
-        currentPlayerLabel.setText("<html><body><h1>Current Player : "  + currentPlayer.getId() + "</h1></body><html>");
-        unitLeftLabel.setText("<html><body><h1>Unassigned Armies: " + currentPlayer.getUnassigned_armies()+ "</h1></body><html>");
+        currentPhaseLabel.setText("<html><body>" +
+                "<h3>Current Phase : " + phaseToString(currentPhase) + "</h3>" +
+                "<p>" + phaseInstruction(currentPhase) + "</p>" +
+                "</body><html>");
+        currentPlayerLabel.setText("<html><body><h3>Current Player : "  + currentPlayer.getId() + "</h3></body><html>");
+
+
+        if(currentPhase == 2){//show dice info
+            detailLabel.setText("<html><body>" +
+                    "<h3>Attacking country dice: </h3>" +
+                    "<p>" + diceToString(currentPlayer.getDice()) +"</p>" +
+                    "</body><html>");
+        }
+        else {
+            detailLabel.setText("<html><body><h3>Unassigned Armies: " + currentPlayer.getUnassigned_armies() + "</h3></body><html>");
+        }
+
+
 
         if(currentPhase == 2 || currentPhase == 3){
             completePhaseButton.setEnabled(true);
@@ -65,5 +81,30 @@ public class PhasePanel extends JPanel {
             case 3: return "Fortification Phase";
             default: return "UnKnown";
         }
+    }
+
+    /**
+     * Return phase instructions
+     * @param currentPhase int representing current phase
+     * @return string instructions
+     */
+    private String phaseInstruction(int currentPhase){
+        switch(currentPhase){
+            case 0: return "Please deploy army by clicking on your own countries until unassigned armies is 0";
+            case 1: return "Please deploy army by clicking on your own countries until unassigned armies is 0";
+            case 2: return "Please choose one of your own country with armies more than one to attack on another country of other players";
+            case 3: return "Please choose two of your own countries and type in the number of armies you want to move";
+            default: return "Unknown";
+
+        }
+    }
+    private String diceToString(ArrayList<Integer> dice){
+        String s = "--------";
+        for(int i = 0; i < dice.size(); i++){
+            s += dice.get(i) + "--------";
+        }
+        return s;
+
+
     }
 }
