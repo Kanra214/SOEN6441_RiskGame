@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+import Models.Player;
 import View_Components.CardExchangeView;
 import View_Components.CountryButton;
 import View_Components.Window;
@@ -27,9 +28,11 @@ public class Controller {
     StartManu startmanu;
     MapEditorGUI mapeditor;
     CardExchangeView cardexchange;
+    Player player;
 
     String filename;
 
+    int count_conquest = 0;
     /**
      * Constructor
      * @param window current panel
@@ -64,7 +67,6 @@ public class Controller {
                 } else if (p.getCurrentPhase() == 1) {
 //                	cardexchange.setVisible(true);
                     p.reinforcementPhase(chosen);
-                    
                 } else if (p.getCurrentPhase() == 3) {
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
@@ -111,14 +113,25 @@ public class Controller {
                 	
 //                	cardexchange.setVisible(false);
                     System.out.println("Phase attack");
+
+                    if(!checkAttack(p.getCurrent_player())){
+                        p.nextPhase();
+                    }
+                    if(!checkAttack(p.getCurrent_player())){
+                        System.out.println("1");
+                        p.nextPhase();
+                    }
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
                     } else {
                         chosenTo = chosen;
                         int num = Integer.parseInt(window.promptPlayer("How many armies to choose? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
                         try {
-                            if (p.attackPhase(chosenFrom, chosenTo, num)){
-                                System.out.println("conquest");
+                            boolean flag = p.attackPhase(chosenFrom, chosenTo, num);
+                            if (flag){
+                                count_conquest ++;
+                            }
+                            if (flag){
                                 int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
                                 try {
                                     p.attackAssign(chosenFrom, chosenTo, assignArmy);
@@ -145,6 +158,7 @@ public class Controller {
                                     window.showMsg(errorMsg + " Already set to default army 1.");
                                 }
                             }
+                            System.out.println("Conquest:" + count_conquest);
                             chosenFrom = null;
                             chosenTo = null;
                         } catch (RiskGameException ex) {
@@ -187,6 +201,28 @@ public class Controller {
         }
     }
 
+    protected boolean checkAttack(Player player){
+        boolean val = true;
+        int count_army = 0;
+        int count_owner = 0;
+        for (Country country : player.getRealms()){
+            if (country.getArmy() == 1){
+                count_army ++;
+            }
+            for (Country nei : country.getNeighbours()){
+                if (nei.getOwner() != player){
+                    count_owner ++;
+                }
+            }
+        }
+        if (count_army == player.getRealms().size()){
+            val = false;
+        }
+        if (count_owner == 0){
+            val = false;
+        }
+        return val;
+    }
     /**
      * This is a function create Start Menu box.
      */
