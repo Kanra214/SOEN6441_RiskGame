@@ -1,5 +1,7 @@
 package Models;
 
+import javax.swing.*;
+
 public class Card {
 	private int playerID;
 	private String[] cardName= {"Infantry","Cavalry","Artillery"};
@@ -12,6 +14,7 @@ public class Card {
 	public void addCard() {
 		int randCID=(int) Math.floor(3*Math.random());
 		System.out.println("This card will add to "+randCID);
+		JOptionPane.showMessageDialog(null, "This card will add to "+randCID);
 		cardNumber[randCID]++;
 	}
 	
@@ -72,8 +75,7 @@ public class Card {
 		
 	}
 	
-	
-	
+
 	//By calling this method card number will decrease 
 	public boolean exchangeCard(int exchangeType) {
 		//0 for 3 card of different types,1 for 3 cards of the same type 

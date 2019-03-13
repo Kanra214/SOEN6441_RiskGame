@@ -33,7 +33,7 @@ public class Controller {
 
     int count_conquest = 0;
     boolean allOut = false;
-    boolean conquest_flag;
+    public static boolean conquest_flag = false;
     /**
      * Constructor
      * @param window current panel
@@ -112,7 +112,7 @@ public class Controller {
                     }
                 } else {
                 	
-//                	cardexchange.setVisible(false);
+                	cardexchange.setVisible(false);
                     System.out.println("Phase attack");
 
                     if(!checkAttack(p.getCurrent_player())){
@@ -187,9 +187,7 @@ public class Controller {
 
                                 default:
                                     errorMsg = "Unknown.";
-
                             }
-
                             window.showMsg(errorMsg + " Try again please.");
                             chosenFrom = null;
                             chosenTo = null;

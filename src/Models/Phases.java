@@ -1,4 +1,5 @@
 package Models;
+import Game.Controller;
 import View_Components.CardExchangeView;
 
 import java.util.ArrayList;
@@ -119,6 +120,9 @@ public class Phases extends Observable {
 
     private void nextTurn(){
         currentTurn++;
+        if (Controller.conquest_flag){
+            current_player.getCards().addCard();
+        }
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
         if(currentPhase == 1) {
             phaseOneFirstStep();
@@ -138,10 +142,10 @@ public class Phases extends Observable {
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
     private void phaseOneFirstStep() {
+        cardView.setVisible(true);
         if (current_player.getCards().checkCardSum()){
-            cardView.setVisible(true);
-            //TODO: dialog window asking what to do
-            cardView.setVisible(false);
+            //TODO: force to change cards for now I will make automatic take cards
+
 
         }
         int reinforce = reinforcementArmy(current_player);
@@ -240,13 +244,6 @@ public class Phases extends Observable {
         
     }
 
-
-    /**
-     * Attack phase
-     */
-    //public void attackPhase(){
-//        System.out.println("in phase 2");
-//    }
 
     /**
      * Attack phase
