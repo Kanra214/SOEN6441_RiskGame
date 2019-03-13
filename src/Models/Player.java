@@ -115,8 +115,21 @@ public class Player {
     	
     }
     
-    public void addPlayerCard() {
+    public int[] showAllcards() {
+    	return card.cardAll();
+    }
+    
+    public void addPlayerOneCard() {
     	card.addCard();
+    }
+    
+    public void receiveEnemyCards(int[]enemycards) {
+    	
+    	card.addCard(enemycards);
+    }
+    
+    public void addPlayerArmyByCard(int cardTurn) {
+    	unassigned_armies+=cardTurn*5;
     }
     
     

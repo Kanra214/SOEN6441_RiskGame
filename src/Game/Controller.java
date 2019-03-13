@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+
+import View_Components.CardExchangeView;
 import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
@@ -24,6 +26,7 @@ public class Controller {
     Phases p;
     StartManu startmanu;
     MapEditorGUI mapeditor;
+    CardExchangeView cardexchange;
 
     String filename;
 
@@ -33,6 +36,7 @@ public class Controller {
      */
     public Controller(Window window) {
         this.window = window;
+        this.cardexchange = new CardExchangeView();
     }
 
     /**
@@ -58,7 +62,9 @@ public class Controller {
                 if (p.getCurrentPhase() == 0) {
                     p.startUpPhase(chosen);
                 } else if (p.getCurrentPhase() == 1) {
+                	cardexchange.setVisible(true);
                     p.reinforcementPhase(chosen);
+                    
                 } else if (p.getCurrentPhase() == 3) {
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
@@ -102,6 +108,8 @@ public class Controller {
 
                     }
                 } else {
+                	
+                	cardexchange.setVisible(false);
                     System.out.println("Phase attack");
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
@@ -279,6 +287,7 @@ public class Controller {
         }
         p = new Phases(tempMap.get(0), tempMap.get(1));
         p.addObserver(window);
+        p.addObserver(cardexchange);
         Listener lis = new Listener();
         p.gameSetUp(numOfPlayers);
 
@@ -290,5 +299,6 @@ public class Controller {
         window.phasePanel.completePhaseButton.addActionListener(lis);
         p.connectView(); //after this updating window is enabled
         window.setVisible(true);
+        
     }
 }

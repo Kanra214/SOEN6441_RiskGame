@@ -15,6 +15,13 @@ public class Card {
 		cardNumber[randCID]++;
 	}
 	
+	public void addCard(int[] enemycards) {
+		for(int i=0;i<3;i++) {
+			cardNumber[i]+=enemycards[i];
+		}
+		
+	}
+	
 	public int showCardsNumber(int cardID) {
 		/*
 		for(int i=0;i<3;i++) {
@@ -102,6 +109,11 @@ public class Card {
 	public String showCardsName(int cardID) {
 		
 		return cardName[cardID];
+	}
+
+	public int[] cardAll() {
+		
+		return cardNumber;
 	}
 	
 	

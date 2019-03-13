@@ -8,7 +8,7 @@ import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 
-
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +27,7 @@ public class CardExchangeView extends JFrame implements Observer{
 	
 	private CardPanel cp;
 	private JPanel mainPanel;
-	
+	private JButton Exchange3Same,Exchange3Diff,Cancel;
 
 	public CardExchangeView(){
 	    super("CardExchangeView");
@@ -47,9 +47,16 @@ public class CardExchangeView extends JFrame implements Observer{
         mainPanel.setBounds(X,Y,WIDTH,HEIGHT);
         //side panel settings
         
+        Exchange3Same=new JButton("Exchange 3 Same Cards");
+        Exchange3Diff=new JButton("Exchange 3 Different Cards");
+        Cancel=new JButton("Cancel");
         cp.setBounds(X,Y,WIDTH,HEIGHT);
         cp.setBackground(Color.WHITE);
         cp.setLayout(new GridLayout(6,1));
+        
+        cp.add(Exchange3Same);
+        cp.add(Exchange3Diff);
+        cp.add(Cancel);
         mainPanel.add(cp);
         add(mainPanel);
 	}

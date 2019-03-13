@@ -227,6 +227,7 @@ public class Phases extends Observable {
      */
     public void reinforcementPhase(Country chosen){
         current_player.deployArmy(chosen);
+        
     }
 
 
