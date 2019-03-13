@@ -328,6 +328,94 @@ public class Player {
         Collections.sort(DiceArray, Collections.reverseOrder());
         return DiceArray;
     }
+    protected ArrayList<Integer> compareThreetoTwo(int liveArmy, int defenceArmy){
+        ArrayList<Integer> results = new ArrayList<>();
+        ArrayList<Integer> attackDice = DiceArray(3);
+        ArrayList<Integer> defenceDice = DiceArray(2);
+        if (attackDice.get(0) > defenceDice.get(0)) {
+            defenceArmy --;
+            } else {
+            liveArmy --;
+            }
+            if (attackDice.get(1) > defenceDice.get(1)) {
+            defenceArmy --;
+            } else {
+            liveArmy --;
+            }
+            results.add(liveArmy);
+            results.add(defenceArmy);
+        return results;
+    }
+    protected ArrayList<Integer> compareThreetoOne(int liveArmy, int defenceArmy){
+        ArrayList<Integer> results = new ArrayList<>();
+        ArrayList<Integer> attackDice = DiceArray(3);
+        int defenceDice1 = (int) (Math.random() * 6) + 1;
+        if (attackDice.get(0) > defenceDice1) {
+            defenceArmy --;
+        } else {
+            liveArmy --;
+        }
+        results.add(liveArmy);
+        results.add(defenceArmy);
+        return results;
+    }
+    protected ArrayList<Integer> compareTwotoTwo(int liveArmy, int defenceArmy){
+        ArrayList<Integer> results = new ArrayList<>();
+        ArrayList<Integer> attackDice = DiceArray(2);
+        ArrayList<Integer> defenceDice = DiceArray(2);
+        if (attackDice.get(0) > defenceDice.get(0)) {
+            defenceArmy --;
+        } else {
+            liveArmy --;
+        }
+        if (attackDice.get(1) > defenceDice.get(1)) {
+            defenceArmy --;
+        } else {
+            liveArmy --;
+        }
+        results.add(liveArmy);
+        results.add(defenceArmy);
+        return results;
+    }
+    protected ArrayList<Integer> compareTwotoOne(int liveArmy, int defenceArmy){
+        ArrayList<Integer> results = new ArrayList<>();
+        ArrayList<Integer> attackDice = DiceArray(2);
+        int defenceDice1 = (int) (Math.random() * 6) + 1;
+        if (attackDice.get(0) > defenceDice1) {
+            defenceArmy --;
+        } else {
+            liveArmy --;
+        }
+        results.add(liveArmy);
+        results.add(defenceArmy);
+        return results;
+    }
+    protected ArrayList<Integer> compareOnetoTwo(int liveArmy, int defenceArmy){
+        ArrayList<Integer> results = new ArrayList<>();
+        int attackDice1 = (int) (Math.random() * 6) + 1;
+        ArrayList<Integer> defenceDice = DiceArray(2);
+        if (attackDice1 > defenceDice.get(0)) {
+            defenceArmy --;
+        } else {
+            liveArmy --;
+        }
+        results.add(liveArmy);
+        results.add(defenceArmy);
+        return results;
+    }
+    protected ArrayList<Integer> compareOnetoOne(int liveArmy, int defenceArmy){
+        ArrayList<Integer> results = new ArrayList<>();
+        int attackDice1 = (int) (Math.random() * 6) + 1;
+        int defenceDice1 = (int) (Math.random() * 6) + 1;
+        if (attackDice1 > defenceDice1) {
+            defenceArmy --;
+        } else {
+            liveArmy --;
+        }
+        results.add(liveArmy);
+        results.add(defenceArmy);
+        return results;
+    }
 //Results: first: rest of attacking second: rest of attacked
     protected ArrayList<Integer> attackSimulation(Country to, int num){
         ArrayList<Integer> results = new ArrayList<>();
@@ -337,67 +425,39 @@ public class Player {
         while (liveArmy != 0 && defenceArmy !=0){
             if (liveArmy > 2) {
                 if (defenceArmy >= 2) {
-                    ArrayList<Integer> attackDice = DiceArray(3);
-                    ArrayList<Integer> defenceDice = DiceArray(2);
-                    if (attackDice.get(0) > defenceDice.get(0)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                    if (attackDice.get(1) > defenceDice.get(1)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
+                    System.out.println("1");
+                    ArrayList<Integer> compare = compareThreetoTwo(liveArmy, defenceArmy);
+                    liveArmy = compare.get(0);
+                    defenceArmy = compare.get(1);
                 } else {
-                    ArrayList<Integer> attackDice = DiceArray(3);
-                    int defenceDice1 = (int) (Math.random() * 6) + 1;
-                    if (attackDice.get(0) > defenceDice1) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
+                    System.out.println("2");
+                    ArrayList<Integer> compare = compareThreetoOne(liveArmy, defenceArmy);
+                    liveArmy = compare.get(0);
+                    defenceArmy = compare.get(1);
                 }
             } else if (liveArmy == 2) {
                 if (defenceArmy >= 2) {
-                    ArrayList<Integer> attackDice = DiceArray(2);
-                    ArrayList<Integer> defenceDice = DiceArray(2);
-                    if (attackDice.get(0) > defenceDice.get(0)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                    if (attackDice.get(1) > defenceDice.get(1)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
+                    System.out.println("3");
+                    ArrayList<Integer> compare = compareTwotoTwo(liveArmy, defenceArmy);
+                    liveArmy = compare.get(0);
+                    defenceArmy = compare.get(1);
                 } else {
-                    ArrayList<Integer> attackDice = DiceArray(2);
-                    int defenceDice1 = (int) (Math.random() * 6) + 1;
-                    if (attackDice.get(0) > defenceDice1) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
+                    System.out.println("4");
+                    ArrayList<Integer> compare = compareTwotoOne(liveArmy, defenceArmy);
+                    liveArmy = compare.get(0);
+                    defenceArmy = compare.get(1);
                 }
             } else if (liveArmy == 1) {
                 if (defenceArmy >= 2) {
-                    int attackDice1 = (int) (Math.random() * 6) + 1;
-                    ArrayList<Integer> defenceDice = DiceArray(2);
-                    if (attackDice1 > defenceDice.get(0)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
+                    System.out.println("5");
+                    ArrayList<Integer> compare = compareOnetoTwo(liveArmy, defenceArmy);
+                    liveArmy = compare.get(0);
+                    defenceArmy = compare.get(1);
                 } else {
-                    int attackDice1 = (int) (Math.random() * 6) + 1;
-                    int defenceDice1 = (int) (Math.random() * 6) + 1;
-                    if (attackDice1 > defenceDice1) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
+                    System.out.println("6");
+                    ArrayList<Integer> compare = compareOnetoOne(liveArmy, defenceArmy);
+                    liveArmy = compare.get(0);
+                    defenceArmy = compare.get(1);
                 }
             }
         }
