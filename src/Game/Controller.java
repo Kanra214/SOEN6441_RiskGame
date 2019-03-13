@@ -117,10 +117,7 @@ public class Controller {
                     if(!checkAttack(p.getCurrent_player())){
                         p.nextPhase();
                     }
-                    if(!checkAttack(p.getCurrent_player())){
-                        System.out.println("1");
-                        p.nextPhase();
-                    }
+                    
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
                     } else {
