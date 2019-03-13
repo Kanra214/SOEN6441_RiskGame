@@ -3,14 +3,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+
+import Models.*;
 import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
 import java.util.ArrayList;
 
-import Models.Phases;
-import Models.Country;
-import Models.RiskGameException;
 import MapEditor.MapEditorGUI;
 
 import javax.swing.*;
@@ -107,66 +106,61 @@ public class Controller {
                         chosenFrom = chosen;
                     } else {
                         chosenTo = chosen;
-                        int num = Integer.parseInt(window.promptPlayer("How many armies to choose? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+
+                        String attackerInput = window.promptPlayer("How many dice to roll? max: " + Math.min(chosenFrom.getArmy(),3) + ", min: 1. Input nothing to turn on the all-out mode.");
                         try {
-                            if (p.attackPhase(chosenFrom, chosenTo, num)){
+                            if (attackerInput == "") {//turn on the all-out mode
+                                p.allOutMode();
+                            } else {
+                                int attackDice = Integer.parseInt(attackerInput);
+
+//                        if(chosenFrom)
+//                        String[] attackOptions = new String[Math.min(chosenFrom.getArmy(),3) + 1];
+//                        for(int i = 0; i < attackOptions.length; i++){
+//                            attackOptions[i] = "" + i;
+//
+//                        }
+//                        String selection = window.selectionBox("How many dice to roll?",  );
+
+
                                 System.out.println("conquest");
-                                int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
-                                try {
-                                    p.attackAssign(chosenFrom, chosenTo, assignArmy);
-                                }catch (RiskGameException ex){
-                                    String errorMsg;
+                                int defendDice = Integer.parseInt(window.promptPlayer("How many dice to roll? max: " + Math.min(chosenFrom.getArmy(), 2) + ", min: 1"));
+                                if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                    chosenFrom = null;
+                                    chosenTo = null;
 
-                                    switch (ex.type) {
-
-                                        case 0:
-                                            errorMsg = "Out of army.";
-                                            chosenFrom.armyMinusOne();
-                                            chosenTo.setDefualtArmy();
-                                            break;
-                                        case 4:
-                                            errorMsg = "At lease move one army.";
-                                            chosenFrom.armyMinusOne();
-                                            chosenTo.setDefualtArmy();
-                                            break;
-
-                                        default:
-                                            errorMsg = "Unknown.";
-
-                                    }
-                                    window.showMsg(errorMsg + " Already set to default army 1.");
                                 }
+
+                                //                                p.attackAssign(chosenFrom, chosenTo, assignArmy);
+
+//                                        window.showMsg(errorMsg + " Already set to default army 1.");
                             }
-                            chosenFrom = null;
-                            chosenTo = null;
-                        } catch (RiskGameException ex) {
-                            String errorMsg;
+                        } catch (MoveAtLeastOneArmyException e1) {
+                            e1.printStackTrace();
+                        } catch (AttackCountryArmyMoreThanOne attackCountryArmyMoreThanOne) {
+                            attackCountryArmyMoreThanOne.printStackTrace();
+                        } catch (WrongDiceNumber wrongDiceNumber) {
+                            wrongDiceNumber.printStackTrace();
+                        } catch (AttackedCountryOwner attackedCountryOwner) {
+                            attackedCountryOwner.printStackTrace();
+                        } catch (AttackMoveAtLeastOneArmy attackMoveAtLeastOneArmy) {
+                            attackMoveAtLeastOneArmy.printStackTrace();
+                        } catch (AttackOutOfArmy attackOutOfArmy) {
+                            attackOutOfArmy.printStackTrace();
+                        } catch (AttackingCountryOwner attackingCountryOwner) {
+                            attackingCountryOwner.printStackTrace();
+                        }
 
-                            //Added several exceptions, needs more
-                            switch (ex.type) {
-//                                case 1:
-//                                    errorMsg = "No such path.";
-//                                    break;
-                                case 5:
-                                    errorMsg = "Army at least two in this country.";
-                                    break;
-                                case 6:
-                                    errorMsg = "This country doesn't belong you.";
-                                    break;
-                                case 7:
-                                    errorMsg = "You can't attack to your country.";
-                                    break;
-                                case 8:
-                                    errorMsg = "Out of army.";
-                                    break;
-                                case 9:
-                                    errorMsg = "At lease choose one army.";
-                                    break;
 
-                                default:
-                                    errorMsg = "Unknown.";
+                        chosenFrom = null;
+                        chosenTo = null;
 
-                            }
+                        String errorMsg;
+
+                        //Added several exceptions, needs more
+
+
+                    }
 
                             window.showMsg(errorMsg + " Try again please.");
                             chosenFrom = null;
@@ -176,8 +170,8 @@ public class Controller {
                     }
                 }
             }
-        }
-    }
+
+
 
     /**
      * This is a function create Start Menu box.

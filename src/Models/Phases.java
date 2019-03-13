@@ -240,18 +240,69 @@ public class Phases extends Observable {
      * Attack phase
      * @param from  Country from where army will attacking
      * @param to    Country from where army will be attacked
-     * @param num   int number of armies to choose
+     * @param attackDice   int number of dice to roll for attacker
      * @throws AttackMoveAtLeastOneArmy army at least one
      * @throws AttackOutOfArmy out of army number in attacking country
      * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    public boolean attackPhase(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
-        return current_player.attack(from, to, num);
+    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner, MoveAtLeastOneArmyException, WrongDiceNumber {
+//        current_player.attack(from, to, attackDice, defendDice);
+//        if(current_player.attackValidation(from, to, num)) {
+//            attackSimulation(from, to, num);
+//        }
+
+        if(current_player.attackValidation(from,to,attackDice)){
+            if(to.getOwner().defendValidation(defendDice)){
+                attackSimulation(from, to, attackDice, defendDice);
+                return true;
+            }
+        }
+
+
     }
-    public void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
-        current_player.attackAssign(from, to, num);
+//    public void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
+//        current_player.attackAssign(from, to, num);
+//    }
+    //Results: first: rest of attacking second: rest of attacked
+    protected void attackSimulation(Country from, Country to, int attackDice, int defendDice){
+//        ArrayList<Integer> results = new ArrayList<>();
+//        int liveArmy = num;
+//        int defenceArmy = to.getArmy();
+        Player attacker = from.getOwner();
+        Player defender = to.getOwner();
+        attacker.rollDice(attackDice);
+        defender.rollDice(defendDice);
+
+        while (attacker.dice.size() != 0 && defender.dice.size() != 0){
+            try {
+                if (attacker.dice.get(0) > defender.dice.get(0)) {
+                    defender.loseArmy(from);
+                } else {
+                    attacker.loseArmy(to);
+                }
+                attacker.removeDice();
+                defender.removeDice();
+            }
+
+            //defending country loses
+            catch(OutOfArmyException e){// out of army must be thrown by defender's country, no any other possibility, because before attacker runs out of armyies, the while loop ends
+                to.setOwner(attacker);
+                if(checkWinner()){//this attacker conquered all the countries
+
+                }
+                break;
+
+            }
+
+        }
+
+//        results.add(liveArmy);
+//        results.add(defenceArmy);
+//        System.out.println("attack:"+liveArmy);
+//        System.out.println("defence:"+defenceArmy);
+//        return results;
     }
 
     /**
@@ -267,6 +318,14 @@ public class Phases extends Observable {
      */
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
+    }
+    private boolean checkWinner(){
+
+    }
+    public void AllOutMode(){
+        if(currentPhase == 2){
+            attackPhase(from, to, 3,2);//recode this in details please
+        }
     }
 
 

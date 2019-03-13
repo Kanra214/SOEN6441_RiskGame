@@ -4,14 +4,14 @@ package Models;
  * Customized exceptions for this game
  */
 public class RiskGameException extends Exception {
-    public int type;
+    public String errMsg;
 
     /**
      * Constructor
      * @param type the integer representation of exceptions
      */
-    public RiskGameException(int type){
-        this.type = type;
+    public RiskGameException(){
+
     }
 }
 //0
@@ -25,8 +25,8 @@ class OutOfArmyException extends RiskGameException{
      * Constructor
      * @param type 0 for this type
      */
-    public OutOfArmyException(int type) {
-        super(type);
+    public OutOfArmyException() {
+        super("Out of army.");
     }
 }
 //1
@@ -156,5 +156,22 @@ class AttackMoveAtLeastOneArmy extends RiskGameException{
      */
     public AttackMoveAtLeastOneArmy(int type) {
         super(type);
+    }
+}
+//10
+
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class WrongDiceNumber extends RiskGameException{
+    protected Player player;
+    /**
+     * Constuctor
+     * @param type 9 for this type
+     */
+    public WrongDiceNumber(int type, Player player) {
+        super(type);
+        this.player = player;
+
     }
 }

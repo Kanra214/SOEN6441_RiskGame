@@ -19,11 +19,13 @@ public class Player {
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
     private int id;//this is primary key for players
+    protected ArrayList<Integer> dice = new ArrayList<>();
 
     /**
      * Array list of controlled territories of the player
      */
     protected ArrayList<Country> realms;
+
 
 
 
@@ -108,11 +110,11 @@ public class Player {
      * @param country to where army will be sent
      */
     protected void deployArmy(Country country)  {
-        if(realms.contains(country)) {
+        if(country.getOwner() == this) {
             if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
                 incrementMapArmies();
-                country.increaseArmy();
+                country.incrementArmy();
             }
             else{
                 System.out.println("out of armies");
@@ -147,7 +149,7 @@ public class Player {
      */
     private boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
 
-        if (realms.contains(sourceCountry) && realms.contains(targetCountry)) {
+        if (sourceCountry.getOwner() == this && targetCountry.getOwner() == this) {
             if(sourceCountry != targetCountry){
                 Queue<Country> queue = new LinkedList<Country>();
                 HashSet<Country> set = new HashSet<>();
@@ -210,11 +212,11 @@ public class Player {
         }
     }
 
-    protected void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
-        System.out.println("attackAssign:" + num);
-        from.decreaseArmy(num);
-        to.increaseArmy(num);
-    }
+//    protected void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
+//        System.out.println("attackAssign:" + num);
+//        from.decreaseArmy(num);
+//        to.increaseArmy(num);
+//    }
 
     /**
      * For checking validation in attack phase
@@ -228,29 +230,28 @@ public class Player {
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    private boolean countryValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner, AttackOutOfArmy, AttackMoveAtLeastOneArmy{
-        if (sourceCountry.getArmy() > 1){
-            if (sourceCountry.getOwner() == this){
-                if (targetCountry.getOwner() != this){
-                    if (num < sourceCountry.getArmy()){
-                        if (num > 0){
-                            return true;
-                        }else{
-                            throw new AttackMoveAtLeastOneArmy( 9);
-                        }
-                    }else {
-                        throw new AttackOutOfArmy( 8);
+    protected boolean attackValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner,  WrongDiceNumber {
+        if (sourceCountry.getArmy() > 1) {
+            if (sourceCountry.getOwner() == this) {
+                if (targetCountry.getOwner() != this) {
+                    if (num <= sourceCountry.getArmy() && num <= 3 && num >= 1) {
+                        return true;
+                    } else {
+                        throw new WrongDiceNumber(10, this);
                     }
-                }else {
-                    throw new AttackedCountryOwner( 7);
+                } else {
+                    throw new AttackedCountryOwner(7);
                 }
-            }else {
-                throw new AttackingCountryOwner( 6);
+            } else {
+                throw new AttackingCountryOwner(6);
             }
-        }else{
-            throw new AttackCountryArmyMoreThanOne( 5);
+        } else {
+            throw new AttackCountryArmyMoreThanOne(5);
         }
     }
+
+    protected boolean defendValidation(int defendDice) throws WrongDiceNumber{}
+
 
     /**
      * Attack phase
@@ -264,118 +265,133 @@ public class Player {
      * @throws AttackingCountryOwner the owner of attacking country must be current player
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
-    protected boolean attack(Country from, Country to, int num) throws AttackedCountryOwner, AttackingCountryOwner, AttackCountryArmyMoreThanOne, AttackOutOfArmy, AttackMoveAtLeastOneArmy {
+//    protected boolean attack(Country from, Country to, int num) throws WrongDiceNumber, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
+//
+////        boolean conquest = false;
+//        if (attackValidation(from, to, num)){
+//            p.attackSimulation(from,to,num);
+////            System.out.println("Attack army:" +num);
+////            ArrayList<Integer> results = p.attackSimulation(from, to, num);
+////
+////            //Conquest
+////            if (results.get(0) > 0){
+////                System.out.println("Win");
+////                from.attackDecreaseArmy(num - results.get(0));
+////                to.setOwner(this);
+////                to.attackDecreaseArmy(to.getArmy());
+////                conquest = true;
+////
+////            } else {
+////                System.out.println("Lose");
+////                from.attackDecreaseArmy(num);
+////                to.attackDecreaseArmy(to.getArmy() - results.get(1));
+////            }
+//
+//        }
+////        return conquest;
+//    }
 
-        boolean conquest = false;
-        if (countryValidation(from, to, num)){
-            System.out.println("Attack army:" +num);
-            ArrayList<Integer> results = attackSimulation(to, num);
-
-            //Conquest
-            if (results.get(0) > 0){
-                System.out.println("Win");
-                from.attackDecreaseArmy(num - results.get(0));
-                to.setOwner(this);
-                to.attackDecreaseArmy(to.getArmy());
-                conquest = true;
-
-            } else {
-                System.out.println("Lose");
-                from.attackDecreaseArmy(num);
-                to.attackDecreaseArmy(to.getArmy() - results.get(1));
-            }
-
-        }
-        return conquest;
-    }
-
-    protected ArrayList<Integer> DiceArray (int digits){
-        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
+    protected void rollDice (int digits){
+//        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
         for (int i =0; i < digits; i++){
             int Dice = (int)(Math.random()*6)+1;
-            DiceArray.add(Dice);
+            dice.add(Dice);
         }
-        Collections.sort(DiceArray, Collections.reverseOrder());
-        return DiceArray;
+        Collections.sort(dice, Collections.reverseOrder());
+        p.updateWindow();
+//        return dice;
+    }
+    protected void removeDice(){
+        dice.remove(0);
+        p.updateWindow();
     }
 //Results: first: rest of attacking second: rest of attacked
-    protected ArrayList<Integer> attackSimulation(Country to, int num){
-        ArrayList<Integer> results = new ArrayList<>();
-        int liveArmy = num;
-        int defenceArmy = to.getArmy();
+//    protected ArrayList<Integer> attackSimulation(Country to, int num){
+//        ArrayList<Integer> results = new ArrayList<>();
+//        int liveArmy = num;
+//        int defenceArmy = to.getArmy();
+//
+//        while (liveArmy != 0 && defenceArmy !=0){
+//            if (liveArmy > 2) {
+//                ArrayList<Integer> attackDice = DiceArray(3);
+//                if (defenceArmy >= 2) {
+//                    ArrayList<Integer> defenceDice = DiceArray(2);
+//                    if (attackDice.get(0) > defenceDice.get(0)) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                    if (attackDice.get(1) > defenceDice.get(1)) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                } else {
+//
+//                    int defenceDice1 = (int) (Math.random() * 6) + 1;
+//                    if (attackDice.get(0) > defenceDice1) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                }
+//            } else if (liveArmy == 2) {
+//                ArrayList<Integer> attackDice = DiceArray(2);
+//                if (defenceArmy >= 2) {
+//
+//                    ArrayList<Integer> defenceDice = DiceArray(2);
+//                    if (attackDice.get(0) > defenceDice.get(0)) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                    if (attackDice.get(1) > defenceDice.get(1)) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                } else {
+//
+//                    int defenceDice1 = (int) (Math.random() * 6) + 1;
+//                    if (attackDice.get(0) > defenceDice1) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                }
+//            } else if (liveArmy == 1) {
+//                if (defenceArmy >= 2) {
+//                    int attackDice1 = (int) (Math.random() * 6) + 1;
+//                    ArrayList<Integer> defenceDice = DiceArray(2);
+//                    if (attackDice1 > defenceDice.get(0)) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                } else {
+//                    int attackDice1 = (int) (Math.random() * 6) + 1;
+//                    int defenceDice1 = (int) (Math.random() * 6) + 1;
+//                    if (attackDice1 > defenceDice1) {
+//                        defenceArmy --;
+//                    } else {
+//                        liveArmy --;
+//                    }
+//                }
+//            }
+//        }
+//        results.add(liveArmy);
+//        results.add(defenceArmy);
+//        System.out.println("attack:"+liveArmy);
+//        System.out.println("defence:"+defenceArmy);
+//        return results;
+//    }
 
-        while (liveArmy != 0 && defenceArmy !=0){
-            if (liveArmy > 2) {
-                if (defenceArmy >= 2) {
-                    ArrayList<Integer> attackDice = DiceArray(3);
-                    ArrayList<Integer> defenceDice = DiceArray(2);
-                    if (attackDice.get(0) > defenceDice.get(0)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                    if (attackDice.get(1) > defenceDice.get(1)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                } else {
-                    ArrayList<Integer> attackDice = DiceArray(3);
-                    int defenceDice1 = (int) (Math.random() * 6) + 1;
-                    if (attackDice.get(0) > defenceDice1) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                }
-            } else if (liveArmy == 2) {
-                if (defenceArmy >= 2) {
-                    ArrayList<Integer> attackDice = DiceArray(2);
-                    ArrayList<Integer> defenceDice = DiceArray(2);
-                    if (attackDice.get(0) > defenceDice.get(0)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                    if (attackDice.get(1) > defenceDice.get(1)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                } else {
-                    ArrayList<Integer> attackDice = DiceArray(2);
-                    int defenceDice1 = (int) (Math.random() * 6) + 1;
-                    if (attackDice.get(0) > defenceDice1) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                }
-            } else if (liveArmy == 1) {
-                if (defenceArmy >= 2) {
-                    int attackDice1 = (int) (Math.random() * 6) + 1;
-                    ArrayList<Integer> defenceDice = DiceArray(2);
-                    if (attackDice1 > defenceDice.get(0)) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                } else {
-                    int attackDice1 = (int) (Math.random() * 6) + 1;
-                    int defenceDice1 = (int) (Math.random() * 6) + 1;
-                    if (attackDice1 > defenceDice1) {
-                        defenceArmy --;
-                    } else {
-                        liveArmy --;
-                    }
-                }
-            }
-        }
-        results.add(liveArmy);
-        results.add(defenceArmy);
-        System.out.println("attack:"+liveArmy);
-        System.out.println("defence:"+defenceArmy);
-        return results;
+    protected void loseArmy(Country country) throws OutOfArmyException {
+        mapArmies--;
+        country.decrementArmy();
+
+
+
     }
 
 }
