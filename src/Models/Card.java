@@ -3,12 +3,22 @@ package Models;
 import javax.swing.*;
 
 public class Card {
-	private int playerID;
-	private String[] cardName= {"Infantry","Cavalry","Artillery"};
-	private int[] cardNumber= {0,0,0}; 
+
+  public int getCardexchangeNUm() {
+    return cardexchangeNUm;
+  }
+
+  private int playerID;
+	private String[] cardName;
+	private int[] cardNumber;
+	private int cardexchangeNUm;// Count the number of exchange card
 	  
 	public Card() {
 		//int playerID
+		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
+		cardNumber = new int[]{0,0,0};
+		cardexchangeNUm = 0;
+
 	}
 	
 	public void addCard() {
@@ -88,6 +98,7 @@ public class Card {
 				for(int i=0;i<3;i++) {				
 					cardNumber[i]--;
 					}
+					cardexchangeNUm++;
 				return true;
 			}else return false;
 	
@@ -98,6 +109,7 @@ public class Card {
 				if(cardNumber[i]>=3) {				
 					cardNumber[i]-=3;
 				}
+				cardexchangeNUm++;
 				return true;
 			}
 			}else return false;	
