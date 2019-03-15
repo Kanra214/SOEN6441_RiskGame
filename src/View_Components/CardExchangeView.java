@@ -98,7 +98,7 @@ public class CardExchangeView extends JFrame implements Observer{
 
 	    /**
 	     * Set context of this SidePanel
-	     * @param players ArrayList of Players
+	     * @param currentPlayer	 ArrayList of Players
 	     */
 	    public void setContext(Player currentPlayer){
 	    	for(int i=0;i<3;i++) {

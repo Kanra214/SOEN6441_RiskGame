@@ -9,11 +9,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Card.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CardExchangeView$CardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CardExchangeView$CardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PhasesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PhasesTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Models/PhasesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Models/PhasesTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,13 +64,13 @@
           <entry key="CLASS" value="2" />
           <entry key="HTML" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="93" />
+          <entry key="JAVA" value="94" />
           <entry key="PLAIN_TEXT" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7062" />
+          <entry key="JAVA" value="7515" />
           <entry key="PLAIN_TEXT" value="179" />
         </counts>
       </usages-collector>
@@ -89,11 +88,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="279" column="15" lean-forward="true" selection-start-line="279" selection-start-column="15" selection-end-line="279" selection-end-column="15" />
+            <state relative-caret-position="160">
+              <caret line="303" column="10" selection-start-line="303" selection-start-column="10" selection-end-line="303" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View_Components/CardExchangeView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" selection-start-column="24" selection-end-column="24" />
+            <state relative-caret-position="451">
+              <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -146,8 +145,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+            <state relative-caret-position="369">
+              <caret line="191" column="41" selection-start-line="191" selection-start-column="41" selection-end-line="191" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="469">
+              <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -242,7 +253,6 @@
         <option value="$PROJECT_DIR$/src/test/Models/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/Models/PhasesTest.java" />
         <option value="$PROJECT_DIR$/src/Game/MapLoader.java" />
-        <option value="$PROJECT_DIR$/src/test/Models/PhasesTest.java" />
         <option value="$PROJECT_DIR$/src/Models/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/MapEditor/MapEditorText.java" />
         <option value="$PROJECT_DIR$/src/test/Models/MapEditTest.java" />
@@ -256,11 +266,12 @@
         <option value="$PROJECT_DIR$/src/View_Components/PhasePanel.java" />
         <option value="$PROJECT_DIR$/src/View_Components/SidePanel.java" />
         <option value="$PROJECT_DIR$/src/View_Components/Window.java" />
-        <option value="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" />
         <option value="$PROJECT_DIR$/src/Models/Card.java" />
         <option value="$PROJECT_DIR$/src/Models/Player.java" />
-        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
+        <option value="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
+        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
+        <option value="$PROJECT_DIR$/src/test/Models/PhasesTest.java" />
       </list>
     </option>
   </component>
@@ -295,11 +306,6 @@
             <path>
               <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="SOEN6441_RiskGame" type="462c0819:PsiDirectoryNode" />
-              <item name="document" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SOEN6441_RiskGame" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -322,6 +328,18 @@
             </path>
             <path>
               <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN6441_RiskGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SOEN6441_RiskGame" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="View_Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SOEN6441_RiskGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -338,7 +356,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552435408463" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552687677828" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -478,7 +496,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.PhasesTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game.Main" />
       <module name="SOEN6441_RiskGame" />
@@ -518,7 +536,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PhasesTest.extraArmyFromContinent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PhasesTest.checkVictory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SOEN6441_RiskGame" />
       <extension name="coverage">
         <pattern>
@@ -528,10 +546,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.Models" />
       <option name="MAIN_CLASS_NAME" value="test.Models.PhasesTest" />
-      <option name="METHOD_NAME" value="extraArmyFromContinent" />
+      <option name="METHOD_NAME" value="checkVictory" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -556,18 +572,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.PhasesTest.extraArmyFromContinent" />
       <item itemvalue="JUnit.PhasesTest.extraArmyFromContinent_whenHeOwns1" />
       <item itemvalue="JUnit.PhasesTest" />
       <item itemvalue="JUnit.MapEditTest" />
+      <item itemvalue="JUnit.PhasesTest.checkVictory" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.PhasesTest" />
+        <item itemvalue="JUnit.PhasesTest.checkVictory" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MapEditTest" />
         <item itemvalue="JUnit.PhasesTest.extraArmyFromContinent_whenHeOwns1" />
-        <item itemvalue="JUnit.PhasesTest.extraArmyFromContinent" />
       </list>
     </recent_temporary>
   </component>
@@ -590,7 +606,7 @@
       <workItem from="1552420587220" duration="373000" />
       <workItem from="1552434042598" duration="1371000" />
       <workItem from="1552503102394" duration="2721000" />
-      <workItem from="1552684231247" duration="1352000" />
+      <workItem from="1552684231247" duration="3265000" />
     </task>
     <task id="LOCAL-00001" summary="Doc for Phases">
       <created>1551737223469</created>
@@ -669,7 +685,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552510770836</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="connected conquest to card assignment">
+      <created>1552685622614</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1552685622614</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -705,7 +728,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38422000" />
+    <option name="totallyTimeSpent" value="40335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -966,16 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1010,30 +1023,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/CardExchangeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Card.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="512" selection-start-line="512" selection-end-line="512" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#900#901#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,20 +1044,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/View_Components/CardExchangeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+        <state relative-caret-position="451">
+          <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="303" column="10" selection-start-line="303" selection-start-column="10" selection-end-line="303" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+    <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="279" column="15" lean-forward="true" selection-start-line="279" selection-start-column="15" selection-end-line="279" selection-end-column="15" />
+        <state relative-caret-position="434">
+          <caret line="512" selection-start-line="512" selection-end-line="512" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="191" column="41" selection-start-line="191" selection-start-column="41" selection-end-line="191" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

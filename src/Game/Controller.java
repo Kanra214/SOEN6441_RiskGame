@@ -187,6 +187,10 @@ public class Controller {
                             chosenFrom = null;
                             chosenTo = null;
                         }
+                        if(p.isOwnerOfAllCountries(p.getCurrent_player())){
+                            System.out.println("Winner is Player "+p.getCurrent_player().getId());
+                            System.exit(0);
+                        }
                         if(!checkAttack(p.getCurrent_player())){
                             p.nextPhase();
                         }

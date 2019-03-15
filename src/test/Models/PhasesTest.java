@@ -60,6 +60,12 @@ public class PhasesTest {
 
     }
 
+    @Test
+    public void checkVictory(){
+        p.gameSetUp(1);
+        assertEquals(p.isOwnerOfAllCountries(p.getCurrent_player()), true);
+    }
+
     /**
      *
      * method: reinforcementArmy(Player player)

@@ -45,11 +45,11 @@ public class Phases extends Observable {
      */
     private int getInitialArmyCount(int number){
         switch (number){
-            case 6: return 8;
+            case 6: return 20;
             case 5: return 25;
             case 4: return 30;
             case 3: return 35;
-            case 2: return 45;
+            case 2: return 10;
             default: return 100;
         }
     }
@@ -127,6 +127,7 @@ public class Phases extends Observable {
     private void nextTurn(){
         currentTurn++;
         if (at_least_once){
+            System.out.println("got a card");
             current_player.getCards().addCard();
         }
         at_least_once = false;
@@ -297,6 +298,28 @@ public class Phases extends Observable {
      */
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
+    }
+
+
+    public boolean isOwnerOfAllCountries(Player p){
+        for (Country c: graph) {
+            if (c.getOwner() != p) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public Player victoryCheck(){
+        Player victor = null;
+        for (Player p: players){
+            if (isOwnerOfAllCountries(p)){
+                victor = p;
+                break;
+            }
+        }
+        return victor;
     }
 
 
