@@ -4,6 +4,7 @@
  */
 package Models;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
@@ -316,11 +317,13 @@ public class Player {
                     to.setOwner(this);
                     to.attackDecreaseArmy(to.getArmy());
                     conquest = true;
+                    JOptionPane.showMessageDialog(null, "Win, Dead: " + (numAttack - results.get(0))+ " army");
 
                 } else {
                     System.out.println("Lose");
                     from.attackDecreaseArmy(numAttack);
                     to.attackDecreaseArmy(to.getArmy() - results.get(1));
+                    JOptionPane.showMessageDialog(null, "Lose, Dead: " + (numAttack - results.get(0))+ " army");
                 }
             }else {
                 results = attackNormal(numAttack, numDefence);
@@ -329,6 +332,14 @@ public class Player {
                 if (to.getArmy() == 0){
                     to.setOwner(this);
                     conquest = true;
+                }
+                if (numAttack - results.get(0) > numDefence - results.get(1)){
+                    JOptionPane.showMessageDialog(null, "Lose, Kill: "+ (numDefence - results.get(1))+" army. Dead: " + (numAttack - results.get(0))+ " army");
+                }
+                else if(numAttack - results.get(0) == numDefence - results.get(1)) {
+                    JOptionPane.showMessageDialog(null, "Equal, Kill: "+ (numDefence - results.get(1))+" army. Dead: " + (numAttack - results.get(0))+ " army");
+                }else {
+                    JOptionPane.showMessageDialog(null, "Win, Kill: "+ (numDefence - results.get(1))+" army. Dead: " + (numAttack - results.get(0))+ " army");
                 }
             }
 
