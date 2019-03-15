@@ -33,7 +33,7 @@ public class Controller {
 
     int count_conquest = 0;
     boolean allOut = false;
-    public static boolean conquest_flag = false;
+    private boolean conquest_flag = false;
     /**
      * Constructor
      * @param window current panel
@@ -66,7 +66,6 @@ public class Controller {
                 if (p.getCurrentPhase() == 0) {
                     p.startUpPhase(chosen);
                 } else if (p.getCurrentPhase() == 1) {
-//                	cardexchange.setVisible(true);
                     p.reinforcementPhase(chosen);
                 } else if (p.getCurrentPhase() == 3) {
                     if (chosenFrom == null) {
@@ -114,10 +113,6 @@ public class Controller {
                 	
                 	cardexchange.setVisible(false);
                     System.out.println("Phase attack");
-
-                    if(!checkAttack(p.getCurrent_player())){
-                        p.nextPhase();
-                    }
 
                     if (chosenFrom == null) {
                         chosenFrom = chosen;
@@ -192,7 +187,9 @@ public class Controller {
                             chosenFrom = null;
                             chosenTo = null;
                         }
-
+                        if(!checkAttack(p.getCurrent_player())){
+                            p.nextPhase();
+                        }
                     }
                 }
             }

@@ -20,6 +20,7 @@ public class Phases extends Observable {
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
     private CardExchangeView cardView;
+    private boolean at_least_once = false;
 
     /**
      * Constructor
@@ -37,9 +38,14 @@ public class Phases extends Observable {
         }
     }
 
+    /**
+     * Returns initial value of army for players
+     * @param number of player
+     * @return initial number
+     */
     private int getInitialArmyCount(int number){
         switch (number){
-            case 6: return 20;
+            case 6: return 8;
             case 5: return 25;
             case 4: return 30;
             case 3: return 35;
@@ -120,9 +126,10 @@ public class Phases extends Observable {
 
     private void nextTurn(){
         currentTurn++;
-        if (Controller.conquest_flag){
+        if (at_least_once){
             current_player.getCards().addCard();
         }
+        at_least_once = false;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
         if(currentPhase == 1) {
             phaseOneFirstStep();
@@ -169,11 +176,16 @@ public class Phases extends Observable {
                 break;
             case 1:
                 currentPhase++;
+                if(!checkAttack(current_player)){
+                    currentPhase++;
+                }
+                //TODO: if cant attack just go to pahse 3
                 break;
             case 2:
                 currentPhase++;
                 break;
             case 3:
+
                 currentPhase = 1;
                 nextTurn();
         }
@@ -257,11 +269,15 @@ public class Phases extends Observable {
      * @throws AttackedCountryOwner the owner of attacked country must be the enemy
      */
     public boolean attackAll(Country from, Country to, int num) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
-        return current_player.attack(from, to, num, -1);
+        boolean flag = current_player.attack(from, to, num, -1);
+        if (flag) at_least_once = true;
+        return flag;
     }
 
     public boolean attack(Country from, Country to, int numAttack, int numDefence) throws AttackMoveAtLeastOneArmy, AttackOutOfArmy, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
-        return current_player.attack(from, to, numAttack, numDefence);
+        boolean flag = current_player.attack(from, to, numAttack, numDefence);
+        if (flag) at_least_once = true;
+        return flag;
     }
 
     public void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
@@ -283,6 +299,30 @@ public class Phases extends Observable {
         current_player.fortificate(from, to, num);
     }
 
+
+
+    protected boolean checkAttack(Player player){
+        boolean val = true;
+        int count_army = 0;
+        int count_owner = 0;
+        for (Country country : player.getRealms()){
+            if (country.getArmy() == 1){
+                count_army ++;
+            }
+            for (Country nei : country.getNeighbours()){
+                if (nei.getOwner() != player){
+                    count_owner ++;
+                }
+            }
+        }
+        if (count_army == player.getRealms().size()){
+            val = false;
+        }
+        if (count_owner == 0){
+            val = false;
+        }
+        return val;
+    }
 
 
 }
