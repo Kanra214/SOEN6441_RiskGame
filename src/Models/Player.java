@@ -19,6 +19,12 @@ public class Player {
     private int unassigned_armies;
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
     private int id;//this is primary key for players
+    private int numOfDice;
+
+    public ArrayList<Integer> getDice() {
+        return dice;
+    }
+
     protected ArrayList<Integer> dice = new ArrayList<>();
 
     /**
@@ -109,7 +115,7 @@ public class Player {
      * Send army to the country
      * @param country to where army will be sent
      */
-    protected void deployArmy(Country country)  {
+    protected void deployArmy(Country country) throws OutOfArmyException {
         if(country.getOwner() == this) {
             if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
@@ -117,7 +123,8 @@ public class Player {
                 country.incrementArmy();
             }
             else{
-                System.out.println("out of armies");
+                System.out.println("out of armies in deploy army");
+                throw new OutOfArmyException();
             }
 
         }
@@ -125,6 +132,9 @@ public class Player {
             System.out.println("not a country of current player");
         }
     }
+
+
+
 
     private void incrementMapArmies() {
         mapArmies++;
@@ -178,11 +188,11 @@ public class Player {
                 return false;
             }
             else{
-                throw new SourceIsTargetException(3);
+                throw new SourceIsTargetException();
             }
         }
         else{
-            throw new CountryNotInRealms(2);
+            throw new CountryNotInRealms();
         }
 
 
@@ -208,7 +218,7 @@ public class Player {
             p.nextPhase();
         }
         else{
-            throw new NoSuchPathException(1);
+            throw new NoSuchPathException();
         }
     }
 
@@ -218,53 +228,53 @@ public class Player {
 //        to.increaseArmy(num);
 //    }
 
-    /**
-     * For checking validation in attack phase
-     * @param sourceCountry source country
-     * @param targetCountry target country
-     * @param num number of attacking army
-     * @return true for validation
-     * @throws AttackMoveAtLeastOneArmy army at least one
-     * @throws AttackOutOfArmy out of army number in attacking country
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner the owner of attacking country must be current player
-     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
-     */
-    protected boolean attackValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner,  WrongDiceNumber {
-        if (sourceCountry.getArmy() > 1) {
-            if (sourceCountry.getOwner() == this) {
-                if (targetCountry.getOwner() != this) {
-                    if (num <= sourceCountry.getArmy() && num <= 3 && num >= 1) {
-                        return true;
-                    } else {
-                        throw new WrongDiceNumber(10, this);
-                    }
-                } else {
-                    throw new AttackedCountryOwner(7);
-                }
-            } else {
-                throw new AttackingCountryOwner(6);
-            }
-        } else {
-            throw new AttackCountryArmyMoreThanOne(5);
-        }
-    }
+//    /**
+//     * For checking validation in attack phase
+//     * @param sourceCountry source country
+//     * @param targetCountry target country
+//     * @param num number of attacking army
+//     * @return true for validation
+//     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+//     * @throws AttackingCountryOwner the owner of attacking country must be current player
+//     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+//     */
+//    protected boolean attackValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner,  WrongDiceNumber {
+//        if (sourceCountry.getArmy() > 1) {
+//            if (sourceCountry.getOwner() == this) {
+//                if (targetCountry.getOwner() != this) {
+//                    if (num <= sourceCountry.getArmy() && num <= 3 && num >= 1) {
+//                        return true;
+//                    } else {
+//                        throw new WrongDiceNumber(this);
+//                    }
+//                } else {
+//                    throw new AttackedCountryOwner();
+//                }
+//            } else {
+//                throw new AttackingCountryOwner();
+//            }
+//        } else {
+//            throw new AttackCountryArmyMoreThanOne();
+//        }
+//    }
+//
+//    protected boolean defendValidation(int defendDice) throws WrongDiceNumber{//invalidate defend dice
+//
+//    }
 
-    protected boolean defendValidation(int defendDice) throws WrongDiceNumber{}
 
-
-    /**
-     * Attack phase
-     * @param from source country
-     * @param to target country
-     * @param num the number of attacking army
-     * @return true for conquest successful
-     * @throws AttackMoveAtLeastOneArmy army at least one
-     * @throws AttackOutOfArmy out of army number in attacking country
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner the owner of attacking country must be current player
-     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
-     */
+//    /**
+//     * Attack phase
+//     * @param from source country
+//     * @param to target country
+//     * @param num the number of attacking army
+//     * @return true for conquest successful
+//     * @throws AttackMoveAtLeastOneArmy army at least one
+//     * @throws AttackOutOfArmy out of army number in attacking country
+//     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+//     * @throws AttackingCountryOwner the owner of attacking country must be current player
+//     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+//     */
 //    protected boolean attack(Country from, Country to, int num) throws WrongDiceNumber, AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner {
 //
 ////        boolean conquest = false;
@@ -292,6 +302,7 @@ public class Player {
 //    }
 
     protected void rollDice (int digits){
+        numOfDice = digits;
 //        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
         for (int i =0; i < digits; i++){
             int Dice = (int)(Math.random()*6)+1;
@@ -302,9 +313,23 @@ public class Player {
 //        return dice;
     }
     protected void removeDice(){
+
+
         dice.remove(0);
         p.updateWindow();
     }
+    protected int consumeDice(){
+        int usedDice = dice.get(0);
+        removeDice();
+        return usedDice;
+    }
+    public int getNumOfDice(){
+        return numOfDice;
+    }
+
+
+
+
 //Results: first: rest of attacking second: rest of attacked
 //    protected ArrayList<Integer> attackSimulation(Country to, int num){
 //        ArrayList<Integer> results = new ArrayList<>();
@@ -388,7 +413,11 @@ public class Player {
 
     protected void loseArmy(Country country) throws OutOfArmyException {
         mapArmies--;
+
         country.decrementArmy();
+
+
+//        p.updateWindow();
 
 
 

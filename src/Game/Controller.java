@@ -54,122 +54,169 @@ public class Controller {
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
-                if (p.getCurrentPhase() == 0) {
-                    p.startUpPhase(chosen);
-                } else if (p.getCurrentPhase() == 1) {
-                    p.reinforcementPhase(chosen);
-                } else if (p.getCurrentPhase() == 3) {
-                    if (chosenFrom == null) {
-                        chosenFrom = chosen;
-                    } else {
-                        chosenTo = chosen;
-                        int num = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
-                        try {
-                            p.fortificationsPhase(chosenFrom, chosenTo, num);
-                            chosenFrom = null;
-                            chosenTo = null;
-                        } catch (RiskGameException ex) {
-                            String errorMsg;
 
+                try {
+                    if (p.getCurrentPhase() == 0) {
+                        p.startUpPhase(chosen);
+                    }
+                    else if (p.getCurrentPhase() == 1) {
+                        p.reinforcementPhase(chosen);
+                    }
+                    else if (p.getCurrentPhase() == 3) {
+                        if (chosenFrom == null) {
+                            chosenFrom = chosen;
+                        }
+                        else {
+                            chosenTo = chosen;
+                            String input = window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1");
 
-                            switch (ex.type) {
-                                case 0:
-                                    errorMsg = "Out of army.";
-                                    break;
-                                case 1:
-                                    errorMsg = "No such path.";
-                                    break;
-                                case 2:
-                                    errorMsg = "Not in realms.";
-                                    break;
-                                case 3:
-                                    errorMsg = "The source cannot be the target.";
-                                    break;
-                                case 4:
-                                    errorMsg = "At lease move one army.";
-                                    break;
+                            if (input != null) {
+                                int num = Integer.parseInt(input);
 
-                                default:
-                                    errorMsg = "Unknown.";
+                                p.fortificationsPhase(chosenFrom, chosenTo, num);
+
 
                             }
-
-                            window.showMsg(errorMsg + " Try again please.");
                             chosenFrom = null;
                             chosenTo = null;
+
+
+
                         }
-
                     }
-                } else {
-                    System.out.println("Phase attack");
-                    if (chosenFrom == null) {
-                        chosenFrom = chosen;
-                    } else {
-                        chosenTo = chosen;
-
-                        String attackerInput = window.promptPlayer("How many dice to roll? max: " + Math.min(chosenFrom.getArmy(),3) + ", min: 1. Input nothing to turn on the all-out mode.");
-                        try {
-                            if (attackerInput == "") {//turn on the all-out mode
-                                p.allOutMode();
-                            } else {
-                                int attackDice = Integer.parseInt(attackerInput);
-
-//                        if(chosenFrom)
-//                        String[] attackOptions = new String[Math.min(chosenFrom.getArmy(),3) + 1];
-//                        for(int i = 0; i < attackOptions.length; i++){
-//                            attackOptions[i] = "" + i;
-//
+                    else {
+                        System.out.println("Phase attack");
+//                        if (!p.attackingIsPossible()) {
+//                            window.showMsg("No attacking can be made");
+//                            p.nextPhase();
 //                        }
-//                        String selection = window.selectionBox("How many dice to roll?",  );
+//                        else {
 
 
-                                System.out.println("conquest");
-                                int defendDice = Integer.parseInt(window.promptPlayer("How many dice to roll? max: " + Math.min(chosenFrom.getArmy(), 2) + ", min: 1"));
-                                if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
-                                    chosenFrom = null;
-                                    chosenTo = null;
+                            if (chosenFrom == null) {
+                                chosenFrom = chosen;
 
-                                }
 
-                                //                                p.attackAssign(chosenFrom, chosenTo, assignArmy);
-
-//                                        window.showMsg(errorMsg + " Already set to default army 1.");
                             }
-                        } catch (MoveAtLeastOneArmyException e1) {
-                            e1.printStackTrace();
-                        } catch (AttackCountryArmyMoreThanOne attackCountryArmyMoreThanOne) {
-                            attackCountryArmyMoreThanOne.printStackTrace();
-                        } catch (WrongDiceNumber wrongDiceNumber) {
-                            wrongDiceNumber.printStackTrace();
-                        } catch (AttackedCountryOwner attackedCountryOwner) {
-                            attackedCountryOwner.printStackTrace();
-                        } catch (AttackMoveAtLeastOneArmy attackMoveAtLeastOneArmy) {
-                            attackMoveAtLeastOneArmy.printStackTrace();
-                        } catch (AttackOutOfArmy attackOutOfArmy) {
-                            attackOutOfArmy.printStackTrace();
-                        } catch (AttackingCountryOwner attackingCountryOwner) {
-                            attackingCountryOwner.printStackTrace();
-                        }
+                            else {
+                                chosenTo = chosen;
+                                String attackerInput = window.promptPlayer("How many dice for attacker to roll? max: " + Math.min(chosenFrom.getArmy() - 1, 3) + ", min: 1. Input nothing to turn on the all-out mode.");
+                                if (attackerInput != null) {
 
 
-                        chosenFrom = null;
-                        chosenTo = null;
+                                    if (attackerInput.isEmpty()) {
+                                        System.out.println("all out");
+                                        if (p.attackPhase(chosenFrom, chosenTo)) {
 
-                        String errorMsg;
 
-                        //Added several exceptions, needs more
+//                                            p.deploymentAfterConquer(numDeploy, chosenTo);
+
+                                            while(true){
+                                                int numDeploy = Integer.parseInt(window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1)));
+                                                try{
+
+                                                    if(p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)){
+                                                        p.nextPhase();
+                                                        break;
+                                                    }
+                                                }
+                                                catch(RiskGameException ex){
+                                                    window.showMsg(ex.errMsg + "Try again please.");
+                                                    continue;
+                                                }
+
+                                            }
+
+                                        } else {
+                                            window.showMsg("attacker did not win");
+//                                            if (!p.attackingIsPossible()) {
+//                                                window.showMsg("No attacking can be made");
+//                                                p.nextPhase();
+//                                            }
+                                        }
+
+                                    } else {
+                                        int attackDice = Integer.parseInt(attackerInput);
+
+
+                                        System.out.println("not all out");
+                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+                                        if (defenderInput != null) {
+                                            int defendDice = Integer.parseInt(defenderInput);
+
+
+                                            if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+
+
+//                                            p.deploymentAfterConquer(numDeploy, chosenTo);
+
+                                                while(true){
+                                                    int numDeploy = Integer.parseInt(window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1)));
+                                                    try{
+
+                                                        if(p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)){
+                                                            p.nextPhase();
+                                                            break;
+                                                        }
+                                                    }
+                                                    catch(RiskGameException ex){
+                                                        window.showMsg(ex.errMsg + "Try again please.");
+                                                        continue;
+                                                    }
+
+                                                }
+
+
+                                            }
+                                            else {
+                                                window.showMsg("attacker did not win");
+//                                                if (!p.attackingIsPossible()) {
+//                                                    window.showMsg("No attacking can be made");
+//                                                    p.nextPhase();
+//                                                }
+                                            }
+
+                                        }
+
+                                    }
+                                }
+                                chosenFrom = null;
+                                chosenTo = null;
+                                if (p.gameOver) {
+                                    window.showMsg(p.getCurrent_player() + " wins the game!");
+                                    System.exit(0);
+                                }
+                            }
+
+
+
+
+
+//                        }
 
 
                     }
 
-                            window.showMsg(errorMsg + " Try again please.");
-                            chosenFrom = null;
-                            chosenTo = null;
-                        }
 
-                    }
                 }
+                catch(RiskGameException ex1){
+                    window.showMsg(ex1.errMsg + "Try again please.");
+                    chosenFrom = null;
+                    chosenTo = null;
+
+                }
+                catch(NumberFormatException ex2) {
+                    window.showMsg("Wrong input format, try again please.");
+                    chosenFrom = null;
+                    chosenTo = null;
+
+                }
+
+
             }
+
+        }
+    }
 
 
 

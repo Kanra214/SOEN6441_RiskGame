@@ -29,7 +29,7 @@ public class PhasesTest {
         ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
         CardExchangeView cardExchangeView = new CardExchangeView();
         System.out.println("Inside before");
-        p = new Phases(tempMap.get(0), tempMap.get(1),cardExchangeView);
+        p = new Phases(tempMap.get(0), tempMap.get(1));
 
     }
 
@@ -60,11 +60,11 @@ public class PhasesTest {
 
     }
 
-    @Test
-    public void checkVictory(){
-        p.gameSetUp(1);
-        assertEquals(p.isOwnerOfAllCountries(p.getCurrent_player()), true);
-    }
+//    @Test
+//    public void checkVictory(){
+//        p.gameSetUp(1);
+//        assertEquals(p.isOwnerOfAllCountries(p.getCurrent_player()), true);
+//    }
 
     /**
      *
