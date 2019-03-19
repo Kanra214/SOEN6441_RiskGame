@@ -104,7 +104,7 @@ public class CardExchangeView extends JFrame implements Observer{
 	    	for(int i=0;i<3;i++) {
 	 	       //currentPlayer.showPlayerCards(i);
 	    		
-	 	       cardLabels[i].setText(getPlayerCardInfo(currentPlayer,i));
+//	 	       cardLabels[i].setText(getPlayerCardInfo(currentPlayer,i));
 	    	}
 
 	    }
@@ -114,13 +114,13 @@ public class CardExchangeView extends JFrame implements Observer{
 	     * @param player info from whom you want to show
 	     * @return String representation of player
 	     */
-	    private String getPlayerCardInfo(Player player,int cardID){
-	          return    "<html><body>" +
-	                    "<h3>CardName " + player.showPlayerCardsName(cardID) + "</h3>" +
-	                    "<p>CardNumber: " + player.showPlayerCards(cardID) + "<br>" +
-	                   
-	                    "</body></html>";
-
-	    }
+//	    private String getPlayerCardInfo(Player player,int cardID){
+//	          return    "<html><body>" +
+//	                    "<h3>CardName " + player.showPlayerCardsName(cardID) + "</h3>" +
+//	                    "<p>CardNumber: " + player.showPlayerCards(cardID) + "<br>" +
+//
+//	                    "</body></html>";
+//
+//	    }
 	}
 }

@@ -3,6 +3,7 @@ package View_Components;
 
 import Models.Country;
 import Models.Phases;
+import Models.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -164,11 +165,62 @@ public class Window extends JFrame implements Observer {
         Phases p = (Phases)o;
         //mapPanel is not a part of observer pattern
         //update phasePanel
-        phasePanel.setContext(p.getCurrentPhase(), p.getCurrent_player());
+        phasePanel.setContext(p);
         sidePanel.setContext(p.getPlayers());
+        if(p.getCurrentPhase() == 2){
+            if(arg instanceof Player) {
+                Player player = (Player)arg;
+                String msg = "<html><body>" +
+                        "<h1>Attacker: </h1>" +
+                        "<h3>" + "Dice:" +"</h3>" +
+                        "<p>" + diceToString(p.getCurrent_player().getDice()) +"</p>" +
+                        "<br>" +
+                        "<h1>Defender: </h1>" +
+                        "<h3>" + "Dice:" +"</h3>" +
+                        "<p>" + diceToString( p.getRival().getDice()) +"</p>" +
+                        "<br>" +
+                        "<h1>" + "Result:" +"</h1>" +
+                        "<br>";
+
+                if(player.getId() == p.getCurrent_player().getId()){
+                    msg += "<h3>" + "Attacker loses one army" +"</h3>";
+                }
+                else{
+                    msg += "<h3>" + "Defender loses one army" +"</h3>";
+
+                }
+                msg += "<br>" + "</body><html>";
+
+                showMsg(msg);
+
+            }
+            if(!p.getAttackingIsPossible()){
+                showMsg("No attacking can be made. Turning to the next phase...");
+            }
 
 
 
+        }
+
+
+
+
+
+    }
+        private String diceToString(ArrayList<Integer> dice){
+        String s = "";
+
+        for(int i = 0; i < dice.size(); i++){
+            if(i == 0){
+                s += "<strong>" + dice.get(i) + "</strong>";
+            }
+            else {
+
+
+                s += "----" + dice.get(i);
+            }
+        }
+        return s;
 
 
     }
