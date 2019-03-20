@@ -78,32 +78,7 @@ public class Controller {
                             chosenFrom = null;
                             chosenTo = null;
                         } catch (RiskGameException ex) {
-                            String errorMsg;
-
-
-                            switch (ex.type) {
-                                case 0:
-                                    errorMsg = "Out of army.";
-                                    break;
-                                case 1:
-                                    errorMsg = "No such path.";
-                                    break;
-                                case 2:
-                                    errorMsg = "Not in realms.";
-                                    break;
-                                case 3:
-                                    errorMsg = "The source cannot be the target.";
-                                    break;
-                                case 4:
-                                    errorMsg = "At lease move one army.";
-                                    break;
-
-                                default:
-                                    errorMsg = "Unknown.";
-
-                            }
-
-                            window.showMsg(errorMsg + " Try again please.");
+                            window.showMsg(ex.errMsg + " Try again please.");
                             chosenFrom = null;
                             chosenTo = null;
                         }
@@ -121,6 +96,14 @@ public class Controller {
                         int numAttack = Integer.parseInt(window.promptPlayer("Attacker: How many armies? max: 3, min: 1"));
                         int numDefence = Integer.parseInt(window.promptPlayer("Defender: How many armies to choose? max: 2, min: 1"));
                         try {
+                            if (numAttack > 3 || numAttack < 1) {
+                                window.showMsg("You should select attack arimes between 1-3 ");
+//                                System.out.println("You should select attack arimes between 1-3 ");
+                            }
+                            if (numDefence > 2 || numDefence < 1) {
+                                window.showMsg("You should select defend arimes between 1-2 ");
+//                                System.out.println("You should select defend arimes between 1-2 ");
+                            }
                             if (allOut){
                                 conquest_flag = p.attackAll(chosenFrom, chosenTo, chosenFrom.getArmy() - 1);
                             }else {
@@ -131,59 +114,15 @@ public class Controller {
                                 try {
                                     p.attackAssign(chosenFrom, chosenTo, assignArmy);
                                 }catch (RiskGameException ex){
-                                    String errorMsg;
 
-                                    switch (ex.type) {
-
-                                        case 0:
-                                            errorMsg = "Out of army.";
-                                            chosenFrom.armyMinusOne();
-                                            chosenTo.setDefualtArmy();
-                                            break;
-                                        case 4:
-                                            errorMsg = "At lease move one army.";
-                                            chosenFrom.armyMinusOne();
-                                            chosenTo.setDefualtArmy();
-                                            break;
-
-                                        default:
-                                            errorMsg = "Unknown.";
-
-                                    }
-                                    window.showMsg(errorMsg + " Already set to default army 1.");
+                                    window.showMsg(ex.errMsg + " Already set to default army 1.");
                                 }
                             }
                             System.out.println("Conquest");
                             chosenFrom = null;
                             chosenTo = null;
                         } catch (RiskGameException ex) {
-                            String errorMsg;
-
-                            //Added several exceptions, needs more
-                            switch (ex.type) {
-//                                case 1:
-//                                    errorMsg = "No such path.";
-//                                    break;
-                                case 5:
-                                    errorMsg = "Army at least two in this country.";
-                                    break;
-                                case 6:
-                                    errorMsg = "This country doesn't belong you.";
-                                    break;
-                                case 7:
-                                    errorMsg = "You can't attack to your country.";
-                                    break;
-                                case 8:
-                                    errorMsg = "Out of army.";
-                                    break;
-                                case 9:
-                                    errorMsg = "At lease choose one army.";
-                                    break;
-
-                                default:
-                                    errorMsg = "Unknown.";
-                            }
-                            window.showMsg(errorMsg + " Try again please.");
+                            window.showMsg(ex.errMsg + " Try again please.");
                             chosenFrom = null;
                             chosenTo = null;
                         }

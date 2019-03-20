@@ -4,14 +4,13 @@ package Models;
  * Customized exceptions for this game
  */
 public class RiskGameException extends Exception {
-    public int type;
+    public String errMsg;
 
     /**
      * Constructor
-     * @param type the integer representation of exceptions
      */
-    public RiskGameException(int type){
-        this.type = type;
+    public RiskGameException(){
+
     }
 }
 //0
@@ -23,10 +22,9 @@ class OutOfArmyException extends RiskGameException{
 
     /**
      * Constructor
-     * @param type 0 for this type
      */
-    public OutOfArmyException(int type) {
-        super(type);
+    public OutOfArmyException() {
+        errMsg = "Out of army";
     }
 }
 //1
@@ -37,10 +35,9 @@ class NoSuchPathException extends RiskGameException{
 
     /**
      * Constructor
-     * @param type 1 for this type
      */
-    public NoSuchPathException(int type) {
-        super(type);
+    public NoSuchPathException() {
+        errMsg = "No such path";
     }
 }
 //2
@@ -49,10 +46,9 @@ class NoSuchPathException extends RiskGameException{
 class CountryNotInRealms extends RiskGameException{
     /**
      * Constructor
-     * @param type 2 for this type
      */
-    public CountryNotInRealms(int type) {
-        super(type);
+    public CountryNotInRealms() {
+        errMsg = "Not in realms.";
     }
 }
 
@@ -63,10 +59,9 @@ class CountryNotInRealms extends RiskGameException{
 class SourceIsTargetException extends RiskGameException{
     /**
      * Constructor
-     * @param type 3 for this type
      */
-    public SourceIsTargetException(int type) {
-        super(type);
+    public SourceIsTargetException() {
+        errMsg = "Souce cannot be the target.";
     }
 }
 //4
@@ -77,10 +72,9 @@ class SourceIsTargetException extends RiskGameException{
 class MoveAtLeastOneArmyException extends RiskGameException{
     /**
      * Constuctor
-     * @param type 4 for this type
      */
-    public MoveAtLeastOneArmyException(int type) {
-        super(type);
+    public MoveAtLeastOneArmyException() {
+        errMsg = "Souce cannot be the target.";
     }
 }
 
@@ -92,10 +86,10 @@ class MoveAtLeastOneArmyException extends RiskGameException{
 class AttackCountryArmyMoreThanOne extends RiskGameException{
     /**
      * Constuctor
-     * @param type 5 for this type
      */
-    public AttackCountryArmyMoreThanOne(int type) {
-        super(type);
+    public AttackCountryArmyMoreThanOne() {
+        errMsg = "Attacking country must have at least two armies.";
+
     }
 }
 
@@ -107,10 +101,9 @@ class AttackCountryArmyMoreThanOne extends RiskGameException{
 class AttackingCountryOwner extends RiskGameException{
     /**
      * Constuctor
-     * @param type 6 for this type
      */
-    public AttackingCountryOwner(int type) {
-        super(type);
+    public AttackingCountryOwner() {
+        errMsg = "Cannot attack your own country.";
     }
 }
 
@@ -122,10 +115,9 @@ class AttackingCountryOwner extends RiskGameException{
 class AttackedCountryOwner extends RiskGameException{
     /**
      * Constuctor
-     * @param type 7 for this type
      */
-    public AttackedCountryOwner(int type) {
-        super(type);
+    public AttackedCountryOwner() {
+        errMsg = "Invalid target, the target country must be adjancent to attacking country, and not your own country.";
     }
 }
 
@@ -137,10 +129,9 @@ class AttackedCountryOwner extends RiskGameException{
 class AttackOutOfArmy extends RiskGameException{
     /**
      * Constuctor
-     * @param type 8 for this type
      */
-    public AttackOutOfArmy(int type) {
-        super(type);
+    public AttackOutOfArmy() {
+        errMsg = "Out of army";
     }
 }
 
@@ -152,9 +143,8 @@ class AttackOutOfArmy extends RiskGameException{
 class AttackMoveAtLeastOneArmy extends RiskGameException{
     /**
      * Constuctor
-     * @param type 9 for this type
      */
-    public AttackMoveAtLeastOneArmy(int type) {
-        super(type);
+    public AttackMoveAtLeastOneArmy() {
+        errMsg = "At lease choose one army.";
     }
 }

@@ -212,11 +212,11 @@ public class Player {
                 return false;
             }
             else{
-                throw new SourceIsTargetException(3);
+                throw new SourceIsTargetException();
             }
         }
         else{
-            throw new CountryNotInRealms(2);
+            throw new CountryNotInRealms();
         }
 
 
@@ -242,7 +242,7 @@ public class Player {
             p.nextPhase();
         }
         else{
-            throw new NoSuchPathException(1);
+            throw new NoSuchPathException();
         }
     }
 
@@ -267,24 +267,24 @@ public class Player {
     private boolean countryValidation(Country sourceCountry, Country targetCountry, int num) throws AttackCountryArmyMoreThanOne, AttackingCountryOwner, AttackedCountryOwner, AttackOutOfArmy, AttackMoveAtLeastOneArmy{
         if (sourceCountry.getArmy() > 1){
             if (sourceCountry.getOwner() == this){
-                if (targetCountry.getOwner() != this){
+                if (targetCountry.getOwner() != this && sourceCountry.getNeighbours().contains(targetCountry)){
                     if (num < sourceCountry.getArmy()){
                         if (num > 0){
                             return true;
                         }else{
-                            throw new AttackMoveAtLeastOneArmy( 9);
+                            throw new AttackMoveAtLeastOneArmy();
                         }
                     }else {
-                        throw new AttackOutOfArmy( 8);
+                        throw new AttackOutOfArmy();
                     }
                 }else {
-                    throw new AttackedCountryOwner( 7);
+                    throw new AttackedCountryOwner();
                 }
             }else {
-                throw new AttackingCountryOwner( 6);
+                throw new AttackingCountryOwner();
             }
         }else{
-            throw new AttackCountryArmyMoreThanOne( 5);
+            throw new AttackCountryArmyMoreThanOne();
         }
     }
 
