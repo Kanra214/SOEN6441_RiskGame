@@ -132,6 +132,15 @@ public class Country {
         player.realms.add(this);
         p.updateWindow();
     }
+    protected void swapOwnership(Player p1, Player p2){
+        this.setOwner(p2);
+        this.deleteOwner(p1);
+
+    }
+    protected void deleteOwner(Player p1){
+        p1.getRealms().remove(this);
+        p.updateWindow();
+    }
 
     /**
      * Get country's name
