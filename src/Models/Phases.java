@@ -48,7 +48,7 @@ public class Phases extends Observable {
             case 5: return 25;
             case 4: return 30;
             case 3: return 35;
-            case 2: return 10;//45
+            case 2: return 45;//45
             default: return 100;
         }
     }
@@ -125,9 +125,16 @@ public class Phases extends Observable {
     private void nextTurn(){
         currentTurn++;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
+        if(current_player.getRealms().size() == 0){//if the player is ruled out of the game
+            nextTurn();
+
+        }
+
+
         if(currentPhase == 1) {
             phaseOneFirstStep();
         }
+
     }
 
 
@@ -155,6 +162,7 @@ public class Phases extends Observable {
      * Move to the next phase and updates the window
      */
     public void nextPhase(){
+
         switch(currentPhase){
             case 0:
                 if(currentTurn >= numOfPlayers - 1){
@@ -163,15 +171,25 @@ public class Phases extends Observable {
                 nextTurn();
                 break;
             case 1:
-                currentPhase++;
-                checkAttackingIsPossible();
+
+                    currentPhase = 2;
+                    checkAttackingIsPossible();//every beggining of phase two needs to be checked
+
                 break;
             case 2:
-                currentPhase++;
+
+                    currentPhase = 3;
+
                 break;
             case 3:
-                currentPhase = 1;
-                nextTurn();
+                if(current_player.getRealms().size() == 0){
+                    nextPhase();
+                }
+                else {
+                    currentPhase = 1;
+                    nextTurn();
+                }
+                break;
         }
         updateWindow();
     }
@@ -256,12 +274,16 @@ public class Phases extends Observable {
      * @param chosen Country where to send army to
      */
     public void reinforcementPhase(Country chosen) {
+
+
         try {
             current_player.deployArmy(chosen);
         }
-        catch(RiskGameException e){
+        catch (RiskGameException e) {
             System.out.println("Not possible");
         }
+
+
     }
 
 
@@ -269,6 +291,7 @@ public class Phases extends Observable {
      * Attack phase
      */
     public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+
         boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
 
 
@@ -340,7 +363,8 @@ public class Phases extends Observable {
             }
         }
         catch (OutOfArmyException e) {
-            to.setOwner(current_player);
+            to.swapOwnership(rival, current_player);
+
 
 
 
@@ -350,7 +374,6 @@ public class Phases extends Observable {
                 gameOver = true;
 
             }
-
 
             return true;
 
@@ -434,6 +457,7 @@ public class Phases extends Observable {
      */
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
+        nextPhase();
     }
     private boolean checkWinner(){//check if current player win the whole game
         return current_player.realms.size() == graph.size();
@@ -512,11 +536,14 @@ public class Phases extends Observable {
 
     public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
 
+
         if (num >= current_player.getNumOfDice()) {
-            fortificationsPhase(from, to,num);
+            current_player.fortificate(from, to,num);
+            checkAttackingIsPossible();
             return true;
         }
         else {
+
             throw new MustBeEqualOrMoreThanNumOfDice();
 
         }
@@ -529,6 +556,7 @@ public class Phases extends Observable {
 
 
     private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
+        updateWindow(player);
         try {
             player.loseArmy(country);
 
@@ -537,9 +565,6 @@ public class Phases extends Observable {
         catch(OutOfArmyException e){
 
             throw e;
-        }
-        finally{
-            updateWindow(player);
         }
 
     }

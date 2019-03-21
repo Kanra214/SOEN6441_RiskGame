@@ -3,32 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackCountryArmyMoreThanOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackCountryArmyMoreThanOne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackMoveAtLeastOneArmy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackOutOfArmy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackedCountryOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackedCountryOwner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackingCountryOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackingCountryOwner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Country.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/CountryNotInRealms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/CountryNotInRealms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/MoveAtLeastOneArmyException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/MoveAtLeastOneArmyException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/NoSuchPathException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/NoSuchPathException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/OutOfArmyException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/OutOfArmyException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/RiskGameException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/RiskGameException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/SourceIsTargetException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/SourceIsTargetException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PhasePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PhasePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/FileChooser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/FileChooser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CardExchangeView$CardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CardExchangeView$CardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/ImagePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/ImagePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/MapPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/MapPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/StartManu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/StartManu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/MapEditTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/MapEditTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PhasesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PhasesTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/RiskGameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/RiskGameException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/PhasePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/PhasePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View_Components/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,26 +35,26 @@
     <session id="1536953692">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="25040" />
+          <entry key="java" value="26436" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="25040" />
+          <entry key="JAVA" value="26436" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="3" />
+          <entry key="class" value="4" />
           <entry key="gitignore" value="1" />
-          <entry key="java" value="66" />
+          <entry key="java" value="70" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="3" />
-          <entry key="JAVA" value="66" />
+          <entry key="CLASS" value="4" />
+          <entry key="JAVA" value="70" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="2" />
         </counts>
@@ -113,33 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="839">
-              <caret line="150" column="92" lean-forward="true" selection-start-line="150" selection-start-column="92" selection-end-line="150" selection-end-column="92" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaButtonUI.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="489" selection-start-line="489" selection-end-line="489" />
-              <folding>
-                <element signature="e#17982#17983#0" expanded="true" />
-                <element signature="e#18045#18046#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View_Components/SidePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="295">
+              <caret line="130" column="66" lean-forward="true" selection-start-line="130" selection-start-column="66" selection-end-line="130" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -147,22 +112,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="358" column="35" selection-start-line="358" selection-start-column="35" selection-end-line="358" selection-end-column="35" />
+            <state relative-caret-position="327">
+              <caret line="587" lean-forward="true" selection-start-line="587" selection-end-line="587" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2095#2096#0" expanded="true" />
-                <element signature="e#2125#2126#0" expanded="true" />
-                <element signature="e#3196#3197#0" expanded="true" />
-                <element signature="e#3231#3232#0" expanded="true" />
-                <element signature="e#3575#3576#0" expanded="true" />
-                <element signature="e#3612#3613#0" expanded="true" />
-                <element signature="e#14786#14787#0" expanded="true" />
-                <element signature="e#14817#14818#0" expanded="true" />
-                <element signature="e#14847#14848#0" expanded="true" />
-                <element signature="e#14875#14876#0" expanded="true" />
-                <element signature="e#14920#14921#0" expanded="true" />
-                <element signature="e#14962#14963#0" expanded="true" />
+                <element signature="e#3627#3628#0" expanded="true" />
+                <element signature="e#3664#3665#0" expanded="true" />
+                <element signature="e#15154#15155#0" expanded="true" />
+                <element signature="e#15185#15186#0" expanded="true" />
+                <element signature="e#15215#15216#0" expanded="true" />
+                <element signature="e#15243#15244#0" expanded="true" />
+                <element signature="e#15288#15289#0" expanded="true" />
+                <element signature="e#15330#15331#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -171,11 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View_Components/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="196" column="44" lean-forward="true" selection-start-line="196" selection-start-column="44" selection-end-line="196" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-256">
+              <caret line="136" selection-start-line="136" selection-end-line="136" />
             </state>
           </provider>
         </entry>
@@ -195,22 +152,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="189">
+              <caret line="149" column="32" lean-forward="true" selection-start-line="149" selection-start-column="32" selection-end-line="149" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4350#4351#0" expanded="true" />
-                <element signature="e#4377#4378#0" expanded="true" />
+                <element signature="e#3986#3987#0" expanded="true" />
+                <element signature="e#4013#4014#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View_Components/PhasePanel.java">
+        <entry file="file://$PROJECT_DIR$/src/Game/FileChooser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="135">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="75" column="33" lean-forward="true" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -218,23 +187,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4830">
-              <caret line="328" lean-forward="true" selection-start-line="328" selection-end-line="328" />
+            <state relative-caret-position="-607">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#726#727#0" expanded="true" />
-                <element signature="e#753#754#0" expanded="true" />
-                <element signature="e#1463#1464#0" expanded="true" />
-                <element signature="e#1492#1493#0" expanded="true" />
-                <element signature="e#1610#1611#0" expanded="true" />
-                <element signature="e#1644#1645#0" expanded="true" />
-                <element signature="e#1738#1739#0" expanded="true" />
-                <element signature="e#1763#1764#0" expanded="true" />
-                <element signature="e#2341#2342#0" expanded="true" />
-                <element signature="e#2381#2382#0" expanded="true" />
-                <element signature="e#2556#2557#0" expanded="true" />
-                <element signature="e#2588#2589#0" expanded="true" />
+                <element signature="e#1464#1465#0" expanded="true" />
+                <element signature="e#1493#1494#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -243,8 +201,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="-353">
               <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View_Components/SidePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -353,10 +320,10 @@
         <option value="$PROJECT_DIR$/src/Game/test.java" />
         <option value="$PROJECT_DIR$/src/Models/testt.java" />
         <option value="$PROJECT_DIR$/src/View_Components/PhasePanel.java" />
-        <option value="$PROJECT_DIR$/src/Models/Country.java" />
         <option value="$PROJECT_DIR$/src/Models/RiskGameException.java" />
-        <option value="$PROJECT_DIR$/src/Models/Player.java" />
         <option value="$PROJECT_DIR$/src/View_Components/Window.java" />
+        <option value="$PROJECT_DIR$/src/Models/Player.java" />
+        <option value="$PROJECT_DIR$/src/Models/Country.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
         <option value="$PROJECT_DIR$/src/Game/Controller.java" />
       </list>
@@ -381,8 +348,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -430,6 +395,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -439,7 +406,7 @@
     <property name="SearchEverywhereHistoryKey" value="ou&#9;PSI&#9;JAVA://Models.OutOfArmyException&#10;decrement&#9;PSI&#9;JAVA://Models.Country#decrementArmy" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553032934316" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553209133045" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -683,7 +650,7 @@
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1502146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15450644" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -782,28 +749,7 @@
     <MESSAGE value="test java doc" />
     <option name="LAST_COMMIT_MESSAGE" value="test java doc" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Models/Country.java</url>
-          <line>61</line>
-          <properties class="Models.Country" method="decrementArmy">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Game/Controller.java</url>
-          <line>87</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/View_Components/UnitLeftLabel.java" />
     <entry file="file://$PROJECT_DIR$/src/Game/Maploader1.java" />
     <entry file="file://$PROJECT_DIR$/src/Game/Phases.java" />
     <entry file="file://$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" />
@@ -870,16 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/PlayerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/Models/MapEditTest.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -937,17 +873,10 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/FileChooser.java">
+    <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -966,8 +895,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="190" column="5" lean-forward="true" selection-start-line="190" selection-start-column="5" selection-end-line="190" selection-end-column="5" />
+        <state relative-caret-position="238">
+          <caret line="98" column="6" selection-start-line="98" selection-start-column="6" selection-end-line="98" selection-end-column="6" />
+          <folding>
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#1137#1138#0" expanded="true" />
+            <element signature="e#1191#1192#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaButtonUI.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="489" selection-start-line="489" selection-end-line="489" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View_Components/CardExchangeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View_Components/PhasePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-353">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View_Components/SidePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -981,77 +953,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaButtonUI.class">
+    <entry file="file://$PROJECT_DIR$/src/View_Components/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="489" selection-start-line="489" selection-end-line="489" />
-          <folding>
-            <element signature="e#17982#17983#0" expanded="true" />
-            <element signature="e#18045#18046#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/SidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/PhasePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4350#4351#0" expanded="true" />
-            <element signature="e#4377#4378#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        <state relative-caret-position="-256">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4830">
-          <caret line="328" lean-forward="true" selection-start-line="328" selection-end-line="328" />
+        <state relative-caret-position="-607">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#753#754#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1492#1493#0" expanded="true" />
-            <element signature="e#1610#1611#0" expanded="true" />
-            <element signature="e#1644#1645#0" expanded="true" />
-            <element signature="e#1738#1739#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#2341#2342#0" expanded="true" />
-            <element signature="e#2381#2382#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-            <element signature="e#2588#2589#0" expanded="true" />
+            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="e#1493#1494#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/Window.java">
+    <entry file="file://$PROJECT_DIR$/src/test/Models/PhasesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="196" column="44" lean-forward="true" selection-start-line="196" selection-start-column="44" selection-end-line="196" selection-end-column="44" />
+        <state relative-caret-position="349">
+          <caret line="75" column="33" lean-forward="true" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1060,33 +984,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="358" column="35" selection-start-line="358" selection-start-column="35" selection-end-line="358" selection-end-column="35" />
+        <state relative-caret-position="327">
+          <caret line="587" lean-forward="true" selection-start-line="587" selection-end-line="587" />
+          <folding>
+            <element signature="e#3627#3628#0" expanded="true" />
+            <element signature="e#3664#3665#0" expanded="true" />
+            <element signature="e#15154#15155#0" expanded="true" />
+            <element signature="e#15185#15186#0" expanded="true" />
+            <element signature="e#15215#15216#0" expanded="true" />
+            <element signature="e#15243#15244#0" expanded="true" />
+            <element signature="e#15288#15289#0" expanded="true" />
+            <element signature="e#15330#15331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="149" column="32" lean-forward="true" selection-start-line="149" selection-start-column="32" selection-end-line="149" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2095#2096#0" expanded="true" />
-            <element signature="e#2125#2126#0" expanded="true" />
-            <element signature="e#3196#3197#0" expanded="true" />
-            <element signature="e#3231#3232#0" expanded="true" />
-            <element signature="e#3575#3576#0" expanded="true" />
-            <element signature="e#3612#3613#0" expanded="true" />
-            <element signature="e#14786#14787#0" expanded="true" />
-            <element signature="e#14817#14818#0" expanded="true" />
-            <element signature="e#14847#14848#0" expanded="true" />
-            <element signature="e#14875#14876#0" expanded="true" />
-            <element signature="e#14920#14921#0" expanded="true" />
-            <element signature="e#14962#14963#0" expanded="true" />
+            <element signature="e#3986#3987#0" expanded="true" />
+            <element signature="e#4013#4014#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/FileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="150" column="92" lean-forward="true" selection-start-line="150" selection-start-column="92" selection-end-line="150" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="295">
+          <caret line="130" column="66" lean-forward="true" selection-start-line="130" selection-start-column="66" selection-end-line="130" selection-end-column="66" />
         </state>
       </provider>
     </entry>

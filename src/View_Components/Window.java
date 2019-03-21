@@ -195,7 +195,7 @@ public class Window extends JFrame implements Observer {
 
             }
             if(!p.getAttackingIsPossible()){
-                showMsg("No attacking can be made. Turning to the next phase...");
+                showMsg("No attacking can be made. Moving onto the next phase...");
             }
 
 

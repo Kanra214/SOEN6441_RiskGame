@@ -215,7 +215,7 @@ public class Player {
         if(findPath(from, to)){
             from.decreaseArmy(num);
             to.increaseArmy(num);
-            p.nextPhase();
+//            p.nextPhase();
         }
         else{
             throw new NoSuchPathException();

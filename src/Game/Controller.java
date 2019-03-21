@@ -104,30 +104,43 @@ public class Controller {
                                 if (attackerInput != null) {
 
 
-                                    if (attackerInput.isEmpty()) {
+                                    if (attackerInput.isEmpty()) {//all out mode
                                         System.out.println("all out");
                                         if (p.attackPhase(chosenFrom, chosenTo)) {
+                                            if (p.gameOver) {
+                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                                System.exit(0);
+                                            }
+
 
 
 //                                            p.deploymentAfterConquer(numDeploy, chosenTo);
 
-                                            while(true){
-                                                int numDeploy = Integer.parseInt(window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1)));
-                                                try{
+                                            while(true){//loops until the player's input is correct, other wise keeps on popping out
+                                                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
+                                                if(input != null && !input.isEmpty()) {
 
-                                                    if(p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)){
-                                                        p.nextPhase();
-                                                        break;
+
+
+                                                    int numDeploy = Integer.parseInt(input);
+
+                                                    try {
+
+                                                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+//                                                            p.nextPhase();
+                                                            break;
+                                                        }
+                                                    } catch (RiskGameException ex) {
+                                                        window.showMsg(ex.errMsg + "Try again please.");
+                                                        continue;
                                                     }
-                                                }
-                                                catch(RiskGameException ex){
-                                                    window.showMsg(ex.errMsg + "Try again please.");
-                                                    continue;
                                                 }
 
                                             }
 
-                                        } else {
+
+                                        }
+                                        else {
                                             window.showMsg("attacker did not win");
 //                                            if (!p.attackingIsPossible()) {
 //                                                window.showMsg("No attacking can be made");
@@ -141,51 +154,55 @@ public class Controller {
 
                                         System.out.println("not all out");
                                         String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
-                                        if (defenderInput != null) {
-                                            int defendDice = Integer.parseInt(defenderInput);
+
+                                        int defendDice = Integer.parseInt(defenderInput);
 
 
-                                            if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                        if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                            if (p.gameOver) {
+                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                                System.exit(0);
+                                            }
 
 
 //                                            p.deploymentAfterConquer(numDeploy, chosenTo);
 
-                                                while(true){
-                                                    int numDeploy = Integer.parseInt(window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1)));
-                                                    try{
+                                            while (true) {
+                                                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
+                                                if (input != null && !input.isEmpty()) {
+                                                    int numDeploy = Integer.parseInt(input);
+                                                    try {
 
-                                                        if(p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)){
-                                                            p.nextPhase();
+                                                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+//                                                                p.nextPhase();
                                                             break;
                                                         }
-                                                    }
-                                                    catch(RiskGameException ex){
+                                                    } catch (RiskGameException ex) {
                                                         window.showMsg(ex.errMsg + "Try again please.");
                                                         continue;
                                                     }
-
                                                 }
 
-
                                             }
-                                            else {
-                                                window.showMsg("attacker did not win");
+
+
+                                        }
+                                        else {
+                                            window.showMsg("attacker did not win");
 //                                                if (!p.attackingIsPossible()) {
 //                                                    window.showMsg("No attacking can be made");
 //                                                    p.nextPhase();
 //                                                }
-                                            }
-
                                         }
 
                                     }
+
                                 }
                                 chosenFrom = null;
                                 chosenTo = null;
-                                if (p.gameOver) {
-                                    window.showMsg(p.getCurrent_player() + " wins the game!");
-                                    System.exit(0);
-                                }
+                            }
+
+
                             }
 
 
@@ -195,7 +212,7 @@ public class Controller {
 //                        }
 
 
-                    }
+
 
 
                 }
