@@ -332,7 +332,27 @@ public class Phases extends Observable {
 
         return false;
     }
+    public void checkAttackingIsPossible(){
+        //check if the current player is still possible to continue attacking phase
+        //return false if no such possibility
 
+        for(Country attack: current_player.realms){
+            if(attack.getArmy() >1){
+                for (Country defend: attack.getNeighbours()){
+                    if (defend.getOwner() != current_player){
+                        attackingIsPossible = true;
+                        return;
+
+                    }
+                }
+            }
+
+        }
+        attackingIsPossible = false;
+        updateWindow();
+        nextPhase();
+
+    }
     /**
      * Attack phase
      * @param from  Country from where army will attacking
@@ -384,19 +404,11 @@ public class Phases extends Observable {
         }
         return true;
     }
+    private boolean checkWinner(){//check if current player win the whole game
+        return current_player.realms.size() == graph.size();
 
 
-    public Player victoryCheck(){
-        Player victor = null;
-        for (Player p: players){
-            if (isOwnerOfAllCountries(p)){
-                victor = p;
-                break;
-            }
-        }
-        return victor;
     }
-
 
 
     protected boolean checkAttack(Player player){
