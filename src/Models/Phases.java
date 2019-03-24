@@ -49,7 +49,8 @@ public class Phases extends Observable {
      * @param graph List of countries on the map
      * @param worldMap List of Continent on the map
      */
-    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap) {
+    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap, CardExchangeView cardView) {
+        this.cardView = cardView;
         this.graph = graph;
         this.worldmap = worldMap;
         players = new ArrayList<>();

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import Models.*;
+import View_Components.CardExchangeView;
 import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
@@ -25,6 +26,7 @@ public class Controller {
     MapEditorGUI mapeditor;
 
     String filename;
+    CardExchangeView cardexchange;
 
     /**
      * Constructor
@@ -32,6 +34,7 @@ public class Controller {
      */
     public Controller(Window window) {
         this.window = window;
+        this.cardexchange = new CardExchangeView();
     }
 
     /**
@@ -138,6 +141,7 @@ public class Controller {
 //                                    window.showMsg(ex.errMsg + " Already set to default army 1.");
 //=======
                     else {
+                        cardexchange.setVisible(false);
                         System.out.println("Phase attack");
 //                        if (!p.attackingIsPossible()) {
 //                            window.showMsg("No attacking can be made");
@@ -408,8 +412,9 @@ public class Controller {
             JOptionPane.showMessageDialog(null, "Wrong number of Players");
             System.exit(0);
         }
-        p = new Phases(tempMap.get(0), tempMap.get(1));
+        p = new Phases(tempMap.get(0), tempMap.get(1),cardexchange);
         p.addObserver(window);
+        p.addObserver(cardexchange);
         Listener lis = new Listener();
         p.gameSetUp(numOfPlayers);
 
