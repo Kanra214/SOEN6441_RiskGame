@@ -184,17 +184,17 @@ public class Phases extends Observable {
                 nextTurn();
                 break;
             case 1:
+                cardView.setVisible(false);
                 currentPhase++;
                 if(!checkAttack(current_player)){
                     currentPhase++;
                 }
-                //TODO: if cant attack just go to pahse 3
                 break;
             case 2:
                 currentPhase++;
+                cardView.setVisible(true);
                 break;
             case 3:
-
                 currentPhase = 1;
                 nextTurn();
         }
@@ -317,22 +317,22 @@ public class Phases extends Observable {
      * @return true if country is conquered, false otherwise
      */
     public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-        try {
-            if (attackValidation(from, to, attackDice,defendDice)) {
-
-                attackSimulation(from, to, attackDice, defendDice);
-
-            }
-        }
-        catch (OutOfArmyException e) {
-            to.setOwner(current_player);
-            if (checkWinner()) {//this attacker conquered all the countries
-                gameOver = true;
-
-            }
-            return true;
-        }
-        checkAttackingIsPossible();
+//        try {
+//            if (attackValidation(from, to, attackDice,defendDice)) {
+//
+//                attackSimulation(from, to, attackDice, defendDice);
+//
+//            }
+//        }
+//        catch (OutOfArmyException e) {
+//            to.setOwner(current_player);
+//            if (checkWinner()) {//this attacker conquered all the countries
+//                gameOver = true;
+//
+//            }
+//            return true;
+//        }
+//        checkAttackingIsPossible();
 
         return false;
     }
@@ -439,16 +439,16 @@ public class Phases extends Observable {
     }
 
     private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
-        updateWindow(player);
-        try {
-            player.loseArmy(country);
-
-
-        }
-        catch(OutOfArmyException e){
-
-            throw e;
-        }
+//        updateWindow(player);
+//        try {
+////            player.loseArmy(country);
+//
+//
+//        }
+//        catch(OutOfArmyException e){
+//
+//            throw e;
+//        }
 
     }
     private void inBattle(boolean flag){

@@ -67,7 +67,8 @@ public class Country {
      */
     protected void increaseArmy(int i) throws MoveAtLeastOneArmyException {
         if(i < 1){
-            throw new MoveAtLeastOneArmyException(4);
+//            throw new MoveAtLeastOneArmyException(4);
+            throw new MoveAtLeastOneArmyException();
 
 
         }
@@ -89,10 +90,12 @@ public class Country {
      */
     protected void decreaseArmy(int i) throws OutOfArmyException, MoveAtLeastOneArmyException {
         if(i < 1){
-            throw new MoveAtLeastOneArmyException(4);
+//            throw new MoveAtLeastOneArmyException(4);
+            throw new MoveAtLeastOneArmyException();
         }
         if(this.army <= i){
-            throw new OutOfArmyException(0);
+//            throw new OutOfArmyException(0);
+            throw new OutOfArmyException();
         }
 
 

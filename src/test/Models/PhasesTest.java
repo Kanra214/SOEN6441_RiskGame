@@ -11,6 +11,7 @@ import org.junit.After;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * reinforcement Tester.
@@ -63,7 +64,7 @@ public class PhasesTest {
     @Test
     public void checkVictory(){
         p.gameSetUp(1);
-        assertEquals(p.isOwnerOfAllCountries(p.getCurrent_player()), true);
+        assertTrue(p.isOwnerOfAllCountries(p.getCurrent_player()));
     }
 
     /**
