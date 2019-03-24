@@ -4,16 +4,12 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-import Models.Player;
-import View_Components.CardExchangeView;
+import Models.*;
 import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
 import java.util.ArrayList;
 
-import Models.Phases;
-import Models.Country;
-import Models.RiskGameException;
 import MapEditor.MapEditorGUI;
 
 import javax.swing.*;
@@ -27,20 +23,15 @@ public class Controller {
     Phases p;
     StartManu startmanu;
     MapEditorGUI mapeditor;
-    CardExchangeView cardexchange;
 
     String filename;
 
-    int count_conquest = 0;
-    boolean allOut = false;
-    private boolean conquest_flag = false;
     /**
      * Constructor
      * @param window current panel
      */
     public Controller(Window window) {
         this.window = window;
-        this.cardexchange = new CardExchangeView();
     }
 
     /**
@@ -63,104 +54,262 @@ public class Controller {
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
-                if (p.getCurrentPhase() == 0) {
-                    p.startUpPhase(chosen);
-                } else if (p.getCurrentPhase() == 1) {
-                    p.reinforcementPhase(chosen);
-                } else if (p.getCurrentPhase() == 3) {
-                    if (chosenFrom == null) {
-                        chosenFrom = chosen;
-                    } else {
-                        chosenTo = chosen;
-                        int num = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
-                        try {
-                            p.fortificationsPhase(chosenFrom, chosenTo, num);
-                            chosenFrom = null;
-                            chosenTo = null;
-                        } catch (RiskGameException ex) {
-                            window.showMsg(ex.errMsg + " Try again please.");
-                            chosenFrom = null;
-                            chosenTo = null;
-                        }
+//<<<<<<< HEAD
+//                if (p.getCurrentPhase() == 0) {
+//                    p.startUpPhase(chosen);
+//                } else if (p.getCurrentPhase() == 1) {
+//                    p.reinforcementPhase(chosen);
+//                } else if (p.getCurrentPhase() == 3) {
+//                    if (chosenFrom == null) {
+//                        chosenFrom = chosen;
+//                    } else {
+//                        chosenTo = chosen;
+//                        int num = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+//                        try {
+//                            p.fortificationsPhase(chosenFrom, chosenTo, num);
+//                            chosenFrom = null;
+//                            chosenTo = null;
+//                        } catch (RiskGameException ex) {
+//                            window.showMsg(ex.errMsg + " Try again please.");
+//=======
 
+                try {
+                    if (p.getCurrentPhase() == 0) {
+                        p.startUpPhase(chosen);
                     }
-                } else {
-                	
-                	cardexchange.setVisible(false);
-                    System.out.println("Phase attack");
+                    else if (p.getCurrentPhase() == 1) {
+                        p.reinforcementPhase(chosen);
+                    }
+                    else if (p.getCurrentPhase() == 3) {
+                        if (chosenFrom == null) {
+                            chosenFrom = chosen;
+                        }
+                        else {
+                            chosenTo = chosen;
+                            String input = window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1");
 
-                    if (chosenFrom == null) {
-                        chosenFrom = chosen;
-                    } else {
-                        chosenTo = chosen;
-                        int numAttack = Integer.parseInt(window.promptPlayer("Attacker: How many armies? max: 3, min: 1"));
-                        int numDefence = Integer.parseInt(window.promptPlayer("Defender: How many armies to choose? max: 2, min: 1"));
-                        try {
-                            if (numAttack > 3 || numAttack < 1) {
-                                window.showMsg("You should select attack arimes between 1-3 ");
-//                                System.out.println("You should select attack arimes between 1-3 ");
-                            }
-                            if (numDefence > 2 || numDefence < 1) {
-                                window.showMsg("You should select defend arimes between 1-2 ");
-//                                System.out.println("You should select defend arimes between 1-2 ");
-                            }
-                            if (allOut){
-                                conquest_flag = p.attackAll(chosenFrom, chosenTo, chosenFrom.getArmy() - 1);
-                            }else {
-                                conquest_flag = p.attack(chosenFrom, chosenTo, numAttack, numDefence);
-                            }
-                            if (conquest_flag){
-                                int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
-                                try {
-                                    p.attackAssign(chosenFrom, chosenTo, assignArmy);
-                                }catch (RiskGameException ex){
+                            if (input != null) {
+                                int num = Integer.parseInt(input);
 
-                                    window.showMsg(ex.errMsg + " Already set to default army 1.");
+                                p.fortificationsPhase(chosenFrom, chosenTo, num);
+
+
+                            }
+//>>>>>>> Xiyun
+                            chosenFrom = null;
+                            chosenTo = null;
+
+
+
+                        }
+                    }
+//<<<<<<< HEAD
+//                } else {
+//
+//                	cardexchange.setVisible(false);
+//                    System.out.println("Phase attack");
+//
+//                    if (chosenFrom == null) {
+//                        chosenFrom = chosen;
+//                    } else {
+//                        chosenTo = chosen;
+//                        int numAttack = Integer.parseInt(window.promptPlayer("Attacker: How many armies? max: 3, min: 1"));
+//                        int numDefence = Integer.parseInt(window.promptPlayer("Defender: How many armies to choose? max: 2, min: 1"));
+//                        try {
+//                            if (numAttack > 3 || numAttack < 1) {
+//                                window.showMsg("You should select attack arimes between 1-3 ");
+////                                System.out.println("You should select attack arimes between 1-3 ");
+//                            }
+//                            if (numDefence > 2 || numDefence < 1) {
+//                                window.showMsg("You should select defend arimes between 1-2 ");
+////                                System.out.println("You should select defend arimes between 1-2 ");
+//                            }
+//                            if (allOut){
+//                                conquest_flag = p.attackAll(chosenFrom, chosenTo, chosenFrom.getArmy() - 1);
+//                            }else {
+//                                conquest_flag = p.attack(chosenFrom, chosenTo, numAttack, numDefence);
+//                            }
+//                            if (conquest_flag){
+//                                int assignArmy = Integer.parseInt(window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1"));
+//                                try {
+//                                    p.attackAssign(chosenFrom, chosenTo, assignArmy);
+//                                }catch (RiskGameException ex){
+//
+//                                    window.showMsg(ex.errMsg + " Already set to default army 1.");
+//=======
+                    else {
+                        System.out.println("Phase attack");
+//                        if (!p.attackingIsPossible()) {
+//                            window.showMsg("No attacking can be made");
+//                            p.nextPhase();
+//                        }
+//                        else {
+
+
+                            if (chosenFrom == null) {
+                                chosenFrom = chosen;
+
+
+                            }
+                            else {
+                                chosenTo = chosen;
+                                String attackerInput = window.promptPlayer("How many dice for attacker to roll? max: " + Math.min(chosenFrom.getArmy() - 1, 3) + ", min: 1. Input nothing to turn on the all-out mode.");
+                                if (attackerInput != null) {
+
+
+                                    if (attackerInput.isEmpty()) {//all out mode
+                                        System.out.println("all out");
+                                        if (p.attackPhase(chosenFrom, chosenTo)) {
+                                            if (p.gameOver) {
+                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                                System.exit(0);
+                                            }
+
+
+
+//                                            p.deploymentAfterConquer(numDeploy, chosenTo);
+
+                                            while(true){//loops until the player's input is correct, other wise keeps on popping out
+                                                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
+                                                if(input != null && !input.isEmpty()) {
+
+
+
+                                                    int numDeploy = Integer.parseInt(input);
+
+                                                    try {
+
+                                                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+//                                                            p.nextPhase();
+                                                            break;
+                                                        }
+                                                    } catch (RiskGameException ex) {
+                                                        window.showMsg(ex.errMsg + "Try again please.");
+                                                        continue;
+                                                    }
+                                                }
+
+                                            }
+
+
+                                        }
+                                        else {
+                                            window.showMsg("attacker did not win");
+//                                            if (!p.attackingIsPossible()) {
+//                                                window.showMsg("No attacking can be made");
+//                                                p.nextPhase();
+//                                            }
+                                        }
+
+                                    } else {
+                                        int attackDice = Integer.parseInt(attackerInput);
+
+
+                                        System.out.println("not all out");
+                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+
+                                        int defendDice = Integer.parseInt(defenderInput);
+
+
+                                        if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                            if (p.gameOver) {
+                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                                System.exit(0);
+                                            }
+
+
+//                                            p.deploymentAfterConquer(numDeploy, chosenTo);
+
+                                            while (true) {
+                                                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
+                                                if (input != null && !input.isEmpty()) {
+                                                    int numDeploy = Integer.parseInt(input);
+                                                    try {
+
+                                                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+//                                                                p.nextPhase();
+                                                            break;
+                                                        }
+                                                    } catch (RiskGameException ex) {
+                                                        window.showMsg(ex.errMsg + "Try again please.");
+                                                        continue;
+                                                    }
+                                                }
+
+                                            }
+
+
+                                        }
+                                        else {
+                                            window.showMsg("attacker did not win");
+//                                                if (!p.attackingIsPossible()) {
+//                                                    window.showMsg("No attacking can be made");
+//                                                    p.nextPhase();
+//                                                }
+                                        }
+
+                                    }
+
+//>>>>>>> Xiyun
                                 }
+                                chosenFrom = null;
+                                chosenTo = null;
                             }
-                            System.out.println("Conquest");
-                            chosenFrom = null;
-                            chosenTo = null;
-                        } catch (RiskGameException ex) {
-                            window.showMsg(ex.errMsg + " Try again please.");
-                            chosenFrom = null;
-                            chosenTo = null;
-                        }
-                        if(p.isOwnerOfAllCountries(p.getCurrent_player())){
-                            System.out.println("Winner is Player "+p.getCurrent_player().getId());
-                            System.exit(0);
-                        }
-                        if(!checkAttack(p.getCurrent_player())){
-                            p.nextPhase();
-                        }
-                    }
+//<<<<<<< HEAD
+//                            System.out.println("Conquest");
+//                            chosenFrom = null;
+//                            chosenTo = null;
+//                        } catch (RiskGameException ex) {
+//                            window.showMsg(ex.errMsg + " Try again please.");
+//                            chosenFrom = null;
+//                            chosenTo = null;
+//                        }
+//                        if(p.isOwnerOfAllCountries(p.getCurrent_player())){
+//                            System.out.println("Winner is Player "+p.getCurrent_player().getId());
+//                            System.exit(0);
+//                        }
+//                        if(!checkAttack(p.getCurrent_player())){
+//                            p.nextPhase();
+//                        }
+//                    }
+//=======
+
+
+                            }
+
+
+
+
+
+//                        }
+
+
+
+
+
+//>>>>>>> Xiyun
                 }
+                catch(RiskGameException ex1){
+                    window.showMsg(ex1.errMsg + "Try again please.");
+                    chosenFrom = null;
+                    chosenTo = null;
+
+                }
+                catch(NumberFormatException ex2) {
+                    window.showMsg("Wrong input format, try again please.");
+                    chosenFrom = null;
+                    chosenTo = null;
+
+                }
+
+
             }
+
         }
     }
 
-    protected boolean checkAttack(Player player){
-        boolean val = true;
-        int count_army = 0;
-        int count_owner = 0;
-        for (Country country : player.getRealms()){
-            if (country.getArmy() == 1){
-                count_army ++;
-            }
-            for (Country nei : country.getNeighbours()){
-                if (nei.getOwner() != player){
-                    count_owner ++;
-                }
-            }
-        }
-        if (count_army == player.getRealms().size()){
-            val = false;
-        }
-        if (count_owner == 0){
-            val = false;
-        }
-        return val;
-    }
+
+
     /**
      * This is a function create Start Menu box.
      */
@@ -259,9 +408,8 @@ public class Controller {
             JOptionPane.showMessageDialog(null, "Wrong number of Players");
             System.exit(0);
         }
-        p = new Phases(tempMap.get(0), tempMap.get(1), cardexchange);
+        p = new Phases(tempMap.get(0), tempMap.get(1));
         p.addObserver(window);
-        p.addObserver(cardexchange);
         Listener lis = new Listener();
         p.gameSetUp(numOfPlayers);
 
@@ -273,6 +421,5 @@ public class Controller {
         window.phasePanel.completePhaseButton.addActionListener(lis);
         p.connectView(); //after this updating window is enabled
         window.setVisible(true);
-        
     }
 }
