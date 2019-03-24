@@ -20,6 +20,12 @@ public class Player {
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
     private int id;//this is primary key for players
     private Card cards;
+    private int numOfDice;
+    protected ArrayList<Integer> dice = new ArrayList<>();
+
+    public ArrayList<Integer> getDice() {
+        return dice;
+    }
 
     /**
      * Array list of controlled territories of the player
@@ -143,15 +149,16 @@ public class Player {
      * Send army to the country
      * @param country to where army will be sent
      */
-    protected void deployArmy(Country country)  {
-        if(realms.contains(country)) {
+    protected void deployArmy(Country country) throws OutOfArmyException {
+        if(country.getOwner() == this) {
             if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
                 incrementMapArmies();
-                country.increaseArmy();
+                country.incrementArmy();
             }
             else{
-                System.out.println("out of armies");
+                System.out.println("out of armies in deploy army");
+                throw new OutOfArmyException();
             }
 
         }
@@ -244,6 +251,31 @@ public class Player {
         else{
             throw new NoSuchPathException();
         }
+    }
+    protected void rollDice (int digits){
+        numOfDice = digits;
+//        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
+        for (int i =0; i < digits; i++){
+            int Dice = (int)(Math.random()*6)+1;
+            dice.add(Dice);
+        }
+        Collections.sort(dice, Collections.reverseOrder());
+        p.updateWindow();
+//        return dice;
+    }
+    protected void removeDice(){
+
+
+        dice.remove(0);
+        p.updateWindow();
+    }
+    protected int consumeDice(){
+        int usedDice = dice.get(0);
+        removeDice();
+        return usedDice;
+    }
+    public int getNumOfDice(){
+        return numOfDice;
     }
 
     protected void attackAssign(Country from, Country to, int num) throws MoveAtLeastOneArmyException, OutOfArmyException{
@@ -520,6 +552,17 @@ public class Player {
         System.out.println("attack:"+liveArmy);
         System.out.println("defence:"+defenceArmy);
         return results;
+    }
+    protected void loseArmy(Country country) throws OutOfArmyException {
+        mapArmies--;
+
+        country.decrementArmy();
+
+
+//        p.updateWindow();
+
+
+
     }
 
 
