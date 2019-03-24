@@ -16,6 +16,10 @@ public class Phases extends Observable {
     private ArrayList<Country> graph;
     private ArrayList<Continent> worldmap;
     private Player current_player;
+    private Player rival;
+
+
+
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
@@ -434,5 +438,30 @@ public class Phases extends Observable {
         return val;
     }
 
+    private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
+        updateWindow(player);
+        try {
+            player.loseArmy(country);
 
+
+        }
+        catch(OutOfArmyException e){
+
+            throw e;
+        }
+
+    }
+    private void inBattle(boolean flag){
+        inBattle = flag;
+        updateWindow();
+    }
+    public boolean getInBattle(){
+        return inBattle;
+    }
+    public Player getRival(){
+        return rival;
+    }
+    public boolean getAttackingIsPossible(){
+        return attackingIsPossible;
+    }
 }
