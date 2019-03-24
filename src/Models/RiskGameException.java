@@ -148,3 +148,44 @@ class AttackMoveAtLeastOneArmy extends RiskGameException{
         errMsg = "At lease choose one army.";
     }
 }
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class WrongDiceNumber extends RiskGameException{
+    protected Player player;
+    /**
+     * Constuctor
+     * @param player Player who entered the wrong dice number
+     */
+    public WrongDiceNumber(Player player) {
+
+        this.player = player;
+        errMsg = "Player " + player.getId() + " entered wrong dice number, type proper integer according to the instruction in the message box.";
+
+    }
+}
+/**
+ * Exception thrown when attack phase, owner must current player
+ */
+class TargetCountryNotAdjacent extends RiskGameException{
+    /**
+     * Constuctor
+     */
+    public TargetCountryNotAdjacent() {
+
+
+        errMsg = "Target country is not adjacent to the attacking country.";
+
+    }
+}
+class MustBeEqualOrMoreThanNumOfDice extends RiskGameException{
+    /**
+     * Constuctor
+     */
+    public MustBeEqualOrMoreThanNumOfDice(){
+
+
+        errMsg = "Number of armies must be equal or more than the number of dice used that resulted in conquering the country.";
+
+    }
+}
