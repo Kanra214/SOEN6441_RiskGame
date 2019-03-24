@@ -21,6 +21,10 @@ public class Phases extends Observable {
     private boolean viewIsConnected = false;
     private CardExchangeView cardView;
     private boolean at_least_once = false;
+    public boolean gameOver = false;
+    public boolean inBattle = false;//used to enable complete button
+    private boolean attackingIsPossible = true;
+
 
     /**
      * Constructor
@@ -256,7 +260,78 @@ public class Phases extends Observable {
         current_player.deployArmy(chosen);
         
     }
+    /**
+     * Attack phase
+     */
+    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
 
+
+
+        while (true) {
+            try {
+                int attackDice = Math.min(from.getArmy() - 1, 3);
+                int defendDice = Math.min(to.getArmy(), 2);
+
+                if(attackPhase(from, to, attackDice, defendDice)) {
+
+                    return true;
+                }
+                validated = true;//any exception after this will be caught and break the while
+
+
+
+
+            }
+
+            catch(RiskGameException e) {
+                if (validated) {
+                    return false;
+                }
+                else {
+                    throw e;
+                }
+
+            }
+
+
+
+
+        }
+
+
+    }
+
+    /**
+     * Attack phase
+     * @param from  Country from where army will attacking
+     * @param to    Country from where army will be attacked
+     * @param attackDice   int number of dice to roll for attacker
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner the owner of attacking country must be current player
+     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     * @return true if country is conquered, false otherwise
+     */
+    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+        try {
+            if (attackValidation(from, to, attackDice,defendDice)) {
+
+                attackSimulation(from, to, attackDice, defendDice);
+
+            }
+        }
+        catch (OutOfArmyException e) {
+            to.setOwner(current_player);
+            if (checkWinner()) {//this attacker conquered all the countries
+                gameOver = true;
+
+            }
+            return true;
+        }
+        checkAttackingIsPossible();
+
+        return false;
+    }
 
     /**
      * Attack phase
