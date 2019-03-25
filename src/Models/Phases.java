@@ -1,5 +1,5 @@
 package Models;
-import View_Components.CardExchangeView;
+//import View_Components.CardExchangeView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,41 +16,24 @@ public class Phases extends Observable {
     private ArrayList<Continent> worldmap;
     private Player current_player;
     private Player rival;
-//<<<<<<< HEAD
-
-
-
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
-    private CardExchangeView cardView;
+//    private CardExchangeView cardView;
     private boolean at_least_once = false;
     public boolean gameOver = false;
     public boolean inBattle = false;//used to enable complete button
     private boolean attackingIsPossible = true;
-//=======
-//    private int currentPhase = 0;
-//    private int currentTurn = -1;
-//    private boolean viewIsConnected = false;
-//    public boolean gameOver = false;
-//    public boolean inBattle = false;//used to enable complete button
-//    private boolean attackingIsPossible = true;
-//    private CardExchangeView cardView;
-//    private int usedDice;
-
-
-
-
-//>>>>>>> Xiyun
 
 
     /**
      * Constructor
-     * @param graph List of countries on the map
+     *
+     * @param graph    List of countries on the map
      * @param worldMap List of Continent on the map
      */
-    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap, CardExchangeView cardView) {
-        this.cardView = cardView;
+    public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap) {
+//        this.cardView = cardView;
         this.graph = graph;
         this.worldmap = worldMap;
         players = new ArrayList<>();
@@ -60,25 +43,32 @@ public class Phases extends Observable {
         }
     }
 
-    private int getInitialArmyCount(int number){
-        switch (number){
-            case 6: return 20;
-            case 5: return 25;
-            case 4: return 30;
-            case 3: return 35;
-            case 2: return 45;//45
-            default: return 100;
+    private int getInitialArmyCount(int number) {
+        switch (number) {
+            case 6:
+                return 20;
+            case 5:
+                return 25;
+            case 4:
+                return 30;
+            case 3:
+                return 35;
+            case 2:
+                return 45;//45
+            default:
+                return 100;
         }
     }
 
     /**
      * Set up new game
-     * @param numOfPlayers  int
+     *
+     * @param numOfPlayers int
      */
-    public void gameSetUp(int numOfPlayers){
+    public void gameSetUp(int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
-        for(int i = 0; i < numOfPlayers; i++){
-            players.add(new Player(i, getInitialArmyCount(numOfPlayers),this));
+        for (int i = 0; i < numOfPlayers; i++) {
+            players.add(new Player(i, getInitialArmyCount(numOfPlayers), this));
         }
         determineOrder();
         countryAssignment();
@@ -87,32 +77,35 @@ public class Phases extends Observable {
 
     /**
      * Gets list of countries
+     *
      * @return ArrayList of country
      */
-    public ArrayList<Country> getGraph(){
+    public ArrayList<Country> getGraph() {
         return graph;
     }
 
 
     /**
      * Gets list of Players
+     *
      * @return ArrayList of players
      */
-    public ArrayList<Player> getPlayers(){
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
 
     /**
      * Gets reinforcements from all continents that the player owns
-     * @param player    which player to check
+     *
+     * @param player which player to check
      * @return int Reinforcements that the player gets from owning the whole continent
      */
-    public int extraArmyFromContinent(Player player){
+    public int extraArmyFromContinent(Player player) {
         int reinforcement = 0;
-        for (Continent c: worldmap) {
-            if(c.checkOwnership(player)){
-                reinforcement+=c.getControl_value();
+        for (Continent c : worldmap) {
+            if (c.checkOwnership(player)) {
+                reinforcement += c.getControl_value();
             }
         }
         return reinforcement;
@@ -121,10 +114,11 @@ public class Phases extends Observable {
 
     /**
      * Get reinforcements according to the number of countries and continents that the player owns
-     * @param player    which player to check
+     *
+     * @param player which player to check
      * @return int  number of all countries devided by 3 plus army from continent
      */
-    public int reinforcementArmy(Player player){
+    public int reinforcementArmy(Player player) {
         int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
         if (reinforcement < 3) reinforcement = 3;
         return reinforcement;
@@ -133,6 +127,7 @@ public class Phases extends Observable {
 
     /**
      * get current Phase
+     *
      * @return current phase
      */
     public int getCurrentPhase() {
@@ -140,16 +135,22 @@ public class Phases extends Observable {
     }
 
 
-    private void nextTurn(){
+    private void nextTurn() {
+
         currentTurn++;
+        if (at_least_once){
+            System.out.println("got a card");
+            current_player.getCards().addCard();
+        }
+        at_least_once = false;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
-        if(current_player.getRealms().size() == 0){//if the player is ruled out of the game
+        if (current_player.getRealms().size() == 0) {//if the player is ruled out of the game
             nextTurn();
 
         }
 
 
-        if(currentPhase == 1) {
+        if (currentPhase == 1) {
             phaseOneFirstStep();
         }
 
@@ -158,6 +159,7 @@ public class Phases extends Observable {
 
     /**
      * Gets current player
+     *
      * @return current player
      */
     public Player getCurrent_player() {
@@ -167,7 +169,7 @@ public class Phases extends Observable {
     /**
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
-    private void phaseOneFirstStep () {
+    private void phaseOneFirstStep() {
         int reinforce = reinforcementArmy(current_player);
         if (reinforce == 0) {
             current_player.getReinforcement(3);
@@ -179,32 +181,17 @@ public class Phases extends Observable {
     /**
      * Move to the next phase and updates the window
      */
-    public void nextPhase(){
+    public void nextPhase() {
 
-        switch(currentPhase){
+        switch (currentPhase) {
             case 0:
-                if(currentTurn >= numOfPlayers - 1){
+                if (currentTurn >= numOfPlayers - 1) {
                     currentPhase = 1;
                 }
                 nextTurn();
                 break;
             case 1:
-//<<<<<<< HEAD
 //                cardView.setVisible(false);
-//                currentPhase++;
-//                if(!checkAttack(current_player)){
-//                    currentPhase++;
-//                }
-//                break;
-//            case 2:
-//                currentPhase++;
-//                cardView.setVisible(true);
-//                break;
-//            case 3:
-//                currentPhase = 1;
-//                nextTurn();
-//=======
-                cardView.setVisible(false);
                 currentPhase = 2;
                 checkAttackingIsPossible();//every beggining of phase two needs to be checked
 
@@ -212,19 +199,17 @@ public class Phases extends Observable {
             case 2:
 
                 currentPhase = 3;
-                cardView.setVisible(true);
+//                cardView.setVisible(true);
 
                 break;
             case 3:
-                if(current_player.getRealms().size() == 0){
+                if (current_player.getRealms().size() == 0) {
                     nextPhase();
-                }
-                else {
+                } else {
                     currentPhase = 1;
                     nextTurn();
                 }
                 break;
-//>>>>>>> Xiyun
         }
         updateWindow();
     }
@@ -233,7 +218,7 @@ public class Phases extends Observable {
     /**
      * Determine the round robin order for players by changing the order in the players field
      */
-    private void determineOrder(){
+    private void determineOrder() {
         Collections.shuffle(players);
 
     }
@@ -262,28 +247,28 @@ public class Phases extends Observable {
     /**
      * Notifies connected observers
      */
-    protected void updateWindow(){
-        if(viewIsConnected) {
+    protected void updateWindow() {
+        if (viewIsConnected) {
             setChanged();
             notifyObservers();
         }
     }
+
     /**
      * Notifies connected observers
      */
-    protected void updateWindow(Object o){
-        if(viewIsConnected) {
+    protected void updateWindow(Object o) {
+        if (viewIsConnected) {
             setChanged();
             notifyObservers(o);
         }
     }
 
 
-
     /**
      * Connect view
      */
-    public void connectView(){
+    public void connectView() {
         viewIsConnected = true;
         updateWindow();
     }
@@ -291,13 +276,13 @@ public class Phases extends Observable {
 
     /**
      * Sends 1 army from current player to chosen Country during start up phase
+     *
      * @param chosen Country where to send army to
      */
-    public void startUpPhase(Country chosen){
+    public void startUpPhase(Country chosen) {
         try {
             current_player.deployArmy(chosen);
-        }
-        catch(RiskGameException e){
+        } catch (RiskGameException e) {
             System.out.println("out of army in start phase");
 
         }
@@ -306,6 +291,7 @@ public class Phases extends Observable {
 
     /**
      * Sends 1 army from current player to chosen Country during reinforcement phase
+     *
      * @param chosen Country where to send army to
      */
     public void reinforcementPhase(Country chosen) {
@@ -313,8 +299,7 @@ public class Phases extends Observable {
 
         try {
             current_player.deployArmy(chosen);
-        }
-        catch (RiskGameException e) {
+        } catch (RiskGameException e) {
             System.out.println("Not possible");
         }
 
@@ -330,149 +315,45 @@ public class Phases extends Observable {
         boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
 
 
-
         while (true) {
             try {
                 int attackDice = Math.min(from.getArmy() - 1, 3);
                 int defendDice = Math.min(to.getArmy(), 2);
 
-                if(attackPhase(from, to, attackDice, defendDice)) {
+                if (attackPhase(from, to, attackDice, defendDice)) {
+                    at_least_once = true;
 
                     return true;
                 }
                 validated = true;//any exception after this will be caught and break the while
 
 
-
-
-            }
-
-            catch(RiskGameException e) {
+            } catch (RiskGameException e) {
                 if (validated) {
+                    at_least_once = false;
                     return false;
-                }
-                else {
+                } else {
                     throw e;
                 }
 
             }
 
 
-
-
         }
 
 
     }
-//    /**
-//     * Attack phase
-//     */
-//    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-//        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-//
-//
-//
-//        while (true) {
-//            try {
-//                int attackDice = Math.min(from.getArmy() - 1, 3);
-//                int defendDice = Math.min(to.getArmy(), 2);
-//
-//                if(attackPhase(from, to, attackDice, defendDice)) {
-//
-//                    return true;
-//                }
-//                validated = true;//any exception after this will be caught and break the while
-//
-//
-//
-//
-//            }
-//
-//            catch(RiskGameException e) {
-//                if (validated) {
-//                    return false;
-//                }
-//                else {
-//                    throw e;
-//                }
-//
-//            }
-//
-//
-//
-//
-//        }
-//
-//
-//    }
 
-//    /**
-//     * Attack phase
-//     * @param from  Country from where army will attacking
-//     * @param to    Country from where army will be attacked
-//     * @param attackDice   int number of dice to roll for attacker
-//     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-//     * @throws AttackingCountryOwner the owner of attacking country must be current player
-//     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
-//     * @return true if country is conquered, false otherwise
-//     */
-//    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-////        try {
-////            if (attackValidation(from, to, attackDice,defendDice)) {
-////
-////                attackSimulation(from, to, attackDice, defendDice);
-////
-////            }
-////        }
-////        catch (OutOfArmyException e) {
-////            to.setOwner(current_player);
-////            if (checkWinner()) {//this attacker conquered all the countries
-////                gameOver = true;
-////
-////            }
-////            return true;
-////        }
-////        checkAttackingIsPossible();
-//
-//        return false;
-//    }
-//    public void checkAttackingIsPossible(){
-//        //check if the current player is still possible to continue attacking phase
-//        //return false if no such possibility
-//
-//        for(Country attack: current_player.realms){
-//            if(attack.getArmy() >1){
-//                for (Country defend: attack.getNeighbours()){
-//                    if (defend.getOwner() != current_player){
-//                        attackingIsPossible = true;
-//                        return;
-//
-//                    }
-//                }
-//            }
-//
-////<<<<<<< HEAD
-//        }
-//        attackingIsPossible = false;
-//        updateWindow();
-//        nextPhase();
-//
-//    }
-////=======
-
-
-
-
-//>>>>>>> Xiyun
     /**
      * Attack phase
-     * @param from  Country from where army will attacking
-     * @param to    Country from where army will be attacked
-     * @param attackDice   int number of dice to roll for attacker
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner the owner of attacking country must be current player
-     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     *
+     * @param from       Country from where army will attacking
+     * @param to         Country from where army will be attacked
+     * @param attackDice int number of dice to roll for attacker
      * @return true if country is conquered, false otherwise
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner        the owner of attacking country must be current player
+     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
     public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 //        current_player.attack(from, to, attackDice, defendDice);
@@ -481,49 +362,30 @@ public class Phases extends Observable {
 //        }
 
 
-
-
-
         try {
-            if (attackValidation(from, to, attackDice,defendDice)) {
+            if (attackValidation(from, to, attackDice, defendDice)) {
 
                 attackSimulation(from, to, attackDice, defendDice);
 
             }
-        }
-        catch (OutOfArmyException e) {
+        } catch (OutOfArmyException e) {
             to.swapOwnership(rival, current_player);
-
-
-
-
 
 
             if (checkWinner()) {//this attacker conquered all the countries
                 gameOver = true;
 
             }
+            at_least_once = true;
 
             return true;
 
 
         }
         checkAttackingIsPossible();
+        at_least_once = false;
 
         return false;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
@@ -537,7 +399,7 @@ public class Phases extends Observable {
         current_player.rollDice(attackDice);
         rival.rollDice(defendDice);
 
-        while (current_player.dice.size() > 0 && rival.dice.size() > 0){
+        while (current_player.dice.size() > 0 && rival.dice.size() > 0) {
 
 
             try {
@@ -545,16 +407,14 @@ public class Phases extends Observable {
 
                 if (current_player.dice.get(0) > rival.dice.get(0)) {
 
-                    losesAnArmy(rival,to);
-                }
-                else {
+                    losesAnArmy(rival, to);
+                } else {
                     losesAnArmy(current_player, from);
                 }
                 current_player.dice.remove(0);
                 rival.dice.remove(0);
 
-            }
-            catch(OutOfArmyException e){
+            } catch (OutOfArmyException e) {
                 inBattle(false);
                 current_player.dice.clear();
                 rival.dice.clear();
@@ -568,40 +428,40 @@ public class Phases extends Observable {
         inBattle(false);
 
 
-
-        }
-
+    }
 
 
     /**
      * Sends army from one country to another
-     * @param from  Country from where army will be deducted
-     * @param to    Country from where army will be sent
-     * @param num   int number of armies to send
-     * @throws CountryNotInRealms   country not owned by the player
-     * @throws OutOfArmyException   not enough army to transfer
-     * @throws NoSuchPathException  no path from owned countries between country
-     * @throws SourceIsTargetException  source country and target country is the same
-     * @throws MoveAtLeastOneArmyException  0 army chosen to move
+     *
+     * @param from Country from where army will be deducted
+     * @param to   Country from where army will be sent
+     * @param num  int number of armies to send
+     * @throws CountryNotInRealms          country not owned by the player
+     * @throws OutOfArmyException          not enough army to transfer
+     * @throws NoSuchPathException         no path from owned countries between country
+     * @throws SourceIsTargetException     source country and target country is the same
+     * @throws MoveAtLeastOneArmyException 0 army chosen to move
      */
     public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
         current_player.fortificate(from, to, num);
         nextPhase();
     }
-    private boolean checkWinner(){//check if current player win the whole game
+
+    private boolean checkWinner() {//check if current player win the whole game
         return current_player.realms.size() == graph.size();
 
 
     }
 
-    public void checkAttackingIsPossible(){
+    public void checkAttackingIsPossible() {
         //check if the current player is still possible to continue attacking phase
         //return false if no such possibility
 
-        for(Country attack: current_player.realms){
-            if(attack.getArmy() >1){
-                for (Country defend: attack.getNeighbours()){
-                    if (defend.getOwner() != current_player){
+        for (Country attack : current_player.realms) {
+            if (attack.getArmy() > 1) {
+                for (Country defend : attack.getNeighbours()) {
+                    if (defend.getOwner() != current_player) {
                         attackingIsPossible = true;
                         return;
 
@@ -610,21 +470,12 @@ public class Phases extends Observable {
             }
 
         }
-//<<<<<<< HEAD
-//        return true;
-//    }
-//    private boolean checkWinner(){//check if current player win the whole game
-//        return current_player.realms.size() == graph.size();
-//=======
+
         attackingIsPossible = false;
         updateWindow();
         nextPhase();
-//>>>>>>> Xiyun
 
     }
-
-//<<<<<<< HEAD
-//    }
 
 
     protected boolean checkAttack(Player player) {
@@ -643,30 +494,30 @@ public class Phases extends Observable {
         }
         return val;
     }
-//=======
+
     /**
      * For checking validation in attack phase
+     *
      * @param sourceCountry source country
      * @param targetCountry target country
-     * @param attackDice number of attacker's dice
-     * @param defendDice number of defender's dice
+     * @param attackDice    number of attacker's dice
+     * @param defendDice    number of defender's dice
      * @return true for validation
      * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner the owner of attacking country must be current player
-     * @throws AttackedCountryOwner the owner of attacked country must be the enemy
+     * @throws AttackingCountryOwner        the owner of attacking country must be current player
+     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
     protected boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-        if(sourceCountry.getArmy() >= 2) {
+        if (sourceCountry.getArmy() >= 2) {
             if (sourceCountry.getOwner() == current_player) {
                 if (targetCountry.getOwner() != current_player) {
                     if (sourceCountry.getNeighbours().contains(targetCountry)) {
                         if (attackDice <= sourceCountry.getArmy() - 1 && attackDice <= 3 && attackDice > 0) {
-                            if(defendDice <= targetCountry.getArmy() && defendDice <= 2 && defendDice > 0) {
+                            if (defendDice <= targetCountry.getArmy() && defendDice <= 2 && defendDice > 0) {
                                 return true;
 
 
-                            }
-                            else{
+                            } else {
                                 throw new WrongDiceNumber(targetCountry.getOwner());
 
                             }
@@ -682,35 +533,26 @@ public class Phases extends Observable {
             } else {
                 throw new AttackingCountryOwner();
             }
-        }
-        else {
+        } else {
             throw new AttackCountryArmyMoreThanOne();
         }
 
     }
 
 
-
     public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
 
 
         if (num >= current_player.getNumOfDice()) {
-            current_player.fortificate(from, to,num);
+            current_player.fortificate(from, to, num);
             checkAttackingIsPossible();
             return true;
-        }
-        else {
+        } else {
 
             throw new MustBeEqualOrMoreThanNumOfDice();
 
-//>>>>>>> Xiyun
         }
     }
-
-
-
-
-
 
 
     private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
@@ -719,56 +561,29 @@ public class Phases extends Observable {
             player.loseArmy(country);
 
 
-        }
-        catch(OutOfArmyException e){
+        } catch (OutOfArmyException e) {
 
             throw e;
         }
 
     }
-    private void inBattle(boolean flag){
+
+    private void inBattle(boolean flag) {
         inBattle = flag;
         updateWindow();
     }
-    public boolean getInBattle(){
+
+    public boolean getInBattle() {
         return inBattle;
     }
-    public Player getRival(){
+
+    public Player getRival() {
         return rival;
     }
-    public boolean getAttackingIsPossible(){
+
+    public boolean getAttackingIsPossible() {
         return attackingIsPossible;
     }
 
 
-
-
-
-
-//    private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
-////        updateWindow(player);
-////        try {
-//////            player.loseArmy(country);
-////
-////
-////        }
-////        catch(OutOfArmyException e){
-////
-////            throw e;
-////        }
-//
-//    }
-//    private void inBattle(boolean flag){
-//        inBattle = flag;
-//        updateWindow();
-//    }
-//    public boolean getInBattle(){
-//        return inBattle;
-//    }
-//    public Player getRival(){
-//        return rival;
-//    }
-//    public boolean getAttackingIsPossible(){
-//        return attackingIsPossible;
-//    }
 }

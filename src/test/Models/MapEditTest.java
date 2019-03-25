@@ -1,6 +1,6 @@
 package test.Models; 
 
-import Models.MapEdit;
+import MapEditor.MapEdit;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;

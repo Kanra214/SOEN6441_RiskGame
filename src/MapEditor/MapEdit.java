@@ -1,5 +1,6 @@
-package Models;
+package MapEditor;
 
+import Models.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;

@@ -69,6 +69,12 @@ public class CardExchangeView extends JFrame implements Observer{
         //update phasePanel
       
         cp.setContext(p.getCurrent_player());
+        if(p.getCurrentPhase() == 2){
+        	setVisible(false);
+		}
+		else if(p.getCurrentPhase() == 3){
+			setVisible(true);
+		}
 
 
     }

@@ -82,10 +82,7 @@ public class Country {
      */
     protected void increaseArmy(int i) throws MoveAtLeastOneArmyException {
         if(i < 1){
-//<<<<<<< HEAD
-////            throw new MoveAtLeastOneArmyException(4);
-//=======
-//>>>>>>> Xiyun
+
             throw new MoveAtLeastOneArmyException();
 
 
@@ -108,14 +105,7 @@ public class Country {
      */
     protected void decreaseArmy(int i) throws OutOfArmyException, MoveAtLeastOneArmyException {
         if(i < 1){
-//<<<<<<< HEAD
-////            throw new MoveAtLeastOneArmyException(4);
-//            throw new MoveAtLeastOneArmyException();
-//        }
-//        if(this.army <= i){
-////            throw new OutOfArmyException(0);
-//            throw new OutOfArmyException();
-//=======
+
 
             throw new MoveAtLeastOneArmyException();
 
@@ -125,8 +115,6 @@ public class Country {
 
             throw new OutOfArmyException();
 
-
-//>>>>>>> Xiyun
         }
 
 
@@ -137,22 +125,7 @@ public class Country {
 
 
     }
-    protected void attackDecreaseArmy(int i){
-        this.army -= i;
-//        p.updateWindow();
-    }
-    protected void attackIncreaseArmy(int i){
-        this.army += i;
-        p.updateWindow();
-    }
-    public void setDefualtArmy(){
-        this.army = 1;
-    }
 
-    public void armyMinusOne() {
-        army = this.army - 1;
-        //p.updateWindow();
-    }
 
     /**
      * Set owner to country

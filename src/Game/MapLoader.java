@@ -5,6 +5,7 @@ package Game;
 import java.util.ArrayList;
 import Models.*;
 import java.util.Map;
+import MapEditor.*;
 
 /**
  * <h1>MapLoader</h1>

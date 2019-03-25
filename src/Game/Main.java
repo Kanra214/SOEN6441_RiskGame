@@ -13,10 +13,9 @@ public class Main {
     /**
      * This is main
      * @param args args
-     * @throws IOException
      */
-    public static void main(String args[]) throws IOException {
-        Controller controller = new Controller(new Window());
+    public static void main(String args[]) {
+        Controller controller = new Controller();
         controller.startManu();
 
     }

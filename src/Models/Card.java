@@ -4,11 +4,9 @@ import javax.swing.*;
 
 public class Card {
 
-  public int getCardexchangeNUm() {
-    return cardexchangeNUm;
-  }
 
-  private int playerID;
+
+  	private int playerID;
 	private String[] cardName;
 	private int[] cardNumber;
 	private int cardexchangeNUm;// Count the number of exchange card
@@ -19,6 +17,9 @@ public class Card {
 		cardNumber = new int[]{0,0,0};
 		cardexchangeNUm = 0;
 
+	}
+	public int getCardexchangeNUm() {
+		return cardexchangeNUm;
 	}
 	
 	public void addCard() {
