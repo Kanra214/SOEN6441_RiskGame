@@ -1,6 +1,7 @@
 package View_Components;
 
 
+import Models.Card;
 import Models.Country;
 import Models.Phases;
 import Models.Player;
@@ -194,6 +195,7 @@ public class Window extends JFrame implements Observer {
                 showMsg(msg);
 
             }
+
             if(!p.getAttackingIsPossible()){
                 showMsg("No attacking can be made. Moving onto the next phase...");
             }
@@ -201,13 +203,24 @@ public class Window extends JFrame implements Observer {
 
 
         }
+        else if(p.getCurrentPhase() == 1) {
+            if (arg instanceof Integer) {
+                int CID = (int) arg;
+                showMsg("This card will add to " + CID);
+            }
+            if(arg instanceof Card){//receive enemy card
+                Card cards = (Card)arg;
+                showMsg("You receive these cards from conquering: " + cardsToString(cards));
+            }
+        }
 
 
 
 
 
     }
-        private String diceToString(ArrayList<Integer> dice){
+
+    private String diceToString(ArrayList<Integer> dice){
         String s = "";
 
         for(int i = 0; i < dice.size(); i++){
@@ -223,6 +236,17 @@ public class Window extends JFrame implements Observer {
         return s;
 
 
+    }
+    private String cardsToString(Card cards){
+        String s = "";
+
+        for(int i = 0; i < 3; i++){
+
+            s += cards.showCardsName(i) + ": " + cards.showCardsNumber(i) + "/n";
+
+
+        }
+        return s;
     }
 
     /**

@@ -2,39 +2,42 @@ package Models;
 
 import javax.swing.*;
 
+/**
+ * This class is card collection that each player holds
+ */
 public class Card {
 
 
 
-  	private int playerID;
+//  	private int playerID;
 	private String[] cardName;
 	private int[] cardNumber;
-	private int cardexchangeNUm;// Count the number of exchange card
-	  
-	public Card() {
+	private int cardExchangeNum;// Count the number of exchange card
+	private Phases p;
+
+
+	/**
+	 * Constructor
+ 	 */
+	protected Card(Phases p) {
 		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
 		cardNumber = new int[]{0,0,0};
-		cardexchangeNUm = 0;
+		cardExchangeNum = 0;
+		this.p = p;
+
 
 	}
-	public int getCardexchangeNUm() {
-		return cardexchangeNUm;
+
+	/**
+	 * Getter
+	 * @return cardExchangeNum
+	 */
+	public int getCardExchangeNum() {
+		return cardExchangeNum;
 	}
-	
-	public void addCard() {
-		int randCID=(int) Math.floor(3*Math.random());
-		System.out.println("This card will add to "+randCID);
-		JOptionPane.showMessageDialog(null, "This card will add to "+randCID);
-		cardNumber[randCID]++;
-	}
-	
-	public void addCard(int[] enemycards) {
-		for(int i=0;i<3;i++) {
-			cardNumber[i]+=enemycards[i];
-		}
-		
-	}
+
+
 	
 	public int showCardsNumber(int cardID) {
 		/*
@@ -44,6 +47,25 @@ public class Card {
 		}
 		*/
 		return cardNumber[cardID];
+	}
+	/**
+	 * The player receives a card of random type
+	 */
+	protected void addCard() {
+		int randCID=(int) Math.floor(3*Math.random());
+		System.out.println("This card will add to "+randCID);
+		cardNumber[randCID]++;
+		p.updateWindow(randCID);
+		p.updateWindow();
+	}
+
+	protected void addCard(Player enemy) {
+		for(int i=0;i<3;i++) {
+			cardNumber[i]+=enemy.getCards().cardNumber[i];
+		}
+		p.updateWindow(enemy.getCards());
+		p.updateWindow();
+
 	}
 	
 	public int cardSum() {
@@ -99,7 +121,7 @@ public class Card {
 				for(int i=0;i<3;i++) {				
 					cardNumber[i]--;
 					}
-					cardexchangeNUm++;
+					cardExchangeNum++;
 				return true;
 			}else return false;
 	
@@ -110,7 +132,7 @@ public class Card {
 				if(cardNumber[i]>=3) {				
 					cardNumber[i]-=3;
 				}
-				cardexchangeNUm++;
+				cardExchangeNum++;
 				return true;
 			}
 			}else return false;	
@@ -130,6 +152,7 @@ public class Card {
 		
 		return cardNumber;
 	}
+
 	
 	
 }

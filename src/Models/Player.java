@@ -22,14 +22,8 @@ public class Player {
     private Card cards;
     private int numOfDice;
     protected ArrayList<Integer> dice = new ArrayList<>();
-
-    /**
-     * Array list of controlled territories of the player
-     */
     protected ArrayList<Country> realms;
-    public ArrayList<Integer> getDice() {
-        return dice;
-    }
+
 
 
 
@@ -46,7 +40,7 @@ public class Player {
         this.unassigned_armies = army;
         this.playerColor = ALL_COLORS[id];
         this.p = p;
-        this.cards =new Card();
+        this.cards =new Card(p);
 
     }
     /**
@@ -55,6 +49,15 @@ public class Player {
      */
     public Card getCards() {
         return cards;
+    }
+
+
+    /**
+     * Getter
+     * @return dice
+     */
+    public ArrayList<Integer> getDice() {
+        return dice;
     }
 
 
@@ -135,9 +138,9 @@ public class Player {
         cards.addCard();
     }
 
-    public void receiveEnemyCards(int[]enemycards) {
+    public void receiveEnemyCards(Player enemy) {
 
-        cards.addCard(enemycards);
+        cards.addCard(enemy);
     }
 
     public void addPlayerArmyByCard(int cardTurn) {
@@ -297,6 +300,7 @@ public class Player {
 
 
     }
+
 
 
 

@@ -12,14 +12,13 @@ import java.util.HashSet;
  * This class is for continent object
  */
 public class Continent {
-//    private final static Color[] ALL_COLORS = {Color.lightGray, Color.MAGENTA, Color.CYAN, Color.GREEN, Color.YELLOW, Color.PINK};
     private String name;
     private ArrayList<Country> countries;
     private int control_value;
     private Color contColor;
     private static HashSet<Color> colorSet = new HashSet<>();;
-//public because mapLoader needs this
 
+    //public because mapLoader needs this
     /**
      * This is constructor
      * @param name name of continent
@@ -28,10 +27,8 @@ public class Continent {
     public Continent(String name, int control_value){
 
         this.name = name;
-
         this.control_value = control_value;
         this.contColor = chooseColor();
-//        colorSelector = (colorSelector+1) % 6;
         countries = new ArrayList<>();
     }
 
@@ -84,7 +81,11 @@ public class Continent {
     public int getControl_value() {
         return control_value;
     }
-    
+
+    /**
+     * Randomly choose a color for the continent
+     * @return chosen color
+     */
     private Color chooseColor() {
     	Random rand = new Random();
     	while(true) {

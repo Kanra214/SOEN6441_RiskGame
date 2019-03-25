@@ -15,25 +15,22 @@ public class Phases extends Observable {
     private ArrayList<Country> graph;
     private ArrayList<Continent> worldmap;
     private Player current_player;
-    private Player rival;
+    private Player rival;//the player being attacked in the attack phase
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
-//    private CardExchangeView cardView;
-    private boolean at_least_once = false;
+    private boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
     public boolean gameOver = false;
-    public boolean inBattle = false;//used to enable complete button
-    private boolean attackingIsPossible = true;
+    public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
+    private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
 
 
     /**
      * Constructor
-     *
      * @param graph    List of countries on the map
      * @param worldMap List of Continent on the map
      */
     public Phases(ArrayList<Country> graph, ArrayList<Continent> worldMap) {
-//        this.cardView = cardView;
         this.graph = graph;
         this.worldmap = worldMap;
         players = new ArrayList<>();
@@ -43,6 +40,11 @@ public class Phases extends Observable {
         }
     }
 
+    /**
+     * Give each player initial armies of which the number is depended on the number of players
+     * @param number the number of players
+     * @return the number of initial armies
+     */
     private int getInitialArmyCount(int number) {
         switch (number) {
             case 6:
@@ -54,16 +56,15 @@ public class Phases extends Observable {
             case 3:
                 return 35;
             case 2:
-                return 45;//45
+                return 10;//45
             default:
                 return 100;
         }
     }
 
     /**
-     * Set up new game
-     *
-     * @param numOfPlayers int
+     * Set up new game: instantiate players, determine the order of players, randomly assign countries and start start up phase
+     * @param numOfPlayers the number of players
      */
     public void gameSetUp(int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
@@ -134,13 +135,15 @@ public class Phases extends Observable {
         return currentPhase;
     }
 
-
+    /**
+     * next player's turn
+     */
     private void nextTurn() {
 
         currentTurn++;
         if (at_least_once){
             System.out.println("got a card");
-            current_player.getCards().addCard();
+            current_player.addPlayerOneCard();
         }
         at_least_once = false;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
@@ -205,7 +208,8 @@ public class Phases extends Observable {
             case 3:
                 if (current_player.getRealms().size() == 0) {
                     nextPhase();
-                } else {
+                }
+                else {
                     currentPhase = 1;
                     nextTurn();
                 }
@@ -323,6 +327,7 @@ public class Phases extends Observable {
                 if (attackPhase(from, to, attackDice, defendDice)) {
                     at_least_once = true;
 
+
                     return true;
                 }
                 validated = true;//any exception after this will be caught and break the while
@@ -377,6 +382,9 @@ public class Phases extends Observable {
 
             }
             at_least_once = true;
+            if(rival.getRealms().size() == 0){
+                current_player.receiveEnemyCards(rival);
+            }
 
             return true;
 

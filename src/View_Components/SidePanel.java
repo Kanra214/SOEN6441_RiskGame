@@ -52,9 +52,17 @@ public class SidePanel extends JPanel {
           return    "<html><body>" +
                     "<h3>Player " + player.getId() + "</h3>" +
                     "<p>Countries: " + player.getRealms().size() + "<br>" +
-                    "Total number of armies in the map: " + player.getMapArmies() + "<br>" +
-                    "Card " + "</p>" +
+                    "Total number of armies in the map: " + player.getMapArmies() + "<br></p>" +
+                    "<h4>Cards:</h4> " +
+                    "<p>" + cardToString(player) +"</p>" +
                     "</body></html>";
 
+    }
+    private String cardToString(Player player){
+        String output = "";
+        for(int i = 0; i < 3; i++){
+            output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "<br>";
+        }
+        return output;
     }
 }
