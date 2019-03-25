@@ -51,13 +51,14 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
-                if (p.getCurrentPhase() == 1){
-                    cardexchange.setVisible(false);
-                }
-                if (p.getCurrentPhase() == 2){
+
+                p.nextPhase();
+                if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers()*2)){
                     cardexchange.setVisible(true);
                 }
-                p.nextPhase();
+                else{
+                    cardexchange.setVisible(false);
+                }
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
