@@ -33,7 +33,7 @@ public class Controller {
      */
     public Controller() {
         this.window = new Window();
-        this.cardexchange = new CardExchangeView();
+        cardexchange = new CardExchangeView();
     }
 
     /**
@@ -212,6 +212,18 @@ public class Controller {
 
 
             }
+            if(e.getSource() == cardexchange.Exchange3Same){
+
+
+
+            }
+            if(e.getSource() == cardexchange.Exchange3Diff){
+
+            }
+            if(e.getSource() == cardexchange.Cancel){
+
+            }
+
 
         }
     }

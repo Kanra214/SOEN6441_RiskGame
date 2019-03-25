@@ -27,7 +27,7 @@ public class CardExchangeView extends JFrame implements Observer{
 	
 	private CardPanel cp;
 	private JPanel mainPanel;
-	private JButton Exchange3Same,Exchange3Diff,Cancel;
+	public JButton Exchange3Same,Exchange3Diff,Cancel;
 
 	public CardExchangeView(){
 	    super("CardExchangeView");

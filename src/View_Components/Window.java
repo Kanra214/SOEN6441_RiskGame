@@ -67,10 +67,7 @@ public class Window extends JFrame implements Observer {
         setLocationRelativeTo(null);
 
         setSize(WIDTH,HEIGHT);
-        
-        //set full size
-//        setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        setUndecorated(true);
+
         
         //escape the program by pressing escape key
         InputMap im = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -204,13 +201,13 @@ public class Window extends JFrame implements Observer {
 
         }
         else if(p.getCurrentPhase() == 1) {
-            if (arg instanceof Integer) {
-                int CID = (int) arg;
-                showMsg("This card will add to " + CID);
+            if (arg instanceof String) {
+                String CName = (String) arg;
+                showMsg("This card will add to " + CName);
             }
             if(arg instanceof Card){//receive enemy card
                 Card cards = (Card)arg;
-                showMsg("You receive these cards from conquering: " + cardsToString(cards));
+                showMsg("You received these cards from conquering: " + cardsToString(cards));
             }
         }
 

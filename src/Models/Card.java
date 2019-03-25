@@ -16,6 +16,7 @@ public class Card {
 	private Phases p;
 
 
+
 	/**
 	 * Constructor
  	 */
@@ -40,12 +41,6 @@ public class Card {
 
 	
 	public int showCardsNumber(int cardID) {
-		/*
-		for(int i=0;i<3;i++) {
-			System.out.println(cardName[i]);
-			System.out.println(cardNumber[i]);
-		}
-		*/
 		return cardNumber[cardID];
 	}
 	/**
@@ -55,7 +50,7 @@ public class Card {
 		int randCID=(int) Math.floor(3*Math.random());
 		System.out.println("This card will add to "+randCID);
 		cardNumber[randCID]++;
-		p.updateWindow(randCID);
+		p.updateWindow(cardName[randCID]);
 		p.updateWindow();
 	}
 
