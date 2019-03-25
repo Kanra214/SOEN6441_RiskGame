@@ -51,12 +51,16 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
+                if (p.getCurrentPhase() == 1){
+                    cardexchange.setVisible(false);
+                }
+                if (p.getCurrentPhase() == 2){
+                    cardexchange.setVisible(true);
+                }
                 p.nextPhase();
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
-
-
                 try {
                     if (p.getCurrentPhase() == 0) {
                         p.startUpPhase(chosen);
@@ -79,122 +83,73 @@ public class Controller {
 
 
                             }
-
                             chosenFrom = null;
                             chosenTo = null;
-
-
-
                         }
                     }
 
                     else {
-                        cardexchange.setVisible(false);
+//                        cardexchange.setVisible(false);
+
+                        if (chosenFrom == null) {
+                            chosenFrom = chosen;
+                        }
+                        else {
+                            chosenTo = chosen;
+                            String attackerInput = window.promptPlayer("How many dice for attacker to roll? max: " + Math.min(chosenFrom.getArmy() - 1, 3) + ", min: 1. Input nothing to turn on the all-out mode.");
+                            if (attackerInput != null) {
 
 
-
-                            if (chosenFrom == null) {
-                                chosenFrom = chosen;
-
-
-                            }
-                            else {
-                                chosenTo = chosen;
-                                String attackerInput = window.promptPlayer("How many dice for attacker to roll? max: " + Math.min(chosenFrom.getArmy() - 1, 3) + ", min: 1. Input nothing to turn on the all-out mode.");
-                                if (attackerInput != null) {
-
-
-                                    if (attackerInput.isEmpty()) {//all out mode
-                                        System.out.println("all out");
-                                        if (p.attackPhase(chosenFrom, chosenTo)) {
-                                            if (p.gameOver) {
-                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
-                                                System.exit(0);
-                                            }
-
-
-                                            while(true){//loops until the player's input is correct, other wise keeps on popping out
-                                                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
-                                                if(input != null && !input.isEmpty()) {
-
-
-
-                                                    int numDeploy = Integer.parseInt(input);
-
-                                                    try {
-
-                                                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
-//                                                            p.nextPhase();
-                                                            break;
-                                                        }
-                                                    } catch (RiskGameException ex) {
-                                                        window.showMsg(ex.errMsg + "Try again please.");
-                                                        continue;
-                                                    }
-                                                }
-
-                                            }
-
-
+                                if (attackerInput.isEmpty()) {//all out mode
+                                    System.out.println("all out");
+                                    if (p.attackPhase(chosenFrom, chosenTo)) {
+                                        if (p.gameOver) {
+                                            window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                            System.exit(0);
                                         }
-                                        else {
-                                            window.showMsg("attacker did not win");
-
-                                        }
-
-                                    } else {
-                                        int attackDice = Integer.parseInt(attackerInput);
+                                        attackSuccess();
 
 
-                                        System.out.println("not all out");
-                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
-
-                                        int defendDice = Integer.parseInt(defenderInput);
-
-
-                                        if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
-                                            if (p.gameOver) {
-                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
-                                                System.exit(0);
-                                            }
-
-
-
-                                            while (true) {
-                                                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
-                                                if (input != null && !input.isEmpty()) {
-                                                    int numDeploy = Integer.parseInt(input);
-                                                    try {
-
-                                                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
-                                                            break;
-                                                        }
-                                                    } catch (RiskGameException ex) {
-                                                        window.showMsg(ex.errMsg + "Try again please.");
-                                                        continue;
-                                                    }
-                                                }
-
-                                            }
-
-
-                                        }
-                                        else {
-                                            window.showMsg("attacker did not win");
-
-                                        }
+                                    }
+                                    else {
+                                        window.showMsg("attacker did not win");
 
                                     }
 
+                                } else {
+                                    int attackDice = Integer.parseInt(attackerInput);
+
+
+                                    System.out.println("not all out");
+                                    String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+
+                                    int defendDice = Integer.parseInt(defenderInput);
+
+
+                                    if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                        if (p.gameOver) {
+                                            window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                            System.exit(0);
+                                        }
+
+
+                                        attackSuccess();
+
+
+                                    }
+                                    else {
+                                        window.showMsg("attacker did not win");
+
+                                    }
 
                                 }
-                                chosenFrom = null;
-                                chosenTo = null;
-                            }
-
 
 
                             }
+                            chosenFrom = null;
+                            chosenTo = null;
+                        }
+                    }
 
                 }
                 catch(RiskGameException ex1){
@@ -213,18 +168,46 @@ public class Controller {
 
             }
             if(e.getSource() == cardexchange.Exchange3Same){
-
-
-
+                System.out.println("Clicked on exchange");
+                int type = p.getCurrent_player().getCards().checkCardType();
+                if (type != 3) {
+                    window.showMsg("You can't perform this function, you don't have 3 the same cards");
+                }
             }
             if(e.getSource() == cardexchange.Exchange3Diff){
-
+                int type = p.getCurrent_player().getCards().checkCardType();
+                if (type != 1) {
+                    window.showMsg("You can't perform this function, you don't have 3 different cards");
+                }
             }
             if(e.getSource() == cardexchange.Cancel){
+                if (p.getCurrent_player().getCards().checkCardSum()){
+                    //TODO: cancel move to the next phase, the player has less than 5
+                } else{
+                    window.showMsg("You can't perform this function, you have more than 5 cards");
+                }
 
             }
 
 
+        }
+
+        private void attackSuccess() {
+            while(true){//loops until the player's input is correct, other wise keeps on popping out
+                String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
+                if(input != null && !input.isEmpty()) {
+                    int numDeploy = Integer.parseInt(input);
+                    try {
+                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+//                            p.nextPhase();
+                            break;
+                        }
+                    } catch (RiskGameException ex) {
+                        window.showMsg(ex.errMsg + "Try again please.");
+                    }
+                }
+
+            }
         }
     }
 
