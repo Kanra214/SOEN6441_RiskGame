@@ -24,7 +24,6 @@ public class Card {
 		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
 		cardNumber = new int[]{2,1,1};
-		//cardExchangeNum = 0;
 		this.p = p;
 
 
@@ -39,10 +38,14 @@ public class Card {
 	}
 
 
-	
+	/**
+	 * Get the number of certain card
+	 * @return number of card 
+	 */
 	public int showCardsNumber(int cardID) {
 		return cardNumber[cardID];
 	}
+	
 	/**
 	 * The player receives a card of random type
 	 */
@@ -63,6 +66,12 @@ public class Card {
 
 	}
 	
+	
+	/**
+	 * Get the number of all cards
+	 * @return sum of cards
+	 */
+	
 	public int cardSum() {
 		int sumNum=0;
 		for(int i=0;i<3;i++) {				
@@ -71,6 +80,11 @@ public class Card {
 		return sumNum;
 	}
 	
+	/**
+	 * Check if the number of all cards is bigger or equal than 
+	 * @return false for bigger or equal,true for less
+	 */
+	
 	public boolean checkCardSum() {
 		if(cardSum()>=5)return false;
 		
@@ -78,6 +92,11 @@ public class Card {
 		
 	}
 	
+	
+	/**
+	 * Check the type of all cards 
+	 * @return 4 for 3 card of different types,3 for 3 cards of the same type,5 for both,-1 for other 
+	 */
 	//4 for 3 card of different types,0,1,2 for 3 cards of the same type,5 for both,-1 for other 
 	public int checkCardType() {
 		int[] tempType= {-1,-1};
@@ -103,11 +122,20 @@ public class Card {
 		
 	}
 	
+	/**
+	 * Check if the number of certain card is bigger or equal than 3 
+	 * @return true for bigger or equal,false for less
+	 */
+	
 	public boolean cardBigger3(int cardID) {
 		if(cardNumber[cardID]>=3) {return true;}
 		else return false;
 	}
 
+	/**
+	 * This method  will decrease card number according to the change mode
+	 * @return true for successful exchange,false for not change
+	 */
 	//By calling this method card number will decrease 
 	public boolean exchangeCard(int exchangeType) {
 		//0 for 3 card of different types,1 for 3 cards of the same type 
@@ -139,14 +167,34 @@ public class Card {
 		
 	}
 
+	/**
+	 * This method  will return the name of this card
+	 * @return cardName the name of this card
+	 */
 	public String showCardsName(int cardID) {
 		
 		return cardName[cardID];
 	}
 
+	/**
+	 * This method  will return the detail number of cards
+	 * @return cardNumber the array of the cards
+	 */
 	public int[] cardAll() {
 		
 		return cardNumber;
+	}
+	
+	/**
+	 * This method is used for junit test
+	 * 
+	 */
+	public void iniCardForTest(int[] cardIni) {
+		if(cardIni.length==3) {
+			cardNumber=cardIni;
+		}
+		
+		
 	}
 
 	
