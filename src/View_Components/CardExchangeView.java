@@ -18,12 +18,21 @@ import Models.Phases;
 import Models.Player;
 
 public class CardExchangeView extends JFrame implements Observer{
+	
+	public static void main(String[] args) {
+		   
+			
+		CardExchangeView cardexchange = new CardExchangeView();
+		cardexchange.setVisible(true);
+		}
+	
+	
     private final static int X = 0;
     private final static int Y = 0;
 
 
-    private final static int WIDTH = 600;
-    private final static int HEIGHT = 400;
+    private final static int WIDTH = 800;
+    private final static int HEIGHT = 600;
 	
 	private CardPanel cp;
 	private JPanel mainPanel;
@@ -50,15 +59,22 @@ public class CardExchangeView extends JFrame implements Observer{
         Exchange3Same=new JButton("Exchange 3 Same Cards");
         Exchange3Diff=new JButton("Exchange 3 Different Cards");
         Cancel=new JButton("Cancel");
-        cp.setBounds(X,Y,WIDTH,HEIGHT);
+        
+        //cp.setLayout(null);
+        Exchange3Same.setBounds(WIDTH-300  ,HEIGHT-500 , 200, 80);
+        Exchange3Diff.setBounds(WIDTH-300, HEIGHT-400, 200, 80);
+        Cancel.setBounds(WIDTH-300, HEIGHT-300, 200, 80);
+        cp.setBounds(X,Y,WIDTH,HEIGHT);      
         cp.setBackground(Color.WHITE);
         cp.setLayout(new GridLayout(6,1));
-        
+        //cp.setLayout(null);
         cp.add(Exchange3Same);
         cp.add(Exchange3Diff);
         cp.add(Cancel);
+      
         mainPanel.add(cp);
         add(mainPanel);
+  
 	}
 	
 	@Override
@@ -108,9 +124,9 @@ public class CardExchangeView extends JFrame implements Observer{
 	     */
 	    public void setContext(Player currentPlayer){
 	    	for(int i=0;i<3;i++) {
-	 	       //currentPlayer.showPlayerCards(i);
+	 	       currentPlayer.showPlayerCards(i);
 	    		
-//	 	       cardLabels[i].setText(getPlayerCardInfo(currentPlayer,i));
+	 	       cardLabels[i].setText(getPlayerCardInfo(currentPlayer,i));
 	    	}
 
 	    }
@@ -120,13 +136,13 @@ public class CardExchangeView extends JFrame implements Observer{
 	     * @param player info from whom you want to show
 	     * @return String representation of player
 	     */
-//	    private String getPlayerCardInfo(Player player,int cardID){
-//	          return    "<html><body>" +
-//	                    "<h3>CardName " + player.showPlayerCardsName(cardID) + "</h3>" +
-//	                    "<p>CardNumber: " + player.showPlayerCards(cardID) + "<br>" +
-//
-//	                    "</body></html>";
-//
-//	    }
+	    private String getPlayerCardInfo(Player player,int cardID){
+	          return    "<html><body>" +
+	                    "<h3>CardName " + player.showPlayerCardsName(cardID) + "</h3>" +
+	                    "<p>CardNumber: " + player.showPlayerCards(cardID) + "<br>" +
+
+	                    "</body></html>";
+
+	    }
 	}
 }
