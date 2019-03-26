@@ -24,7 +24,7 @@ public class Card {
 		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
 		cardNumber = new int[]{3,3,3};
-		cardExchangeNum = 0;
+		//cardExchangeNum = 0;
 		this.p = p;
 
 
@@ -78,7 +78,7 @@ public class Card {
 		
 	}
 	
-	//0 for 3 card of different types,1 for 3 cards of the same type,2 for both,-1 for other 
+	//4 for 3 card of different types,0,1,2 for 3 cards of the same type,5 for both,-1 for other 
 	public int checkCardType() {
 		int[] tempType= {-1,-1};
 		if(cardNumber[0]!=0&&cardNumber[1]!=0&&cardNumber[2]!=0) {
@@ -91,18 +91,22 @@ public class Card {
 		
 		
 		if(tempType[0]+tempType[1]==2) {
-			return 2;
+			return 5;
 		}else if(tempType[0]==1) {
-			return 0;
+			return 4;
 		}
 		else if(tempType[1]==1) {
-			return 1;
+			return 3;
 		}
 		
 		return -1;
 		
 	}
 	
+	public boolean cardBigger3(int cardID) {
+		if(cardNumber[cardID]>=3) {return true;}
+		else return false;
+	}
 
 	//By calling this method card number will decrease 
 	public boolean exchangeCard(int exchangeType) {
@@ -111,27 +115,24 @@ public class Card {
 			return false;
 		}
 				
-		if(exchangeType==0) {
-			if(checkCardType()==0) {
+		if(exchangeType==4) {
+			if(checkCardType()==4||checkCardType()==5) {
 				for(int i=0;i<3;i++) {				
 					cardNumber[i]--;
 					}
-					cardExchangeNum++;
+					//cardExchangeNum++;
 				return true;
 			}else return false;
 	
 		}
-		else if(exchangeType==1){
-			if(checkCardType()==1) {
-			for(int i=0;i<3;i++) {				
-				if(cardNumber[i]>=3) {				
-					cardNumber[i]-=3;
-				}
-				cardExchangeNum++;
-				return true;
-			}
-			}else return false;	
+		else if(exchangeType==0||exchangeType==1||exchangeType==2){
+			
+		if(cardNumber[exchangeType]>=3) {
+				cardNumber[exchangeType]-=3;
+				
+			return true;
 		}
+		}else return false;	
 		
 		return true;
 		

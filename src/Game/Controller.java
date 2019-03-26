@@ -177,26 +177,67 @@ public class Controller {
 
 
             }
-            
+
             //exchange card
             if(e.getSource() == cardexchange.Exchange3Infantry){
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (type != 1&&type != 2) {
+                if (p.getCurrent_player().getCards().cardBigger3(0)!=true) {
                 	 System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 }else {
+                	 System.out.println(type);                	
+               	    System.out.println(p.getCurrent_player().getCards().cardBigger3(0));
+                	
                 	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                	p.getCurrent_player().getCards().exchangeCard(0);
+                	 System.out.println(p.getCurrent_player().showPlayerCards(0));
+                	 System.out.println(p.getCurrent_player().showPlayerCards(1));
+                	 System.out.println(p.getCurrent_player().showPlayerCards(2));
                 	window.showMsg("Changed 3 Infantry");
                 	CardTurn++;
                 }
             }
+            if(e.getSource() == cardexchange.Exchange3Cavalry){
+                System.out.println("Clicked on exchange");
+                int type = p.getCurrent_player().getCards().checkCardType();
+                if (p.getCurrent_player().getCards().cardBigger3(1)!=true) {
+                	 System.out.println(type);
+                    window.showMsg("You can't perform this function, you don't have 3 the same cards");
+                }else {
+                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                	p.getCurrent_player().getCards().exchangeCard(1);
+                	 System.out.println(p.getCurrent_player().showPlayerCards(0));
+                	 System.out.println(p.getCurrent_player().showPlayerCards(1));
+                	 System.out.println(p.getCurrent_player().showPlayerCards(2));
+                	window.showMsg("Changed 3 Cavalry");
+                	CardTurn++;
+                }
+            }
+            if(e.getSource() == cardexchange.Exchange3Artillery){
+                System.out.println("Clicked on exchange");
+                int type = p.getCurrent_player().getCards().checkCardType();
+                if (p.getCurrent_player().getCards().cardBigger3(2)!=true) {
+                	 System.out.println(type);
+                    window.showMsg("You can't perform this function, you don't have 3 the same cards");
+                }else {
+                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                	p.getCurrent_player().getCards().exchangeCard(2);
+                	 System.out.println(p.getCurrent_player().showPlayerCards(0));
+                	 System.out.println(p.getCurrent_player().showPlayerCards(1));
+                	 System.out.println(p.getCurrent_player().showPlayerCards(2));
+                	window.showMsg("Changed 3 Artillery");
+                	CardTurn++;
+                }
+            }
+                       
             if(e.getSource() == cardexchange.Exchange3Diff){
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (type != 1) {
+                if (type != 4&&type != 5) {
                     window.showMsg("You can't perform this function, you don't have 3 different cards");
                 }else {
                 	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                	p.getCurrent_player().getCards().exchangeCard(0);
                 	CardTurn++;
                 }
             }
