@@ -56,7 +56,7 @@ public class Phases extends Observable {
             case 3:
                 return 35;
             case 2:
-                return 10;//45
+                return 10;//TODO 45
             default:
                 return 100;
         }
@@ -105,7 +105,7 @@ public class Phases extends Observable {
     public int extraArmyFromContinent(Player player) {
         int reinforcement = 0;
         for (Continent c : worldmap) {
-            if (c.checkOwnership(player)) {
+            if (checkContinentOwner(c, player)) {
                 reinforcement += c.getControl_value();
             }
         }
@@ -132,7 +132,8 @@ public class Phases extends Observable {
      * @return current phase
      */
     public int getCurrentPhase() {
-        return currentPhase;
+        
+    	return currentPhase;
     }
 
     /**
@@ -166,7 +167,8 @@ public class Phases extends Observable {
      * @return current player
      */
     public Player getCurrent_player() {
-        return current_player;
+    	
+    	return current_player;
     }
 
     /**
@@ -174,10 +176,12 @@ public class Phases extends Observable {
      */
     private void phaseOneFirstStep() {
         int reinforce = reinforcementArmy(current_player);
-        if (reinforce == 0) {
+        if (reinforce < 3 && !current_player.getCards().checkCardSum()) { // make sure that you will only get default 3 if player has no combinations and has not enough countries
             current_player.getReinforcement(3);
+        } else {
+            current_player.getReinforcement(reinforce);
         }
-        current_player.getReinforcement(reinforce);
+
     }
 
 
@@ -242,11 +246,16 @@ public class Phases extends Observable {
             } catch (OutOfArmyException e) {
                 System.out.println("Not possible");
             }
+            checkContinentOwner(country.getCont(),player);
             turnReference++;
             turn = turnReference % players.size();
         }
+
     }
 
+    public void updatePhase() {
+    	updateWindow();
+    }
 
     /**
      * Notifies connected observers
@@ -382,6 +391,7 @@ public class Phases extends Observable {
 
             }
             at_least_once = true;
+            checkContinentOwner(to.getCont(),current_player);//check if this player gets control of the continent
             if(rival.getRealms().size() == 0){
                 current_player.receiveEnemyCards(rival);
             }
@@ -515,7 +525,7 @@ public class Phases extends Observable {
      * @throws AttackingCountryOwner        the owner of attacking country must be current player
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
-    public boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+    protected boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
         if (sourceCountry.getArmy() >= 2) {
             if (sourceCountry.getOwner() == current_player) {
                 if (targetCountry.getOwner() != current_player) {
@@ -562,6 +572,9 @@ public class Phases extends Observable {
         }
     }
 
+    public ArrayList<Continent> getWorldmap(){
+        return worldmap;
+    }
 
     private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
         updateWindow(player);
@@ -595,8 +608,11 @@ public class Phases extends Observable {
     public int getCurrentTurn(){return currentTurn;
     }
     public int getNumOfPlayers(){return numOfPlayers;}
-
-    public void setCurrent_player(Player current_player) {
-        this.current_player = current_player;
+    private boolean checkContinentOwner(Continent cont, Player player){
+        boolean flag = cont.checkOwnership(player);
+        updateWindow();
+        return flag;
     }
+
+
 }

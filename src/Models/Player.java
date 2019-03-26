@@ -48,6 +48,8 @@ public class Player {
      * @return cards
      */
     public Card getCards() {
+        //p.updateWindow();
+        //System.out.println("update card");
         return cards;
     }
 
@@ -132,19 +134,23 @@ public class Player {
 
     public int[] showAllcards() {
         return cards.cardAll();
+        
     }
 
     public void addPlayerOneCard() {
         cards.addCard();
+       // p.updateWindow();
     }
 
     public void receiveEnemyCards(Player enemy) {
-
+      //  p.updateWindow();
         cards.addCard(enemy);
     }
 
     public void addPlayerArmyByCard(int cardTurn) {
         unassigned_armies+=cardTurn*5;
+        //p.updateWindow();
+        //System.out.println("update card");
     }
 
 
