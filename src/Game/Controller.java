@@ -27,7 +27,9 @@ public class Controller {
 
     String filename;
     CardExchangeView cardexchange;
+
     int CardTurn=1;//flag for how many times players change cards
+
 
     /**
      * Constructor
@@ -35,7 +37,7 @@ public class Controller {
     public Controller() {
         this.window = new Window();
         cardexchange = new CardExchangeView();
-       
+
     }
 
     /**
@@ -48,14 +50,17 @@ public class Controller {
 
         /**
          * Process the user requests
+         *
          * @param e ActionEvent
          */
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
-            
+
                 if(p.getCurrent_player().getCards().checkCardSum()!=true) {
+
                     window.showMsg("You can't perform this function, you have more than 5 cards");
+
                 	cardexchange.setVisible(true);
                 }else {
                 	 System.out.println(p.getCurrentPhase());
@@ -69,10 +74,10 @@ public class Controller {
                 	 
                 }
               
-                if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers()*2)){
+            
+                if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers() * 2)) {
                     cardexchange.setVisible(true);
-                }
-                else{
+                } else {
                     cardexchange.setVisible(false);
                 }
             }
@@ -83,15 +88,12 @@ public class Controller {
                 try {
                     if (p.getCurrentPhase() == 0) {
                         p.startUpPhase(chosen);
-                    }
-                    else if (p.getCurrentPhase() == 1) {
+                    } else if (p.getCurrentPhase() == 1) {
                         p.reinforcementPhase(chosen);
-                    }
-                    else if (p.getCurrentPhase() == 3) {
+                    } else if (p.getCurrentPhase() == 3) {
                         if (chosenFrom == null) {
                             chosenFrom = chosen;
-                        }
-                        else {
+                        } else {
                             chosenTo = chosen;
                             String input = window.promptPlayer("How many armies to move? max: " + (chosenFrom.getArmy() - 1) + ", min: 1");
 
@@ -105,20 +107,17 @@ public class Controller {
                             chosenFrom = null;
                             chosenTo = null;
                         }
-                    }
-
-                    else {
+                    } else {
 //                        cardexchange.setVisible(false);
 
-                            if (chosenFrom == null) {
-                                chosenFrom = chosen;
+                        if (chosenFrom == null) {
+                            chosenFrom = chosen;
 
 
-                            }
-                            else {
-                                chosenTo = chosen;
-                                String attackerInput = window.promptPlayer("How many dice for attacker to roll? max: " + Math.min(chosenFrom.getArmy() - 1, 3) + ", min: 1. Input nothing to turn on the all-out mode.");
-                                if (attackerInput != null) {
+                        } else {
+                            chosenTo = chosen;
+                            String attackerInput = window.promptPlayer("How many dice for attacker to roll? max: " + Math.min(chosenFrom.getArmy() - 1, 3) + ", min: 1. Input nothing to turn on the all-out mode.");
+                            if (attackerInput != null) {
 
 
                                 if (attackerInput.isEmpty()) {//all out mode
@@ -131,58 +130,53 @@ public class Controller {
                                         forceUserInputCorrectlyForDeploymentAfterConquer();
 
 
-                                        }
-                                        else {
-                                            window.showMsg("attacker did not win");
-
-                                        }
-
                                     } else {
-                                        int attackDice = Integer.parseInt(attackerInput);
-
-
-                                        System.out.println("not all out");
-                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
-
-                                        int defendDice = Integer.parseInt(defenderInput);
-
-
-                                        if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
-                                            if (p.gameOver) {
-                                                window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
-                                                System.exit(0);
-                                            }
-
-
-                                            forceUserInputCorrectlyForDeploymentAfterConquer();
-
-
-                                        }
-                                        else {
-                                            window.showMsg("attacker did not win");
-
-                                        }
+                                        window.showMsg("attacker did not win");
 
                                     }
 
+                                } else {
+                                    int attackDice = Integer.parseInt(attackerInput);
+
+
+                                    System.out.println("not all out");
+                                    String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+
+                                    int defendDice = Integer.parseInt(defenderInput);
+
+
+                                    if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                        if (p.gameOver) {
+                                            window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                            System.exit(0);
+                                        }
+
+
+                                        forceUserInputCorrectlyForDeploymentAfterConquer();
+
+
+                                    } else {
+                                        window.showMsg("attacker did not win");
+
+                                    }
 
                                 }
-                                chosenFrom = null;
-                                chosenTo = null;
-                            }
-
 
 
                             }
+                            chosenFrom = null;
+                            chosenTo = null;
+                        }
 
-                }
-                catch(RiskGameException ex1){
+
+                    }
+
+                } catch (RiskGameException ex1) {
                     window.showMsg(ex1.errMsg + "Try again please.");
                     chosenFrom = null;
                     chosenTo = null;
 
-                }
-                catch(NumberFormatException ex2) {
+                } catch (NumberFormatException ex2) {
                     window.showMsg("Wrong input format, try again please.");
                     chosenFrom = null;
                     chosenTo = null;
@@ -193,69 +187,71 @@ public class Controller {
             }
             //TODO: the "update" may need to be fixed
             //exchange card
-            if(e.getSource() == cardexchange.Exchange3Infantry){
+            if (e.getSource() == cardexchange.Exchange3Infantry) {
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (p.getCurrent_player().getCards().cardBigger3(0)!=true) {
-                	 System.out.println(type);
+                if (p.getCurrent_player().getCards().cardBigger3(0) != true) {
+                    System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
-                }else {
-         	
-                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
-                	p.getCurrent_player().getCards().exchangeCard(0);
-                	p.updatePhase();
-                	window.showMsg("Changed 3 Infantry");
-                	CardTurn++;
+                } else {
+
+                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().getCards().exchangeCard(0);
+                    p.updatePhase();
+                    window.showMsg("Changed 3 Infantry");
+                    CardTurn++;
                 }
             }
-            if(e.getSource() == cardexchange.Exchange3Cavalry){
+            if (e.getSource() == cardexchange.Exchange3Cavalry) {
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (p.getCurrent_player().getCards().cardBigger3(1)!=true) {
-                	 System.out.println(type);
+                if (p.getCurrent_player().getCards().cardBigger3(1) != true) {
+                    System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
-                }else {
-                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
-                	p.getCurrent_player().getCards().exchangeCard(1);
-                   	p.updatePhase();
-                	window.showMsg("Changed 3 Cavalry");
-                	CardTurn++;
+                } else {
+                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().getCards().exchangeCard(1);
+                    p.updatePhase();
+                    window.showMsg("Changed 3 Cavalry");
+                    CardTurn++;
                 }
             }
-            if(e.getSource() == cardexchange.Exchange3Artillery){
+            if (e.getSource() == cardexchange.Exchange3Artillery) {
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (p.getCurrent_player().getCards().cardBigger3(2)!=true) {
-                	 System.out.println(type);
+                if (p.getCurrent_player().getCards().cardBigger3(2) != true) {
+                    System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
-                }else {
-                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
-                	p.getCurrent_player().getCards().exchangeCard(2);
-                   	p.updatePhase();
-                	window.showMsg("Changed 3 Artillery");
-                	CardTurn++;
+                } else {
+                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().getCards().exchangeCard(2);
+                    p.updatePhase();
+                    window.showMsg("Changed 3 Artillery");
+                    CardTurn++;
                 }
             }
-                       
-            if(e.getSource() == cardexchange.Exchange3Diff){
+
+            if (e.getSource() == cardexchange.Exchange3Diff) {
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (type != 4&&type != 5) {
-                	 System.out.println(type);
+                if (type != 4 && type != 5) {
+                    System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 different cards");
-                }else {
-                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
-                	p.getCurrent_player().getCards().exchangeCard(4);
-                   	p.updatePhase();
-                	CardTurn++;
+                } else {
+                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().getCards().exchangeCard(4);
+                    p.updatePhase();
+                    CardTurn++;
                 }
             }
-            if(e.getSource() == cardexchange.Cancel){
-                if (p.getCurrent_player().getCards().checkCardSum()){
+            if (e.getSource() == cardexchange.Cancel) {
+                if (p.getCurrent_player().getCards().checkCardSum()) {
                     //TODO: cancel move to the next phase, the player has less than 5
+
                 	cardexchange.setVisible(false);
                 	p.cardViewTrigger=true;
                 	p.phaseOneFirstStep();
                 } else{
+
                     window.showMsg("You can't perform this function, you have more than 5 cards");
                 }
 
@@ -265,11 +261,12 @@ public class Controller {
         }
 
         private void forceUserInputCorrectlyForDeploymentAfterConquer() {
-            while(true){//loops until the player's input is correct, other wise keeps on popping out
+            while (true) {//loops until the player's input is correct, other wise keeps on popping out
                 String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
-                if(input != null && !input.isEmpty()) {
-                    int numDeploy = Integer.parseInt(input);
+                if (input != null && !input.isEmpty()) {
+
                     try {
+                        int numDeploy = Integer.parseInt(input);
                         if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
 //                            p.nextPhase();
                             break;
@@ -277,133 +274,146 @@ public class Controller {
                     } catch (RiskGameException ex) {
                         window.showMsg(ex.errMsg + "Try again please.");
                         continue;
+
+                    } catch (NumberFormatException ex2) {
+                        window.showMsg("Wrong input format, try again please.");
+                        continue;
                     }
+
+
                 }
 
             }
+
         }
     }
-
-
-
-    /**
-     * This is a function create Start Menu box.
-     */
-    public void startManu() {
-        startmanu = new StartManu("Risk Manu", 20, 30, 300, 400);
-        startmanu.setVisible(true);
-
-        startManuAction lisStart = new startManuAction(1);
-        startManuAction lisEditMap = new startManuAction(2);
-        startManuAction lisInstruction = new startManuAction(3);
-        startManuAction lisExit = new startManuAction(4);
-
-        startmanu.startGame.addActionListener(lisStart);
-        startmanu.editMap.addActionListener(lisEditMap);
-        startmanu.instructions.addActionListener(lisInstruction);
-        startmanu.exit.addActionListener(lisExit);
-    }
-
-    /**
-     * Check file is correct or not
-     * @return boolean
-     */
-    public boolean ChooseFile() {
-        JFileChooser jfc = new JFileChooser(".");
-
-        int returnValue = jfc.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = jfc.getSelectedFile();
-            filename = selectedFile.getName();
-        }
-        return true;
-    }
-
-    /**
-     * Start Menu action control
-     */
-    public class startManuAction implements ActionListener {
-
-        private int buttonFlag;
-
-        /**
-         * sets the buttonFlag
-         * @param buttonFlag    int representing which button was pressed
-         */
-        public startManuAction(int buttonFlag) {
-            this.buttonFlag = buttonFlag;
-        }
 
 
         /**
-         * performs different operation depending on which button was pressed in the start menu
-         * @param e button
+         * This is a function create Start Menu box.
          */
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            switch (buttonFlag) {
-                case 1:
-                    if (ChooseFile()) {
-                        startmanu.dispose();
-                        try {
-                            start();
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
+        public void startManu() {
+            startmanu = new StartManu("Risk Manu", 20, 30, 300, 400);
+            startmanu.setVisible(true);
+
+            startManuAction lisStart = new startManuAction(1);
+            startManuAction lisEditMap = new startManuAction(2);
+            startManuAction lisInstruction = new startManuAction(3);
+            startManuAction lisExit = new startManuAction(4);
+
+            startmanu.startGame.addActionListener(lisStart);
+            startmanu.editMap.addActionListener(lisEditMap);
+            startmanu.instructions.addActionListener(lisInstruction);
+            startmanu.exit.addActionListener(lisExit);
+        }
+
+        /**
+         * Check file is correct or not
+         *
+         * @return boolean
+         */
+        public boolean ChooseFile() {
+            JFileChooser jfc = new JFileChooser(".");
+
+            int returnValue = jfc.showOpenDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = jfc.getSelectedFile();
+                filename = selectedFile.getName();
+            }
+            return true;
+        }
+
+        /**
+         * Start Menu action control
+         */
+        public class startManuAction implements ActionListener {
+
+            private int buttonFlag;
+
+            /**
+             * sets the buttonFlag
+             *
+             * @param buttonFlag int representing which button was pressed
+             */
+            public startManuAction(int buttonFlag) {
+                this.buttonFlag = buttonFlag;
+            }
+
+
+            /**
+             * performs different operation depending on which button was pressed in the start menu
+             *
+             * @param e button
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (buttonFlag) {
+                    case 1:
+                        if (ChooseFile()) {
+                            startmanu.dispose();
+                            try {
+                                start();
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            startmanu.dispose();
                         }
+                        break;
+
+                    case 2:
+                        mapeditor = new MapEditorGUI();
+                        mapeditor.frame.setVisible(true);
                         startmanu.dispose();
-                    }
-                    break;
+                        break;
 
-                case 2:
-                    mapeditor = new MapEditorGUI();
-                    mapeditor.frame.setVisible(true);
-                    startmanu.dispose();
-                    break;
-
-                case 4:
-                    startmanu.dispose();
-                    break;
+                    case 4:
+                        startmanu.dispose();
+                        break;
+                }
             }
         }
-    }
 
-    /**
-     * Start game
-     * @throws IOException map loading exception
-     */
-    public void start() throws IOException {
+        /**
+         * Start game
+         *
+         * @throws IOException map loading exception
+         */
+        public void start() throws IOException {
 
-        System.out.println(filename);
-        ArrayList < ArrayList > tempMap = new MapLoader().loadMap(filename);
-        if (tempMap.isEmpty()) {
-            window.showMsg("Empty map");
-            System.exit(0);
+            System.out.println(filename);
+
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(filename);
+            if (tempMap.isEmpty()) {
+                window.showMsg("Empty map");
+                System.exit(0);
+            }
+
+            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
+            if (numOfPlayers > 6 || numOfPlayers < 2) {
+                window.showMsg("Wrong number of Players");
+                System.exit(0);
+            }
+            p = new Phases(tempMap.get(0), tempMap.get(1));
+            p.addObserver(window);
+            p.addObserver(cardexchange);
+            //TODO:set update for cardexchange
+            Listener lis = new Listener();
+            p.gameSetUp(numOfPlayers);
+
+            window.drawMapPanel(p);
+
+            for (CountryButton cb : window.mapPanel.cbs) {
+                cb.addActionListener(lis);
+            }
+            window.phasePanel.completePhaseButton.addActionListener(lis);
+            p.connectView(); //after this updating window is enabled
+            window.setVisible(true);
+            cardexchange.Exchange3Infantry.addActionListener(lis);
+            cardexchange.Exchange3Artillery.addActionListener(lis);
+            cardexchange.Exchange3Cavalry.addActionListener(lis);
+            cardexchange.Exchange3Diff.addActionListener(lis);
+            cardexchange.Cancel.addActionListener(lis);
         }
 
-        int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
-        if (numOfPlayers > 6 || numOfPlayers < 2) {
-            window.showMsg("Wrong number of Players");
-            System.exit(0);
-        }
-        p = new Phases(tempMap.get(0), tempMap.get(1));
-        p.addObserver(window);
-        p.addObserver(cardexchange);
-        //TODO:set update for cardexchange
-        Listener lis = new Listener();
-        p.gameSetUp(numOfPlayers);
-
-        window.drawMapPanel(p);
-
-        for (CountryButton cb: window.mapPanel.cbs) {
-            cb.addActionListener(lis);
-        }
-        window.phasePanel.completePhaseButton.addActionListener(lis);
-        p.connectView(); //after this updating window is enabled
-        window.setVisible(true);
-        cardexchange.Exchange3Infantry.addActionListener(lis);
-        cardexchange.Exchange3Artillery.addActionListener(lis);
-        cardexchange.Exchange3Cavalry.addActionListener(lis);
-        cardexchange.Exchange3Diff.addActionListener(lis);
-        cardexchange.Cancel.addActionListener(lis);
-    }
 }
+

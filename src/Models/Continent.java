@@ -60,7 +60,7 @@ public class Continent {
      * @param playerOwner player
      * @return boolean
      */
-    protected boolean checkOwnership(Player playerOwner){
+    public boolean checkOwnership(Player playerOwner){
         for (Country c: countries) {
             if (c.getOwner() != playerOwner){ return false;}
         }

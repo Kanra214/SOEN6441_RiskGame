@@ -4,7 +4,7 @@ import Game.MapLoader;
 import Models.Continent;
 import Models.Country;
 import Models.Player;
-import sun.jvm.hotspot.opto.Phase;
+
 
 import javax.swing.*;
 import java.lang.reflect.Array;
@@ -23,7 +23,9 @@ public class SidePanel extends JPanel {
     protected SidePanel(){
         for(int i = 0; i < 6; i++) {
             playerLabels[i] = new JLabel();
+
             add(playerLabels[i]);
+
         }
         continentsLabel = new JLabel();
         add(continentsLabel);
@@ -38,7 +40,7 @@ public class SidePanel extends JPanel {
             playerLabels[i].setBackground(players.get(i).getPlayerColor());
             playerLabels[i].setText(getPlayerInfo(players.get(i), country.size()));
         }
-        continentsLabel.setText(getContinentInfo(continents));
+        continentsLabel.setText(getContinentInfo(players, continents));
     }
 
     /**
@@ -55,7 +57,7 @@ public class SidePanel extends JPanel {
                 "<br>" +
                 "Percentage: " + playerCountryNumber / countryNumberDouble * 100 +"%"+
                 "<br>" +
-                "Total number of armies in the map: " + player.getMapArmies() + "<br></font></p>" +
+                "Total number of armies in the map: " + (player.getMapArmies()+player.getUnassigned_armies()) + "<br></font></p>" +
                 "<p><font size='2'>Cards:" + cardToString(player) + "</font></p> " +
                 "</body></html>";
 
@@ -67,19 +69,24 @@ public class SidePanel extends JPanel {
         }
         return output;
     }
-    private String getContinentInfo(ArrayList<Continent> continents){
+    private String getContinentInfo(ArrayList<Player> players, ArrayList<Continent> continents){
         String continentOwner = "";
         for(int i = 0; i < continents.size(); i++){
+
+//            for (Player player : players){
+//                continents.get(i).checkOwnership(player);
+//            }
+            
             if(continents.get(i).getOwner() == null){
-                continentOwner += continents.get(i).getName() + ": null" + ";";
+                continentOwner += continents.get(i).getName() + ": null" + "; ";
             }
             else {
-                continentOwner += continents.get(i).getName() + ": " + continents.get(i).getOwner().getId() + ";";
+                continentOwner += continents.get(i).getName() + ":Player " + continents.get(i).getOwner().getId() + "; ";
             }
         }
         return    "<html><body>" +
                 "<h3>Continents Info</h3>" +
-                "<h5>" +continentOwner + "</h5>" +
+                "<p><font size='2'>" +continentOwner + "<br><br><br><br><br></font></p>" +
                 "</body></html>";
 
     }
