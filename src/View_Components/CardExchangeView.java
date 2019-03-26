@@ -2,6 +2,9 @@ package View_Components;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 
@@ -60,18 +63,35 @@ public class CardExchangeView extends JFrame implements Observer{
         Exchange3Diff=new JButton("Exchange 3 Different Cards");
         Cancel=new JButton("Cancel");
         
-        //cp.setLayout(null);
-        Exchange3Same.setBounds(WIDTH-300  ,HEIGHT-500 , 200, 80);
-        Exchange3Diff.setBounds(WIDTH-300, HEIGHT-400, 200, 80);
-        Cancel.setBounds(WIDTH-300, HEIGHT-300, 200, 80);
+        GridBagLayout layout = new GridBagLayout();
+        cp.setLayout(layout);
+        GridBagConstraints s= new GridBagConstraints();
+        s.fill = GridBagConstraints.BOTH;
+        s.gridwidth=0;
+        s.weightx = 0;
+        s.weighty=0;
+        layout.setConstraints(Exchange3Same, s);//ÉèÖÃ×é¼þ
+        layout.setConstraints(Exchange3Diff, s);
+        layout.setConstraints(Cancel, s);
+        layout.setConstraints(cp.cardLabels[0], s);
+        layout.setConstraints(cp.cardLabels[1], s);
+        layout.setConstraints(cp.cardLabels[2], s);
+        layout.setConstraints(cp.cardLabels[3], s);
         cp.setBounds(X,Y,WIDTH,HEIGHT);      
         cp.setBackground(Color.WHITE);
-        cp.setLayout(new GridLayout(6,1));
-        //cp.setLayout(null);
+
+        //Exchange3Same.setBounds(WIDTH-300  ,HEIGHT-500 , 200, 80);
+        //Exchange3Diff.setBounds(WIDTH-300, HEIGHT-400, 200, 80);
+        //Cancel.setBounds(WIDTH-300, HEIGHT-300, 200, 80);
+        //cp.setLayout(new FlowLayout(FlowLayout.RIGHT,10,15));
         cp.add(Exchange3Same);
         cp.add(Exchange3Diff);
         cp.add(Cancel);
-      
+       
+        s.fill = GridBagConstraints.BOTH;
+        
+        
+        
         mainPanel.add(cp);
         add(mainPanel);
   
@@ -111,10 +131,13 @@ public class CardExchangeView extends JFrame implements Observer{
 	        cardLabels[0] = new JLabel();
 	        cardLabels[1] = new JLabel();
 	        cardLabels[2] = new JLabel();
-
+	        cardLabels[3] = new JLabel();//placeholder
+	        
 	        add(cardLabels[0]);
 	        add(cardLabels[1]);
 	        add(cardLabels[2]);
+	        add(cardLabels[3]);
+
 
 	    }
 
@@ -128,6 +151,7 @@ public class CardExchangeView extends JFrame implements Observer{
 	    		
 	 	       cardLabels[i].setText(getPlayerCardInfo(currentPlayer,i));
 	    	}
+	    	cardLabels[3].setText(" ");
 
 	    }
 
