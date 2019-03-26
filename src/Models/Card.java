@@ -20,7 +20,7 @@ public class Card {
 	/**
 	 * Constructor
  	 */
-	protected Card(Phases p) {
+	public Card(Phases p) {
 		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
 		cardNumber = new int[]{2,1,1};
