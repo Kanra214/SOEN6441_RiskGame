@@ -164,7 +164,7 @@ public class Window extends JFrame implements Observer {
         //mapPanel is not a part of observer pattern
         //update phasePanel
         phasePanel.setContext(p);
-        sidePanel.setContext(p.getPlayers());
+        sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
         if(p.getCurrentPhase() == 2){
             if(arg instanceof Player) {
                 Player player = (Player)arg;

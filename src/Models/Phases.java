@@ -567,6 +567,9 @@ public class Phases extends Observable {
         }
     }
 
+    public ArrayList<Continent> getWorldmap(){
+        return worldmap;
+    }
 
     private void losesAnArmy(Player player, Country country) throws OutOfArmyException {
         updateWindow(player);
