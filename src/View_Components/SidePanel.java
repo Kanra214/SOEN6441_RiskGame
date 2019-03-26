@@ -73,9 +73,9 @@ public class SidePanel extends JPanel {
         String continentOwner = "";
         for(int i = 0; i < continents.size(); i++){
 
-            for (Player player : players){
-                continents.get(i).checkOwnership(player);
-            }
+//            for (Player player : players){
+//                continents.get(i).checkOwnership(player);
+//            }
             
             if(continents.get(i).getOwner() == null){
                 continentOwner += continents.get(i).getName() + ": null" + "; ";

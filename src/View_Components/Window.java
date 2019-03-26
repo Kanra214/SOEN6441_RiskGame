@@ -252,7 +252,8 @@ public class Window extends JFrame implements Observer {
      */
     public void drawMapPanel(Phases p){
         for(Country country : p.getGraph()){
-            JLabel label = new JLabel(country.getName());
+            JLabel label = new JLabel();
+            label.setText("<html><body><p><font size='2'>" + country.getName() + "(" + country.getCont().getName() + ")</font></p></body></html>");
             label.setBounds(country.getX(), country.getY() - 20,150,20);
             mapPanel.add(label);
             CountryButton cb = new CountryButton(country);

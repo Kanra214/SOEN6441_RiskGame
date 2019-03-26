@@ -246,9 +246,11 @@ public class Phases extends Observable {
             } catch (OutOfArmyException e) {
                 System.out.println("Not possible");
             }
+            checkContinentOwner(country.getCont(),player);
             turnReference++;
             turn = turnReference % players.size();
         }
+
     }
 
     public void updatePhase() {
