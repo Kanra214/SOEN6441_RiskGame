@@ -86,7 +86,7 @@ public class SidePanel extends JPanel {
         }
         return    "<html><body>" +
                 "<h3>Continents Info</h3>" +
-                "<p><font size='2'>" +continentOwner + "</font></p>" +
+                "<p><font size='2'>" +continentOwner + "<br><br><br><br><br></font></p>" +
                 "</body></html>";
 
     }
