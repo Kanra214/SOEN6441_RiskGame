@@ -187,11 +187,6 @@ public class Phases extends Observable {
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
     public void phaseOneFirstStep() {
-    	if(getCurrentTurn() >= getNumOfPlayers()*2) {
-    		//while(cardViewTrigger==false);
-    		//TODO
-    	}
-    
         int reinforce = reinforcementArmy(current_player);
         if (reinforce == -1) {
             current_player.getReinforcement(3);

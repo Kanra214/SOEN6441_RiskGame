@@ -57,28 +57,21 @@ public class Controller {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
 
-                if(p.getCurrent_player().getCards().checkCardSum()!=true) {
-
+                if(!p.getCurrent_player().getCards().checkCardSum()) {
                     window.showMsg("You can't perform this function, you have more than 5 cards");
-
-                	cardexchange.setVisible(true);
+                	//cardexchange.setVisible(true);
                 }else {
                 	 System.out.println(p.getCurrentPhase());
                      System.out.println(p.getCurrentTurn());
-                //TODO
                 	 p.nextPhase();
                 	 if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
-                		 	p.phaseOneFirstStep(); 
+                		 	//p.phaseOneFirstStep();
                 	 }
-                	
-                	 
                 }
-              
-            
                 if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers() * 2)) {
-                    cardexchange.setVisible(true);
+                    //cardexchange.setVisible(true);
                 } else {
-                    cardexchange.setVisible(false);
+                    //cardexchange.setVisible(false);
                 }
             }
             if (e.getSource() instanceof CountryButton) {
@@ -108,7 +101,7 @@ public class Controller {
                             chosenTo = null;
                         }
                     } else {
-//                        cardexchange.setVisible(false);
+//                        //cardexchange.setVisible(false);
 
                         if (chosenFrom == null) {
                             chosenFrom = chosen;
@@ -190,7 +183,7 @@ public class Controller {
             if (e.getSource() == cardexchange.Exchange3Infantry) {
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (p.getCurrent_player().getCards().cardBigger3(0) != true) {
+                if (!p.getCurrent_player().getCards().cardBigger3(0)) {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
@@ -205,7 +198,7 @@ public class Controller {
             if (e.getSource() == cardexchange.Exchange3Cavalry) {
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (p.getCurrent_player().getCards().cardBigger3(1) != true) {
+                if (!p.getCurrent_player().getCards().cardBigger3(1)) {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
@@ -219,7 +212,7 @@ public class Controller {
             if (e.getSource() == cardexchange.Exchange3Artillery) {
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (p.getCurrent_player().getCards().cardBigger3(2) != true) {
+                if (!p.getCurrent_player().getCards().cardBigger3(2)) {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
@@ -246,12 +239,10 @@ public class Controller {
             if (e.getSource() == cardexchange.Cancel) {
                 if (p.getCurrent_player().getCards().checkCardSum()) {
                     //TODO: cancel move to the next phase, the player has less than 5
-
-                	cardexchange.setVisible(false);
+                	//cardexchange.setVisible(false);
                 	p.cardViewTrigger=true;
                 	p.phaseOneFirstStep();
                 } else{
-
                     window.showMsg("You can't perform this function, you have more than 5 cards");
                 }
 
