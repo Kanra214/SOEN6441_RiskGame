@@ -81,13 +81,12 @@ public class Card {
 	}
 	
 	/**
-	 * Check if the number of all cards is bigger or equal than 
+	 * Check if the number of all cards is bigger or equal than 5
 	 * @return false for bigger or equal,true for less
 	 */
 	
 	public boolean checkCardSum() {
-		if(cardSum()>=5)return false;
-		
+		if(cardSum()>=5) return false;
 		return true;
 		
 	}
@@ -193,8 +192,6 @@ public class Card {
 		if(cardIni.length==3) {
 			cardNumber=cardIni;
 		}
-		
-		
 	}
 
 	

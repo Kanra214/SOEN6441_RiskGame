@@ -124,14 +124,8 @@ public class Phases extends Observable {
      * @return int  number of all countries devided by 3 plus army from continent
      */
     public int reinforcementArmy(Player player) {
-    	
-    	if(player.getUnassigned_armies()>3) {
-    		System.out.println(player.getUnassigned_armies());
-    		System.out.println("return 0");
-    		return 0;
-    	}
         int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
-        if (reinforcement < 3) reinforcement = 3;
+        if (reinforcement < 3 && player.getUnassigned_armies()<3) reinforcement = 3; // do it like this so if you exchange cards you army should be more than 3
         return reinforcement;
     }
 

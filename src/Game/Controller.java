@@ -415,6 +415,9 @@ public class Controller {
 		private void cardButtonsAction(int exhcangetype) {
 			p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
 			p.getCurrent_player().getCards().exchangeCard(exhcangetype);
+
+			p.phaseOneFirstStep();
+
 			p.updatePhase();
 			p.cardCancelTrigger=true;                
 			p.CardTurn++;
