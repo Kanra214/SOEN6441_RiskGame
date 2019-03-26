@@ -12,9 +12,6 @@ public class Country {
 
     private String name;
     private Phases p;
-
-
-
     private Continent cont;
     private Player owner;
     private int army = 0;
@@ -240,6 +237,10 @@ public class Country {
      */
     public Phases getP() {
         return p;
+    }
+
+    public void setArmy(int army) {
+        this.army = army;
     }
 }
 

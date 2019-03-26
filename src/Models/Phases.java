@@ -515,7 +515,7 @@ public class Phases extends Observable {
      * @throws AttackingCountryOwner        the owner of attacking country must be current player
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
-    protected boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+    public boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
         if (sourceCountry.getArmy() >= 2) {
             if (sourceCountry.getOwner() == current_player) {
                 if (targetCountry.getOwner() != current_player) {
@@ -594,7 +594,9 @@ public class Phases extends Observable {
     }
     public int getCurrentTurn(){return currentTurn;
     }
-    public int getNumOfPlayers(){return numOfPlayers;};
+    public int getNumOfPlayers(){return numOfPlayers;}
 
-
+    public void setCurrent_player(Player current_player) {
+        this.current_player = current_player;
+    }
 }
