@@ -592,6 +592,9 @@ public class Phases extends Observable {
     public boolean getAttackingIsPossible() {
         return attackingIsPossible;
     }
+    public int getCurrentTurn(){return currentTurn;
+    }
+    public int getNumOfPlayers(){return numOfPlayers;};
 
 
 }

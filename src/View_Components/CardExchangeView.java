@@ -101,26 +101,25 @@ public class CardExchangeView extends JFrame implements Observer{
     public void update(Observable o, Object arg) {
 
         Phases p = (Phases)o;
-        //mapPanel is not a part of observer pattern
-        //update phasePanel
-      
-        cp.setContext(p.getCurrent_player());
-        if(p.getCurrentPhase() == 2){
-        	setVisible(false);
-		}
-		else if(p.getCurrentPhase() == 3){
-			setVisible(true);
-		}
+        cp.cardLabels[0].setText("Your current cards: ");
+        cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
+
 
 
     }
 	//extends JFrame implements Observer 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+	private String cardToString(Player player){
+		String output = "";
+		for(int i = 0; i < 3; i++){
+			output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "/n";
+		}
+		return output;
+	}
 	private class CardPanel extends JPanel {
 	    private JLabel[] cardLabels = new JLabel[6];
 
