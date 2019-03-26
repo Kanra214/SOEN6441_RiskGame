@@ -200,7 +200,7 @@ public class Player {
      * @throws CountryNotInRealms   country does not belong to the current player
      * @throws SourceIsTargetException  source and target are the same
      */
-    private boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
+    public boolean findPath(Country sourceCountry, Country targetCountry) throws CountryNotInRealms, SourceIsTargetException {
 
         if (sourceCountry.getOwner() == this && targetCountry.getOwner() == this) {
             if(sourceCountry != targetCountry){
@@ -253,7 +253,7 @@ public class Player {
      * @throws SourceIsTargetException  source country and target country is the same
      * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
-    protected void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
+    public void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
 
         if(findPath(from, to)){
             from.decreaseArmy(num);
