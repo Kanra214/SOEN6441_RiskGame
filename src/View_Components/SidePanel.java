@@ -40,7 +40,7 @@ public class SidePanel extends JPanel {
             playerLabels[i].setBackground(players.get(i).getPlayerColor());
             playerLabels[i].setText(getPlayerInfo(players.get(i), country.size()));
         }
-        continentsLabel.setText(getContinentInfo(continents));
+        continentsLabel.setText(getContinentInfo(players, continents));
     }
 
     /**
@@ -69,9 +69,14 @@ public class SidePanel extends JPanel {
         }
         return output;
     }
-    private String getContinentInfo(ArrayList<Continent> continents){
+    private String getContinentInfo(ArrayList<Player> players, ArrayList<Continent> continents){
         String continentOwner = "";
         for(int i = 0; i < continents.size(); i++){
+
+            for (Player player : players){
+                continents.get(i).checkOwnership(player);
+            }
+            
             if(continents.get(i).getOwner() == null){
                 continentOwner += continents.get(i).getName() + ": null" + "; ";
             }

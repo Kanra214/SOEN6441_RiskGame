@@ -176,10 +176,12 @@ public class Phases extends Observable {
      */
     private void phaseOneFirstStep() {
         int reinforce = reinforcementArmy(current_player);
-        if (reinforce == 0) {
+        if (reinforce < 3 && !current_player.getCards().checkCardSum()) { // make sure that you will only get default 3 if player has no combinations and has not enough countries
             current_player.getReinforcement(3);
+        } else {
+            current_player.getReinforcement(reinforce);
         }
-        current_player.getReinforcement(reinforce);
+
     }
 
 
