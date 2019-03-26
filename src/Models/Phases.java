@@ -24,6 +24,8 @@ public class Phases extends Observable {
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
     public boolean cardCancelTrigger = false;
+    public int CardTurn=1;//flag for how many times players change cards
+
 
 
     /**

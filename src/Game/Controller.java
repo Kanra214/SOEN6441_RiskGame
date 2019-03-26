@@ -28,7 +28,6 @@ public class Controller {
     String filename;
     CardExchangeView cardexchange;
 
-    int CardTurn=1;//flag for how many times players change cards
 
 
     /**
@@ -188,12 +187,12 @@ public class Controller {
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
 
-                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(0);
                     p.updatePhase();
                     p.cardCancelTrigger=true;
                     window.showMsg("Changed 3 Infantry");
-                    CardTurn++;
+                    p.CardTurn++;
                 }
             }
             if (e.getSource() == cardexchange.Exchange3Cavalry) {
@@ -203,12 +202,12 @@ public class Controller {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
-                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(1);
                     p.updatePhase();
                     p.cardCancelTrigger=true;
                     window.showMsg("Changed 3 Cavalry");
-                    CardTurn++;
+                    p.CardTurn++;
                 }
             }
             if (e.getSource() == cardexchange.Exchange3Artillery) {
@@ -218,12 +217,12 @@ public class Controller {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
-                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(2);
                     p.updatePhase();
                     p.cardCancelTrigger=true;
                     window.showMsg("Changed 3 Artillery");
-                    CardTurn++;
+                    p.CardTurn++;
                 }
             }
 
@@ -233,11 +232,11 @@ public class Controller {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 different cards");
                 } else {
-                    p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(4);
                     p.updatePhase();
                     p.cardCancelTrigger=true;
-                    CardTurn++;
+                    p.CardTurn++;
                 }
             }
             if (e.getSource() == cardexchange.Cancel) {
