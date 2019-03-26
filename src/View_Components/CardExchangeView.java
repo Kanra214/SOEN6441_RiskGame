@@ -20,6 +20,12 @@ import javax.swing.JPanel;
 import Models.Phases;
 import Models.Player;
 
+
+/**
+ * <h1>CardExchangeView</h1>
+ * This class is used as the Card Exchange View window to show the cards to Players
+ */
+
 public class CardExchangeView extends JFrame implements Observer{
 	
 	public static void main(String[] args) {
@@ -40,6 +46,11 @@ public class CardExchangeView extends JFrame implements Observer{
 	private CardPanel cp;
 	private JPanel mainPanel;
 	public JButton Exchange3Infantry,Exchange3Cavalry,Exchange3Artillery,Exchange3Diff,Cancel;
+
+
+    /**
+     * This is the constructor
+     */
 
 	public CardExchangeView(){
 	    super("CardExchangeView");
@@ -103,6 +114,10 @@ public class CardExchangeView extends JFrame implements Observer{
   
 	}
 	
+    /**
+     * Update this window
+     */
+
 	@Override
     public void update(Observable o, Object arg) {
 
@@ -117,7 +132,10 @@ public class CardExchangeView extends JFrame implements Observer{
 
 	
 
-
+    /**
+     * The method is used for collecting the card info and change into String type/
+     * @param player the Player object,pass the player to this method
+     */
 
 	private String cardToString(Player player){
 		String output = "";

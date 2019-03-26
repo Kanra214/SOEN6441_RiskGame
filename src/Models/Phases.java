@@ -56,7 +56,7 @@ public class Phases extends Observable {
             case 3:
                 return 35;
             case 2:
-                return 10;//45
+                return 10;//TODO 45
             default:
                 return 100;
         }
