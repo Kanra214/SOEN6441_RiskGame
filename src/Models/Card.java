@@ -62,7 +62,10 @@ public class Card {
 		p.updateWindow();
 
 	}
-	
+	/**
+	 * cardSum used to return the sum of the player's cards
+	 * @return sumNum the sum of the player's cards
+	 */
 	public int cardSum() {
 		int sumNum=0;
 		for(int i=0;i<3;i++) {				
@@ -71,12 +74,23 @@ public class Card {
 		return sumNum;
 	}
 	
+	/**
+	 * check if the sum is bigger than 5
+	 * @return sumNum the sum of the player's cards
+	 */
+	
 	public boolean checkCardSum() {
 		if(cardSum()>=5)return false;
 		
 		return true;
 		
 	}
+	/**
+	 * return the type of the cards
+	 * @return 3 for  3 cards of the same type,
+	 * 4 for 3 card of different types,5 for both,-1 for other
+	 * 
+	 */
 	
 	//4 for 3 card of different types,0,1,2 for 3 cards of the same type,5 for both,-1 for other 
 	public int checkCardType() {
@@ -103,11 +117,21 @@ public class Card {
 		
 	}
 	
+	/**
+	 * check if the number of same card is bigger than 3
+	 * @return true for bigger than or equal to 3,false for less than 3. 
+	 * 
+	 */
 	public boolean cardBigger3(int cardID) {
 		if(cardNumber[cardID]>=3) {return true;}
 		else return false;
 	}
 
+	/**
+	 * exchange the cards and decrease the number of cards
+	 *  
+	 */
+	
 	//By calling this method card number will decrease 
 	public boolean exchangeCard(int exchangeType) {
 		//0 for 3 card of different types,1 for 3 cards of the same type 
@@ -139,11 +163,21 @@ public class Card {
 		
 	}
 
+	/**
+	 * return the name of the card
+	 * @return the name of the card
+	 * 
+	 */
 	public String showCardsName(int cardID) {
 		
 		return cardName[cardID];
 	}
 
+	/**
+	 * return the each number of the 3 types of cards
+	 * @return the number of this card
+	 * 
+	 */
 	public int[] cardAll() {
 		
 		return cardNumber;
