@@ -23,7 +23,9 @@ public class SidePanel extends JPanel {
     protected SidePanel(){
         for(int i = 0; i < 6; i++) {
             playerLabels[i] = new JLabel();
+
             add(playerLabels[i]);
+
         }
         continentsLabel = new JLabel();
         add(continentsLabel);
@@ -55,7 +57,7 @@ public class SidePanel extends JPanel {
                 "<br>" +
                 "Percentage: " + playerCountryNumber / countryNumberDouble * 100 +"%"+
                 "<br>" +
-                "Total number of armies in the map: " + player.getMapArmies() + "<br></font></p>" +
+                "Total number of armies in the map: " + (player.getMapArmies()+player.getUnassigned_armies()) + "<br></font></p>" +
                 "<p><font size='2'>Cards:" + cardToString(player) + "</font></p> " +
                 "</body></html>";
 
@@ -71,15 +73,15 @@ public class SidePanel extends JPanel {
         String continentOwner = "";
         for(int i = 0; i < continents.size(); i++){
             if(continents.get(i).getOwner() == null){
-                continentOwner += continents.get(i).getName() + ": null" + ";";
+                continentOwner += continents.get(i).getName() + ": null" + "; ";
             }
             else {
-                continentOwner += continents.get(i).getName() + ": " + continents.get(i).getOwner().getId() + ";";
+                continentOwner += continents.get(i).getName() + ":Player " + continents.get(i).getOwner().getId() + "; ";
             }
         }
         return    "<html><body>" +
                 "<h3>Continents Info</h3>" +
-                "<h5>" +continentOwner + "</h5>" +
+                "<p><font size='2'>" +continentOwner + "</font></p>" +
                 "</body></html>";
 
     }
