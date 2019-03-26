@@ -23,7 +23,7 @@ public class Phases extends Observable {
     public boolean gameOver = false;
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
-    public boolean cardViewTrigger = false;
+    public boolean cardCancelTrigger = false;
 
 
     /**
@@ -166,7 +166,7 @@ public class Phases extends Observable {
        	 System.out.println("p"+getCurrentPhase());
          System.out.println("p"+getCurrentTurn());
         	// phaseOneFirstStep();
-        	 cardViewTrigger=false;
+        	 cardCancelTrigger=false;
            
         }
 

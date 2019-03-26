@@ -65,7 +65,7 @@ public class Controller {
                      System.out.println(p.getCurrentTurn());
                 	 p.nextPhase();
                 	 if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
-                		 	//p.phaseOneFirstStep();
+                		 	p.phaseOneFirstStep();
                 	 }
                 }
                 if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers() * 2)) {
@@ -191,6 +191,7 @@ public class Controller {
                     p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(0);
                     p.updatePhase();
+                    p.cardCancelTrigger=true;
                     window.showMsg("Changed 3 Infantry");
                     CardTurn++;
                 }
@@ -205,6 +206,7 @@ public class Controller {
                     p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(1);
                     p.updatePhase();
+                    p.cardCancelTrigger=true;
                     window.showMsg("Changed 3 Cavalry");
                     CardTurn++;
                 }
@@ -219,6 +221,7 @@ public class Controller {
                     p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(2);
                     p.updatePhase();
+                    p.cardCancelTrigger=true;
                     window.showMsg("Changed 3 Artillery");
                     CardTurn++;
                 }
@@ -233,14 +236,16 @@ public class Controller {
                     p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                     p.getCurrent_player().getCards().exchangeCard(4);
                     p.updatePhase();
+                    p.cardCancelTrigger=true;
                     CardTurn++;
                 }
             }
             if (e.getSource() == cardexchange.Cancel) {
                 if (p.getCurrent_player().getCards().checkCardSum()) {
                     //TODO: cancel move to the next phase, the player has less than 5
-                	//cardexchange.setVisible(false);
-                	p.cardViewTrigger=true;
+                	cardexchange.setVisible(false);
+                	cardexchange.cardViewOpenned=false;
+                	p.cardCancelTrigger=true;
                 	p.phaseOneFirstStep();
                 } else{
                     window.showMsg("You can't perform this function, you have more than 5 cards");

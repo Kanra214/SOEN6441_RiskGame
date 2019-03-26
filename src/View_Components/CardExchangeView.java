@@ -78,7 +78,7 @@ public class CardExchangeView extends JFrame implements Observer{
         Exchange3Cavalry=new JButton("Exchange 3 Cavalry");
         Exchange3Artillery=new JButton("Exchange 3 Artillery");
         Exchange3Diff=new JButton("Exchange 3 Different Cards");
-        Cancel=new JButton("Cancel");
+        Cancel=new JButton("Not to Exchange");
         
         GridBagLayout layout = new GridBagLayout();
         cp.setLayout(layout);
@@ -128,7 +128,7 @@ public class CardExchangeView extends JFrame implements Observer{
         Phases p = (Phases)o;
         //cp.cardLabels[0].setText("Your current cards: ");
         //cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-		if (p.getCurrentPhase() == 1 || p.getCurrentPhase() == 3) {
+		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2) {
 			if (!cardViewOpenned){
 				cardViewOpenned = true;
 				setVisible(true);
