@@ -53,8 +53,14 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
-
-                p.nextPhase();
+                //Todo
+                if(p.getCurrent_player().getCards().checkCardSum()!=true) {
+                    window.showMsg("You can't perform this function, you have more than 5 cards");
+                	cardexchange.setVisible(true);
+                }else {
+                	 p.nextPhase();
+                }
+               
                 if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers()*2)){
                     cardexchange.setVisible(true);
                 }
