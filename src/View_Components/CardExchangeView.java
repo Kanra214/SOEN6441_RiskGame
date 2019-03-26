@@ -39,7 +39,7 @@ public class CardExchangeView extends JFrame implements Observer{
 	
 	private CardPanel cp;
 	private JPanel mainPanel;
-	public JButton Exchange3Same,Exchange3Diff,Cancel;
+	public JButton Exchange3Infantry,Exchange3Cavalry,Exchange3Artillery,Exchange3Diff,Cancel;
 
 	public CardExchangeView(){
 	    super("CardExchangeView");
@@ -58,8 +58,10 @@ public class CardExchangeView extends JFrame implements Observer{
         mainPanel.setLayout(null);
         mainPanel.setBounds(X,Y,WIDTH,HEIGHT);
         //side panel settings
-        
-        Exchange3Same=new JButton("Exchange 3 Same Cards");
+        //"Infantry", "Cavalry", "Artillery"
+        Exchange3Infantry=new JButton("Exchange 3 Infantry");
+        Exchange3Cavalry=new JButton("Exchange 3 Cavalry");
+        Exchange3Artillery=new JButton("Exchange 3 Artillery");
         Exchange3Diff=new JButton("Exchange 3 Different Cards");
         Cancel=new JButton("Cancel");
         
@@ -70,7 +72,9 @@ public class CardExchangeView extends JFrame implements Observer{
         s.gridwidth=0;
         s.weightx = 0;
         s.weighty=0;
-        layout.setConstraints(Exchange3Same, s);//ÉèÖÃ×é¼þ
+        layout.setConstraints(Exchange3Infantry, s);
+        layout.setConstraints(Exchange3Cavalry, s);
+        layout.setConstraints(Exchange3Artillery, s);
         layout.setConstraints(Exchange3Diff, s);
         layout.setConstraints(Cancel, s);
         layout.setConstraints(cp.cardLabels[0], s);
@@ -84,7 +88,9 @@ public class CardExchangeView extends JFrame implements Observer{
         //Exchange3Diff.setBounds(WIDTH-300, HEIGHT-400, 200, 80);
         //Cancel.setBounds(WIDTH-300, HEIGHT-300, 200, 80);
         //cp.setLayout(new FlowLayout(FlowLayout.RIGHT,10,15));
-        cp.add(Exchange3Same);
+        cp.add(Exchange3Infantry);
+        cp.add(Exchange3Cavalry);
+        cp.add(Exchange3Artillery);
         cp.add(Exchange3Diff);
         cp.add(Cancel);
        
@@ -103,20 +109,20 @@ public class CardExchangeView extends JFrame implements Observer{
         Phases p = (Phases)o;
         cp.cardLabels[0].setText("Your current cards: ");
         cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-
+        
 
 
     }
 	//extends JFrame implements Observer 
 
-
+	
 
 
 
 	private String cardToString(Player player){
 		String output = "";
 		for(int i = 0; i < 3; i++){
-			output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "/n";
+			output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "/n"+"\r\n";
 		}
 		return output;
 	}

@@ -23,7 +23,7 @@ public class Card {
 	protected Card(Phases p) {
 		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
-		cardNumber = new int[]{0,0,0};
+		cardNumber = new int[]{3,3,3};
 		cardExchangeNum = 0;
 		this.p = p;
 

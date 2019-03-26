@@ -27,6 +27,7 @@ public class Controller {
 
     String filename;
     CardExchangeView cardexchange;
+    int CardTurn=0;//flag for how many times players change cards
 
     /**
      * Constructor
@@ -34,6 +35,7 @@ public class Controller {
     public Controller() {
         this.window = new Window();
         cardexchange = new CardExchangeView();
+       
     }
 
     /**
@@ -175,22 +177,33 @@ public class Controller {
 
 
             }
-            if(e.getSource() == cardexchange.Exchange3Same){
+            
+            //exchange card
+            if(e.getSource() == cardexchange.Exchange3Infantry){
                 System.out.println("Clicked on exchange");
                 int type = p.getCurrent_player().getCards().checkCardType();
-                if (type != 3) {
+                if (type != 1&&type != 2) {
+                	 System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
+                }else {
+                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                	window.showMsg("Changed 3 Infantry");
+                	CardTurn++;
                 }
             }
             if(e.getSource() == cardexchange.Exchange3Diff){
                 int type = p.getCurrent_player().getCards().checkCardType();
                 if (type != 1) {
                     window.showMsg("You can't perform this function, you don't have 3 different cards");
+                }else {
+                	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
+                	CardTurn++;
                 }
             }
             if(e.getSource() == cardexchange.Cancel){
                 if (p.getCurrent_player().getCards().checkCardSum()){
                     //TODO: cancel move to the next phase, the player has less than 5
+                	cardexchange.setVisible(false);
                 } else{
                     window.showMsg("You can't perform this function, you have more than 5 cards");
                 }
@@ -335,5 +348,10 @@ public class Controller {
         window.phasePanel.completePhaseButton.addActionListener(lis);
         p.connectView(); //after this updating window is enabled
         window.setVisible(true);
+        cardexchange.Exchange3Infantry.addActionListener(lis);
+        cardexchange.Exchange3Artillery.addActionListener(lis);
+        cardexchange.Exchange3Cavalry.addActionListener(lis);
+        cardexchange.Exchange3Diff.addActionListener(lis);
+        cardexchange.Cancel.addActionListener(lis);
     }
 }
