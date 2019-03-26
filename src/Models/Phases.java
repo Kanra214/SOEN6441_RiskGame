@@ -466,7 +466,7 @@ public class Phases extends Observable {
         nextPhase();
     }
 
-    private boolean checkWinner() {//check if current player win the whole game
+    public boolean checkWinner() {//check if current player win the whole game
         return current_player.realms.size() == graph.size();
 
 
@@ -525,7 +525,7 @@ public class Phases extends Observable {
      * @throws AttackingCountryOwner        the owner of attacking country must be current player
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
-    protected boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+    public boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
         if (sourceCountry.getArmy() >= 2) {
             if (sourceCountry.getOwner() == current_player) {
                 if (targetCountry.getOwner() != current_player) {
@@ -614,5 +614,7 @@ public class Phases extends Observable {
         return flag;
     }
 
-
+    public void setCurrent_player(Player current_player) {
+        this.current_player = current_player;
+    }
 }
