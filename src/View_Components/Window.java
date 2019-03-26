@@ -106,7 +106,7 @@ public class Window extends JFrame implements Observer {
         sidePanel = new SidePanel();
         sidePanel.setBounds(SIDE_PANEL_X,SIDE_PANEL_Y,SIDE_PANEL_WIDTH,SIDE_PANEL_HEIGHT );
         sidePanel.setBackground(Color.WHITE);
-        sidePanel.setLayout(new GridLayout(6,1));
+        sidePanel.setLayout(new GridLayout(7,1));
 
 
 

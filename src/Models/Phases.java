@@ -105,7 +105,7 @@ public class Phases extends Observable {
     public int extraArmyFromContinent(Player player) {
         int reinforcement = 0;
         for (Continent c : worldmap) {
-            if (c.checkOwnership(player)) {
+            if (checkContinentOwner(c, player)) {
                 reinforcement += c.getControl_value();
             }
         }
@@ -387,6 +387,7 @@ public class Phases extends Observable {
 
             }
             at_least_once = true;
+            checkContinentOwner(to.getCont(),current_player);//check if this player gets control of the continent
             if(rival.getRealms().size() == 0){
                 current_player.receiveEnemyCards(rival);
             }
@@ -602,7 +603,12 @@ public class Phases extends Observable {
     }
     public int getCurrentTurn(){return currentTurn;
     }
-    public int getNumOfPlayers(){return numOfPlayers;};
+    public int getNumOfPlayers(){return numOfPlayers;}
+    private boolean checkContinentOwner(Continent cont, Player player){
+        boolean flag = cont.checkOwnership(player);
+        updateWindow();
+        return flag;
+    }
 
 
 }

@@ -21,19 +21,10 @@ public class SidePanel extends JPanel {
      * This is constructor
      */
     protected SidePanel(){
-        playerLabels[0] = new JLabel();
-        playerLabels[1] = new JLabel();
-        playerLabels[2] = new JLabel();
-        playerLabels[3] = new JLabel();
-        playerLabels[4] = new JLabel();
-        playerLabels[5] = new JLabel();
-        add(playerLabels[0]);
-        add(playerLabels[1]);
-        add(playerLabels[2]);
-        add(playerLabels[3]);
-        add(playerLabels[4]);
-        add(playerLabels[5]);
-
+        for(int i = 0; i < 6; i++) {
+            playerLabels[i] = new JLabel();
+            add(playerLabels[i]);
+        }
         continentsLabel = new JLabel();
         add(continentsLabel);
     }
@@ -60,31 +51,36 @@ public class SidePanel extends JPanel {
         float countryNumberDouble = (float) countryNumber;
         return    "<html><body>" +
                 "<h3>Player " + player.getId() + "</h3>" +
-                "<p>Countries: " + player.getRealms().size() + " Percentage: " +
-                playerCountryNumber / countryNumberDouble * 100 +"%"+
+                "<p><font size='2'>Countries: " + player.getRealms().size() +
                 "<br>" +
-                "Total number of armies in the map: " + player.getMapArmies() + "<br></p>" +
-                "<h4>Cards:</h4> " +
-                "<p>" + cardToString(player) +"</p>" +
+                "Percentage: " + playerCountryNumber / countryNumberDouble * 100 +"%"+
+                "<br>" +
+                "Total number of armies in the map: " + player.getMapArmies() + "<br></font></p>" +
+                "<p><font size='2'>Cards:" + cardToString(player) + "</font></p> " +
                 "</body></html>";
 
     }
     private String cardToString(Player player){
         String output = "";
         for(int i = 0; i < 3; i++){
-            output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "<br>";
+            output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "; ";
         }
         return output;
     }
     private String getContinentInfo(ArrayList<Continent> continents){
         String continentOwner = "";
         for(int i = 0; i < continents.size(); i++){
-            continentOwner += continents.get(i).getName() + ": " + continents.get(i).getOwner() + "<br>";
+            if(continents.get(i).getOwner() == null){
+                continentOwner += continents.get(i).getName() + ": null" + ";";
+            }
+            else {
+                continentOwner += continents.get(i).getName() + ": " + continents.get(i).getOwner().getId() + ";";
+            }
         }
         return    "<html><body>" +
                 "<h3>Continents Info</h3>" +
-                "<p>" +continentOwner
-                +"</body></html>";
+                "<h5>" +continentOwner + "</h5>" +
+                "</body></html>";
 
     }
 

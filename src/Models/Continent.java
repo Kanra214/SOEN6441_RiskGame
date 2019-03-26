@@ -17,7 +17,7 @@ public class Continent {
     private int control_value;
     private Color contColor;
     private static HashSet<Color> colorSet = new HashSet<>();
-    private String owner = "null";
+    private Player owner = null;
 
     //public because mapLoader needs this
     /**
@@ -64,11 +64,12 @@ public class Continent {
         for (Country c: countries) {
             if (c.getOwner() != playerOwner){ return false;}
         }
-        owner = String.valueOf(playerOwner.getId());
+        owner = playerOwner;
+
         return true;
     }
 
-    public String getOwner(){
+    public Player getOwner(){
         return owner;
     }
 
