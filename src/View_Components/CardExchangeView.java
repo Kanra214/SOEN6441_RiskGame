@@ -33,6 +33,7 @@ public class CardExchangeView extends JFrame implements Observer{
 			
 		CardExchangeView cardexchange = new CardExchangeView();
 		cardexchange.setVisible(true);
+		cardexchange.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		}
 	
 	
@@ -61,7 +62,7 @@ public class CardExchangeView extends JFrame implements Observer{
         setLocationRelativeTo(null);
 
         setSize(WIDTH,HEIGHT);
-
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         
         //main panel settings

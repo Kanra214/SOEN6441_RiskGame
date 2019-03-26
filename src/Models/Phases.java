@@ -23,6 +23,7 @@ public class Phases extends Observable {
     public boolean gameOver = false;
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
+    public boolean cardViewTrigger = false;
 
 
     /**
@@ -120,6 +121,12 @@ public class Phases extends Observable {
      * @return int  number of all countries devided by 3 plus army from continent
      */
     public int reinforcementArmy(Player player) {
+    	
+    	if(player.getUnassigned_armies()>3) {
+    		System.out.println(player.getUnassigned_armies());
+    		System.out.println("return 0");
+    		return 0;
+    	}
         int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
         if (reinforcement < 3) reinforcement = 3;
         return reinforcement;
@@ -155,7 +162,12 @@ public class Phases extends Observable {
 
 
         if (currentPhase == 1) {
-            phaseOneFirstStep();
+        	//TODO
+       	 System.out.println("p"+getCurrentPhase());
+         System.out.println("p"+getCurrentTurn());
+        	// phaseOneFirstStep();
+        	 cardViewTrigger=false;
+           
         }
 
     }
@@ -174,9 +186,14 @@ public class Phases extends Observable {
     /**
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
-    private void phaseOneFirstStep() {
+    public void phaseOneFirstStep() {
+    	if(getCurrentTurn() >= getNumOfPlayers()*2) {
+    		//while(cardViewTrigger==false);
+    		//TODO
+    	}
+    
         int reinforce = reinforcementArmy(current_player);
-        if (reinforce == 0) {
+        if (reinforce == -1) {
             current_player.getReinforcement(3);
         }
         current_player.getReinforcement(reinforce);
