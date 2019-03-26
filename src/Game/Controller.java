@@ -187,12 +187,8 @@ public class Controller {
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
 
-                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
-                    p.getCurrent_player().getCards().exchangeCard(0);
-                    p.updatePhase();
-                    p.cardCancelTrigger=true;
-                    window.showMsg("Changed 3 Infantry");
-                    p.CardTurn++;
+                    window.showMsg("Changed 3 Infantry");               	
+                    cardButtonsAction(0);
                 }
             }
             if (e.getSource() == cardexchange.Exchange3Cavalry) {
@@ -202,12 +198,9 @@ public class Controller {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
-                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
-                    p.getCurrent_player().getCards().exchangeCard(1);
-                    p.updatePhase();
-                    p.cardCancelTrigger=true;
-                    window.showMsg("Changed 3 Cavalry");
-                    p.CardTurn++;
+             
+                    window.showMsg("Changed 3 Cavalry");                             
+                    cardButtonsAction(1);
                 }
             }
             if (e.getSource() == cardexchange.Exchange3Artillery) {
@@ -217,12 +210,10 @@ public class Controller {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 } else {
-                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
-                    p.getCurrent_player().getCards().exchangeCard(2);
-                    p.updatePhase();
-                    p.cardCancelTrigger=true;
-                    window.showMsg("Changed 3 Artillery");
-                    p.CardTurn++;
+                	
+                	 cardButtonsAction(2);
+                     window.showMsg("Changed 3 Artillery");
+
                 }
             }
 
@@ -232,11 +223,8 @@ public class Controller {
                     System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 different cards");
                 } else {
-                    p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
-                    p.getCurrent_player().getCards().exchangeCard(4);
-                    p.updatePhase();
-                    p.cardCancelTrigger=true;
-                    p.CardTurn++;
+                	 cardButtonsAction(4);
+                	 window.showMsg("Changed 3 Different Cards");
                 }
             }
             if (e.getSource() == cardexchange.Cancel) {
@@ -368,6 +356,21 @@ public class Controller {
             }
         }
 
+        
+        /**
+         * This method is the refactoring method,used for consolidating duplicate conditional fragments
+         * in 
+         *
+         * @throws IOException map loading exception
+         */
+        
+        public void cardButtonAction() {
+        	//TODO
+        	
+        }
+        
+        
+        
         /**
          * Start game
          *
@@ -391,7 +394,6 @@ public class Controller {
             p = new Phases(tempMap.get(0), tempMap.get(1));
             p.addObserver(window);
             p.addObserver(cardexchange);
-            //TODO:set update for cardexchange
             Listener lis = new Listener();
             p.gameSetUp(numOfPlayers);
 
@@ -409,6 +411,14 @@ public class Controller {
             cardexchange.Exchange3Diff.addActionListener(lis);
             cardexchange.Cancel.addActionListener(lis);
         }
+
+		private void cardButtonsAction(int exhcangetype) {
+			p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
+			p.getCurrent_player().getCards().exchangeCard(exhcangetype);
+			p.updatePhase();
+			p.cardCancelTrigger=true;                
+			p.CardTurn++;
+		}
 
 }
 
