@@ -107,9 +107,9 @@ public class CardExchangeView extends JFrame implements Observer{
     public void update(Observable o, Object arg) {
 
         Phases p = (Phases)o;
-        cp.cardLabels[0].setText("Your current cards: ");
-        cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-        
+        //cp.cardLabels[0].setText("Your current cards: ");
+        //cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
+        cp.setContext(p.getCurrent_player());
 
 
     }
@@ -122,7 +122,7 @@ public class CardExchangeView extends JFrame implements Observer{
 	private String cardToString(Player player){
 		String output = "";
 		for(int i = 0; i < 3; i++){
-			output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "/n"+"\r\n";
+			output += player.getCards().showCardsName(i) + ": " + player.getCards().showCardsNumber(i) + "\r\n"+"\n";
 		}
 		return output;
 	}

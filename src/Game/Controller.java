@@ -177,7 +177,7 @@ public class Controller {
 
 
             }
-
+            //TODO: the "update" may need to be fixed
             //exchange card
             if(e.getSource() == cardexchange.Exchange3Infantry){
                 System.out.println("Clicked on exchange");
@@ -186,14 +186,10 @@ public class Controller {
                 	 System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 the same cards");
                 }else {
-                	 System.out.println(type);                	
-               	    System.out.println(p.getCurrent_player().getCards().cardBigger3(0));
-                	
+         	
                 	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                 	p.getCurrent_player().getCards().exchangeCard(0);
-                	 System.out.println(p.getCurrent_player().showPlayerCards(0));
-                	 System.out.println(p.getCurrent_player().showPlayerCards(1));
-                	 System.out.println(p.getCurrent_player().showPlayerCards(2));
+                	p.updatePhase();
                 	window.showMsg("Changed 3 Infantry");
                 	CardTurn++;
                 }
@@ -207,9 +203,7 @@ public class Controller {
                 }else {
                 	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                 	p.getCurrent_player().getCards().exchangeCard(1);
-                	 System.out.println(p.getCurrent_player().showPlayerCards(0));
-                	 System.out.println(p.getCurrent_player().showPlayerCards(1));
-                	 System.out.println(p.getCurrent_player().showPlayerCards(2));
+                   	p.updatePhase();
                 	window.showMsg("Changed 3 Cavalry");
                 	CardTurn++;
                 }
@@ -223,9 +217,7 @@ public class Controller {
                 }else {
                 	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
                 	p.getCurrent_player().getCards().exchangeCard(2);
-                	 System.out.println(p.getCurrent_player().showPlayerCards(0));
-                	 System.out.println(p.getCurrent_player().showPlayerCards(1));
-                	 System.out.println(p.getCurrent_player().showPlayerCards(2));
+                   	p.updatePhase();
                 	window.showMsg("Changed 3 Artillery");
                 	CardTurn++;
                 }
@@ -234,10 +226,12 @@ public class Controller {
             if(e.getSource() == cardexchange.Exchange3Diff){
                 int type = p.getCurrent_player().getCards().checkCardType();
                 if (type != 4&&type != 5) {
+                	 System.out.println(type);
                     window.showMsg("You can't perform this function, you don't have 3 different cards");
                 }else {
                 	p.getCurrent_player().addPlayerArmyByCard(CardTurn);
-                	p.getCurrent_player().getCards().exchangeCard(0);
+                	p.getCurrent_player().getCards().exchangeCard(4);
+                   	p.updatePhase();
                 	CardTurn++;
                 }
             }
@@ -378,6 +372,7 @@ public class Controller {
         p = new Phases(tempMap.get(0), tempMap.get(1));
         p.addObserver(window);
         p.addObserver(cardexchange);
+        //TODO:set update for cardexchange
         Listener lis = new Listener();
         p.gameSetUp(numOfPlayers);
 

@@ -132,7 +132,8 @@ public class Phases extends Observable {
      * @return current phase
      */
     public int getCurrentPhase() {
-        return currentPhase;
+        
+    	return currentPhase;
     }
 
     /**
@@ -166,7 +167,8 @@ public class Phases extends Observable {
      * @return current player
      */
     public Player getCurrent_player() {
-        return current_player;
+    	
+    	return current_player;
     }
 
     /**
@@ -247,6 +249,9 @@ public class Phases extends Observable {
         }
     }
 
+    public void updatePhase() {
+    	updateWindow();
+    }
 
     /**
      * Notifies connected observers
