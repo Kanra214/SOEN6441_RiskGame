@@ -186,4 +186,9 @@ public class PhasesTest {
 
     }
 
+    @Test
+    public void checkWinner() {
+      assertEquals(true,p1.checkWinner());
+    }
+
 }
