@@ -203,11 +203,11 @@ public class Window extends JFrame implements Observer {
         else if(p.getCurrentPhase() == 1) {
             if (arg instanceof String) {
                 String CName = (String) arg;
-                showMsg("This card will add to " + CName);
+                showMsg("The card " + CName +" will be added to this player");
             }
             if(arg instanceof Card){//receive enemy card
                 Card cards = (Card)arg;
-                showMsg("You received these cards from conquering: " + cardsToString(cards));
+                showMsg("You received "+ cardsToString(cards)+ " card from conquering");
             }
         }
 

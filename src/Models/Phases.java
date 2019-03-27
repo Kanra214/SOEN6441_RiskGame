@@ -25,7 +25,9 @@ public class Phases extends Observable {
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
 
     public boolean cardCancelTrigger = false;
-    public int CardTurn=1;//flag for how many times players change cards
+    public int CardTurn=1;//Counter for how many times players change cards
+
+    private boolean firstStepMade = false;
 
 
 
@@ -160,7 +162,9 @@ public class Phases extends Observable {
             current_player.addPlayerOneCard();
         }
         at_least_once = false;
+        firstStepMade = false;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
+
         if (current_player.getRealms().size() == 0) {//if the player is ruled out of the game
             nextTurn();
 
@@ -193,13 +197,15 @@ public class Phases extends Observable {
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
     public void phaseOneFirstStep() {
-        int reinforce = reinforcementArmy(current_player);
-        if (reinforce == -1) {
-            current_player.getReinforcement(3);
-        } else {
-            current_player.getReinforcement(reinforce);
+        if (!firstStepMade){
+            firstStepMade = true;
+            int reinforce = reinforcementArmy(current_player);
+            if (reinforce < 3) {
+                current_player.getReinforcement(3);
+            } else {
+                current_player.getReinforcement(reinforce);
+            }
         }
-
     }
 
 
