@@ -47,17 +47,6 @@ public class PhasePanel extends JPanel {
         detailLabel.setText("<html><body><h3>Unassigned armies : "  + currentPlayer.getUnassigned_armies() + "</h3></body><html>");
 
 
-//        if(currentPhase == 2){//show dice info
-//            detailLabel.setText("<html><body>" +
-//                    "<h3>Attacking country dice: </h3>" +
-//                    "<p>" + diceToString(currentPlayer.getDice()) +"</p>" +
-//                    "</body><html>");
-//        }
-//        else {
-//            detailLabel.setText("<html><body><h3>Unassigned Armies: " + currentPlayer.getUnassigned_armies() + "</h3></body><html>");
-//        }
-
-
 
         if(currentPhase == 2){
             if(p.getInBattle()) {
@@ -72,16 +61,17 @@ public class PhasePanel extends JPanel {
             completePhaseButton.setEnabled(true);
         }
         //phase 0 and phase 1 when no army, enable button
-        else if(!currentPlayer.isArmyLeft()){
-        	
- 
+        else if((!currentPlayer.isArmyLeft()) && (p.getCurrent_player().getCards().checkCardSum())) {
+
+
             completePhaseButton.setEnabled(true);
-       	if(p.getCurrentTurn()>=p.getNumOfPlayers() * 2&&p.cardCancelTrigger==false) {
-       		completePhaseButton.setEnabled(false);
-        	}else {
-        		completePhaseButton.setEnabled(true);
-        	}
         }
+//       	if(p.getCurrentTurn()>=p.getNumOfPlayers() * 2&&p.cardCancelTrigger==false) {
+//       		completePhaseButton.setEnabled(false);
+//        	}else {
+//        		completePhaseButton.setEnabled(true);
+//        	}
+//        }
         else{
             completePhaseButton.setEnabled(false);
         }

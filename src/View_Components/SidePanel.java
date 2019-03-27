@@ -23,6 +23,7 @@ public class SidePanel extends JPanel {
     protected SidePanel(){
         for(int i = 0; i < 6; i++) {
             playerLabels[i] = new JLabel();
+            playerLabels[i].setOpaque(true);
 
             add(playerLabels[i]);
 
@@ -57,7 +58,7 @@ public class SidePanel extends JPanel {
                 "<br>" +
                 "Percentage: " + playerCountryNumber / countryNumberDouble * 100 +"%"+
                 "<br>" +
-                "Total number of armies in the map: " + (player.getMapArmies()+player.getUnassigned_armies()) + "<br></font></p>" +
+                "Total number of armies in the map: " + (player.getMapArmies()) + "<br></font></p>" +
                 "<p><font size='2'>Cards:" + cardToString(player) + "</font></p> " +
                 "</body></html>";
 

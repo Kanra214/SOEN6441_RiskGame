@@ -14,6 +14,7 @@ public class Card {
 	private int[] cardNumber;
 	private int cardExchangeNum;// Count the number of exchange card
 	private Phases p;
+	private static int cardTurn = 1;
 
 
 
@@ -121,6 +122,13 @@ public class Card {
 		return -1;
 		
 	}
+
+	public boolean checkThreeDiffCards(){
+		if(cardNumber[0]!= 0 && cardNumber[1] !=0 && cardNumber[2] != 0){
+			return true;
+		}
+		return false;
+	}
 	
 	/**
 	 * Check if the number of certain card is bigger or equal than 3 
@@ -176,14 +184,7 @@ public class Card {
 		return cardName[cardID];
 	}
 
-	/**
-	 * This method  will return the detail number of cards
-	 * @return cardNumber the array of the cards
-	 */
-	public int[] cardAll() {
-		
-		return cardNumber;
-	}
+
 	
 	/**
 	 * This method is used for junit test
@@ -196,6 +197,20 @@ public class Card {
 		
 		
 	}
+
+	protected void exchangeSameCards(int cardId){
+		cardNumber[cardId] -= 3;
+		cardTurn++;
+
+
+	}
+	protected void exchangeDiffCards(){
+		for(int i = 0; i < 3; i ++){
+			cardNumber[i] -= 1;
+			cardTurn++;
+		}
+	}
+	public static int getCardTurn(){return cardTurn;}
 
 	
 	

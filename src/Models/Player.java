@@ -132,10 +132,7 @@ public class Player {
 
     }
 
-    public int[] showAllcards() {
-        return cards.cardAll();
-        
-    }
+
 
     public void addPlayerOneCard() {
         cards.addCard();
@@ -147,10 +144,18 @@ public class Player {
         cards.addCard(enemy);
     }
 
-    public void addPlayerArmyByCard(int cardTurn) {
-        unassigned_armies+=cardTurn*5;
+    public void addPlayerArmyBySameCards(int cardId) {
+        unassigned_armies+=Card.getCardTurn()*5;
+        cards.exchangeSameCards(cardId);
+        p.updateWindow();
         //p.updateWindow();
         //System.out.println("update card");
+    }
+
+    public void addPlayerArmyByDiffCards(){
+        unassigned_armies+=Card.getCardTurn()*5;
+        cards.exchangeDiffCards();
+        p.updateWindow();
     }
 
 
@@ -306,6 +311,7 @@ public class Player {
 
 
     }
+
 
 
 

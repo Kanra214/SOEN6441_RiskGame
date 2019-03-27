@@ -24,8 +24,8 @@ public class Phases extends Observable {
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
 
-    public boolean cardCancelTrigger = false;
-    public int CardTurn=1;//flag for how many times players change cards
+//    public boolean cardCancelTrigger = false;
+//    public int CardTurn=1;//flag for how many times players change cards
 
 
 
@@ -124,14 +124,13 @@ public class Phases extends Observable {
      * @return int  number of all countries devided by 3 plus army from continent
      */
     public int reinforcementArmy(Player player) {
-    	
-    	if(player.getUnassigned_armies()>3) {
+    	int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
+    	if(player.getUnassigned_armies()+reinforcement < 3) {
     		System.out.println(player.getUnassigned_armies());
     		System.out.println("return 0");
-    		return 0;
+    		reinforcement = 3;
     	}
-        int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
-        if (reinforcement < 3) reinforcement = 3;
+
         return reinforcement;
     }
 
@@ -151,12 +150,13 @@ public class Phases extends Observable {
      */
     private void nextTurn() {
 
-        currentTurn++;
+
         if (at_least_once){
             System.out.println("got a card");
             current_player.addPlayerOneCard();
         }
         at_least_once = false;
+        currentTurn++;
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
         if (current_player.getRealms().size() == 0) {//if the player is ruled out of the game
             nextTurn();
@@ -169,7 +169,7 @@ public class Phases extends Observable {
        	 System.out.println("p"+getCurrentPhase());
          System.out.println("p"+getCurrentTurn());
         	// phaseOneFirstStep();
-        	 cardCancelTrigger=false;
+//        	 cardCancelTrigger=false;
            
         }
 
@@ -190,12 +190,7 @@ public class Phases extends Observable {
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
     public void phaseOneFirstStep() {
-        int reinforce = reinforcementArmy(current_player);
-        if (reinforce == -1) {
-            current_player.getReinforcement(3);
-        } else {
-            current_player.getReinforcement(reinforce);
-        }
+        current_player.getReinforcement(reinforcementArmy(current_player));
 
     }
 

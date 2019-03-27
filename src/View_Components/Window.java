@@ -143,15 +143,6 @@ public class Window extends JFrame implements Observer {
     public void showMsg(String dialog){
         JOptionPane.showMessageDialog(this, dialog);
     }
-//    public String selectionBox(String question, String[] options){
-//        JDialog.setDefaultLookAndFeelDecorated(true);
-//
-//        String initialSelection = options[0];
-//        String selection = (String) JOptionPane.showInputDialog(null, question,
-//                "", JOptionPane.QUESTION_MESSAGE, null, options, initialSelection);
-////        System.out.println(selection);
-//        return selection;
-//    }
 
 
     /**
