@@ -14,12 +14,12 @@ public class Phases extends Observable {
     private ArrayList<Player> players;
     private ArrayList<Country> graph;
     private ArrayList<Continent> worldmap;
-    private Player current_player;
-    private Player rival;//the player being attacked in the attack phase
+    protected Player current_player;
+    protected Player rival;//the player being attacked in the attack phase
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
-    private boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
+    boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
     public boolean gameOver = false;
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
@@ -335,121 +335,8 @@ public class Phases extends Observable {
     }
 
 
-    /**
-     * Sends 1 army from current player to chosen Country during reinforcement phase
-     *
-     * @param chosen Country where to send army to
-     */
-    public void reinforcementPhase(Country chosen) {
 
 
-        try {
-            current_player.deployArmy(chosen);
-        } catch (RiskGameException e) {
-            System.out.println("Not possible");
-        }
-
-
-    }
-
-
-    /**
-     * Attack phase
-     * @param from the source country
-     * @param to the target country
-     * @return true for attack success
-     * @throws AttackingCountryOwner throw exception 
-     * @throws AttackedCountryOwner throw exception 
-     * @throws WrongDiceNumber throw exception 
-     * @throws AttackCountryArmyMoreThanOne throw exception 
-     * @throws TargetCountryNotAdjacent throw exception 
-     *
-     * 
-     */
-    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-
-        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-
-
-        while (true) {
-            try {
-                int attackDice = Math.min(from.getArmy() - 1, 3);
-                int defendDice = Math.min(to.getArmy(), 2);
-
-                if (attackPhase(from, to, attackDice, defendDice)) {
-                    at_least_once = true;
-
-
-                    return true;
-                }
-                validated = true;//any exception after this will be caught and break the while
-
-
-            } catch (RiskGameException e) {
-                if (validated) {
-                    at_least_once = false;
-                    return false;
-                } else {
-                    throw e;
-                }
-
-            }
-
-
-        }
-
-
-    }
-
-    /**
-     * Attack phase
-     *
-     * @param from       Country from where army will attacking
-     * @param to         Country from where army will be attacked
-     * @param attackDice int number of dice to roll for attacker
-     * @return true if country is conquered, false otherwise
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner        the owner of attacking country must be current player
-     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
-     */
-    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-//        current_player.attack(from, to, attackDice, defendDice);
-//        if(current_player.attackValidation(from, to, num)) {
-//            attackSimulation(from, to, num);
-//        }
-
-
-        try {
-            if (attackValidation(from, to, attackDice, defendDice)) {
-
-                attackSimulation(from, to, attackDice, defendDice);
-
-            }
-        } catch (OutOfArmyException e) {
-            to.swapOwnership(rival, current_player);
-
-
-            if (checkWinner()) {//this attacker conquered all the countries
-                gameOver = true;
-
-            }
-            at_least_once = true;
-            checkContinentOwner(to.getCont(),current_player);//check if this player gets control of the continent
-            if(rival.getRealms().size() == 0){
-                current_player.receiveEnemyCards(rival);
-            }
-
-            return true;
-
-
-        }
-        checkAttackingIsPossible();
-        at_least_once = false;
-
-        return false;
-
-
-    }
 
     /**
      * attack all-in mode
@@ -498,23 +385,6 @@ public class Phases extends Observable {
 
     }
 
-
-    /**
-     * Sends army from one country to another
-     *
-     * @param from Country from where army will be deducted
-     * @param to   Country from where army will be sent
-     * @param num  int number of armies to send
-     * @throws CountryNotInRealms          country not owned by the player
-     * @throws OutOfArmyException          not enough army to transfer
-     * @throws NoSuchPathException         no path from owned countries between country
-     * @throws SourceIsTargetException     source country and target country is the same
-     * @throws MoveAtLeastOneArmyException 0 army chosen to move
-     */
-    public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
-        current_player.fortificate(from, to, num);
-        nextPhase();
-    }
 
     /**
      * check winner
@@ -707,7 +577,7 @@ public class Phases extends Observable {
      * @return number of player
      */
     public int getNumOfPlayers(){return numOfPlayers;}
-    private boolean checkContinentOwner(Continent cont, Player player){
+    protected boolean checkContinentOwner(Continent cont, Player player){
         boolean flag = cont.checkOwnership(player);
         updateWindow();
         return flag;

@@ -71,7 +71,7 @@ public class Controller {
                     if (p.getCurrentPhase() == 0) {
                         p.startUpPhase(chosen);
                     } else if (p.getCurrentPhase() == 1) {
-                        p.reinforcementPhase(chosen);
+                        p.getCurrent_player().reinforcementPhase(chosen);
                     } else if (p.getCurrentPhase() == 3) {
                         if (chosenFrom == null) {
                             chosenFrom = chosen;
@@ -82,7 +82,7 @@ public class Controller {
                             if (input != null) {
                                 int num = Integer.parseInt(input);
 
-                                p.fortificationsPhase(chosenFrom, chosenTo, num);
+                                p.getCurrent_player().fortificationsPhase(chosenFrom, chosenTo, num);
 
                             }
                             chosenFrom = null;
@@ -101,7 +101,7 @@ public class Controller {
 
                                 if (attackerInput.isEmpty()) {//all out mode
                                     System.out.println("all out");
-                                    if (p.attackPhase(chosenFrom, chosenTo)) {
+                                    if (p.getCurrent_player().attackPhase(chosenFrom, chosenTo)) {
                                         if (p.gameOver) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
@@ -123,7 +123,7 @@ public class Controller {
 
                                     int defendDice = Integer.parseInt(defenderInput);
 
-                                    if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                    if (p.getCurrent_player().attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
                                         if (p.gameOver) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
