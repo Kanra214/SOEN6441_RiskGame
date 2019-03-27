@@ -55,13 +55,14 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
+                p.assignedCC=true;
 /*
                 if(!p.getCurrent_player().getCards().checkCardSum()) {
                     window.showMsg("You can't perform this function, you have more than 5 cards");
                 	//cardexchange.setVisible(true);
                 }else {*/
-                	 System.out.println(p.getCurrentPhase());
-                     System.out.println(p.getCurrentTurn());
+                	 //System.out.println(p.getCurrentPhase());
+                     //System.out.println(p.getCurrentTurn());
                 	 p.nextPhase();
                 	 if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
                 		 	p.phaseOneFirstStep();

@@ -158,10 +158,11 @@ public class CardExchangeView extends JFrame implements Observer{
 				if (p.getCurrent_player().getCards().cardBigger3(2)){
 					Exchange3Artillery.setEnabled(true);
 				}
-				//if()
+				
 			
 			}else {
 				Cancel.setEnabled(false);
+				//setVisible(false);
 			}
 		} else {
 			cardViewOpenned = false;

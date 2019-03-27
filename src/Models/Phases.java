@@ -24,6 +24,7 @@ public class Phases extends Observable {
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
 
+    public boolean assignedCC=true;//if false,the army from country and continents have been added,so method reinforcement will return 0
     public boolean cardCancelTrigger = false;
     public int CardTurn=1;//flag for how many times players change cards
 
@@ -124,17 +125,23 @@ public class Phases extends Observable {
      * @return int  number of all countries devided by 3 plus army from continent
      */
     public int reinforcementArmy(Player player) {
-    	/*
+    	
+    	//System.out.println("CC"+assignedCC);
+    	if(assignedCC==false)return 0;
+    	
+    	assignedCC=false;
+        int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
       	if(player.getUnassigned_armies()>=3) {
     		System.out.println(player.getUnassigned_armies());
     		System.out.println("return 0");
-    		return 0;
+    		return reinforcement;
     	}
-        int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
+
+     
         if (reinforcement < 3) reinforcement = 3;
-        */
-    	int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
-        if (reinforcement < 3 && player.getUnassigned_armies()<3) reinforcement = 3; // do it like this so if you exchange cards you army should be more than 3
+        
+    	//int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
+        //if (reinforcement < 3 && player.getUnassigned_armies()<3) reinforcement = 3; // do it like this so if you exchange cards you army should be more than 3
         return reinforcement;
     }
 
