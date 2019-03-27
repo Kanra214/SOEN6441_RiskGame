@@ -99,10 +99,6 @@ public class CardExchangeView extends JFrame implements Observer{
         cp.setBounds(X,Y,WIDTH,HEIGHT);      
         cp.setBackground(Color.WHITE);
 
-        //Exchange3Same.setBounds(WIDTH-300  ,HEIGHT-500 , 200, 80);
-        //Exchange3Diff.setBounds(WIDTH-300, HEIGHT-400, 200, 80);
-        //Cancel.setBounds(WIDTH-300, HEIGHT-300, 200, 80);
-        //cp.setLayout(new FlowLayout(FlowLayout.RIGHT,10,15));
         cp.add(Exchange3Infantry);
         cp.add(Exchange3Cavalry);
         cp.add(Exchange3Artillery);

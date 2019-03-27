@@ -128,7 +128,6 @@ public class Phases extends Observable {
      */
     public int reinforcementArmy(Player player) {
     	
-    	//System.out.println("CC"+assignedCC);
     	if(assignedCC==false)return 0;
     	
     	assignedCC=false;

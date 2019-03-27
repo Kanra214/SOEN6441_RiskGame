@@ -55,28 +55,17 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
+                //This is used to set the flag back to true, so that next player can get armies in reinforcementArmy; 
                 p.assignedCC=true;
-/*
-                if(!p.getCurrent_player().getCards().checkCardSum()) {
-                    window.showMsg("You can't perform this function, you have more than 5 cards");
-                	//cardexchange.setVisible(true);
-                }else {*/
-                	 //System.out.println(p.getCurrentPhase());
-                     //System.out.println(p.getCurrentTurn());
+
                 	 p.nextPhase();
+                	 //During the first turn,players have no cards,so we dont't call the card view.Just assign armies
                 	 if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
                 		 	p.phaseOneFirstStep();
                 	 }
-            //    }
-                if ((p.getCurrentPhase() == 1) && (p.getCurrentTurn() >= p.getNumOfPlayers() * 2)) {
-                    //cardexchange.setVisible(true);
-                } else {
-                    //cardexchange.setVisible(false);
-                }
             }
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
-
 
                 try {
                     if (p.getCurrentPhase() == 0) {
@@ -95,17 +84,14 @@ public class Controller {
 
                                 p.fortificationsPhase(chosenFrom, chosenTo, num);
 
-
                             }
                             chosenFrom = null;
                             chosenTo = null;
                         }
                     } else {
-//                        //cardexchange.setVisible(false);
 
                         if (chosenFrom == null) {
                             chosenFrom = chosen;
-
 
                         } else {
                             chosenTo = chosen;
@@ -137,16 +123,13 @@ public class Controller {
 
                                     int defendDice = Integer.parseInt(defenderInput);
 
-
                                     if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
                                         if (p.gameOver) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
                                         }
 
-
                                         forceUserInputCorrectlyForDeploymentAfterConquer();
-
 
                                     } else {
                                         window.showMsg("attacker did not win");
@@ -155,12 +138,10 @@ public class Controller {
 
                                 }
 
-
                             }
                             chosenFrom = null;
                             chosenTo = null;
                         }
-
 
                     }
 
