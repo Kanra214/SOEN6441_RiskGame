@@ -400,6 +400,18 @@ public class Controller {
 			p.cardCancelTrigger=true;                
 			p.CardTurn++;
 		}
+    
+    
+    public void doTestcardButtonsAction(int exhcangetype,Phases p1) {
+		p1.getCurrent_player().addPlayerArmyByCard(p1.CardTurn);
+		p1.getCurrent_player().getCards().exchangeCard(exhcangetype);
+
+		p1.phaseOneFirstStep();
+
+		p1.updatePhase();
+		p1.cardCancelTrigger=true;                
+		p1.CardTurn++;
+	}
 
 }
 
