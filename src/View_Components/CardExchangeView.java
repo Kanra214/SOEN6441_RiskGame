@@ -137,8 +137,10 @@ public class CardExchangeView extends JFrame implements Observer{
 			Exchange3Infantry.setEnabled(false);
 			Exchange3Artillery.setEnabled(false);
 			Exchange3Cavalry.setEnabled(false);
-			System.out.println(p.cardCancelTrigger);
-			Cancel.setEnabled(true);
+			if (p.getCurrent_player().getCards().checkCardSum())
+				Cancel.setEnabled(true);
+			else Cancel.setEnabled(false);
+
 			if (!p.cardCancelTrigger){
 				if (p.getCurrent_player().getCards().checkCardType() == 5){
 					Exchange3Diff.setEnabled(true);
