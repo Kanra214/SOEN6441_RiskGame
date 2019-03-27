@@ -124,57 +124,44 @@ public class CardExchangeView extends JFrame implements Observer{
 
 	@Override
     public void update(Observable o, Object arg) {
+
         Phases p = (Phases)o;
         //cp.cardLabels[0].setText("Your current cards: ");
         //cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-		if (p.getCurrentTurn()>=p.getNumOfPlayers()*2) // i am not sure about this one
-			if (p.getCurrentPhase() == 1 ) {
-				if (!cardViewOpenned){ //not to make card view to reopen if it was already open
-					cardViewOpenned = true;
-					setVisible(true);
-				}
-				Exchange3Diff.setEnabled(false);
-				Exchange3Infantry.setEnabled(false);
-				Exchange3Artillery.setEnabled(false);
-				Exchange3Cavalry.setEnabled(false);
-				if (p.getCurrent_player().getCards().checkCardSum()) // check number of cards
-					Cancel.setEnabled(true);
-				else
-					Cancel.setEnabled(false);
-				if (!p.cardCancelTrigger){
-					if (p.getCurrent_player().getCards().checkCardType() == 5){
-						Exchange3Diff.setEnabled(true);
-						Exchange3Infantry.setEnabled(true);
-						Exchange3Artillery.setEnabled(true);
-						Exchange3Cavalry.setEnabled(true);
-					}
-					if (p.getCurrent_player().getCards().checkCardType() == 4){
-						Exchange3Diff.setEnabled(true);
-					}
-					if (p.getCurrent_player().getCards().cardBigger3(0)){
-						Exchange3Infantry.setEnabled(true);
-					}
-					if (p.getCurrent_player().getCards().cardBigger3(1)){
-						Exchange3Artillery.setEnabled(true);
-					}
-					if (p.getCurrent_player().getCards().cardBigger3(2)){
-						Exchange3Cavalry.setEnabled(true);
-					}
-				}
-			} else if (p.getCurrentPhase() == 3) {
-				if (!cardViewOpenned){ //not to make card view to reopen if it was already open
-					cardViewOpenned = true;
-					setVisible(true);
-				}
-				Exchange3Diff.setEnabled(false);
-				Exchange3Infantry.setEnabled(false);
-				Exchange3Artillery.setEnabled(false);
-				Exchange3Cavalry.setEnabled(false);
-				Cancel.setEnabled(false);
-			} else {
-				cardViewOpenned = false;
-				setVisible(false);
+		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2) {
+			if (!cardViewOpenned){
+				cardViewOpenned = true;
+				setVisible(true);
 			}
+			Exchange3Diff.setEnabled(false);
+			Exchange3Infantry.setEnabled(false);
+			Exchange3Artillery.setEnabled(false);
+			Exchange3Cavalry.setEnabled(false);
+			if (!p.cardCancelTrigger){
+				if (p.getCurrent_player().getCards().checkCardType() == 5){
+					Exchange3Diff.setEnabled(true);
+					Exchange3Infantry.setEnabled(true);
+					Exchange3Artillery.setEnabled(true);
+					Exchange3Cavalry.setEnabled(true);
+				}
+				if (p.getCurrent_player().getCards().checkCardType() == 4){
+					Exchange3Diff.setEnabled(true);
+				}
+				if (p.getCurrent_player().getCards().cardBigger3(0)){
+					Exchange3Infantry.setEnabled(true);
+				}
+				if (p.getCurrent_player().getCards().cardBigger3(1)){
+					Exchange3Cavalry.setEnabled(true);
+				}
+				if (p.getCurrent_player().getCards().cardBigger3(2)){
+					Exchange3Artillery.setEnabled(true);
+				}
+			
+			}
+		} else {
+			cardViewOpenned = false;
+			setVisible(false);
+		}
         cp.setContext(p.getCurrent_player());
 
 
