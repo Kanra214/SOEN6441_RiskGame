@@ -65,9 +65,11 @@ public void testAddPlayerOneCard() throws Exception {
 public void testFortificate() throws Exception { 
 //TODO: Test goes here...
     from = player1.getRealms().get(0);
+    STOP:
     for (Country tempCountry : from.getNeighbours() ){
       if (tempCountry.getOwner() == from.getOwner()){
         to = tempCountry;
+        break STOP;
       }
     }
     from.setArmy(3);
