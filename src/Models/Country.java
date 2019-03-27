@@ -133,11 +133,22 @@ public class Country {
         player.realms.add(this);
         p.updateWindow();
     }
+
+    /**
+     * change ownership for contry
+     * @param p1 player1
+     * @param p2 player2
+     */
     protected void swapOwnership(Player p1, Player p2){
         this.setOwner(p2);
         this.deleteOwner(p1);
 
     }
+
+    /**
+     * delete ownership for country
+     * @param p1 player1
+     */
     protected void deleteOwner(Player p1){
         p1.getRealms().remove(this);
         p.updateWindow();
@@ -239,6 +250,10 @@ public class Country {
         return p;
     }
 
+    /**
+     * set army
+     * @param army number of army
+     */
     public void setArmy(int army) {
         this.army = army;
     }

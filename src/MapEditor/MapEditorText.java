@@ -113,7 +113,11 @@ public class MapEditorText extends JFrame{
         JButton btn = new JButton("Submit");
         btn.setFont(new Font(null, Font.PLAIN, 20));
         btn.addActionListener(new ActionListener() {
-            @Override
+			/**
+			 * action performed
+			 * @param e paramter e
+			 */
+			@Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Submit: " + TerrTextField.getText());
                 //Add write file here...save as text

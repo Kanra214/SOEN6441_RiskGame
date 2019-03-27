@@ -244,6 +244,9 @@ public class Controller {
 
         }
 
+        /**
+         * After Conquer Check User Input Correctly For Deployment
+         */
         private void forceUserInputCorrectlyForDeploymentAfterConquer() {
             while (true) {//loops until the player's input is correct, other wise keeps on popping out
                 String input = window.promptPlayer("Attacker wins! How many armies to place in the new country? min: " + p.getCurrent_player().getNumOfDice() + ", max: " + (chosenFrom.getArmy() - 1));
@@ -293,7 +296,6 @@ public class Controller {
 
         /**
          * Check file is correct or not
-         *
          * @return boolean
          */
         public boolean ChooseFile() {
@@ -403,7 +405,11 @@ public class Controller {
             cardexchange.Cancel.addActionListener(lis);
         }
 
-		private void cardButtonsAction(int exhcangetype) {
+    /**
+     * get card button action
+     * @param exhcangetype type of exchange
+     */
+    private void cardButtonsAction(int exhcangetype) {
 			p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
 			p.getCurrent_player().getCards().exchangeCard(exhcangetype);
 

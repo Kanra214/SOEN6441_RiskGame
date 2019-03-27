@@ -127,26 +127,46 @@ public class Player {
 
     }
 
+    /**
+     * show players card
+     * @param cardID ID of card
+     * @return card ID
+     */
     public int showPlayerCards(int cardID) {
         return cards.showCardsNumber(cardID);
 
     }
 
+    /**
+     * show all the card
+     * @return card array
+     */
     public int[] showAllcards() {
         return cards.cardAll();
         
     }
 
+    /**
+     * add player one card
+     */
     public void addPlayerOneCard() {
         cards.addCard();
        // p.updateWindow();
     }
 
+    /**
+     * receive enemy card
+     * @param enemy player enemy
+     */
     public void receiveEnemyCards(Player enemy) {
       //  p.updateWindow();
         cards.addCard(enemy);
     }
 
+    /**
+     * add player army by card
+     * @param cardTurn turn for card change
+     */
     public void addPlayerArmyByCard(int cardTurn) {
         unassigned_armies+=cardTurn*5;
         //p.updateWindow();
@@ -175,9 +195,6 @@ public class Player {
             System.out.println("not a country of current player");
         }
     }
-
-
-
 
     private void incrementMapArmies() {
         mapArmies++;
@@ -267,9 +284,10 @@ public class Player {
     }
 
 
-
-
-
+    /**
+     * dice roll process
+     * @param digits digits of dice
+     */
     protected void rollDice (int digits){
         numOfDice = digits;
 //        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
@@ -281,21 +299,40 @@ public class Player {
         p.updateWindow();
 //        return dice;
     }
+
+    /**
+     * remove dice
+     */
     protected void removeDice(){
 
 
         dice.remove(0);
         p.updateWindow();
     }
+
+    /**
+     * consume dice
+     * @return dice number
+     */
     protected int consumeDice(){
         int usedDice = dice.get(0);
         removeDice();
         return usedDice;
     }
+
+    /**
+     * get number of dice
+     * @return dice number
+     */
     public int getNumOfDice(){
         return numOfDice;
     }
 
+    /**
+     * lose army number
+     * @param country attacker or defender
+     * @throws OutOfArmyException
+     */
     protected void loseArmy(Country country) throws OutOfArmyException {
         mapArmies--;
 
