@@ -137,6 +137,8 @@ public class CardExchangeView extends JFrame implements Observer{
 			Exchange3Infantry.setEnabled(false);
 			Exchange3Artillery.setEnabled(false);
 			Exchange3Cavalry.setEnabled(false);
+			System.out.println(p.cardCancelTrigger);
+			Cancel.setEnabled(true);
 			if (!p.cardCancelTrigger){
 				if (p.getCurrent_player().getCards().checkCardType() == 5){
 					Exchange3Diff.setEnabled(true);
@@ -156,7 +158,10 @@ public class CardExchangeView extends JFrame implements Observer{
 				if (p.getCurrent_player().getCards().cardBigger3(2)){
 					Exchange3Artillery.setEnabled(true);
 				}
+				//if()
 			
+			}else {
+				Cancel.setEnabled(false);
 			}
 		} else {
 			cardViewOpenned = false;

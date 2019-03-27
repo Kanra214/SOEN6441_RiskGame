@@ -17,7 +17,7 @@ import org.junit.After;
 /** 
 * Player Tester. 
 * 
-* @author <Team36 name> 
+* @author Team36  
 * @since <pre>Mar 26, 2019</pre> 
 * @version 1.0 
 */ 
@@ -124,6 +124,7 @@ try {
 /** 
 * 
 * Method: findPath(Country sourceCountry, Country targetCountry) 
+* @throws Exception throw exception 
 * 
 */ 
 @Test

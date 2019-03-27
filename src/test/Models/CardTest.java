@@ -15,6 +15,14 @@ import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 
+/** 
+* Card Tester. 
+* 
+* @author Team36  
+* @since <pre>Mar 26, 2019</pre> 
+* @version 2.0 
+*/ 
+
 public class CardTest {
 	  Phases p;
 	  Player player1;
