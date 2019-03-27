@@ -283,6 +283,9 @@ public class Phases extends Observable {
 
     }
 
+    /**
+     * update phase
+     */
     public void updatePhase() {
     	updateWindow();
     }
@@ -448,7 +451,14 @@ public class Phases extends Observable {
 
     }
 
-
+    /**
+     * attack all-in mode
+     * @param from country by current player
+     * @param to    current player chosed country
+     * @param attackDice dice for attacker
+     * @param defendDice    dice for defender
+     * @throws OutOfArmyException
+     */
     protected void attackSimulation(Country from, Country to, int attackDice, int defendDice) throws OutOfArmyException {
 
         inBattle(true);
@@ -506,12 +516,19 @@ public class Phases extends Observable {
         nextPhase();
     }
 
+    /**
+     * check winner
+     * @return true for win the game
+     */
     public boolean checkWinner() {//check if current player win the whole game
         return current_player.realms.size() == graph.size();
 
 
     }
 
+    /**
+     * check attack possible or not
+     */
     public void checkAttackingIsPossible() {
         //check if the current player is still possible to continue attacking phase
         //return false if no such possibility
@@ -535,7 +552,11 @@ public class Phases extends Observable {
 
     }
 
-
+    /**
+     * check attack status
+     * @param player current player
+     * @return
+     */
     protected boolean checkAttack(Player player) {
         boolean val = true;
         int count_army = 0;
@@ -597,7 +618,19 @@ public class Phases extends Observable {
 
     }
 
-
+    /**
+     * deployment After Conquer
+     * @param from current country
+     * @param to conquered country
+     * @param num number of army assigned
+     * @return true for assign success
+     * @throws MustBeEqualOrMoreThanNumOfDice
+     * @throws SourceIsTargetException
+     * @throws NoSuchPathException
+     * @throws CountryNotInRealms
+     * @throws OutOfArmyException
+     * @throws MoveAtLeastOneArmyException
+     */
     public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
 
 
@@ -612,6 +645,10 @@ public class Phases extends Observable {
         }
     }
 
+    /**
+     * get whole the countries in the map
+     * @return countries arraylist
+     */
     public ArrayList<Continent> getWorldmap(){
         return worldmap;
     }
@@ -634,19 +671,41 @@ public class Phases extends Observable {
         updateWindow();
     }
 
+    /**
+     * get in battle
+     * @return true for in
+     */
     public boolean getInBattle() {
         return inBattle;
     }
 
+    /**
+     * get rival
+     * @return player rival
+     */
     public Player getRival() {
         return rival;
     }
 
+    /**
+     * get attack possible or not
+     * @return boolean
+     */
     public boolean getAttackingIsPossible() {
         return attackingIsPossible;
     }
+
+    /**
+     * get current turn
+     * @return turn number
+     */
     public int getCurrentTurn(){return currentTurn;
     }
+
+    /**
+     * get number of player in the game
+     * @return number of player
+     */
     public int getNumOfPlayers(){return numOfPlayers;}
     private boolean checkContinentOwner(Continent cont, Player player){
         boolean flag = cont.checkOwnership(player);
@@ -654,6 +713,10 @@ public class Phases extends Observable {
         return flag;
     }
 
+    /**
+     * change current player
+     * @param current_player current player
+     */
     public void setCurrent_player(Player current_player) {
         this.current_player = current_player;
     }

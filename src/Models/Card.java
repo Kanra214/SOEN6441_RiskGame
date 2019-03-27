@@ -59,6 +59,10 @@ public class Card {
 		p.updateWindow();
 	}
 
+	/**
+	 * for player adding card
+	 * @param enemy player
+	 */
 	protected void addCard(Player enemy) {
 		for(int i=0;i<3;i++) {
 			cardNumber[i]+=enemy.getCards().cardNumber[i];
@@ -128,7 +132,6 @@ public class Card {
 	 * @param cardID the ID of the card
 	 * @return true for bigger or equal,false for less
 	 */
-	
 	public boolean cardBigger3(int cardID) {
 		if(cardNumber[cardID]>=3) {return true;}
 		else return false;
@@ -140,7 +143,6 @@ public class Card {
 	 * @return true for successful exchange,false for not change
 	 * 
 	 */
-	//By calling this method card number will decrease 
 	public boolean exchangeCard(int exchangeType) {
 		//0 for 3 card of different types,1 for 3 cards of the same type 
 		if(checkCardType()==-1 ) {
