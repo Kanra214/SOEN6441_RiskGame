@@ -336,6 +336,10 @@ public class Phases extends Observable {
 
     /**
      * Attack phase
+     * @param from the source country
+     * @param to the target country
+     * @return true for attack success
+     * @throws AttackingCountryOwner
      */
     public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 

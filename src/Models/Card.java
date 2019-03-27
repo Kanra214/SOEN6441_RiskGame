@@ -19,11 +19,12 @@ public class Card {
 
 	/**
 	 * Constructor
+	 * @param p the Phase
  	 */
 	public Card(Phases p) {
 		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
-		cardNumber = new int[]{3,3,1};
+		cardNumber = new int[]{0,0,0};
 		this.p = p;
 
 
@@ -40,6 +41,7 @@ public class Card {
 
 	/**
 	 * Get the number of certain card
+	 * @param cardID ID of the card
 	 * @return number of card 
 	 */
 	public int showCardsNumber(int cardID) {
@@ -123,6 +125,7 @@ public class Card {
 	
 	/**
 	 * Check if the number of certain card is bigger or equal than 3 
+	 * @param cardID the ID of the card
 	 * @return true for bigger or equal,false for less
 	 */
 	
@@ -133,7 +136,9 @@ public class Card {
 
 	/**
 	 * This method  will decrease card number according to the change mode
+	 * @param exchangeType the type of exchange
 	 * @return true for successful exchange,false for not change
+	 * 
 	 */
 	//By calling this method card number will decrease 
 	public boolean exchangeCard(int exchangeType) {
@@ -168,6 +173,8 @@ public class Card {
 
 	/**
 	 * This method  will return the name of this card
+	 * 
+	 * @param cardID the ID of the card
 	 * @return cardName the name of this card
 	 */
 	public String showCardsName(int cardID) {
@@ -186,7 +193,7 @@ public class Card {
 	
 	/**
 	 * This method is used for junit test
-	 * 
+	 * @param cardIni initialize the card nubner
 	 */
 	public void iniCardForTest(int[] cardIni) {
 		if(cardIni.length==3) {

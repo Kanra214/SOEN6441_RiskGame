@@ -17,7 +17,7 @@ import org.junit.After;
 /** 
 * Player Tester. 
 * 
-* @author <Authors name> 
+* @author <Team36 name> 
 * @since <pre>Mar 26, 2019</pre> 
 * @version 1.0 
 */ 

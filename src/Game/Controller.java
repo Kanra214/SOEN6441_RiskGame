@@ -357,17 +357,7 @@ public class Controller {
         }
 
         
-        /**
-         * This method is the refactoring method,used for consolidating duplicate conditional fragments
-         * in 
-         *
-         * @throws IOException map loading exception
-         */
-        
-        public void cardButtonAction() {
-        	//TODO
-        	
-        }
+
         
         
         
