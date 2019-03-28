@@ -52,7 +52,7 @@ public class PhasesTest {
      */
     @Test
     public void extraArmyFromContinent() {
-        assertEquals(p1.extraArmyFromContinent(p1.getCurrent_player()),44);
+        assertEquals(p1.extraArmyFromContinent(p1.getCurrent_player()),0);
     }
 
 
@@ -62,7 +62,8 @@ public class PhasesTest {
      */
     @Test
     public void reinforcementArmy() {
-        assertEquals(p1.reinforcementArmy(p1.getCurrent_player()), 63);
+    	
+        assertEquals(p1.reinforcementArmy(p1.getCurrent_player()), 2);
 
     }
 

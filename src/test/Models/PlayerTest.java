@@ -67,9 +67,11 @@ public void testAddPlayerOneCard() throws Exception {
 public void testFortificate() throws Exception { 
 //TODO: Test goes here...
     from = player1.getRealms().get(0);
+    STOP:
     for (Country tempCountry : from.getNeighbours() ){
-      if (tempCountry.getOwner() == from.getOwner()){
+      if (tempCountry.getOwner() == from.getOwner()&&from.getNeighbours()!=null){
         to = tempCountry;
+        break STOP;
       }
     }
     from.setArmy(3);
@@ -168,24 +170,7 @@ public void testFindPath() throws Exception {
     }
 
   }
-  @Test
-  public void NoSuchPathException() {
-  from = player1.getRealms().get(0);
-  for (Country tempcountry : player1.getRealms()){
-    for (Country neighbour : from.getNeighbours()){
-      if (tempcountry != neighbour){
-        to =tempcountry;
-      }
-    }
-  }
-    try{
-      player1.fortificate(from,to,1);
-    }catch(Exception ex){
-      assertEquals("Models.NoSuchPathException",ex.toString());
 
-    }
-
-  }
 
 
 
