@@ -48,6 +48,7 @@ public void after() throws Exception {
 /** 
 * 
 * Method: addPlayerOneCard() 
+* @throws Exception throw exception
 * 
 */ 
 @Test
@@ -59,6 +60,7 @@ public void testAddPlayerOneCard() throws Exception {
 /** 
 * 
 * Method: fortificate(Country from, Country to, int num) 
+* @throws Exception throw exception
 * 
 */ 
 @Test
@@ -84,6 +86,7 @@ public void testFortificate() throws Exception {
 /** 
 * 
 * Method: incrementMapArmies() 
+* @throws Exception throw exception
 * 
 */ 
 @Test
@@ -104,6 +107,7 @@ try {
 /** 
 * 
 * Method: setUnassigned_armies(int unassigned_armies) 
+* @throws Exception throw exception
 * 
 */ 
 @Test

@@ -49,6 +49,11 @@ public class CardTest {
 	  System.out.println("Inside after");
 	}
 
+	/**
+	*
+	* Test ExchangeDiffCard
+	* @throws Exception throw exception
+	*/
 	@Test
 	public void testExchangeDiffCard() throws Exception{
 		
@@ -56,6 +61,11 @@ public class CardTest {
 		
 	}
 
+	/**
+	*
+	* Test ExchangeSameCard
+	* @throws Exception throw exception
+	*/
 	@Test
 	public void testExchangeSameCard() throws Exception{
 		
@@ -63,6 +73,11 @@ public class CardTest {
 		
 	}
 	
+	/**
+	*
+	* Test checkCardType
+	* @throws Exception throw exception
+	*/
 	@Test
 	public void testheckCardsType() throws Exception{
 		

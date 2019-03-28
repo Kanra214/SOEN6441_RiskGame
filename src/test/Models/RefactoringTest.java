@@ -68,12 +68,7 @@ public class RefactoringTest {
 	    
 	    /**
 	     *
-	     * method: Test the functions of button actions
-	     * @throws TargetCountryNotAdjacent 
-	     * @throws AttackCountryArmyMoreThanOne 
-	     * @throws WrongDiceNumber 
-	     * @throws AttackedCountryOwner 
-	     * @throws AttackingCountryOwner 
+	     * method: Test the functions of reinforcementPhase in Player
 	     */
 	    @Test
 	    public void testPlayer_reinforcementPhase() {	    	
@@ -83,6 +78,10 @@ public class RefactoringTest {
 	        assertEquals(from.getArmy(),2);
 	    }
 	
+	    /**
+	     *
+	     * method: Test the functions of attackPhase in Player
+	     */
 	    @Test
 	    public void testPlayer_attackPhase() {	    	
 
@@ -95,6 +94,10 @@ public class RefactoringTest {
      
 	    }
 	    
+	    /**
+	     *
+	     * method: Test the functions of fortificationsPhase in Player
+	     */
 	    @Test
 	    public void testPlayer_fortificate() {	    	
 

@@ -401,7 +401,11 @@ public class Controller {
 			p.CardTurn++;
 		}
     
-    
+    /**
+     * public method for test:get card button action
+     * @param exhcangetype type of exchange
+     * @param p1 phase
+     */
     public void doTestcardButtonsAction(int exhcangetype,Phases p1) {
 		p1.getCurrent_player().addPlayerArmyByCard(p1.CardTurn);
 		p1.getCurrent_player().getCards().exchangeCard(exhcangetype);

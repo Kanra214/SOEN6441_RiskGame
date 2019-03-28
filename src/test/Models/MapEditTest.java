@@ -30,6 +30,7 @@ public void after() throws Exception {
 /** 
 * 
 * Method: loadMapFile(String mapFileName) 
+* @throws Exception throw exception
 * 
 */ 
 @Test
@@ -49,6 +50,7 @@ public void testLoadMapFile() throws Exception {
 /** 
 * 
 * Method: findCountry(String countryName) 
+* @throws Exception throw exception
 * 
 */ 
 @Test
@@ -76,7 +78,7 @@ public void testFindContinent() throws Exception {
 /** 
 * 
 * Method: addCountry(String countryName, String continentName, int coordinateX, int coordinateY) 
-* 
+* @throws Exception throw exception
 */ 
 @Test
 public void testAddCountry() throws Exception {
@@ -92,6 +94,7 @@ public void testAddCountry() throws Exception {
 /** 
 * 
 * Method: addContinent(String continentName, int controlNum) 
+* @throws Exception throw exception
 * 
 */ 
 @Test
@@ -126,6 +129,7 @@ public void testAddConnection() throws Exception {
 /** 
 * 
 * Method: checkValid() 
+* @throws Exception throw exception
 * 
 */ 
 @Test

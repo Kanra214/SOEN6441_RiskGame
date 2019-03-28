@@ -63,7 +63,7 @@ public class Phases extends Observable {
             case 3:
                 return 35;
             case 2:
-                return 10;//TODO 45
+                return 45;//TODO 45
             default:
                 return 100;
         }
@@ -455,6 +455,8 @@ public class Phases extends Observable {
      * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
      * @throws AttackingCountryOwner        the owner of attacking country must be current player
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
+     * @throws WrongDiceNumber the wrong dice number
+     * @throws TargetCountryNotAdjacent the Target Country Not Adjacent
      */
     public boolean attackValidation(Country sourceCountry, Country targetCountry, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
         if (sourceCountry.getArmy() >= 2) {
@@ -494,12 +496,12 @@ public class Phases extends Observable {
      * @param to conquered country
      * @param num number of army assigned
      * @return true for assign success
-     * @throws MustBeEqualOrMoreThanNumOfDice
-     * @throws SourceIsTargetException
-     * @throws NoSuchPathException
-     * @throws CountryNotInRealms
-     * @throws OutOfArmyException
-     * @throws MoveAtLeastOneArmyException
+     * @throws MustBeEqualOrMoreThanNumOfDice throw exception
+     * @throws SourceIsTargetException throw exception
+     * @throws NoSuchPathException throw exception
+     * @throws CountryNotInRealms throw exception
+     * @throws OutOfArmyException throw exception
+     * @throws MoveAtLeastOneArmyException throw exception
      */
     public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
 
