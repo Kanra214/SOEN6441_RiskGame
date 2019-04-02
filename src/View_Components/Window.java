@@ -150,57 +150,59 @@ public class Window extends JFrame implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-
-        Phases p = (Phases)o;
-        //mapPanel is not a part of observer pattern
-        //update phasePanel
-        phasePanel.setContext(p);
-        sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
-        if(p.getCurrentPhase() == 2){
-            if(arg instanceof Player) {
-                Player player = (Player)arg;
-                String msg = "<html><body>" +
-                        "<h1>Attacker: </h1>" +
-                        "<h3>" + "Dice:" +"</h3>" +
-                        "<p>" + diceToString(p.getCurrent_player().getDice()) +"</p>" +
-                        "<br>" +
-                        "<h1>Defender: </h1>" +
-                        "<h3>" + "Dice:" +"</h3>" +
-                        "<p>" + diceToString( p.getRival().getDice()) +"</p>" +
-                        "<br>" +
-                        "<h1>" + "Result:" +"</h1>" +
-                        "<br>";
-
-                if(player.getId() == p.getCurrent_player().getId()){
-                    msg += "<h3>" + "Attacker loses one army" +"</h3>";
-                }
-                else{
-                    msg += "<h3>" + "Defender loses one army" +"</h3>";
-
-                }
-                msg += "<br>" + "</body><html>";
-
-                showMsg(msg);
-
-            }
-
-            if(!p.getAttackingIsPossible()){
-                showMsg("No attacking can be made. Moving onto the next phase...");
-            }
-
-
-
+        if (arg instanceof String) {
+            String CName = (String) arg;
+            showMsg("This card will add to " + CName);
         }
-        else if(p.getCurrentPhase() == 1) {
-            if (arg instanceof String) {
-                String CName = (String) arg;
-                showMsg("This card will add to " + CName);
-            }
-            if(arg instanceof Card){//receive enemy card
-                Card cards = (Card)arg;
-                showMsg("You received these cards from conquering: " + cardsToString(cards));
-            }
+        else if(arg instanceof Card){//receive enemy card
+            Card cards = (Card)arg;
+            showMsg("You received these cards from conquering: " + cardsToString(cards));
         }
+
+
+            Phases p = (Phases) o;
+            //mapPanel is not a part of observer pattern
+            //update phasePanel
+
+            phasePanel.setContext(p);
+            sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
+            if (p.getCurrentPhase() == 2) {
+                if (arg instanceof Player) {
+                    Player player = (Player) arg;
+                    String msg = "<html><body>" +
+                            "<h1>Attacker: </h1>" +
+                            "<h3>" + "Dice:" + "</h3>" +
+                            "<p>" + diceToString(p.getCurrent_player().getDice()) + "</p>" +
+                            "<br>" +
+                            "<h1>Defender: </h1>" +
+                            "<h3>" + "Dice:" + "</h3>" +
+                            "<p>" + diceToString(p.getRival().getDice()) + "</p>" +
+                            "<br>" +
+                            "<h1>" + "Result:" + "</h1>" +
+                            "<br>";
+
+                    if (player.getId() == p.getCurrent_player().getId()) {
+                        msg += "<h3>" + "Attacker loses one army" + "</h3>";
+                    } else {
+                        msg += "<h3>" + "Defender loses one army" + "</h3>";
+
+                    }
+                    msg += "<br>" + "</body><html>";
+
+                    showMsg(msg);
+
+                }
+
+                if (!p.getAttackingIsPossible()) {
+                    showMsg("No attacking can be made. Moving onto the next phase...");
+                }
+
+
+            }
+
+
+
+
 
 
 

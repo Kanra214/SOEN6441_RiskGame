@@ -19,15 +19,10 @@ public class Phases extends Observable {
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
-    private boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
+    protected boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
     public boolean gameOver = false;
     public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
-
-//    public boolean cardCancelTrigger = false;
-//    public int CardTurn=1;//flag for how many times players change cards
-
-
 
     /**
      * Constructor
@@ -124,12 +119,14 @@ public class Phases extends Observable {
      * @return int  number of all countries devided by 3 plus army from continent
      */
     public int reinforcementArmy(Player player) {
-    	int reinforcement = player.realms.size() / 3 + extraArmyFromContinent(player);
+        int fromContinent = extraArmyFromContinent(player);
+    	int reinforcement = player.realms.size() / 3 + fromContinent;
     	if(player.getUnassigned_armies()+reinforcement < 3) {
     		System.out.println(player.getUnassigned_armies());
-    		System.out.println("return 0");
     		reinforcement = 3;
     	}
+    	System.out.println("from card: " + current_player.getUnassigned_armies());
+    	System.out.println("reinforcement: " + reinforcement + "(continent value = " + fromContinent + ")");
 
         return reinforcement;
     }
@@ -208,7 +205,6 @@ public class Phases extends Observable {
                 nextTurn();
                 break;
             case 1:
-//                cardView.setVisible(false);
                 currentPhase = 2;
                 checkAttackingIsPossible();//every beggining of phase two needs to be checked
 
@@ -216,7 +212,6 @@ public class Phases extends Observable {
             case 2:
 
                 currentPhase = 3;
-//                cardView.setVisible(true);
 
                 break;
             case 3:
@@ -224,8 +219,8 @@ public class Phases extends Observable {
                     nextPhase();
                 }
                 else {
-                    currentPhase = 1;
                     nextTurn();
+                    currentPhase = 1;
                 }
                 break;
         }
@@ -263,9 +258,6 @@ public class Phases extends Observable {
 
     }
 
-    public void updatePhase() {
-    	updateWindow();
-    }
 
     /**
      * Notifies connected observers
@@ -380,40 +372,8 @@ public class Phases extends Observable {
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
     public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-//        current_player.attack(from, to, attackDice, defendDice);
-//        if(current_player.attackValidation(from, to, num)) {
-//            attackSimulation(from, to, num);
-//        }
+        return current_player.attack(from, to, attackDice, defendDice);
 
-
-        try {
-            if (attackValidation(from, to, attackDice, defendDice)) {
-
-                attackSimulation(from, to, attackDice, defendDice);
-
-            }
-        } catch (OutOfArmyException e) {
-            to.swapOwnership(rival, current_player);
-
-
-            if (checkWinner()) {//this attacker conquered all the countries
-                gameOver = true;
-
-            }
-            at_least_once = true;
-            checkContinentOwner(to.getCont(),current_player);//check if this player gets control of the continent
-            if(rival.getRealms().size() == 0){
-                current_player.receiveEnemyCards(rival);
-            }
-
-            return true;
-
-
-        }
-        checkAttackingIsPossible();
-        at_least_once = false;
-
-        return false;
 
 
     }
@@ -505,23 +465,6 @@ public class Phases extends Observable {
 
     }
 
-
-    protected boolean checkAttack(Player player) {
-        boolean val = true;
-        int count_army = 0;
-        int count_owner = 0;
-        for (Country country : player.getRealms()) {
-            if (country.getArmy() == 1) {
-                count_army++;
-            }
-            for (Country nei : country.getNeighbours()) {
-                if (nei.getOwner() != player) {
-                    count_owner++;
-                }
-            }
-        }
-        return val;
-    }
 
     /**
      * For checking validation in attack phase
@@ -618,7 +561,7 @@ public class Phases extends Observable {
     public int getCurrentTurn(){return currentTurn;
     }
     public int getNumOfPlayers(){return numOfPlayers;}
-    private boolean checkContinentOwner(Continent cont, Player player){
+    protected boolean checkContinentOwner(Continent cont, Player player){
         boolean flag = cont.checkOwnership(player);
         updateWindow();
         return flag;

@@ -83,7 +83,7 @@ public class CardExchangeView extends JFrame implements Observer{
 		Exchange3Artillery.setEnabled(false);
 		Exchange3Cavalry.setEnabled(false);
 		Exchange3Diff.setEnabled(false);
-		Cancel.setEnabled(true);
+		Cancel.setEnabled(false);
         
         GridBagLayout layout = new GridBagLayout();
         cp.setLayout(layout);
@@ -138,20 +138,37 @@ public class CardExchangeView extends JFrame implements Observer{
 			setVisible(true);
 
 
+
 			if (p.getCurrent_player().getCards().cardBigger3(0)) {
 				Exchange3Infantry.setEnabled(true);
+			}
+			else{
+				Exchange3Infantry.setEnabled(false);
 			}
 			if (p.getCurrent_player().getCards().cardBigger3(1)) {
 
 				Exchange3Artillery.setEnabled(true);
 			}
+			else{
+				Exchange3Artillery.setEnabled(false);
+			}
 			if (p.getCurrent_player().getCards().cardBigger3(2)) {
 				Exchange3Cavalry.setEnabled(true);
 			}
+			else{
+				Exchange3Cavalry.setEnabled(false);
+			}
+
 			if (p.getCurrent_player().getCards().checkThreeDiffCards()) {
 				Exchange3Diff.setEnabled(true);
 			}
-			if (!p.getCurrent_player().getCards().checkCardSum()) {
+			else{
+				Exchange3Diff.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().checkCardSum()) {
+				Cancel.setEnabled(true);
+			}
+			else{
 				Cancel.setEnabled(false);
 			}
 			cp.setContext(p.getCurrent_player());
