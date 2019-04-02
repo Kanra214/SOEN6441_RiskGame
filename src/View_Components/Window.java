@@ -55,6 +55,7 @@ public class Window extends JFrame implements Observer {
     public MapPanel mapPanel;
     public PhasePanel phasePanel;
     private SidePanel sidePanel;
+    public CardExchangeView cardExchangeView;
 
 
     /**
@@ -81,6 +82,9 @@ public class Window extends JFrame implements Observer {
         });
         setResizable(false);
 
+        //card exchange view settings
+        cardExchangeView = new CardExchangeView();
+
 
         //main panel settings
         mainPanel = new JPanel();
@@ -95,7 +99,7 @@ public class Window extends JFrame implements Observer {
 
 
         //phase panel settings
-        phasePanel = new PhasePanel();
+        phasePanel = new PhasePanel(cardExchangeView);
 
         phasePanel.setBounds(PHASE_PANEL_X,PHASE_PANEL_Y,PHASE_PANEL_WIDTH,PHASE_PANEL_HEIGHT );
         phasePanel.setBackground(Color.YELLOW);
@@ -107,6 +111,8 @@ public class Window extends JFrame implements Observer {
         sidePanel.setBounds(SIDE_PANEL_X,SIDE_PANEL_Y,SIDE_PANEL_WIDTH,SIDE_PANEL_HEIGHT );
         sidePanel.setBackground(Color.WHITE);
         sidePanel.setLayout(new GridLayout(7,1));
+
+
 
 
 
@@ -143,15 +149,6 @@ public class Window extends JFrame implements Observer {
     public void showMsg(String dialog){
         JOptionPane.showMessageDialog(this, dialog);
     }
-//    public String selectionBox(String question, String[] options){
-//        JDialog.setDefaultLookAndFeelDecorated(true);
-//
-//        String initialSelection = options[0];
-//        String selection = (String) JOptionPane.showInputDialog(null, question,
-//                "", JOptionPane.QUESTION_MESSAGE, null, options, initialSelection);
-////        System.out.println(selection);
-//        return selection;
-//    }
 
 
     /**
@@ -159,57 +156,61 @@ public class Window extends JFrame implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-
-        Phases p = (Phases)o;
-        //mapPanel is not a part of observer pattern
-        //update phasePanel
-        phasePanel.setContext(p);
-        sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
-        if(p.getCurrentPhase() == 2){
-            if(arg instanceof Player) {
-                Player player = (Player)arg;
-                String msg = "<html><body>" +
-                        "<h1>Attacker: </h1>" +
-                        "<h3>" + "Dice:" +"</h3>" +
-                        "<p>" + diceToString(p.getCurrent_player().getDice()) +"</p>" +
-                        "<br>" +
-                        "<h1>Defender: </h1>" +
-                        "<h3>" + "Dice:" +"</h3>" +
-                        "<p>" + diceToString( p.getRival().getDice()) +"</p>" +
-                        "<br>" +
-                        "<h1>" + "Result:" +"</h1>" +
-                        "<br>";
-
-                if(player.getId() == p.getCurrent_player().getId()){
-                    msg += "<h3>" + "Attacker loses one army" +"</h3>";
-                }
-                else{
-                    msg += "<h3>" + "Defender loses one army" +"</h3>";
-
-                }
-                msg += "<br>" + "</body><html>";
-
-                showMsg(msg);
-
-            }
-
-            if(!p.getAttackingIsPossible()){
-                showMsg("No attacking can be made. Moving onto the next phase...");
-            }
-
-
-
+        if (arg instanceof String) {
+            String CName = (String) arg;
+            showMsg("This card will add to " + CName);
         }
-        else if(p.getCurrentPhase() == 1) {
-            if (arg instanceof String) {
-                String CName = (String) arg;
-                showMsg("The card " + CName +" will be added to this player");
-            }
-            if(arg instanceof Card){//receive enemy card
-                Card cards = (Card)arg;
-                showMsg("You received "+ cardsToString(cards)+ " card from conquering");
-            }
+        else if(arg instanceof Card){//receive enemy card
+            Card cards = (Card)arg;
+            showMsg("You received these cards from conquering: " + cardsToString(cards));
         }
+
+
+            Phases p = (Phases) o;
+            //mapPanel is not a part of observer pattern
+            //update phasePanel
+            cardExchangeView.setContext(p);
+            phasePanel.setContext(p);
+            sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
+
+            if (p.getCurrentPhase() == 2) {
+                if (arg instanceof Player) {
+                    Player player = (Player) arg;
+                    String msg = "<html><body>" +
+                            "<h1>Attacker: </h1>" +
+                            "<h3>" + "Dice:" + "</h3>" +
+                            "<p>" + diceToString(p.getCurrent_player().getDice()) + "</p>" +
+                            "<br>" +
+                            "<h1>Defender: </h1>" +
+                            "<h3>" + "Dice:" + "</h3>" +
+                            "<p>" + diceToString(p.getRival().getDice()) + "</p>" +
+                            "<br>" +
+                            "<h1>" + "Result:" + "</h1>" +
+                            "<br>";
+
+                    if (player.getId() == p.getCurrent_player().getId()) {
+                        msg += "<h3>" + "Attacker loses one army" + "</h3>";
+                    } else {
+                        msg += "<h3>" + "Defender loses one army" + "</h3>";
+
+                    }
+                    msg += "<br>" + "</body><html>";
+
+                    showMsg(msg);
+
+                }
+
+                if (!p.getAttackingIsPossible()) {
+                    showMsg("No attacking can be made. Moving onto the next phase...");
+                }
+
+
+            }
+
+
+
+
+
 
 
 
@@ -239,7 +240,7 @@ public class Window extends JFrame implements Observer {
 
         for(int i = 0; i < 3; i++){
 
-            s += cards.showCardsName(i) + ": " + cards.showCardsNumber(i) + "/n";
+            s += cards.showCardsName(i) + ": " + cards.showCardsNumber(i) + "; ";
 
 
         }

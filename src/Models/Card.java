@@ -9,11 +9,10 @@ public class Card {
 
 
 
-//  	private int playerID;
 	private String[] cardName;
 	private int[] cardNumber;
-	private int cardExchangeNum;// Count the number of exchange card
 	private Phases p;
+	private static int cardTurn = 1;
 
 
 
@@ -22,7 +21,6 @@ public class Card {
 	 * @param p the Phase
  	 */
 	public Card(Phases p) {
-		//int playerID
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
 		cardNumber = new int[]{3,3,1};
 		this.p = p;
@@ -30,13 +28,6 @@ public class Card {
 
 	}
 
-	/**
-	 * Getter
-	 * @return cardExchangeNum
-	 */
-	public int getCardExchangeNum() {
-		return cardExchangeNum;
-	}
 
 
 	/**
@@ -56,7 +47,6 @@ public class Card {
 		System.out.println("This card will add to "+randCID);
 		cardNumber[randCID]++;
 		p.updateWindow(cardName[randCID]);
-		p.updateWindow();
 	}
 
 	/**
@@ -66,9 +56,9 @@ public class Card {
 	protected void addCard(Player enemy) {
 		for(int i=0;i<3;i++) {
 			cardNumber[i]+=enemy.getCards().cardNumber[i];
+			enemy.getCards().cardNumber[i] = 0;
 		}
 		p.updateWindow(enemy.getCards());
-		p.updateWindow();
 
 	}
 	
@@ -98,33 +88,13 @@ public class Card {
 	}
 	
 	
-	/**
-	 * Check the type of all cards 
-	 * @return 4 for 3 card of different types,3 for 3 cards of the same type,5 for both,-1 for other 
-	 */
-	//4 for 3 card of different types,0,1,2 for 3 cards of the same type,5 for both,-1 for other 
-	public int checkCardType() {
-		int[] tempType= {-1,-1};
-		if(cardNumber[0]!=0&&cardNumber[1]!=0&&cardNumber[2]!=0) {
-			tempType[0]=1;
+
+
+	public boolean checkThreeDiffCards(){
+		if(cardNumber[0]!= 0 && cardNumber[1] !=0 && cardNumber[2] != 0){
+			return true;
 		}
-		
-		if(cardNumber[0]>=3||cardNumber[1]>=3||cardNumber[2]>=3) {
-			tempType[1]=1;
-		}
-		
-		
-		if(tempType[0]+tempType[1]==2) {
-			return 5;
-		}else if(tempType[0]==1) {
-			return 4;
-		}
-		else if(tempType[1]==1) {
-			return 3;
-		}
-		
-		return -1;
-		
+		return false;
 	}
 	
 	/**
@@ -133,45 +103,15 @@ public class Card {
 	 * @return true for bigger or equal,false for less
 	 */
 	public boolean cardBigger3(int cardID) {
-		if(cardNumber[cardID]>=3) {return true;}
-		else return false;
-	}
-
-	/**
-	 * This method  will decrease card number according to the change mode
-	 * @param exchangeType the type of exchange
-	 * @return true for successful exchange,false for not change
-	 * 
-	 */
-	public boolean exchangeCard(int exchangeType) {
-		//0 for 3 card of different types,1 for 3 cards of the same type 
-		if(checkCardType()==-1 ) {
-			return false;
-		}
-				
-		if(exchangeType==4) {
-			if(checkCardType()==4||checkCardType()==5) {
-				for(int i=0;i<3;i++) {				
-					cardNumber[i]--;
-					}
-					//cardExchangeNum++;
-				return true;
-			}else return false;
-	
-		}
-		else if(exchangeType==0||exchangeType==1||exchangeType==2){
-			
-		if(cardNumber[exchangeType]>=3) {
-				cardNumber[exchangeType]-=3;
-				
+		if(cardNumber[cardID]>=3) {
 			return true;
 		}
-		}else return false;	
-		
-		return true;
-		
-		
+		else {
+			return false;
+		}
 	}
+
+
 
 	/**
 	 * This method  will return the name of this card
@@ -184,24 +124,27 @@ public class Card {
 		return cardName[cardID];
 	}
 
-	/**
-	 * This method  will return the detail number of cards
-	 * @return cardNumber the array of the cards
-	 */
-	public int[] cardAll() {
-		
-		return cardNumber;
+
+
+
+	protected void exchangeSameCards(int cardId){
+		cardNumber[cardId] -= 3;
+		cardTurn++;
+		System.out.println("card++");
+
+
 	}
-	
-	/**
-	 * This method is used for junit test
-	 * @param cardIni initialize the card nubner
-	 */
-	public void iniCardForTest(int[] cardIni) {
-		if(cardIni.length==3) {
-			cardNumber=cardIni;
+	protected void exchangeDiffCards(){
+		for(int i = 0; i < 3; i ++){
+			cardNumber[i] -= 1;
+
+
 		}
+		cardTurn++;
+		System.out.println("card++");
+
 	}
+	public static int getCardTurn(){return cardTurn;}
 
 	
 	
