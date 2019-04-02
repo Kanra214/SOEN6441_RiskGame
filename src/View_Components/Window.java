@@ -55,6 +55,7 @@ public class Window extends JFrame implements Observer {
     public MapPanel mapPanel;
     public PhasePanel phasePanel;
     private SidePanel sidePanel;
+    public CardExchangeView cardExchangeView;
 
 
     /**
@@ -81,6 +82,9 @@ public class Window extends JFrame implements Observer {
         });
         setResizable(false);
 
+        //card exchange view settings
+        cardExchangeView = new CardExchangeView();
+
 
         //main panel settings
         mainPanel = new JPanel();
@@ -95,7 +99,7 @@ public class Window extends JFrame implements Observer {
 
 
         //phase panel settings
-        phasePanel = new PhasePanel();
+        phasePanel = new PhasePanel(cardExchangeView);
 
         phasePanel.setBounds(PHASE_PANEL_X,PHASE_PANEL_Y,PHASE_PANEL_WIDTH,PHASE_PANEL_HEIGHT );
         phasePanel.setBackground(Color.YELLOW);
@@ -107,6 +111,8 @@ public class Window extends JFrame implements Observer {
         sidePanel.setBounds(SIDE_PANEL_X,SIDE_PANEL_Y,SIDE_PANEL_WIDTH,SIDE_PANEL_HEIGHT );
         sidePanel.setBackground(Color.WHITE);
         sidePanel.setLayout(new GridLayout(7,1));
+
+
 
 
 
@@ -163,9 +169,10 @@ public class Window extends JFrame implements Observer {
             Phases p = (Phases) o;
             //mapPanel is not a part of observer pattern
             //update phasePanel
-
+            cardExchangeView.setContext(p);
             phasePanel.setContext(p);
             sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
+
             if (p.getCurrentPhase() == 2) {
                 if (arg instanceof Player) {
                     Player player = (Player) arg;
@@ -232,7 +239,7 @@ public class Window extends JFrame implements Observer {
 
         for(int i = 0; i < 3; i++){
 
-            s += cards.showCardsName(i) + ": " + cards.showCardsNumber(i) + "/n";
+            s += cards.showCardsName(i) + ": " + cards.showCardsNumber(i) + "; ";
 
 
         }

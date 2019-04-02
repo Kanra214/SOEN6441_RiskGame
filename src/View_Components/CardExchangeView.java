@@ -26,16 +26,16 @@ import Models.Player;
  * This class is used as the Card Exchange View window to show the cards to Players
  */
 
-public class CardExchangeView extends JFrame implements Observer{
+public class CardExchangeView extends JFrame{
 	
-	public static void main(String[] args) {
-		   
-			
-		CardExchangeView cardexchange = new CardExchangeView();
-		cardexchange.setVisible(true);
-		cardexchange.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		}
-	
+//	public static void main(String[] args) {
+//
+//
+//		CardExchangeView cardexchange = new CardExchangeView();
+//		cardexchange.setVisible(true);
+//		cardexchange.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//		}
+//
 	
     private final static int X = 0;
     private final static int Y = 0;
@@ -48,7 +48,8 @@ public class CardExchangeView extends JFrame implements Observer{
 	private JPanel mainPanel;
 	public JButton Exchange3Infantry,Exchange3Cavalry,Exchange3Artillery,Exchange3Diff,Cancel;
 
-	public boolean cardViewOpenned = false;
+	public boolean cardViewOpening = false;
+	public boolean cardViewShown = false;
 
 
 
@@ -123,18 +124,14 @@ public class CardExchangeView extends JFrame implements Observer{
   
 	}
 	
-    /**
-     * Update this window
-     */
 
-	@Override
-    public void update(Observable o, Object arg) {
+    public void setContext(Phases p) {
 
-        Phases p = (Phases)o;
         //cp.cardLabels[0].setText("Your current cards: ");
         //cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2 && (!cardViewOpenned)) {
-			cardViewOpenned = true;
+		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2 && (!cardViewOpening) && (!cardViewShown)) {
+			cardViewOpening = true;
+			cardViewShown = true;
 			setVisible(true);
 
 
@@ -177,7 +174,7 @@ public class CardExchangeView extends JFrame implements Observer{
 
 		}
 		else if(p.getCurrentPhase() != 1){
-			cardViewOpenned = false;
+			cardViewShown = false;
 
 		}
 

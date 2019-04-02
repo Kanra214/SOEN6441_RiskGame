@@ -26,7 +26,6 @@ public class Controller {
     MapEditorGUI mapeditor;
 
     String filename;
-    CardExchangeView cardexchange;
 
 
 
@@ -35,7 +34,6 @@ public class Controller {
      */
     public Controller() {
         this.window = new Window();
-        cardexchange = new CardExchangeView();
 
     }
 
@@ -170,31 +168,37 @@ public class Controller {
 
             }
 
-            if (e.getSource() == cardexchange.Exchange3Infantry) {
+            if (e.getSource() == window.cardExchangeView.Exchange3Infantry) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyBySameCards(0);
                 p.phaseOneFirstStep();
-                cardexchange.setVisible(false);
+
             }
-            if (e.getSource() == cardexchange.Exchange3Cavalry) {
+            if (e.getSource() == window.cardExchangeView.Exchange3Cavalry) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyBySameCards(1);
                 p.phaseOneFirstStep();
-                cardexchange.setVisible(false);
             }
-            if (e.getSource() == cardexchange.Exchange3Artillery) {
+            if (e.getSource() == window.cardExchangeView.Exchange3Artillery) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyBySameCards(2);
                 p.phaseOneFirstStep();
-                cardexchange.setVisible(false);
             }
 
-            if (e.getSource() == cardexchange.Exchange3Diff) {
+            if (e.getSource() == window.cardExchangeView.Exchange3Diff) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyByDiffCards();
                 p.phaseOneFirstStep();
 
-                cardexchange.setVisible(false);
             }
-            if (e.getSource() == cardexchange.Cancel) {
+            if (e.getSource() == window.cardExchangeView.Cancel) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
                 p.phaseOneFirstStep();
-                cardexchange.setVisible(false);
             }
 
 
@@ -338,7 +342,6 @@ public class Controller {
             }
             p = new Phases(tempMap.get(0), tempMap.get(1));
             p.addObserver(window);
-            p.addObserver(cardexchange);
             Listener lis = new Listener();
             p.gameSetUp(numOfPlayers);
 
@@ -350,11 +353,11 @@ public class Controller {
             window.phasePanel.completePhaseButton.addActionListener(lis);
             p.connectView(); //after this updating window is enabled
             window.setVisible(true);
-            cardexchange.Exchange3Infantry.addActionListener(lis);
-            cardexchange.Exchange3Artillery.addActionListener(lis);
-            cardexchange.Exchange3Cavalry.addActionListener(lis);
-            cardexchange.Exchange3Diff.addActionListener(lis);
-            cardexchange.Cancel.addActionListener(lis);
+            window.cardExchangeView.Exchange3Infantry.addActionListener(lis);
+            window.cardExchangeView.Exchange3Artillery.addActionListener(lis);
+            window.cardExchangeView.Exchange3Cavalry.addActionListener(lis);
+            window.cardExchangeView.Exchange3Diff.addActionListener(lis);
+            window.cardExchangeView.Cancel.addActionListener(lis);
         }
 
 

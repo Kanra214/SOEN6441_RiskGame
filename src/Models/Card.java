@@ -50,6 +50,7 @@ public class Card {
 	protected void addCard(Player enemy) {
 		for(int i=0;i<3;i++) {
 			cardNumber[i]+=enemy.getCards().cardNumber[i];
+			enemy.getCards().cardNumber[i] = 0;
 		}
 		p.updateWindow(enemy.getCards());
 

@@ -29,7 +29,7 @@ public class PhasesTest {
     @Before
     public void before() {
         ArrayList<ArrayList> tempMap1 = new MapLoader().loadMap("DemoMap-SmallSize.map");
-        CardExchangeView cardExchangeView = new CardExchangeView();
+//        CardExchangeView cardExchangeView = new CardExchangeView();
         System.out.println("Inside before");
         p1 = new Phases(tempMap1.get(0), tempMap1.get(1));
         p2 = new Phases(tempMap1.get(0), tempMap1.get(1));
