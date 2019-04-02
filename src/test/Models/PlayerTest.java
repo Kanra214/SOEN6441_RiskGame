@@ -85,47 +85,7 @@ public void testFortificate() throws Exception {
 
 
 
-/** 
-* 
-* Method: incrementMapArmies() 
-* @throws Exception throw exception
-* 
-*/ 
-@Test
-public void testIncrementMapArmies() throws Exception { 
-//TODO: Test goes here... 
-/* 
-try { 
-   Method method = Player.getClass().getMethod("incrementMapArmies"); 
-   method.setAccessible(true); 
-   method.invoke(<Object>, <Parameters>); 
-} catch(NoSuchMethodException e) { 
-} catch(IllegalAccessException e) { 
-} catch(InvocationTargetException e) { 
-} 
-*/ 
-} 
 
-/** 
-* 
-* Method: setUnassigned_armies(int unassigned_armies) 
-* @throws Exception throw exception
-* 
-*/ 
-@Test
-public void testSetUnassigned_armies() throws Exception { 
-//TODO: Test goes here... 
-/* 
-try { 
-   Method method = Player.getClass().getMethod("setUnassigned_armies", int.class); 
-   method.setAccessible(true); 
-   method.invoke(<Object>, <Parameters>); 
-} catch(NoSuchMethodException e) { 
-} catch(IllegalAccessException e) { 
-} catch(InvocationTargetException e) { 
-} 
-*/ 
-} 
 
 /** 
 * 

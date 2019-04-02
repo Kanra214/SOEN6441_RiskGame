@@ -236,7 +236,7 @@ public class Controller {
                     try {
                         int numDeploy = Integer.parseInt(input);
                         if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
-//                            p.nextPhase();
+
                             break;
                         }
                     } catch (RiskGameException ex) {

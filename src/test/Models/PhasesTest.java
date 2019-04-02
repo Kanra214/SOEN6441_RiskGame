@@ -67,19 +67,7 @@ public class PhasesTest {
 
     }
 
-//<<<<<<< HEAD
-//    @Test
-//    public void checkVictory(){
-//        p.gameSetUp(1);
-//        assertTrue(p.(p.getCurrent_player()));
-//    }
-//=======
-////    @Test
-////    public void checkVictory(){
-////        p.gameSetUp(1);
-////        assertEquals(p.isOwnerOfAllCountries(p.getCurrent_player()), true);
-////    }
-//>>>>>>> Xiyun
+
 
     /**
      *
