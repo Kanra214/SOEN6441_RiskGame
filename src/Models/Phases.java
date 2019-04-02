@@ -256,7 +256,7 @@ public class Phases extends Observable {
             Player player = players.get(turn);
             country.setOwner(player);
             try {
-                player.deployArmy(country);
+                player.reinforce(country);
             } catch (OutOfArmyException e) {
                 System.out.println("Not possible");
             }
@@ -305,11 +305,28 @@ public class Phases extends Observable {
      */
     public void startUpPhase(Country chosen) {
         try {
-            current_player.deployArmy(chosen);
+            current_player.reinforce(chosen);
         } catch (RiskGameException e) {
             System.out.println("out of army in start phase");
 
         }
+    }
+
+    /**
+     * Sends 1 army from current player to chosen Country during reinforcement phase
+     *
+     * @param chosen Country where to send army to
+     */
+    public void reinforcementPhase(Country chosen) {
+
+
+        try {
+            current_player.reinforce(chosen);
+        } catch (RiskGameException e) {
+            System.out.println("Not possible");
+        }
+
+
     }
 
 
@@ -501,6 +518,22 @@ public class Phases extends Observable {
         }
 
     }
+    /**
+     * Sends army from one country to another
+     *
+     * @param from Country from where army will be deducted
+     * @param to   Country from where army will be sent
+     * @param num  int number of armies to send
+     * @throws CountryNotInRealms          country not owned by the player
+     * @throws OutOfArmyException          not enough army to transfer
+     * @throws NoSuchPathException         no path from owned countries between country
+     * @throws SourceIsTargetException     source country and target country is the same
+     * @throws MoveAtLeastOneArmyException 0 army chosen to move
+     */
+    public void fortificationPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
+        current_player.fortify(from, to, num);
+        nextPhase();
+    }
 
     /**
      * deployment After Conquer
@@ -519,7 +552,7 @@ public class Phases extends Observable {
 
 
         if (num >= current_player.getNumOfDice()) {
-            current_player.fortificate(from, to, num);
+            current_player.fortify(from, to, num);
             checkAttackingIsPossible();
             return true;
         } else {

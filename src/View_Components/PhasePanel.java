@@ -63,7 +63,7 @@ public class PhasePanel extends JPanel {
             completePhaseButton.setEnabled(true);
         }
         //phase 0 and phase 1 when no army, enable button
-        else if((currentPlayer.isArmyLeft()) || cev.cardViewOpening) {
+        else if((currentPlayer.isArmyLeft()) || cev.isVisible()) {
 
 
             completePhaseButton.setEnabled(false);

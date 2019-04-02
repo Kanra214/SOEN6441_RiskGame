@@ -23,6 +23,7 @@ public class Player {
     private int numOfDice;
     protected ArrayList<Integer> dice = new ArrayList<>();
     protected ArrayList<Country> realms;
+//    private Strategy strategy;
 
 
 
@@ -180,7 +181,7 @@ public class Player {
      * Send army to the country
      * @param country to where army will be sent
      */
-    protected void deployArmy(Country country) throws OutOfArmyException {
+    protected void reinforce(Country country) throws OutOfArmyException {
         if(country.getOwner() == this) {
             if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
@@ -272,7 +273,7 @@ public class Player {
      * @throws SourceIsTargetException  source country and target country is the same
      * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
-    public void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
+    public void fortify(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
 
         if(findPath(from, to)){
             from.decreaseArmy(num);
@@ -318,70 +319,8 @@ public class Player {
         country.decrementArmy();
     }
 
-    /**
-     * Sends 1 army from current player to chosen Country during reinforcement phase
-     *
-     * @param chosen Country where to send army to
-     */
-    public void reinforcementPhase(Country chosen) {
 
 
-        try {
-            deployArmy(chosen);
-        } catch (RiskGameException e) {
-            System.out.println("Not possible");
-        }
-
-
-    }
-
-    /**
-     * Attack phase
-     * @param from the source country
-     * @param to the target country
-     * @return true for attack success
-     * @throws AttackingCountryOwner throw exception 
-     * @throws AttackedCountryOwner throw exception 
-     * @throws WrongDiceNumber throw exception 
-     * @throws AttackCountryArmyMoreThanOne throw exception 
-     * @throws TargetCountryNotAdjacent throw exception 
-     *
-     * 
-     */
-    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-
-        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-
-
-        while (true) {
-            try {
-                int attackDice = Math.min(from.getArmy() - 1, 3);
-                int defendDice = Math.min(to.getArmy(), 2);
-
-                if (attackPhase(from, to, attackDice, defendDice)) {
-                    p.at_least_once = true;
-
-
-                    return true;
-                }
-                validated = true;//any exception after this will be caught and break the while
-
-
-            } catch (RiskGameException e) {
-                if (validated) {
-                    p.at_least_once = false;
-                    return false;
-                } else {
-                    throw e;
-                }
-
-            }
-
-
-        }
-
-
-    }
     /**
      * Attack
      *
@@ -481,22 +420,7 @@ public class Player {
 
     }
 
-    /**
-     * Sends army from one country to another
-     *
-     * @param from Country from where army will be deducted
-     * @param to   Country from where army will be sent
-     * @param num  int number of armies to send
-     * @throws CountryNotInRealms          country not owned by the player
-     * @throws OutOfArmyException          not enough army to transfer
-     * @throws NoSuchPathException         no path from owned countries between country
-     * @throws SourceIsTargetException     source country and target country is the same
-     * @throws MoveAtLeastOneArmyException 0 army chosen to move
-     */
-    public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
-        p.current_player.fortificate(from, to, num);
-        p.nextPhase();
-    }
+
 
 
 

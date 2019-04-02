@@ -47,9 +47,8 @@ public class CardExchangeView extends JFrame{
 	private CardPanel cp;
 	private JPanel mainPanel;
 	public JButton Exchange3Infantry,Exchange3Cavalry,Exchange3Artillery,Exchange3Diff,Cancel;
+	public boolean cardOpenned = false;
 
-	public boolean cardViewOpening = false;
-	public boolean cardViewShown = false;
 
 
 
@@ -84,6 +83,7 @@ public class CardExchangeView extends JFrame{
 		Exchange3Cavalry.setEnabled(false);
 		Exchange3Diff.setEnabled(false);
 		Cancel.setEnabled(false);
+
         
         GridBagLayout layout = new GridBagLayout();
         cp.setLayout(layout);
@@ -124,9 +124,8 @@ public class CardExchangeView extends JFrame{
 
         //cp.cardLabels[0].setText("Your current cards: ");
         //cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2 && (!cardViewOpening) && (!cardViewShown)) {
-			cardViewOpening = true;
-			cardViewShown = true;
+		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2 && (!this.isVisible()) && (!cardOpenned)) {
+			cardOpenned = true;
 			setVisible(true);
 
 
@@ -171,7 +170,7 @@ public class CardExchangeView extends JFrame{
 
 		}
 		else if(p.getCurrentPhase() != 1){
-			cardViewShown = false;
+			cardOpenned = false;
 
 		}
 

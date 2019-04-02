@@ -76,7 +76,7 @@ public void testFortificate() throws Exception {
     }
     from.setArmy(3);
     to.setArmy(3);
-    player1.fortificate(from,to,1);
+    player1.fortify(from,to,1);
     assertEquals(2,from.getArmy());
     assertEquals(4,to.getArmy());
 }
