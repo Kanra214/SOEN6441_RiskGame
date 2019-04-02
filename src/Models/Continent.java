@@ -107,4 +107,7 @@ public class Continent {
     	}
     	
     }
+    protected void free(){
+        owner = null;
+    }
 }

@@ -137,14 +137,7 @@ public class Player {
 
     }
 
-    /**
-     * show all the card
-     * @return card array
-     */
-    public int[] showAllcards() {
-        return cards.cardAll();
-        
-    }
+
 
     /**
      * add player one card
@@ -163,14 +156,23 @@ public class Player {
         cards.addCard(enemy);
     }
 
-    /**
-     * add player army by card
-     * @param cardTurn turn for card change
-     */
-    public void addPlayerArmyByCard(int cardTurn) {
-        unassigned_armies+=cardTurn*5;
+
+    public void addPlayerArmyBySameCards(int cardId) {
+        unassigned_armies +=Card.getCardTurn()*5;
+        cards.exchangeSameCards(cardId);
+        System.out.println("card turn " + Card.getCardTurn());
+        p.updateWindow();
+
         //p.updateWindow();
         //System.out.println("update card");
+    }
+
+    public void addPlayerArmyByDiffCards(){
+        unassigned_armies+=Card.getCardTurn()*5;
+        System.out.println("card turn " + Card.getCardTurn());
+
+        cards.exchangeDiffCards();
+        p.updateWindow();
     }
 
 
@@ -275,7 +277,6 @@ public class Player {
         if(findPath(from, to)){
             from.decreaseArmy(num);
             to.increaseArmy(num);
-//            p.nextPhase();
         }
         else{
             throw new NoSuchPathException();
@@ -290,34 +291,12 @@ public class Player {
      */
     protected void rollDice (int digits){
         numOfDice = digits;
-//        ArrayList<Integer> DiceArray = new ArrayList<Integer>();
         for (int i =0; i < digits; i++){
             int Dice = (int)(Math.random()*6)+1;
             dice.add(Dice);
         }
         Collections.sort(dice, Collections.reverseOrder());
         p.updateWindow();
-//        return dice;
-    }
-
-    /**
-     * remove dice
-     */
-    protected void removeDice(){
-
-
-        dice.remove(0);
-        p.updateWindow();
-    }
-
-    /**
-     * consume dice
-     * @return dice number
-     */
-    protected int consumeDice(){
-        int usedDice = dice.get(0);
-        removeDice();
-        return usedDice;
     }
 
     /**
@@ -403,6 +382,54 @@ public class Player {
 
 
     }
+    /**
+     * Attack
+     *
+     * @param from       Country from where army will attacking
+     * @param to         Country from where army will be attacked
+     * @param attackDice int number of dice to roll for attacker
+     * @return true if country is conquered, false otherwise
+     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
+     * @throws AttackingCountryOwner        the owner of attacking country must be current player
+     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
+     */
+    public boolean attack(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+
+        try {
+            if (p.attackValidation(from, to, attackDice, defendDice)) {
+
+                p.attackSimulation(from, to, attackDice, defendDice);
+
+            }
+        } catch (OutOfArmyException e) {
+            to.swapOwnership(p.getRival(), this);
+            if(to.getCont().getOwner() == p.getRival()){
+                to.getCont().free();
+            }
+
+
+            if (p.checkWinner()) {//this attacker conquered all the countries
+                p.gameOver = true;
+
+            }
+            p.at_least_once = true;
+            p.checkContinentOwner(to.getCont(),this);//check if this player gets control of the continent
+            if(p.getRival().getRealms().size() == 0){
+                receiveEnemyCards(p.getRival());
+            }
+
+            return true;
+
+
+        }
+        p.checkAttackingIsPossible();
+        p.at_least_once = false;
+
+        return false;
+
+
+    }
+
 
     /**
      * Attack phase

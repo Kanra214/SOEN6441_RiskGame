@@ -26,7 +26,6 @@ public class Controller {
     MapEditorGUI mapeditor;
 
     String filename;
-    CardExchangeView cardexchange;
 
 
 
@@ -35,7 +34,6 @@ public class Controller {
      */
     public Controller() {
         this.window = new Window();
-        cardexchange = new CardExchangeView();
 
     }
 
@@ -56,14 +54,17 @@ public class Controller {
             if (e.getSource() == window.phasePanel.completePhaseButton) {
                 System.out.println("Complete is called");
                 //This is used to set the flag back to true, so that next player can get armies in reinforcementArmy; 
-                p.assignedCC=true;
 
-                	 p.nextPhase();
-                	 //During the first turn,players have no cards,so we dont't call the card view.Just assign armies
-                	 if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
-                		 	p.phaseOneFirstStep();
-                	 }
+
+                System.out.println(p.getCurrentPhase());
+                System.out.println(p.getCurrentTurn());
+                p.nextPhase();
+                if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
+                    p.phaseOneFirstStep();
+                }
             }
+
+
             if (e.getSource() instanceof CountryButton) {
                 Country chosen = ((CountryButton) e.getSource()).getCountry();
 
@@ -159,68 +160,41 @@ public class Controller {
 
 
             }
-            //TODO: the "update" may need to be fixed
-            //exchange card
-            if (e.getSource() == cardexchange.Exchange3Infantry) {
-                System.out.println("Clicked on exchange");
-                int type = p.getCurrent_player().getCards().checkCardType();
-                if (!p.getCurrent_player().getCards().cardBigger3(0)) {
-                    System.out.println(type);
-                    window.showMsg("You can't perform this function, you don't have 3 the same cards");
-                } else {
 
-                    window.showMsg("Changed 3 Infantry");               	
-                    cardButtonsAction(0);
-                }
-            }
-            if (e.getSource() == cardexchange.Exchange3Cavalry) {
-                System.out.println("Clicked on exchange");
-                int type = p.getCurrent_player().getCards().checkCardType();
-                if (!p.getCurrent_player().getCards().cardBigger3(1)) {
-                    System.out.println(type);
-                    window.showMsg("You can't perform this function, you don't have 3 the same cards");
-                } else {
-             
-                    window.showMsg("Changed 3 Cavalry");                             
-                    cardButtonsAction(1);
-                }
-            }
-            if (e.getSource() == cardexchange.Exchange3Artillery) {
-                System.out.println("Clicked on exchange");
-                int type = p.getCurrent_player().getCards().checkCardType();
-                if (!p.getCurrent_player().getCards().cardBigger3(2)) {
-                    System.out.println(type);
-                    window.showMsg("You can't perform this function, you don't have 3 the same cards");
-                } else {
-                	
-                	 cardButtonsAction(2);
-                     window.showMsg("Changed 3 Artillery");
-
-                }
-            }
-
-            if (e.getSource() == cardexchange.Exchange3Diff) {
-                int type = p.getCurrent_player().getCards().checkCardType();
-                if (type != 4 && type != 5) {
-                    System.out.println(type);
-                    window.showMsg("You can't perform this function, you don't have 3 different cards");
-                } else {
-                	 cardButtonsAction(4);
-                	 window.showMsg("Changed 3 Different Cards");
-                }
-            }
-            if (e.getSource() == cardexchange.Cancel) {
-                if (p.getCurrent_player().getCards().checkCardSum()) {
-                    //TODO: cancel move to the next phase, the player has less than 5
-                	cardexchange.setVisible(false);
-                	cardexchange.cardViewOpenned=false;
-                	p.cardCancelTrigger=true;
-                	p.phaseOneFirstStep();
-                } else{
-                    window.showMsg("You can't perform this function, you have more than 5 cards");
-                }
+            if (e.getSource() == window.cardExchangeView.Exchange3Infantry) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
+                p.getCurrent_player().addPlayerArmyBySameCards(0);
+                p.phaseOneFirstStep();
 
             }
+            if (e.getSource() == window.cardExchangeView.Exchange3Cavalry) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
+                p.getCurrent_player().addPlayerArmyBySameCards(1);
+                p.phaseOneFirstStep();
+            }
+            if (e.getSource() == window.cardExchangeView.Exchange3Artillery) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
+                p.getCurrent_player().addPlayerArmyBySameCards(2);
+                p.phaseOneFirstStep();
+            }
+
+            if (e.getSource() == window.cardExchangeView.Exchange3Diff) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
+                p.getCurrent_player().addPlayerArmyByDiffCards();
+                p.phaseOneFirstStep();
+
+            }
+            if (e.getSource() == window.cardExchangeView.Cancel) {
+                window.cardExchangeView.setVisible(false);
+                window.cardExchangeView.cardViewOpening = false;
+                p.phaseOneFirstStep();
+            }
+
+
 
 
         }
@@ -236,7 +210,6 @@ public class Controller {
                     try {
                         int numDeploy = Integer.parseInt(input);
                         if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
-
                             break;
                         }
                     } catch (RiskGameException ex) {
@@ -340,10 +313,7 @@ public class Controller {
             }
         }
 
-        
 
-        
-        
         
         /**
          * Start game
@@ -367,7 +337,6 @@ public class Controller {
             }
             p = new Phases(tempMap.get(0), tempMap.get(1));
             p.addObserver(window);
-            p.addObserver(cardexchange);
             Listener lis = new Listener();
             p.gameSetUp(numOfPlayers);
 
@@ -379,43 +348,14 @@ public class Controller {
             window.phasePanel.completePhaseButton.addActionListener(lis);
             p.connectView(); //after this updating window is enabled
             window.setVisible(true);
-            cardexchange.Exchange3Infantry.addActionListener(lis);
-            cardexchange.Exchange3Artillery.addActionListener(lis);
-            cardexchange.Exchange3Cavalry.addActionListener(lis);
-            cardexchange.Exchange3Diff.addActionListener(lis);
-            cardexchange.Cancel.addActionListener(lis);
+            window.cardExchangeView.Exchange3Infantry.addActionListener(lis);
+            window.cardExchangeView.Exchange3Artillery.addActionListener(lis);
+            window.cardExchangeView.Exchange3Cavalry.addActionListener(lis);
+            window.cardExchangeView.Exchange3Diff.addActionListener(lis);
+            window.cardExchangeView.Cancel.addActionListener(lis);
         }
 
-    /**
-     * get card button action
-     * @param exhcangetype type of exchange
-     */
-    private void cardButtonsAction(int exhcangetype) {
-			p.getCurrent_player().addPlayerArmyByCard(p.CardTurn);
-			p.getCurrent_player().getCards().exchangeCard(exhcangetype);
 
-			p.phaseOneFirstStep();
-
-			p.updatePhase();
-			p.cardCancelTrigger=true;                
-			p.CardTurn++;
-		}
-    
-    /**
-     * public method for test:get card button action
-     * @param exhcangetype type of exchange
-     * @param p1 phase
-     */
-    public void doTestcardButtonsAction(int exhcangetype,Phases p1) {
-		p1.getCurrent_player().addPlayerArmyByCard(p1.CardTurn);
-		p1.getCurrent_player().getCards().exchangeCard(exhcangetype);
-
-		p1.phaseOneFirstStep();
-
-		p1.updatePhase();
-		p1.cardCancelTrigger=true;                
-		p1.CardTurn++;
-	}
 
 }
 

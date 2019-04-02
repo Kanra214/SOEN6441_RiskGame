@@ -25,19 +25,17 @@ import Models.Player;
  * <h1>CardExchangeView</h1>
  * This class is used as the Card Exchange View window to show the cards to Players
  */
-public class CardExchangeView extends JFrame implements Observer{
-	/**
-	 * main function
-	 * @param args args
-	 */
-	public static void main(String[] args) {
-		   
-			
-		CardExchangeView cardexchange = new CardExchangeView();
-		cardexchange.setVisible(true);
-		cardexchange.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		}
+public class CardExchangeView extends JFrame{
+
 	
+//	public static void main(String[] args) {
+//
+//
+//		CardExchangeView cardexchange = new CardExchangeView();
+//		cardexchange.setVisible(true);
+//		cardexchange.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//		}
+//
 	
     private final static int X = 0;
     private final static int Y = 0;
@@ -50,7 +48,8 @@ public class CardExchangeView extends JFrame implements Observer{
 	private JPanel mainPanel;
 	public JButton Exchange3Infantry,Exchange3Cavalry,Exchange3Artillery,Exchange3Diff,Cancel;
 
-	public boolean cardViewOpenned = false;
+	public boolean cardViewOpening = false;
+	public boolean cardViewShown = false;
 
 
 
@@ -80,6 +79,11 @@ public class CardExchangeView extends JFrame implements Observer{
         Exchange3Artillery=new JButton("Exchange 3 Artillery");
         Exchange3Diff=new JButton("Exchange 3 Different Cards");
         Cancel=new JButton("Not to Exchange");
+		Exchange3Infantry.setEnabled(false);
+		Exchange3Artillery.setEnabled(false);
+		Exchange3Cavalry.setEnabled(false);
+		Exchange3Diff.setEnabled(false);
+		Cancel.setEnabled(false);
         
         GridBagLayout layout = new GridBagLayout();
         cp.setLayout(layout);
@@ -114,59 +118,64 @@ public class CardExchangeView extends JFrame implements Observer{
         add(mainPanel);
   
 	}
-	
-    /**
-     * Update this window
-     */
-	@Override
-    public void update(Observable o, Object arg) {
 
-        Phases p = (Phases)o;
+    public void setContext(Phases p) {
+
+
         //cp.cardLabels[0].setText("Your current cards: ");
         //cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2) {
-			if (!cardViewOpenned){
-				cardViewOpenned = true;
-				setVisible(true);
-			}
-			Exchange3Diff.setEnabled(false);
-			Exchange3Infantry.setEnabled(false);
-			Exchange3Artillery.setEnabled(false);
-			Exchange3Cavalry.setEnabled(false);
-			if (p.getCurrent_player().getCards().checkCardSum())
-				Cancel.setEnabled(true);
-			else Cancel.setEnabled(false);
+		if (p.getCurrentPhase() == 1 && p.getCurrentTurn()>=p.getNumOfPlayers()*2 && (!cardViewOpening) && (!cardViewShown)) {
+			cardViewOpening = true;
+			cardViewShown = true;
+			setVisible(true);
 
-			if (!p.cardCancelTrigger){
-				if (p.getCurrent_player().getCards().checkCardType() == 5){
-					Exchange3Diff.setEnabled(true);
-					Exchange3Infantry.setEnabled(true);
-					Exchange3Artillery.setEnabled(true);
-					Exchange3Cavalry.setEnabled(true);
-				}
-				if (p.getCurrent_player().getCards().checkCardType() == 4){
-					Exchange3Diff.setEnabled(true);
-				}
-				if (p.getCurrent_player().getCards().cardBigger3(0)){
-					Exchange3Infantry.setEnabled(true);
-				}
-				if (p.getCurrent_player().getCards().cardBigger3(1)){
-					Exchange3Cavalry.setEnabled(true);
-				}
-				if (p.getCurrent_player().getCards().cardBigger3(2)){
-					Exchange3Artillery.setEnabled(true);
-				}
-				
-			
-			}else {
-				Cancel.setEnabled(false);
-				//setVisible(false);
+
+
+			if (p.getCurrent_player().getCards().cardBigger3(0)) {
+				Exchange3Infantry.setEnabled(true);
 			}
-		} else {
-			cardViewOpenned = false;
-			setVisible(false);
+			else{
+				Exchange3Infantry.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().cardBigger3(1)) {
+				Exchange3Cavalry.setEnabled(true);
+			}
+
+			else{
+				Exchange3Cavalry.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().cardBigger3(2)) {
+
+				Exchange3Artillery.setEnabled(true);
+			}
+			else{
+				Exchange3Artillery.setEnabled(false);
+			}
+
+
+			if (p.getCurrent_player().getCards().checkThreeDiffCards()) {
+				Exchange3Diff.setEnabled(true);
+			}
+			else{
+				Exchange3Diff.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().checkCardSum()) {
+				Cancel.setEnabled(true);
+			}
+			else{
+				Cancel.setEnabled(false);
+			}
+			cp.setContext(p.getCurrent_player());
+
+
+
 		}
-        cp.setContext(p.getCurrent_player());
+		else if(p.getCurrentPhase() != 1){
+			cardViewShown = false;
+
+		}
+
+
 
 
     }
