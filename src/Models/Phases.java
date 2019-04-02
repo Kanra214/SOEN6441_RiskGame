@@ -1,6 +1,8 @@
 package Models;
 //import View_Components.CardExchangeView;
 
+import Models.Strategies.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -10,7 +12,7 @@ import java.util.Observable;
  *
  */
 public class Phases extends Observable {
-    private int numOfPlayers = 1;
+    private int numOfPlayers = 0;
     private ArrayList<Player> players;
     private ArrayList<Country> graph;
     private ArrayList<Continent> worldmap;
@@ -65,16 +67,44 @@ public class Phases extends Observable {
 
     /**
      * Set up new game: instantiate players, determine the order of players, randomly assign countries and start start up phase
-     * @param numOfPlayers the number of players
+     * @param playerValue the number and type of players
      */
-    public void gameSetUp(int numOfPlayers) {
-        this.numOfPlayers = numOfPlayers;
-        for (int i = 0; i < numOfPlayers; i++) {
-            players.add(new Player(i, getInitialArmyCount(numOfPlayers), this));
+    public void gameSetUp(int[] playerValue) {
+        int playerIdCount = 0;
+        for(int i = 0; i < playerValue.length; i++){
+            numOfPlayers += playerValue[i];
         }
+
+        for(int i = 0; i < playerValue.length; i++){
+            for(int j = 0; j < playerValue[i]; j++){
+                Player player = new Player(playerIdCount++, getInitialArmyCount(numOfPlayers), this);
+                player.setStrategy(intToStrategy(i));
+                players.add(player);
+            }
+        }
+
+
         determineOrder();
         countryAssignment();
         nextPhase();
+    }
+    private Strategy intToStrategy(int i){
+        switch(i){
+            case 0:
+                return null;
+            case 1:
+                return new Aggressive();
+            case 2:
+                return new Benevolent();
+            case 3:
+                return new Random();
+            case 4:
+                return new Cheater();
+            default:
+                return null;
+
+
+        }
     }
 
     /**
@@ -169,11 +199,10 @@ public class Phases extends Observable {
 
 
         if (currentPhase == 1) {
-        	//TODO
+
        	 System.out.println("p"+getCurrentPhase());
          System.out.println("p"+getCurrentTurn());
-        	// phaseOneFirstStep();
-//        	 cardCancelTrigger=false;
+
            
         }
 

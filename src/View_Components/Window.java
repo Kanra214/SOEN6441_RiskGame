@@ -5,13 +5,14 @@ import Models.Card;
 import Models.Country;
 import Models.Phases;
 import Models.Player;
+import javafx.scene.control.TextFormatter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -263,5 +264,15 @@ public class Window extends JFrame implements Observer {
             mapPanel.comps.add(country);
         }
     }
+
+    public int[] decidePlayers(){
+        int[] values = new int[5];
+        //TODO: retrieve user input. values[0] = number of human players, value[1] = number of aggressive players etc..
+        return values;
+    }
+
+
+
+    
 
 }

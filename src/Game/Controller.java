@@ -325,15 +325,20 @@ public class Controller {
                 System.exit(0);
             }
 
-            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
-            if (numOfPlayers > 6 || numOfPlayers < 2) {
-                window.showMsg("Wrong number of Players");
-                System.exit(0);
-            }
+
+//            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
+//            if (numOfPlayers > 6 || numOfPlayers < 2) {
+//                window.showMsg("Wrong number of Players");
+//                System.exit(0);
+//            }
             p = new Phases(tempMap.get(0), tempMap.get(1));
+
+
             p.addObserver(window);
             Listener lis = new Listener();
-            p.gameSetUp(numOfPlayers);
+//            p.gameSetUp(numOfPlayers);
+            int[] playerValues = window.decidePlayers();
+            p.gameSetUp(playerValues);
 
             window.drawMapPanel(p);
 

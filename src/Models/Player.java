@@ -3,7 +3,7 @@
  * This class give the player with specific characteristics
  */
 package Models;
-import View_Components.Window;
+import Models.Strategies.Strategy;
 
 import java.awt.*;
 import java.util.*;
@@ -23,7 +23,7 @@ public class Player {
     private int numOfDice;
     protected ArrayList<Integer> dice = new ArrayList<>();
     protected ArrayList<Country> realms;
-//    private Strategy strategy;
+    private Strategy strategy = null;//im human
 
 
 
@@ -420,10 +420,19 @@ public class Player {
 
     }
 
-
-
-
-
+    public void setStrategy(Strategy strategy){
+        this.strategy = strategy;
     }
+    public Strategy getStrategy(){return strategy;};
+
+    public void executeStrategy(){
+        strategy.execute();
+    }
+
+
+
+
+
+}
 
 

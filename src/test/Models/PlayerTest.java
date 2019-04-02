@@ -33,7 +33,7 @@ public void before() throws Exception {
   ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
   System.out.println("Inside before");
   p = new Phases(tempMap.get(0), tempMap.get(1));
-  p.gameSetUp(2);
+//  p.gameSetUp(2);
   player1 = p.getPlayers().get(0);
   player2 = p.getPlayers().get(1);
 

@@ -27,8 +27,8 @@ public class RefactoringTest {
         System.out.println("Inside before");
         p1 = new Phases(tempMap1.get(0), tempMap1.get(1));
         p2 = new Phases(tempMap1.get(0), tempMap1.get(1));
-        p1.gameSetUp(1);
-        p2.gameSetUp(2);
+//        p1.gameSetUp(1);
+//        p2.gameSetUp(2);
         player1 = p2.getPlayers().get(0);
         player2 = p2.getPlayers().get(1);
         p2.setCurrent_player(player1);
