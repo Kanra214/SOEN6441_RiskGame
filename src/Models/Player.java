@@ -3,7 +3,7 @@
  * This class give the player with specific characteristics
  */
 package Models;
-import View_Components.Window;
+
 
 import java.awt.*;
 import java.util.*;
@@ -29,6 +29,7 @@ public class Player {
     private int numOfDice;
     protected ArrayList<Integer> dice = new ArrayList<>();
     protected ArrayList<Country> realms;
+    private Strategy strategy = null;//im human
 
     
     //for test
@@ -37,14 +38,14 @@ public class Player {
       ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
       System.out.println("Inside before");
       Phases pa = new Phases(tempMap.get(0), tempMap.get(1));
-      pa.gameSetUp(2);
+      //pa.gameSetUp(2);
 
       Player testp1= pa.getPlayers().get(0);
       Player testp2= pa.getPlayers().get(1);
       
       
-      testp1.setStrategy(testp1.new aggressive());    
-      testp2.setStrategy(testp2.new random());  
+      testp1.setStrategy(new Aggressive());    
+      testp2.setStrategy(new Random());  
       
       testp1.excuteStrategy();
       testp2.excuteStrategy();
@@ -207,7 +208,7 @@ public class Player {
      * Send army to the country
      * @param country to where army will be sent
      */
-    protected void deployArmy(Country country) throws OutOfArmyException {
+    public void reinforce(Country country) throws OutOfArmyException {
         if(country.getOwner() == this) {
             if(isArmyLeft()) {
                 setUnassigned_armies(unassigned_armies - 1);
@@ -299,7 +300,7 @@ public class Player {
      * @throws SourceIsTargetException  source country and target country is the same
      * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
-    public void fortificate(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
+    public void fortify(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
 
         if(findPath(from, to)){
             from.decreaseArmy(num);
@@ -345,17 +346,19 @@ public class Player {
         country.decrementArmy();
     }
 
-    
+
+    /*
     
     interface Strategy {
-      /*** Method whose implementation varies depending on the strategy adopted. */
+       
 
+      //Three strategies and pass the player to them
       public void reinforce(Player player);
       public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent;   
       public void fortificate(Player player);
       }
 
-    class aggressive implements Strategy {
+    class Aggressive implements Strategy {
 
       @Override
       public void reinforce(Player player) {
@@ -376,7 +379,9 @@ public class Player {
         while(player.getUnassigned_armies()>0) {
           
           try {
-            player.deployArmy(chosen);
+            //player.deployArmy(chosen);
+            player.reinforce(chosen);
+            
           } catch (OutOfArmyException e) {
 
             e.printStackTrace();
@@ -432,7 +437,10 @@ public class Player {
             
     }
     
-    class random implements Strategy {
+   
+    
+    
+    class Random implements Strategy {
 
       @Override
       public void reinforce(Player player) {
@@ -452,7 +460,8 @@ public class Player {
         while(player.getUnassigned_armies()>0) {
           
           try {
-            player.deployArmy(chosen);
+            //player.deployArmy(chosen);
+            player.reinforce(chosen);
           } catch (OutOfArmyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -488,7 +497,7 @@ public class Player {
             
     }
     
-    private Strategy strategy;
+ */
     
     public void setStrategy(Strategy strategy) 
     {
@@ -497,10 +506,21 @@ public class Player {
     
     public void excuteStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent 
     {
-      this.strategy.reinforce(this);
+      try {
+        this.strategy.reinforce(this);
+      } catch (OutOfArmyException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
       this.strategy.attack(this);
       }
 
+    public Strategy getStrategy() {
+      // TODO Auto-generated method stub
+      return strategy;
+    }
+
+ 
     
     
     /**
@@ -510,9 +530,8 @@ public class Player {
      */
     public void reinforcementPhase(Country chosen) {
 
-
         try {
-            deployArmy(chosen);
+            reinforce(chosen);
         } catch (RiskGameException e) {
             System.out.println("Not possible");
         }
@@ -571,6 +590,7 @@ public class Player {
 
 
     }
+
     /**
      * Attack
      *
@@ -670,22 +690,6 @@ public class Player {
 
     }
 
-    /**
-     * Sends army from one country to another
-     *
-     * @param from Country from where army will be deducted
-     * @param to   Country from where army will be sent
-     * @param num  int number of armies to send
-     * @throws CountryNotInRealms          country not owned by the player
-     * @throws OutOfArmyException          not enough army to transfer
-     * @throws NoSuchPathException         no path from owned countries between country
-     * @throws SourceIsTargetException     source country and target country is the same
-     * @throws MoveAtLeastOneArmyException 0 army chosen to move
-     */
-    public void fortificationsPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
-        p.current_player.fortificate(from, to, num);
-        p.nextPhase();
-    }
 
 
 
@@ -695,6 +699,10 @@ public class Player {
 
 
 
-    }
+
+
+
+}
+
 
 

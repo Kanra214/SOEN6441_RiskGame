@@ -33,7 +33,7 @@ public void before() throws Exception {
   ArrayList<ArrayList> tempMap = new MapLoader().loadMap("1.map");
   System.out.println("Inside before");
   p = new Phases(tempMap.get(0), tempMap.get(1));
-  p.gameSetUp(2);
+//  p.gameSetUp(2);
   player1 = p.getPlayers().get(0);
   player2 = p.getPlayers().get(1);
 
@@ -80,7 +80,7 @@ public void testFortificate() throws Exception {
     }
     from.setArmy(3);
     to.setArmy(3);
-    player1.fortificate(from,to,1);
+    player1.fortify(from,to,1);
     assertEquals(2,from.getArmy());
     assertEquals(4,to.getArmy());
 }

@@ -47,6 +47,7 @@ public class Card {
 		System.out.println("This card will add to "+randCID);
 		cardNumber[randCID]++;
 		p.updateWindow(cardName[randCID]);
+		p.updateWindow();
 	}
 
 	/**
@@ -54,11 +55,13 @@ public class Card {
 	 * @param enemy player
 	 */
 	protected void addCard(Player enemy) {
+		p.updateWindow(enemy.getCards());
 		for(int i=0;i<3;i++) {
 			cardNumber[i]+=enemy.getCards().cardNumber[i];
 			enemy.getCards().cardNumber[i] = 0;
 		}
-		p.updateWindow(enemy.getCards());
+		p.updateWindow();
+
 
 	}
 	

@@ -72,7 +72,7 @@ public class Controller {
                     if (p.getCurrentPhase() == 0) {
                         p.startUpPhase(chosen);
                     } else if (p.getCurrentPhase() == 1) {
-                        p.getCurrent_player().reinforcementPhase(chosen);
+                        p.reinforcementPhase(chosen);
                     } else if (p.getCurrentPhase() == 3) {
                         if (chosenFrom == null) {
                             chosenFrom = chosen;
@@ -83,7 +83,7 @@ public class Controller {
                             if (input != null) {
                                 int num = Integer.parseInt(input);
 
-                                p.getCurrent_player().fortificationsPhase(chosenFrom, chosenTo, num);
+                                p.fortificationPhase(chosenFrom, chosenTo, num);
 
                             }
                             chosenFrom = null;
@@ -102,7 +102,7 @@ public class Controller {
 
                                 if (attackerInput.isEmpty()) {//all out mode
                                     System.out.println("all out");
-                                    if (p.getCurrent_player().attackPhase(chosenFrom, chosenTo)) {
+                                    if (p.attackPhase(chosenFrom, chosenTo)) {
                                         if (p.gameOver) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
@@ -124,7 +124,7 @@ public class Controller {
 
                                     int defendDice = Integer.parseInt(defenderInput);
 
-                                    if (p.getCurrent_player().attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                    if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
                                         if (p.gameOver) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
@@ -163,34 +163,29 @@ public class Controller {
 
             if (e.getSource() == window.cardExchangeView.Exchange3Infantry) {
                 window.cardExchangeView.setVisible(false);
-                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyBySameCards(0);
                 p.phaseOneFirstStep();
 
             }
             if (e.getSource() == window.cardExchangeView.Exchange3Cavalry) {
                 window.cardExchangeView.setVisible(false);
-                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyBySameCards(1);
                 p.phaseOneFirstStep();
             }
             if (e.getSource() == window.cardExchangeView.Exchange3Artillery) {
                 window.cardExchangeView.setVisible(false);
-                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyBySameCards(2);
                 p.phaseOneFirstStep();
             }
 
             if (e.getSource() == window.cardExchangeView.Exchange3Diff) {
                 window.cardExchangeView.setVisible(false);
-                window.cardExchangeView.cardViewOpening = false;
                 p.getCurrent_player().addPlayerArmyByDiffCards();
                 p.phaseOneFirstStep();
 
             }
             if (e.getSource() == window.cardExchangeView.Cancel) {
                 window.cardExchangeView.setVisible(false);
-                window.cardExchangeView.cardViewOpening = false;
                 p.phaseOneFirstStep();
             }
 
@@ -330,15 +325,20 @@ public class Controller {
                 System.exit(0);
             }
 
-            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
-            if (numOfPlayers > 6 || numOfPlayers < 2) {
-                window.showMsg("Wrong number of Players");
-                System.exit(0);
-            }
+
+//            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
+//            if (numOfPlayers > 6 || numOfPlayers < 2) {
+//                window.showMsg("Wrong number of Players");
+//                System.exit(0);
+//            }
             p = new Phases(tempMap.get(0), tempMap.get(1));
+
+
             p.addObserver(window);
             Listener lis = new Listener();
-            p.gameSetUp(numOfPlayers);
+//            p.gameSetUp(numOfPlayers);
+            int[] playerValues = window.decidePlayers();
+            p.gameSetUp(playerValues);
 
             window.drawMapPanel(p);
 
