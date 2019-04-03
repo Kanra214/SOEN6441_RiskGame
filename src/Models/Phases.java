@@ -1,7 +1,6 @@
 package Models;
 //import View_Components.CardExchangeView;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;

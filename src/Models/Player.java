@@ -504,15 +504,10 @@ public class Player {
       }
     
 
+    public void executeStrategy() {
 
-    public void executeStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
         if (strategy != null) {
-            try {
-              strategy.execute(p);
-            } catch (OutOfArmyException e) {
-              // TODO Auto-generated catch block
-              e.printStackTrace();
-            }
+            strategy.execute(p);
         }
 
 

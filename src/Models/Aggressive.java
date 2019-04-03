@@ -8,8 +8,8 @@ public class Aggressive implements Strategy {
 
 
   @Override
-  public void execute(Player player){
-
+  public void execute(Phases p) {
+    Player player = p.getCurrent_player();
     
     try {
       this.reinforce(player);
@@ -220,24 +220,3 @@ public class Aggressive implements Strategy {
 
 */
       
-      
-      
-    
-=======
-    @Override
-    public void fortificate(Player player) {
-        // TODO Auto-generated method stub
-
-    }
->>>>>>> branch 'master' of https://github.com/Kanra214/SOEN6441_RiskGame.git
-
-
-<<<<<<< HEAD
-    
-    
-
-=======
-
-
-}
->>>>>>> branch 'master' of https://github.com/Kanra214/SOEN6441_RiskGame.git
