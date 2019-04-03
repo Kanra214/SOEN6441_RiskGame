@@ -5,14 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Aggressive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Aggressive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Benevolent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Benevolent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Cheater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cheater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Random.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Random.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/RiskGameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/RiskGameException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Strategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,12 +22,12 @@
     <session id="1536953692">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="34009" />
+          <entry key="java" value="34234" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="34009" />
+          <entry key="JAVA" value="34234" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -58,14 +52,14 @@
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
     </session>
@@ -101,17 +95,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
+            <state relative-caret-position="4755">
               <caret line="333" column="59" selection-start-line="333" selection-start-column="59" selection-end-line="333" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Benevolent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -137,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Strategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+            <state relative-caret-position="105">
+              <caret line="7" column="58" lean-forward="true" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -146,10 +140,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1197">
-              <caret line="305" column="16" selection-start-line="305" selection-start-column="16" selection-end-line="305" selection-end-column="16" />
+            <state relative-caret-position="260">
+              <caret line="209" column="16" selection-start-line="209" selection-start-column="16" selection-end-line="209" selection-end-column="16" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,7 +153,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="285">
               <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
             </state>
           </provider>
@@ -167,17 +162,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="7080">
               <caret line="478" column="21" selection-start-line="478" selection-start-column="21" selection-end-line="478" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Aggressive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="489">
+              <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -185,7 +180,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="3435">
               <caret line="243" selection-start-line="243" selection-end-line="243" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -287,8 +282,6 @@
         <option value="$PROJECT_DIR$/src/test/Models/JunitTestSuit.java" />
         <option value="$PROJECT_DIR$/src/View_Components/PhasePanel.java" />
         <option value="$PROJECT_DIR$/src/Models/Card.java" />
-        <option value="$PROJECT_DIR$/src/Models/Strategy.java" />
-        <option value="$PROJECT_DIR$/src/Models/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/Models/Strategies/Random.java" />
         <option value="$PROJECT_DIR$/src/Models/Strategies/Cheater.java" />
         <option value="$PROJECT_DIR$/src/test/Models/PhasesTest.java" />
@@ -302,9 +295,11 @@
         <option value="$PROJECT_DIR$/src/Models/RiskGameException.java" />
         <option value="$PROJECT_DIR$/src/Models/Strategies/Strategy.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
-        <option value="$PROJECT_DIR$/src/Models/Player.java" />
         <option value="$PROJECT_DIR$/src/Models/Strategies/Benevolent.java" />
         <option value="$PROJECT_DIR$/src/Models/Random.java" />
+        <option value="$PROJECT_DIR$/src/Models/Strategy.java" />
+        <option value="$PROJECT_DIR$/src/Models/Player.java" />
+        <option value="$PROJECT_DIR$/src/Models/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/Models/Benevolent.java" />
       </list>
     </option>
@@ -325,8 +320,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -361,6 +354,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,7 +365,7 @@
     <property name="SearchEverywhereHistoryKey" value="ou&#9;PSI&#9;JAVA://Models.OutOfArmyException&#10;decrement&#9;PSI&#9;JAVA://Models.Country#decrementArmy" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554253110443" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554253753497" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -394,278 +389,6 @@
       <recent name="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models" />
       <recent name="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/Controller.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/Controller.startManuAction.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/FileChooser.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/Main.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/MapLoader.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/class-use/Controller.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/class-use/Controller.startManuAction.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/class-use/FileChooser.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/class-use/Main.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/class-use/MapLoader.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Game/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/MapEditorGUI.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/MapEditorText.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/class-use/MapEditorGUI.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/class-use/MapEditorText.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/MapEditor/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/Continent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/Country.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/Phases.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/Player.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/RiskGameException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/class-use/Continent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/class-use/Country.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/class-use/Phases.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/class-use/Player.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/class-use/RiskGameException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/Models/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/CountryButton.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/ImagePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/MapPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/PhasePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/SidePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/StartManu.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/Window.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/CountryButton.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/ImagePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/MapPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/PhasePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/SidePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/StartManu.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/class-use/Window.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/View_Components/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/allclasses-index.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/allclasses.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/allpackages-index.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/constant-values.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/deprecated-list.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/help-doc.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-1.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-10.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-11.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-12.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-13.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-14.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-15.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-16.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-17.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-18.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-2.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-3.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-4.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-5.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-6.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-7.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-8.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index-files/index-9.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/index.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/member-search-index.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/member-search-index.zip</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/overview-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/overview-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/package-search-index.zip</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/serialized-form.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/MapEditTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/PhasesTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/class-use/MapEditTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/class-use/PhasesTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/test/Models/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/type-search-index.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/doc/type-search-index.zip</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/MapLoader.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEdit.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$5.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$6.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$7.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI$8.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorGUI.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorText$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/MapEditor/MapEditorText.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackCountryArmyMoreThanOne.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackedCountryOwner.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/AttackingCountryOwner.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Card.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Continent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Country.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/CountryNotInRealms.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/MoveAtLeastOneArmyException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/MustBeEqualOrMoreThanNumOfDice.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/NoSuchPathException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/OutOfArmyException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/RiskGameException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/SourceIsTargetException.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/TargetCountryNotAdjacent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/WrongDiceNumber.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CardExchangeView$CardPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CardExchangeView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/CountryButton.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/MapPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PhasePanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/SidePanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/CardTest.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/JunitTestSuit.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/MapEditTest.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PhasesTest.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/PlayerTest.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/test/Models/RefactoringTest.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Phases.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Player.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/test/Models/PhasesTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/test/Models/PlayerTest.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Aggressive.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Benevolent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Cheater.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Random.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategy.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Aggressive.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Benevolent.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Cheater.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Random.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Strategy.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategies/Aggressive.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategies/Benevolent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategies/Cheater.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategies/Random.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategies/Strategy.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/PlayerSelectView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Strategies/Aggressive.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Strategies/Benevolent.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Strategies/Cheater.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Strategies/Random.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Models/Strategies/Strategy.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -918,7 +641,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16094421" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16309012" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -928,7 +651,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3284974" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32289156" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.24578314" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24578314" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1249,18 +972,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View_Components/PlayerSelectView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
-            <element signature="e#1117#1118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View_Components/PlayerSelectView.java" />
     <entry file="file://$PROJECT_DIR$/.classpath">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1280,14 +992,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
+        <state relative-caret-position="4755">
           <caret line="333" column="59" selection-start-line="333" selection-start-column="59" selection-end-line="333" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7080">
+          <caret line="478" column="21" selection-start-line="478" selection-start-column="21" selection-end-line="478" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Country.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="3435">
           <caret line="243" selection-start-line="243" selection-end-line="243" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1304,53 +1037,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Strategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/RiskGameException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Random.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Phases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="478" column="21" selection-start-line="478" selection-start-column="21" selection-end-line="478" selection-end-column="21" />
+        <state relative-caret-position="105">
+          <caret line="7" column="58" lean-forward="true" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="305" column="16" selection-start-line="305" selection-start-column="16" selection-end-line="305" selection-end-column="16" />
+        <state relative-caret-position="260">
+          <caret line="209" column="16" selection-start-line="209" selection-start-column="16" selection-end-line="209" selection-end-column="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Benevolent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Aggressive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="489">
+          <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Benevolent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>

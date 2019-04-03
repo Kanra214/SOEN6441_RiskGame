@@ -3,10 +3,6 @@
  * This class give the player with specific characteristics
  */
 package Models;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 import java.awt.*;
 import java.util.*;
@@ -351,13 +347,13 @@ public class Player {
 
 
     /*
-    
+
     interface Strategy {
-       
+
 
       //Three strategies and pass the player to them
       public void reinforce(Player player);
-      public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent;   
+      public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent;
       public void fortificate(Player player);
       }
 
@@ -365,11 +361,11 @@ public class Player {
 
       @Override
       public void reinforce(Player player) {
-        
+
         System.out.println("inside aggerssive reinforce");
         ArrayList<Country> tt= player.getRealms();
         Country chosen=new Country(id, id, null, null);
-        
+
         //If all the countries are the same number,the chosen will be the first country
         int max=0;
         for(Country c: tt) {
@@ -378,19 +374,19 @@ public class Player {
             max=c.getArmy();
           }
         }
-        
+
         while(player.getUnassigned_armies()>0) {
-          
+
           try {
             //player.deployArmy(chosen);
             player.reinforce(chosen);
-            
+
           } catch (OutOfArmyException e) {
 
             e.printStackTrace();
           }
         }
-        
+
       }
 
       @Override
@@ -407,49 +403,49 @@ public class Player {
             max=t.getArmy();
           }
         }
-        
-        //first check if there is enemy country in neighbourhood 
+
+        //first check if there is enemy country in neighbourhood
         ArrayList<Country>neighbours =chosen.getNeighbours();
-        
+
         for(Country t: neighbours) {
           if(t.getOwner()!=player) {
-            
+
             target=t;
-            
+
             //attack until this country has 1 army or the target has been conquered
             while(chosen.getArmy()>0||t.getOwner()==player) {
               player.attackPhase(chosen, target, 1, 1);
               //TODO need to decide he number of dice
             }
-            
+
           }
           //finish attack
           return true;
         }
-        
+
         //no enemy
         return false;
-                       
+
       }
 
       @Override
       public void fortificate(Player player) {
         // TODO Auto-generated method stub
-        
+
       }
-            
+
     }
-    
-   
-    
-    
+
+
+
+
     class Random implements Strategy {
 
       @Override
       public void reinforce(Player player) {
         // TODO Auto-generated method stub
         Country chosen=new Country(id, id, null, null);
-        
+
         System.out.println("inside random reinforce");
         ArrayList<Country> tt= player.getRealms();
         int max=0;
@@ -459,9 +455,9 @@ public class Player {
             max=c.getArmy();
           }
         }
-        
+
         while(player.getUnassigned_armies()>0) {
-          
+
           try {
             //player.deployArmy(chosen);
             player.reinforce(chosen);
@@ -470,14 +466,14 @@ public class Player {
             e.printStackTrace();
           }
         }
-        
+
       }
 
       @Override
       public boolean attack(Player player) {
         // TODO Auto-generated method stub
         Country chosen=new Country(id, id, null, null);
-        
+
         System.out.println("inside random attack");
         ArrayList<Country> tt= player.getRealms();
         int max=0;
@@ -487,7 +483,7 @@ public class Player {
             max=c.getArmy();
           }
         }
-        
+
         return false;
 
       }
@@ -495,11 +491,11 @@ public class Player {
       @Override
       public void fortificate(Player player) {
         // TODO Auto-generated method stub
-        
+
       }
-            
+
     }
-    
+
  */
     
     public void setStrategy(Strategy strategy) 
@@ -507,94 +503,22 @@ public class Player {
       this.strategy= strategy;
       }
     
-    public void excuteStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent 
-    {
-      try {
-        this.strategy.reinforce(this);
-      } catch (OutOfArmyException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      
-      
-      this.strategy.attack(this);
-      }
+    public void excuteStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+        if (strategy != null) {
+            strategy.execute(p);
+        }
+
+
+    }
 
     public Strategy getStrategy() {
       // TODO Auto-generated method stub
       return strategy;
     }
 
- 
-    
-    
-    /**
-     * Sends 1 army from current player to chosen Country during reinforcement phase
-     *
-     * @param chosen Country where to send army to
-     */
-    public void reinforcementPhase(Country chosen) {
-
-        try {
-            reinforce(chosen);
-        } catch (RiskGameException e) {
-            System.out.println("Not possible");
-        }
-
-
-    }
     
  
 
-    
-
-    /**
-     * Attack phase
-     * @param from the source country
-     * @param to the target country
-     * @return true for attack success
-     * @throws AttackingCountryOwner throw exception 
-     * @throws AttackedCountryOwner throw exception 
-     * @throws WrongDiceNumber throw exception 
-     * @throws AttackCountryArmyMoreThanOne throw exception 
-     * @throws TargetCountryNotAdjacent throw exception 
-     *
-     * 
-     */
-    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-
-        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-
-
-        while (true) {
-            try {
-                int attackDice = Math.min(from.getArmy() - 1, 3);
-                int defendDice = Math.min(to.getArmy(), 2);
-
-                if (attackPhase(from, to, attackDice, defendDice)) {
-                    p.at_least_once = true;
-
-
-                    return true;
-                }
-                validated = true;//any exception after this will be caught and break the while
-
-
-            } catch (RiskGameException e) {
-                if (validated) {
-                    p.at_least_once = false;
-                    return false;
-                } else {
-                    throw e;
-                }
-
-            }
-
-
-        }
-
-
-    }
 
     /**
      * Attack
@@ -645,72 +569,6 @@ public class Player {
     }
 
 
-    /**
-     * Attack phase
-     *
-     * @param from       Country from where army will attacking
-     * @param to         Country from where army will be attacked
-     * @param attackDice int number of dice to roll for attacker
-     * @return true if country is conquered, false otherwise
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner        the owner of attacking country must be current player
-     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
-     */
-    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-//        current_player.attack(from, to, attackDice, defendDice);
-//        if(current_player.attackValidation(from, to, num)) {
-//            attackSimulation(from, to, num);
-//        }
-
-
-        try {
-            if (p.attackValidation(from, to, attackDice, defendDice)) {
-
-                p.attackSimulation(from, to, attackDice, defendDice);
-
-            }
-        } catch (OutOfArmyException e) {
-            to.swapOwnership(p.rival, p.current_player);
-
-
-            if (p.checkWinner()) {//this attacker conquered all the countries
-                p.gameOver = true;
-
-            }
-            p.at_least_once = true;
-            p.checkContinentOwner(to.getCont(),p.current_player);//check if this player gets control of the continent
-            if(p.rival.getRealms().size() == 0){
-                p.current_player.receiveEnemyCards(p.rival);
-            }
-
-            return true;
-
-
-        }
-        p.checkAttackingIsPossible();
-        p.at_least_once = false;
-
-        return false;
-
-
-    }
-
-
-<<<<<<< Updated upstream
-
-
-
-
-
-
-=======
-    public void executeStrategy(){
-        if(strategy != null) {
-
-            strategy.execute(p);
-        }
-    }
->>>>>>> Stashed changes
 
 
 

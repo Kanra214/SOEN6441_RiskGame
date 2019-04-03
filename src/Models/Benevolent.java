@@ -1,31 +1,5 @@
 package Models;
 
-<<<<<<< Updated upstream
-
-
-public class Benevolent implements Strategy {
-
-
-    @Override
-    public void reinforce(Player player) throws OutOfArmyException {
-      // TODO Auto-generated method stub
-      
-    }
-
-    @Override
-    public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner,
-        WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-      // TODO Auto-generated method stub
-      return false;
-    }
-
-    @Override
-    public void fortificate(Player player) {
-      // TODO Auto-generated method stub
-      
-    }
-
-=======
 public class Benevolent implements Strategy {
     @Override
     public void execute(Phases p) throws OutOfArmyException {
@@ -114,6 +88,4 @@ public class Benevolent implements Strategy {
     }
 
 
-
->>>>>>> Stashed changes
 }
