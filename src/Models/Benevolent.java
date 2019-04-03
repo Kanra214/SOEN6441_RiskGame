@@ -1,77 +1,69 @@
 package Models;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 public class Benevolent implements Strategy {
     @Override
-    public void execute(Phases p) throws OutOfArmyException {
+    public void execute(Phases p) {
         Player player = p.getCurrent_player();
-        if(p.getCurrentPhase() == 0){
 
-        }
-        else{
-            //must be in phase 1
-            exchangeCards(p);
-            while(player.isArmyLeft()){
-                Country weakest = getWeakest(p);
-                player.reinforce(weakest);
-            }
-            p.nextPhase();
-            //no attack
-            //this player might not be able to attack, next phase automatically, to avoid next phase twice, check AttackingIsPossible
-            p.checkAttackingIsPossible();
-            if(p.getAttackingIsPossible()){
+            if (p.getCurrentPhase() == 0) {
+                //TODO: phase 0
+            } else {
+
+                //must be in phase 1
+                exchangeCards(p);
+                Comparator cp = new StrongestCountryComparator();
+
+                while (player.isArmyLeft()) {
+                    Collections.sort(player.getRealms(), cp);
+                    Country weakest = player.getRealms().get(player.getRealms().size() - 1);
+
+                    try {
+                        player.reinforce(weakest);
+                    } catch (OutOfArmyException e) {
+                        System.out.println("benevolent out of army");
+                    }
+                }
                 p.nextPhase();
+                //no attack
+                //this player might not be able to attack, next phase automatically, to avoid next phase twice, check AttackingIsPossible
+                p.checkAttackingIsPossible();
+                if (p.getAttackingIsPossible()) {
+                    p.nextPhase();
+                }
+                //phase 3
+                int ith = 0;
+                Collections.sort(player.getRealms(), cp);
+                Country weakest = player.getRealms().get(player.getRealms().size() - 1);
+                while(true) {
+                    try {
+                        Country strongest = player.getRealms().get(ith);
+                        int armiesToMove = (strongest.getArmy() - weakest.getArmy()) / 2;
+                        player.fortify(strongest, weakest, armiesToMove);
+                        break;
+                    } catch (CountryNotInRealms countryNotInRealms) {
+                        System.out.println("benevolent not in reamls");
+                    } catch (OutOfArmyException e) {
+                        System.out.println("benevolent fortify out of army");
+                    } catch (NoSuchPathException e) {
+                        ith++;
+                        continue;
+                    } catch (SourceIsTargetException e) {
+                        break;
+                    } catch (MoveAtLeastOneArmyException e) {
+                        break;
+                    }
+                }
+                p.nextPhase();
+
+
+
+
+
             }
-            //phase 3
-
-            Country strongest = getStrongest(p);
-            Country weakest = getWeakest(p);
-            int armiesToMove = (strongest.getArmy() - weakest.getArmy()) / 2;
-            player.fortify(strongest, weakest, armiesToMove);
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
-
-
-    }
-
-    public Country getWeakest(Phases p){
-        Country weakest = p.getCurrent_player().getRealms().get(0);
-        int weakestArmy = weakest.getArmy();
-        for(Country country : p.getCurrent_player().getRealms()){
-            if(country.getArmy() < weakestArmy){
-                weakest = country;
-                weakestArmy = country.getArmy();
-
-            }
-        }
-        return weakest;
-
-    }
-    public Country getStrongest(Phases p, int ith){
-//        Country strongest = p.getCurrent_player().getRealms().get(0);
-//        int strongestArmy = strongest.getArmy();
-//        for(Country country : p.getCurrent_player().getRealms()){
-//            if(country.getArmy() < strongestArmy){
-//                strongest = country;
-//                strongestArmy = country.getArmy();
-//
-//            }
-//        }
-        p.getCurrent_player().getRealms().sort();
-        return strongest;
-
-    }
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
@@ -86,6 +78,23 @@ public class Benevolent implements Strategy {
         }
 
     }
+    class StrongestCountryComparator implements Comparator<Country> {
+        @Override
+        public int compare(Country a, Country b) {
+            return a.getArmy() - b.getArmy();
+        }
+    }
+
+
+
+
+
+
+
+    }
+
+
+
 
 
 }

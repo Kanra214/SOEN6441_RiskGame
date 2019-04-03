@@ -503,7 +503,7 @@ public class Player {
       this.strategy= strategy;
       }
     
-    public void excuteStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+    public void executeStrategy() {
         if (strategy != null) {
             strategy.execute(p);
         }

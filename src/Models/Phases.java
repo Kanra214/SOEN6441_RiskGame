@@ -1,11 +1,5 @@
 package Models;
 //import View_Components.CardExchangeView;
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;

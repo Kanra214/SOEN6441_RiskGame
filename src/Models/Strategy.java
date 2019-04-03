@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public interface Strategy {
   /*** Method whose implementation varies depending on the strategy adopted. */
-  void execute(Phases p) throws OutOfArmyException;
+  void execute(Phases p);
 
   
   
