@@ -512,6 +512,8 @@ public class Player {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
+      
+      
       this.strategy.attack(this);
       }
 
