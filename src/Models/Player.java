@@ -3,7 +3,10 @@
  * This class give the player with specific characteristics
  */
 package Models;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 import java.awt.*;
 import java.util.*;
@@ -693,12 +696,21 @@ public class Player {
     }
 
 
+<<<<<<< Updated upstream
 
 
 
 
 
 
+=======
+    public void executeStrategy(){
+        if(strategy != null) {
+
+            strategy.execute(p);
+        }
+    }
+>>>>>>> Stashed changes
 
 
 

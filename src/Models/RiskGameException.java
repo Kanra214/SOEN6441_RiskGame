@@ -23,12 +23,10 @@ class OutOfArmyException extends RiskGameException{
      * Constructor
      */
     public OutOfArmyException() {
-//<<<<<<< HEAD
-//        errMsg = "Out of army";
-//=======
+
         errMsg = "Out of army.";
 
-//>>>>>>> Xiyun
+
     }
 }
 
@@ -40,11 +38,9 @@ class NoSuchPathException extends RiskGameException{
     /**
      * Constructor
      */
-//<<<<<<< HEAD
-//    public NoSuchPathException() {
-//=======
+
     public NoSuchPathException(){
-//>>>>>>> Xiyun
+
         errMsg = "No such path.";
     }
 }
@@ -56,10 +52,7 @@ class CountryNotInRealms extends RiskGameException{
      */
     public CountryNotInRealms() {
         errMsg = "Not in realms.";
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> Xiyun
+
     }
 }
 
@@ -85,12 +78,9 @@ class MoveAtLeastOneArmyException extends RiskGameException{
      * Constuctor
      */
     public MoveAtLeastOneArmyException() {
-//<<<<<<< HEAD
-//        errMsg = "Souce cannot be the target.";
-//=======
+
         errMsg = "At lease move one army.";
 
-//>>>>>>> Xiyun
     }
 }
 
@@ -102,14 +92,10 @@ class AttackCountryArmyMoreThanOne extends RiskGameException{
     /**
      * Constuctor
      */
-//<<<<<<< HEAD
     public AttackCountryArmyMoreThanOne() {
         errMsg = "Attacking country must have at least two armies.";
 
-//=======
-//    public AttackCountryArmyMoreThanOne(){
-//        errMsg = "Attacking country must have at least two armies.";
-//>>>>>>> Xiyun
+
     }
 }
 
@@ -123,10 +109,7 @@ class AttackingCountryOwner extends RiskGameException{
      */
     public AttackingCountryOwner() {
         errMsg = "Cannot attack your own country.";
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> Xiyun
+
     }
 }
 
@@ -142,39 +125,11 @@ class AttackedCountryOwner extends RiskGameException{
      */
     public AttackedCountryOwner() {
         errMsg = "Invalid target, the target country must be adjancent to attacking country, and not your own country.";
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> Xiyun
+
     }
 }
 
-///**
-// * Exception thrown when attack phase, owner must current player
-// */
-//class AttackOutOfArmy extends RiskGameException{
-//    /**
-//     * Constuctor
-//     */
-//    public AttackOutOfArmy() {
-//    }
-//}
 
-////9
-//
-///**
-// * Exception thrown when attack phase, owner must current player
-// */
-//class AttackMoveAtLeastOneArmy extends RiskGameException{
-//    /**
-//     * Constuctor
-//     * @param type 9 for this type
-//     */
-//    public AttackMoveAtLeastOneArmy(int type) {
-//        super(type);
-//    }
-//}
-//10
 
 /**
  * Exception thrown when attack phase, owner must current player
@@ -182,19 +137,11 @@ class AttackedCountryOwner extends RiskGameException{
 class WrongDiceNumber extends RiskGameException{
     protected Player player;
 
-//<<<<<<< HEAD
-//     */
-//    public AttackOutOfArmy() {
-//        errMsg = "Out of army";
-//    }
-//}
-//=======
     /**
      * Constuctor
      * @param player Player who entered the wrong dice number
      */
     public WrongDiceNumber(Player player) {
-//>>>>>>> Xiyun
 
         this.player = player;
         errMsg = "Player " + player.getId() + " entered wrong dice number, type proper integer according to the instruction in the message box.";
@@ -219,47 +166,7 @@ class MustBeEqualOrMoreThanNumOfDice extends RiskGameException{
     /**
      * Constuctor
      */
-//<<<<<<< HEAD
-//    public AttackMoveAtLeastOneArmy() {
-//        errMsg = "At lease choose one army.";
-//    }
-//}
-///**
-// * Exception thrown when attack phase, owner must current player
-// */
-//class WrongDiceNumber extends RiskGameException{
-//    protected Player player;
-//    /**
-//     * Constuctor
-//     * @param player Player who entered the wrong dice number
-//     */
-//    public WrongDiceNumber(Player player) {
-//
-//        this.player = player;
-//        errMsg = "Player " + player.getId() + " entered wrong dice number, type proper integer according to the instruction in the message box.";
-//
-//    }
-//}
-///**
-// * Exception thrown when attack phase, owner must current player
-// */
-//class TargetCountryNotAdjacent extends RiskGameException{
-//    /**
-//     * Constuctor
-//     */
-//    public TargetCountryNotAdjacent() {
-//
-//
-//        errMsg = "Target country is not adjacent to the attacking country.";
-//
-//    }
-//}
-//class MustBeEqualOrMoreThanNumOfDice extends RiskGameException{
-//    /**
-//     * Constuctor
-//     */
-//=======
-//>>>>>>> Xiyun
+
     public MustBeEqualOrMoreThanNumOfDice(){
 
 

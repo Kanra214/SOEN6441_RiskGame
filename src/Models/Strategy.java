@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package Models;
 
 import java.util.ArrayList;
@@ -96,3 +97,12 @@ class Aggressive implements Strategy {
         
 }
 */
+=======
+package Models;
+
+import Models.Phases;
+
+public interface Strategy {
+    void execute(Phases p) throws OutOfArmyException;
+}
+>>>>>>> Stashed changes
