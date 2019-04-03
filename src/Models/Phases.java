@@ -231,6 +231,7 @@ public class Phases extends Observable {
         switch (currentPhase) {
             case 0:
                 nextTurn();
+                current_player.executeStrategy();
                 if (currentTurn >= numOfPlayers - 1) {
                     currentPhase = 1;
                 }

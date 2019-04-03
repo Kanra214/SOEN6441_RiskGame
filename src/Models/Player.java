@@ -45,11 +45,7 @@ public class Player {
       
       testp1.setStrategy(new Aggressive());    
       testp2.setStrategy(new Random());  
-      
-      //testp1.excuteStrategy();
-      //testp2.excuteStrategy();
 
-   
       
     }
 

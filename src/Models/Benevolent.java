@@ -11,10 +11,23 @@ public class Benevolent implements Strategy {
 
             if (p.getCurrentPhase() == 0) {
                 //TODO: phase 0
+                int countryCount = 0;
+                while(player.isArmyLeft()){
+                    int countryTurn = countryCount % player.getRealms().size();
+                    Country currentCountry = player.getRealms().get(countryTurn);
+                    try {
+                        player.reinforce(currentCountry);
+                    } catch (OutOfArmyException e) {
+                        System.out.println("benevolent phase 0 out of army");
+                    }
+                    countryCount++;
+                }
+                p.nextPhase();
             } else {
 
                 //must be in phase 1
                 exchangeCards(p);
+                p.phaseOneFirstStep();
                 Comparator cp = new StrongestCountryComparator();
 
                 while (player.isArmyLeft()) {
@@ -93,6 +106,8 @@ public class Benevolent implements Strategy {
 
 
     }
+
+
 
 
 
