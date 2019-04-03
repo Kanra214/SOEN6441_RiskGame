@@ -231,9 +231,10 @@ public class Phases extends Observable {
             case 0:
                 nextTurn();
                 current_player.executeStrategy();
-                if (currentTurn >= numOfPlayers - 1) {
+                if (currentTurn > numOfPlayers - 1) {
                     currentPhase = 1;
                 }
+
                 break;
             case 1:
                 currentPhase = 2;
@@ -489,6 +490,7 @@ public class Phases extends Observable {
         }
 
         attackingIsPossible = false;
+        System.out.println("attacking not possible");
         updateWindow();
         nextPhase();
 

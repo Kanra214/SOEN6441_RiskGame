@@ -156,6 +156,7 @@ public class Window extends JFrame implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
+        mapPanel.repaint();
         Phases p = (Phases) o;
         if(p.getCurrent_player().getStrategy() != null){
             //disable all the buttons and popping outs

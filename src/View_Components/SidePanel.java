@@ -53,7 +53,7 @@ public class SidePanel extends JPanel {
         float playerCountryNumber = (float) player.getRealms().size();
         float countryNumberDouble = (float) countryNumber;
         return    "<html><body>" +
-                "<h3>Player " + player.getId() + "</h3>" +
+                "<h3>Player " + player.getId() + "(" + strategyToString(player) + ")</h3>" +
                 "<p><font size='2'>Countries: " + player.getRealms().size() +
                 "<br>" +
                 "Percentage: " + playerCountryNumber / countryNumberDouble * 100 +"%"+
@@ -86,6 +86,14 @@ public class SidePanel extends JPanel {
                 "<p><font size='2'>" +continentOwner + "<br><br><br><br><br></font></p>" +
                 "</body></html>";
 
+    }
+    private String strategyToString(Player player){
+        if(player.getStrategy() == null){
+            return "Human";
+        }
+        else{
+            return player.getStrategy().getClass().getName().substring(player.getStrategy().getClass().getName().indexOf(".") + 1);
+        }
     }
 
 }
