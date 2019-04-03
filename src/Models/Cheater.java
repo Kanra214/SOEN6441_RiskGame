@@ -3,22 +3,13 @@ package Models;
 public class Cheater implements Strategy {
 
   @Override
-  public void reinforce(Player player) throws OutOfArmyException {
+  public void execute(Player player)
+      throws OutOfArmyException, AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber,
+      AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
     // TODO Auto-generated method stub
     
   }
 
-  @Override
-  public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner,
-      WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-    // TODO Auto-generated method stub
-    return false;
-  }
 
-  @Override
-  public void fortificate(Player player) {
-    // TODO Auto-generated method stub
-    
-  }
 
 }

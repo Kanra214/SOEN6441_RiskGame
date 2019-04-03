@@ -506,15 +506,15 @@ public class Player {
     
     public void excuteStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent 
     {
+      
       try {
-        this.strategy.reinforce(this);
+        this.strategy.execute(this);
       } catch (OutOfArmyException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
       
-      
-      this.strategy.attack(this);
+
       }
 
     public Strategy getStrategy() {
@@ -542,56 +542,6 @@ public class Player {
     }
     
  
-
-    
-
-    /**
-     * Attack phase
-     * @param from the source country
-     * @param to the target country
-     * @return true for attack success
-     * @throws AttackingCountryOwner throw exception 
-     * @throws AttackedCountryOwner throw exception 
-     * @throws WrongDiceNumber throw exception 
-     * @throws AttackCountryArmyMoreThanOne throw exception 
-     * @throws TargetCountryNotAdjacent throw exception 
-     *
-     * 
-     */
-    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-
-        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-
-
-        while (true) {
-            try {
-                int attackDice = Math.min(from.getArmy() - 1, 3);
-                int defendDice = Math.min(to.getArmy(), 2);
-
-                if (attackPhase(from, to, attackDice, defendDice)) {
-                    p.at_least_once = true;
-
-
-                    return true;
-                }
-                validated = true;//any exception after this will be caught and break the while
-
-
-            } catch (RiskGameException e) {
-                if (validated) {
-                    p.at_least_once = false;
-                    return false;
-                } else {
-                    throw e;
-                }
-
-            }
-
-
-        }
-
-
-    }
 
     /**
      * Attack
@@ -641,56 +591,6 @@ public class Player {
 
     }
 
-
-    /**
-     * Attack phase
-     *
-     * @param from       Country from where army will attacking
-     * @param to         Country from where army will be attacked
-     * @param attackDice int number of dice to roll for attacker
-     * @return true if country is conquered, false otherwise
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner        the owner of attacking country must be current player
-     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
-     */
-    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-//        current_player.attack(from, to, attackDice, defendDice);
-//        if(current_player.attackValidation(from, to, num)) {
-//            attackSimulation(from, to, num);
-//        }
-
-
-        try {
-            if (p.attackValidation(from, to, attackDice, defendDice)) {
-
-                p.attackSimulation(from, to, attackDice, defendDice);
-
-            }
-        } catch (OutOfArmyException e) {
-            to.swapOwnership(p.rival, p.current_player);
-
-
-            if (p.checkWinner()) {//this attacker conquered all the countries
-                p.gameOver = true;
-
-            }
-            p.at_least_once = true;
-            p.checkContinentOwner(to.getCont(),p.current_player);//check if this player gets control of the continent
-            if(p.rival.getRealms().size() == 0){
-                p.current_player.receiveEnemyCards(p.rival);
-            }
-
-            return true;
-
-
-        }
-        p.checkAttackingIsPossible();
-        p.at_least_once = false;
-
-        return false;
-
-
-    }
 
 
 
