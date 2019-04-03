@@ -156,20 +156,33 @@ public class Window extends JFrame implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String) {
-            String CName = (String) arg;
-            showMsg("This card will add to " + CName);
+        Phases p = (Phases) o;
+        if(p.getCurrent_player().getStrategy() != null){
+            //disable all the buttons and popping outs
+
+            phasePanel.completePhaseButton.setEnabled(false);
+
+
         }
-        else if(arg instanceof Card){//receive enemy card
-            Card cards = (Card)arg;
-            showMsg("You received these cards from conquering: " + cardsToString(cards));
+        else {
+            for(JButton b : mapPanel.cbs){
+                b.setEnabled(true);
+            }
+            cardExchangeView.setContext(p);
+
+            if (arg instanceof String) {
+                String CName = (String) arg;
+                showMsg("This card will add to " + CName);
+            } else if (arg instanceof Card) {//receive enemy card
+                Card cards = (Card) arg;
+                showMsg("You received these cards from conquering: " + cardsToString(cards));
+            }
         }
 
 
-            Phases p = (Phases) o;
             //mapPanel is not a part of observer pattern
             //update phasePanel
-            cardExchangeView.setContext(p);
+
             phasePanel.setContext(p);
             sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
 
@@ -266,6 +279,12 @@ public class Window extends JFrame implements Observer {
 
     public int[] decidePlayers(){
         int[] values = new int[5];
+        //test
+        values[0] = 1;//human
+        values[1] = 0;//aggressive
+        values[2] = 1;//benevolent
+        values[3] = 0;
+        values[4] = 0;
         //TODO: retrieve user input. values[0] = number of human players, value[1] = number of aggressive players etc..
         return values;
     }

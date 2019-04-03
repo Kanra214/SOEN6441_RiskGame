@@ -9,7 +9,7 @@ public class Aggressive implements Strategy {
 
     //private int id;
     @Override
-    public void execute(Phases p) throws OutOfArmyException {
+    public void execute(Phases p){
         Player player = p.getCurrent_player();
         System.out.println("inside aggerssive reinforce");
         ArrayList<Country> tt= player.getRealms();
@@ -28,7 +28,11 @@ public class Aggressive implements Strategy {
 
 
             //player.deployArmy(chosen);
-            player.reinforce(chosen);
+            try {
+                player.reinforce(chosen);
+            } catch (OutOfArmyException e) {
+                e.printStackTrace();
+            }
 
 
         }
@@ -40,7 +44,7 @@ public class Aggressive implements Strategy {
 
 
 
-    @Override
+
     public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 
         Country chosen=new Country(player.getId(), player.getId(), null, null);
@@ -79,7 +83,7 @@ public class Aggressive implements Strategy {
 
     }
 
-    @Override
+
     public void fortificate(Player player) {
         // TODO Auto-generated method stub
 
