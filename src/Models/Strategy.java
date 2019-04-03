@@ -1,17 +1,13 @@
+
 package Models;
 
 import java.util.ArrayList;
 
 public interface Strategy {
   /*** Method whose implementation varies depending on the strategy adopted. */
+  void execute(Phases p) throws OutOfArmyException;
 
-  //Three strategies and pass the player to them
-  //public void reinforce(Player player)throws OutOfArmyException;
-  //public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent;   
-  //public void fortificate(Player player);
-  public void execute(Player player) throws OutOfArmyException, AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent 
-;
-  
+
 }
 
 /*
@@ -97,3 +93,4 @@ class Aggressive implements Strategy {
         
 }
 */
+

@@ -4,7 +4,6 @@
  */
 package Models;
 
-
 import java.awt.*;
 import java.util.*;
 import Game.MapLoader;
@@ -47,8 +46,8 @@ public class Player {
       testp1.setStrategy(new Aggressive());    
       testp2.setStrategy(new Random());  
       
-      testp1.excuteStrategy();
-      testp2.excuteStrategy();
+      //testp1.excuteStrategy();
+      //testp2.excuteStrategy();
 
    
       
@@ -348,13 +347,13 @@ public class Player {
 
 
     /*
-    
+
     interface Strategy {
-       
+
 
       //Three strategies and pass the player to them
       public void reinforce(Player player);
-      public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent;   
+      public boolean attack(Player player) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent;
       public void fortificate(Player player);
       }
 
@@ -362,11 +361,11 @@ public class Player {
 
       @Override
       public void reinforce(Player player) {
-        
+
         System.out.println("inside aggerssive reinforce");
         ArrayList<Country> tt= player.getRealms();
         Country chosen=new Country(id, id, null, null);
-        
+
         //If all the countries are the same number,the chosen will be the first country
         int max=0;
         for(Country c: tt) {
@@ -375,19 +374,19 @@ public class Player {
             max=c.getArmy();
           }
         }
-        
+
         while(player.getUnassigned_armies()>0) {
-          
+
           try {
             //player.deployArmy(chosen);
             player.reinforce(chosen);
-            
+
           } catch (OutOfArmyException e) {
 
             e.printStackTrace();
           }
         }
-        
+
       }
 
       @Override
@@ -404,49 +403,49 @@ public class Player {
             max=t.getArmy();
           }
         }
-        
-        //first check if there is enemy country in neighbourhood 
+
+        //first check if there is enemy country in neighbourhood
         ArrayList<Country>neighbours =chosen.getNeighbours();
-        
+
         for(Country t: neighbours) {
           if(t.getOwner()!=player) {
-            
+
             target=t;
-            
+
             //attack until this country has 1 army or the target has been conquered
             while(chosen.getArmy()>0||t.getOwner()==player) {
               player.attackPhase(chosen, target, 1, 1);
               //TODO need to decide he number of dice
             }
-            
+
           }
           //finish attack
           return true;
         }
-        
+
         //no enemy
         return false;
-                       
+
       }
 
       @Override
       public void fortificate(Player player) {
         // TODO Auto-generated method stub
-        
+
       }
-            
+
     }
-    
-   
-    
-    
+
+
+
+
     class Random implements Strategy {
 
       @Override
       public void reinforce(Player player) {
         // TODO Auto-generated method stub
         Country chosen=new Country(id, id, null, null);
-        
+
         System.out.println("inside random reinforce");
         ArrayList<Country> tt= player.getRealms();
         int max=0;
@@ -456,9 +455,9 @@ public class Player {
             max=c.getArmy();
           }
         }
-        
+
         while(player.getUnassigned_armies()>0) {
-          
+
           try {
             //player.deployArmy(chosen);
             player.reinforce(chosen);
@@ -467,14 +466,14 @@ public class Player {
             e.printStackTrace();
           }
         }
-        
+
       }
 
       @Override
       public boolean attack(Player player) {
         // TODO Auto-generated method stub
         Country chosen=new Country(id, id, null, null);
-        
+
         System.out.println("inside random attack");
         ArrayList<Country> tt= player.getRealms();
         int max=0;
@@ -484,7 +483,7 @@ public class Player {
             max=c.getArmy();
           }
         }
-        
+
         return false;
 
       }
@@ -492,11 +491,11 @@ public class Player {
       @Override
       public void fortificate(Player player) {
         // TODO Auto-generated method stub
-        
+
       }
-            
+
     }
-    
+
  */
     
     public void setStrategy(Strategy strategy) 
@@ -504,44 +503,30 @@ public class Player {
       this.strategy= strategy;
       }
     
-    public void excuteStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent 
-    {
-      
-      try {
-        this.strategy.execute(this);
-      } catch (OutOfArmyException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      
 
-      }
+
+    public void executeStrategy() throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+        if (strategy != null) {
+            try {
+              strategy.execute(p);
+            } catch (OutOfArmyException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
+        }
+
+
+    }
+
 
     public Strategy getStrategy() {
       // TODO Auto-generated method stub
       return strategy;
     }
 
- 
-    
-    
-    /**
-     * Sends 1 army from current player to chosen Country during reinforcement phase
-     *
-     * @param chosen Country where to send army to
-     */
-    public void reinforcementPhase(Country chosen) {
-
-        try {
-            reinforce(chosen);
-        } catch (RiskGameException e) {
-            System.out.println("Not possible");
-        }
-
-
-    }
     
  
+
 
     /**
      * Attack
@@ -590,16 +575,6 @@ public class Player {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

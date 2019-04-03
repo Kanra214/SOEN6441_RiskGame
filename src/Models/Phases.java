@@ -2,7 +2,6 @@ package Models;
 //import View_Components.CardExchangeView;
 
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -200,13 +199,6 @@ public class Phases extends Observable {
         }
 
 
-        if (currentPhase == 1) {
-
-       	 System.out.println("p"+getCurrentPhase());
-         System.out.println("p"+getCurrentTurn());
-
-           
-        }
 
     }
 
@@ -239,10 +231,10 @@ public class Phases extends Observable {
 
         switch (currentPhase) {
             case 0:
+                nextTurn();
                 if (currentTurn >= numOfPlayers - 1) {
                     currentPhase = 1;
                 }
-                nextTurn();
                 break;
             case 1:
                 currentPhase = 2;
@@ -261,6 +253,7 @@ public class Phases extends Observable {
                 else {
                     nextTurn();
                     currentPhase = 1;
+                    current_player.executeStrategy();
                 }
                 break;
         }

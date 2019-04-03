@@ -5,7 +5,6 @@ import Models.Card;
 import Models.Country;
 import Models.Phases;
 import Models.Player;
-import javafx.scene.control.TextFormatter;
 
 import javax.swing.*;
 import java.awt.*;

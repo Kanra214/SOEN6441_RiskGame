@@ -27,15 +27,7 @@ import Models.Player;
  */
 public class CardExchangeView extends JFrame{
 
-	
-//	public static void main(String[] args) {
-//
-//
-//		CardExchangeView cardexchange = new CardExchangeView();
-//		cardexchange.setVisible(true);
-//		cardexchange.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-//		}
-//
+
 	
     private final static int X = 0;
     private final static int Y = 0;
