@@ -7,7 +7,7 @@ public class Random implements Strategy {
     public void execute(Phases p)
         throws OutOfArmyException, TargetCountryNotAdjacent, AttackCountryArmyMoreThanOne, AttackingCountryOwner, WrongDiceNumber, AttackedCountryOwner {
         Player player = p.getCurrent_player();
-        ArrayList<Country> realms = new ArrayList<Country>();
+        ArrayList<Country> realms = player.getRealms();
         if(p.getCurrentPhase() == 0){
             assignArmyTocountry(player,realms);
             p.nextPhase();
