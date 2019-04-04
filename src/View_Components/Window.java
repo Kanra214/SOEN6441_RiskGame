@@ -1,6 +1,7 @@
 package View_Components;
 
 
+import Game.Controller;
 import Models.Card;
 import Models.Country;
 import Models.Phases;
@@ -288,6 +289,43 @@ public class Window extends JFrame implements Observer {
         values[4] = 0;
         //TODO: retrieve user input. values[0] = number of human players, value[1] = number of aggressive players etc..
         return values;
+    }
+
+    public void displayGUI(Controller c) {
+        JOptionPane.showMessageDialog(null, getPanel(c), "Output : ",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private JPanel getPanel(Controller c) {
+        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
+        JTextField xField = new JTextField(5);
+        JTextField yField = new JTextField(5);
+        panel.add(new JLabel("Number of human players: "));
+        panel.add(xField);
+        panel.add(Box.createHorizontalStrut(10)); // a spacer
+        panel.add(new JLabel("Number of aggressive players: "));
+        panel.add(yField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel,
+                "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            if (Integer.parseInt(xField.getText()) + Integer.parseInt(yField.getText()) <= 6 && Integer.parseInt(xField.getText()) + Integer.parseInt(yField.getText())>=2){
+                c.coorrect = true;
+                System.out.println("Number of human players: " + xField.getText());
+                System.out.println("Number of aggressive players: " + yField.getText());
+            }
+
+
+        }
+        if (result == JOptionPane.CANCEL_OPTION) {
+            System.exit(0);
+        }
+
+        return panel;
+    }
+
+    private JLabel getLabel(String title) {
+        return new JLabel(title);
     }
 
 

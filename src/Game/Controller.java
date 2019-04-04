@@ -1,4 +1,5 @@
 package Game;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -37,6 +38,13 @@ public class Controller {
         this.window = new Window();
 
     }
+///////
+
+
+
+
+
+
 
     /**
      * <h1>Listener</h1>
@@ -339,6 +347,9 @@ public class Controller {
          *
          * @throws IOException map loading exception
          */
+
+        public boolean coorrect = false;
+
         public void start() throws IOException {
 
             System.out.println(mapFilename);
@@ -348,6 +359,7 @@ public class Controller {
                 window.showMsg("Empty map");
                 System.exit(0);
             }
+            while (!coorrect) window.displayGUI(this);
 
 
 //            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
