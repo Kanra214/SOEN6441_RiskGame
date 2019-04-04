@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class StartManu extends JFrame{
 
 	    public JPanel startPanel;
-	    public JButton startGame,editMap,instructions,exit;
+	    public JButton startGame,editMap,loadMap,instructions,exit;
 	    private int buttonH=30;
 	    private int buttonW=120;
 
@@ -43,18 +43,21 @@ public class StartManu extends JFrame{
 	        
 	        startPanel = new JPanel();
 	        startGame = new JButton("Start Game");
-	        editMap = new JButton("Edit Map");	 
+	        editMap = new JButton("Edit Map");
+	        loadMap = new JButton("Load Map");
 	        instructions = new JButton("Instructions");
 	        exit = new JButton("Exit Game");	
 	        
 	        startPanel.setLayout(null);
 	        startGame.setBounds(w/2-buttonW/2, y, buttonW, buttonH);
 	        editMap.setBounds(w/2-buttonW/2, y+60, buttonW, buttonH);
-	        instructions.setBounds(w/2-buttonW/2, y+120, buttonW, buttonH);
-	        exit.setBounds(w/2-buttonW/2, y+180, buttonW, buttonH);
+			loadMap.setBounds(w/2-buttonW/2, y+120, buttonW, buttonH);
+	        instructions.setBounds(w/2-buttonW/2, y+180, buttonW, buttonH);
+	        exit.setBounds(w/2-buttonW/2, y+240, buttonW, buttonH);
 	        
 	        startPanel.add(startGame);
 	        startPanel.add(editMap);
+	        startPanel.add(loadMap);
 	        startPanel.add(instructions);
 	        startPanel.add(exit);
 	        add(startPanel);

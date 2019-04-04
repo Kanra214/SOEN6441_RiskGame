@@ -103,7 +103,7 @@ public class Window extends JFrame implements Observer {
 
         phasePanel.setBounds(PHASE_PANEL_X,PHASE_PANEL_Y,PHASE_PANEL_WIDTH,PHASE_PANEL_HEIGHT );
         phasePanel.setBackground(Color.YELLOW);
-        phasePanel.setLayout(new GridLayout(1,4));
+        phasePanel.setLayout(new GridLayout(1,5));
 
 
         //side panel settings

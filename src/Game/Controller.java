@@ -25,7 +25,8 @@ public class Controller {
     StartManu startmanu;
     MapEditorGUI mapeditor;
 
-    String filename;
+    String mapFilename;
+    String loadFileName;
 
 
 
@@ -47,7 +48,6 @@ public class Controller {
 
         /**
          * Process the user requests
-         *
          * @param e ActionEvent
          */
         public void actionPerformed(ActionEvent e) {
@@ -62,6 +62,10 @@ public class Controller {
                 if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
                     p.phaseOneFirstStep();
                 }
+            }
+
+            if(e.getSource() == window.phasePanel.saveButton){
+                writeToFile(p);
             }
 
 
@@ -233,12 +237,14 @@ public class Controller {
             startmanu.setVisible(true);
 
             startManuAction lisStart = new startManuAction(1);
+            startManuAction lisLoadMap = new startManuAction(5);
             startManuAction lisEditMap = new startManuAction(2);
             startManuAction lisInstruction = new startManuAction(3);
             startManuAction lisExit = new startManuAction(4);
 
             startmanu.startGame.addActionListener(lisStart);
             startmanu.editMap.addActionListener(lisEditMap);
+            startmanu.loadMap.addActionListener(lisLoadMap);
             startmanu.instructions.addActionListener(lisInstruction);
             startmanu.exit.addActionListener(lisExit);
         }
@@ -247,13 +253,19 @@ public class Controller {
          * Check file is correct or not
          * @return boolean
          */
-        public boolean ChooseFile() {
+        public boolean ChooseFile(int i) {
             JFileChooser jfc = new JFileChooser(".");
 
             int returnValue = jfc.showOpenDialog(null);
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = jfc.getSelectedFile();
-                filename = selectedFile.getName();
+                if(i == 1) {
+                    mapFilename = selectedFile.getName();
+                }
+                else if(i == 5){
+                    loadFileName = selectedFile.getName();
+                }
+
             }
             return true;
         }
@@ -284,7 +296,7 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 switch (buttonFlag) {
                     case 1:
-                        if (ChooseFile()) {
+                        if (ChooseFile(1)) {
                             startmanu.dispose();
                             try {
                                 start();
@@ -304,6 +316,18 @@ public class Controller {
                     case 4:
                         startmanu.dispose();
                         break;
+
+                    case 5:
+                        if (ChooseFile(5)) {
+                            startmanu.dispose();
+
+                            loadGame();
+
+                            startmanu.dispose();
+                        }
+                        break;
+
+
                 }
             }
         }
@@ -317,9 +341,9 @@ public class Controller {
          */
         public void start() throws IOException {
 
-            System.out.println(filename);
+            System.out.println(mapFilename);
 
-            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(filename);
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapFilename);
             if (tempMap.isEmpty()) {
                 window.showMsg("Empty map");
                 System.exit(0);
@@ -335,10 +359,22 @@ public class Controller {
 
 
             p.addObserver(window);
-            Listener lis = new Listener();
-//            p.gameSetUp(numOfPlayers);
             int[] playerValues = window.decidePlayers();
             p.gameSetUp(playerValues);
+            addListeners();
+
+        }
+
+        public void loadGame(){
+            p = GameLoader.parseMap(loadFileName);//TODO: implement this class to create phases object with map
+            p.addObserver(window);
+            GameLoader.gameResume(p);//TODO: implement this class to pass datas from txt file to phases
+            addListeners();
+
+        }
+        public void addListeners(){
+            Listener lis = new Listener();
+//            p.gameSetUp(numOfPlayers);
 
             window.drawMapPanel(p);
 
@@ -346,6 +382,7 @@ public class Controller {
                 cb.addActionListener(lis);
             }
             window.phasePanel.completePhaseButton.addActionListener(lis);
+            window.phasePanel.saveButton.addActionListener(lis);
             p.connectView(); //after this updating window is enabled
             window.setVisible(true);
             window.cardExchangeView.Exchange3Infantry.addActionListener(lis);
@@ -353,6 +390,11 @@ public class Controller {
             window.cardExchangeView.Exchange3Cavalry.addActionListener(lis);
             window.cardExchangeView.Exchange3Diff.addActionListener(lis);
             window.cardExchangeView.Cancel.addActionListener(lis);
+
+        }
+
+        public writeToFile(Phases p){
+
         }
 
 

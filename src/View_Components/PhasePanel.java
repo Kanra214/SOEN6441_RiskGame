@@ -15,6 +15,7 @@ public class PhasePanel extends JPanel {
     private JLabel currentPlayerLabel;
     private JLabel detailLabel;
     public JButton completePhaseButton;
+    public JButton saveButton;
     private CardExchangeView cev;
 
     /**
@@ -25,8 +26,10 @@ public class PhasePanel extends JPanel {
         currentPhaseLabel = new JLabel();
         detailLabel = new JLabel();
         completePhaseButton = new JButton("complete this phase");
+        saveButton = new JButton("save game");
         this.cev = cev;
         add(completePhaseButton);
+        add(saveButton);
         add(currentPlayerLabel);
         add(currentPhaseLabel);
         add(detailLabel);
