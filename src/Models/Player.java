@@ -314,11 +314,10 @@ public class Player {
 
     /**
      * dice roll process
-     * @param digits digits of dice
      */
-    protected void rollDice (int digits){
-        numOfDice = digits;
-        for (int i =0; i < digits; i++){
+    protected void rollDice (){
+
+        for (int i =0; i < numOfDice; i++){
             int Dice = (int)(Math.random()*6)+1;
             dice.add(Dice);
         }
@@ -332,6 +331,9 @@ public class Player {
      */
     public int getNumOfDice(){
         return numOfDice;
+    }
+    public void setNumOfDice(int n){
+        numOfDice = n;
     }
 
     /**

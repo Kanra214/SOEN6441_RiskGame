@@ -4,9 +4,13 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Benevolent implements Strategy {
+
     @Override
     public void execute(Phases p) {
+
         Player player = p.getCurrent_player();
+        player.setNumOfDice(1);
+
 
             if (p.getCurrentPhase() == 0) {
                 System.out.println("benevolent phase 0");

@@ -422,10 +422,12 @@ public class Phases extends Observable {
     protected void attackSimulation(Country from, Country to, int attackDice, int defendDice) throws OutOfArmyException {
 
         inBattle(true);
+        current_player.setNumOfDice(attackDice);
+        rival.setNumOfDice(defendDice);
 
         rival = to.getOwner();
-        current_player.rollDice(attackDice);
-        rival.rollDice(defendDice);
+        current_player.rollDice();
+        rival.rollDice();
 
         while (current_player.dice.size() > 0 && rival.dice.size() > 0) {
 

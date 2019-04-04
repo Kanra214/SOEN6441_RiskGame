@@ -393,7 +393,7 @@ public class Controller {
 
         }
 
-        public writeToFile(Phases p){
+        public void writeToFile(Phases p){
 
         }
 
