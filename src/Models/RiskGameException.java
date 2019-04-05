@@ -1,9 +1,11 @@
 package Models;
 
+import java.io.Serializable;
+
 /**
  * Customized exceptions for this game
  */
-public class RiskGameException extends Exception {
+public class RiskGameException extends Exception implements Serializable {
     public String errMsg;
 
     /**

@@ -117,6 +117,7 @@ public class CardExchangeView extends JFrame{
 
 			//cp.cardLabels[0].setText("Your current cards: ");
 			//cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
+			setVisible(true);
 
 
 
@@ -148,15 +149,15 @@ public class CardExchangeView extends JFrame{
 				Cancel.setEnabled(false);
 			}
 			cp.setContext(p.getCurrent_player());
-			setVisible(true);
+
 
 
 			}
-
-		else{
-			setVisible(false);
-
+			else if(p.cardExchanged){
+				setVisible(false);
 		}
+
+
 
 
 

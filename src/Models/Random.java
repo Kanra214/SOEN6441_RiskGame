@@ -42,11 +42,11 @@ public class Random implements Strategy {
                     try {
                         int Allout = getRandom(0,1);
                         if (Allout == 1) {
-                            p.attackPhase(sourceCountry,targetCountry);
+                            player.attack(sourceCountry,targetCountry);
                         }
                         else {
                             int numOfattack = getRandom(2,4);
-                            p.attackPhase(sourceCountry,targetCountry,numOfattack,numOfattack - 1);
+                            player.attack(sourceCountry,targetCountry,numOfattack,numOfattack - 1);
                         }
 
                     }catch(TargetCountryNotAdjacent e) {

@@ -87,7 +87,7 @@ public class Controller {
                     if (p.getCurrentPhase() == 0) {
                         p.startUpPhase(chosen);
                     } else if (p.getCurrentPhase() == 1) {
-                        p.reinforcementPhase(chosen);
+                        p.getCurrent_player().reinforce(chosen);
                     } else if (p.getCurrentPhase() == 3) {
                         if (chosenFrom == null) {
                             chosenFrom = chosen;
@@ -98,7 +98,8 @@ public class Controller {
                             if (input != null) {
                                 int num = Integer.parseInt(input);
 
-                                p.fortificationPhase(chosenFrom, chosenTo, num);
+                                p.getCurrent_player().fortify(chosenFrom, chosenTo, num);
+                                p.nextPhase();
 
                             }
                             chosenFrom = null;
@@ -117,7 +118,7 @@ public class Controller {
 
                                 if (attackerInput.isEmpty()) {//all out mode
                                     System.out.println("all out");
-                                    if (p.attackPhase(chosenFrom, chosenTo)) {
+                                    if (p.getCurrent_player().attack(chosenFrom, chosenTo)) {
                                         if (p.isGameOver()) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
@@ -135,11 +136,16 @@ public class Controller {
 
 
                                     System.out.println("not all out");
-                                    String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+                                    int defendDice;
+                                    if(chosenTo.getOwner().getStrategy() == null) {//human defender
+                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+                                        defendDice = Integer.parseInt(defenderInput);
+                                    }
+                                    else{
+                                        defendDice = chosenTo.getOwner().getNumOfDice();
+                                    }
 
-                                    int defendDice = Integer.parseInt(defenderInput);
-
-                                    if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
+                                    if (p.getCurrent_player().attack(chosenFrom, chosenTo, attackDice, defendDice)) {
                                         if (p.isGameOver()) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
@@ -271,32 +277,35 @@ public class Controller {
 
             JFileChooser jfc = new JFileChooser(".");
 
-            int returnValue = jfc.showOpenDialog(null);
+            int returnValue = JFileChooser.CANCEL_OPTION;
+
+
+            if (i== 6) {
+                jfc.setDialogTitle("Save");
+                returnValue = jfc.showSaveDialog(null);
+            }
+            else if(i == 1){
+                jfc.setDialogTitle("Open a map file");
+                returnValue = jfc.showOpenDialog(null);
+            }
+            else if(i == 5){
+                jfc.setDialogTitle("Load a SER file");
+                returnValue = jfc.showOpenDialog(null);
+            }
             if (returnValue == JFileChooser.APPROVE_OPTION) {
-
+                String path = jfc.getSelectedFile().getAbsolutePath();
                 if (i == 1) {
-                    jfc.setDialogTitle("Open a map file");
+                    mapFileName = path;
                 } else if (i == 5) {
-                    jfc.setDialogTitle("Load a SER file");
+                    loadFileName = path;
                 } else if (i == 6) {// save file option
-                    jfc.setDialogTitle("Save");
-                }
-                File selectedFile = jfc.getSelectedFile();
-                if (i == 1) {
-                    mapFileName = selectedFile.getAbsolutePath();
-                } else if (i == 5) {
-                    loadFileName = selectedFile.getAbsolutePath();
-                } else if (i == 6) {// save file option
-                    saveFileName = selectedFile.getAbsolutePath();
+                    saveFileName = path;
                 }
 
-                else if(i == 5){
-                    loadFileName = selectedFile.getName();
-                }
                 else if(i == 2){
                 	System.out.println("tNumIn file choose"+tNum);
                 	
-                	 tournamentMapName[tNum] = selectedFile.getName();
+                	 tournamentMapName[tNum] = path;
                 }
 
                 return true;
@@ -422,7 +431,7 @@ public class Controller {
                 window.showMsg("Empty map");
                 System.exit(0);
             }
-            while (!coorrect) window.displayGUI(this);
+//            while (!coorrect) window.displayGUI(this);
 
 
 //            int numOfPlayers = Integer.parseInt(window.promptPlayer("how many players?"));
@@ -443,9 +452,15 @@ public class Controller {
         public void loadGame(){
 
             p = loadPhases();//TODO: implement this class to create phases object with map
-            p.addObserver(window);
-            p.resume();//TODO: implement this class to pass datas from txt file to phases
-            addListeners();
+            if(p == null){
+                window.showMsg("Wrong file");
+                System.exit(0);
+            }
+            else {
+                p.addObserver(window);
+                p.resume();//TODO: implement this class to pass datas from txt file to phases
+                addListeners();
+            }
 
         }
         public void addListeners(){
@@ -489,10 +504,11 @@ public class Controller {
 
         }
         public Phases loadPhases(){
+            Phases ph = null;
             try {
                 FileInputStream fi = new FileInputStream(new File(loadFileName));
                 ObjectInputStream oi = new ObjectInputStream(fi);
-                Phases p = (Phases)oi.readObject();
+                ph = (Phases)oi.readObject();
 
 
                 oi.close();
@@ -505,7 +521,7 @@ public class Controller {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            return p;
+            return ph;
 
 
         }

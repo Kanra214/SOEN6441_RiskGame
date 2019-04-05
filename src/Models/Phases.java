@@ -359,96 +359,23 @@ public class Phases extends Observable implements Serializable {
         }
     }
 
-    /**
-     * Sends 1 army from current player to chosen Country during reinforcement phase
-     *
-     * @param chosen Country where to send army to
-     */
-    public void reinforcementPhase(Country chosen) {
-
-
-        try {
-            current_player.reinforce(chosen);
-        } catch (RiskGameException e) {
-            System.out.println("Not possible");
-        }
-
-
-    }
 
 
 
 
 
-    /**
-     * attack all-in mode
-     * @param from country by current player
-     * @param to    current player chosed country
-     * @throws OutOfArmyException
-     */
 
-    public boolean attackPhase(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-
-        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-
-
-        while (true) {
-            try {
-                int attackDice = Math.min(from.getArmy() - 1, 3);
-                int defendDice = Math.min(to.getArmy(), 2);
-
-                if (attackPhase(from, to, attackDice, defendDice)) {
-                    at_least_once = true;
-
-
-                    return true;
-                }
-                validated = true;//any exception after this will be caught and break the while
-
-
-            } catch (RiskGameException e) {
-                if (validated) {
-                    at_least_once = false;
-                    return false;
-                } else {
-                    throw e;
-                }
-
-            }
-
-
-        }
-
-
-    }
-
-    /**
-     * Attack phase
-     *
-     * @param from       Country from where army will attacking
-     * @param to         Country from where army will be attacked
-     * @param attackDice int number of dice to roll for attacker
-     * @return true if country is conquered, false otherwise
-     * @throws AttackCountryArmyMoreThanOne the number of army in attacking country must more than one
-     * @throws AttackingCountryOwner        the owner of attacking country must be current player
-     * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
-     */
-    public boolean attackPhase(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-        return current_player.attack(from, to, attackDice, defendDice);
-
-
-
-    }
 
 
 
     protected void attackSimulation(Country from, Country to, int attackDice, int defendDice) throws OutOfArmyException {
 
         inBattle(true);
+        rival = to.getOwner();
         current_player.setNumOfDice(attackDice);
         rival.setNumOfDice(defendDice);
 
-        rival = to.getOwner();
+
         current_player.rollDice();
         rival.rollDice();
 
@@ -567,22 +494,6 @@ public class Phases extends Observable implements Serializable {
             throw new AttackCountryArmyMoreThanOne();
         }
 
-    }
-    /**
-     * Sends army from one country to another
-     *
-     * @param from Country from where army will be deducted
-     * @param to   Country from where army will be sent
-     * @param num  int number of armies to send
-     * @throws CountryNotInRealms          country not owned by the player
-     * @throws OutOfArmyException          not enough army to transfer
-     * @throws NoSuchPathException         no path from owned countries between country
-     * @throws SourceIsTargetException     source country and target country is the same
-     * @throws MoveAtLeastOneArmyException 0 army chosen to move
-     */
-    public void fortificationPhase(Country from, Country to, int num) throws SourceIsTargetException, MoveAtLeastOneArmyException, CountryNotInRealms, OutOfArmyException, NoSuchPathException {
-        current_player.fortify(from, to, num);
-        nextPhase();
     }
 
     /**
