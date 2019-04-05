@@ -302,13 +302,10 @@ public class Controller {
                     saveFileName = path;
                 }
 
-                else if(i == 5){
-                    loadFileName = selectedFile.getName();
-                }
                 else if(i == 2){
                 	System.out.println("tNumIn file choose"+tNum);
                 	
-                	 tournamentMapName[tNum] = selectedFile.getName();
+                	 tournamentMapName[tNum] = path;
                 }
 
                 return true;
