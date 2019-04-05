@@ -185,21 +185,27 @@ public class Player {
 
 
     public void addPlayerArmyBySameCards(int cardId) {
-        unassigned_armies +=Card.getCardTurn()*5;
-        cards.exchangeSameCards(cardId);
-        System.out.println("card turn " + Card.getCardTurn());
-        p.updateWindow();
+        if(!p.cardExchanged) {
+            p.cardExchanged = true;
+            unassigned_armies += Card.getCardTurn() * 5;
+            cards.exchangeSameCards(cardId);
+            System.out.println("card turn " + Card.getCardTurn());
+            p.updateWindow();
+        }
 
         //p.updateWindow();
         //System.out.println("update card");
     }
 
     public void addPlayerArmyByDiffCards(){
-        unassigned_armies+=Card.getCardTurn()*5;
-        System.out.println("card turn " + Card.getCardTurn());
+        if(!p.cardExchanged) {
+            p.cardExchanged = true;
+            unassigned_armies += Card.getCardTurn() * 5;
+            System.out.println("card turn " + Card.getCardTurn());
 
-        cards.exchangeDiffCards();
-        p.updateWindow();
+            cards.exchangeDiffCards();
+            p.updateWindow();
+        }
     }
 
 
@@ -300,14 +306,16 @@ public class Player {
      * @throws MoveAtLeastOneArmyException  0 army chosen to move
      */
     public void fortify(Country from, Country to, int num) throws CountryNotInRealms, OutOfArmyException, NoSuchPathException, SourceIsTargetException, MoveAtLeastOneArmyException {
-
-        if(findPath(from, to)){
-            from.decreaseArmy(num);
-            to.increaseArmy(num);
-        }
-        else{
+        if(!findPath(from,to)){
             throw new NoSuchPathException();
+        }
 
+        else{
+            if(!p.isFortified()) {
+                from.decreaseArmy(num);
+                to.increaseArmy(num);
+                p.fortified = true;
+            }
         }
     }
 

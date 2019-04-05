@@ -1,5 +1,6 @@
 package Models;
 //import View_Components.CardExchangeView;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -8,7 +9,7 @@ import java.util.Observable;
  * This class that controls logic of the game
  *
  */
-public class Phases extends Observable {
+public class Phases extends Observable implements Serializable {
     private int numOfPlayers = 0;
     private ArrayList<Player> players;
     private ArrayList<Country> graph;
@@ -18,12 +19,29 @@ public class Phases extends Observable {
     private int currentPhase = 0;
     private int currentTurn = -1;
     private boolean viewIsConnected = false;
+    protected boolean gameOver = false;
+    protected boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
+    public boolean cardExchanged = false;
+    protected boolean fortified = false;
+    private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
+
 
     protected boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
 
-    public boolean gameOver = false;
-    public boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
-    private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isInBattle() {
+        return inBattle;
+    }
+
+
+    public boolean isFortified() {
+        return fortified;
+    }
+
+
 
     /**
      * Constructor
@@ -245,6 +263,8 @@ public class Phases extends Observable {
 
                 currentPhase = 3;
 
+
+
                 break;
             case 3:
                 if (current_player.getRealms().size() == 0) {
@@ -252,6 +272,8 @@ public class Phases extends Observable {
                 }
                 else {
                     nextTurn();
+                    fortified = false;
+                    cardExchanged = false;
                     currentPhase = 1;
                     current_player.executeStrategy();
                 }
@@ -445,7 +467,7 @@ public class Phases extends Observable {
                 rival.dice.remove(0);
 
             } catch (OutOfArmyException e) {
-                inBattle(false);
+//                inBattle(false);
                 current_player.dice.clear();
                 rival.dice.clear();
 
@@ -580,6 +602,7 @@ public class Phases extends Observable {
 
         if (num >= current_player.getNumOfDice()) {
             current_player.fortify(from, to, num);
+            inBattle(false);
             checkAttackingIsPossible();
             return true;
         } else {
@@ -663,5 +686,10 @@ public class Phases extends Observable {
      */
     public void setCurrent_player(Player current_player) {
         this.current_player = current_player;
+    }
+    public void resume(){
+        current_player.executeStrategy();
+        updateWindow();
+
     }
 }
