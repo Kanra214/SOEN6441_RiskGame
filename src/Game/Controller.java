@@ -230,7 +230,7 @@ public class Controller {
 
                     try {
                         int numDeploy = Integer.parseInt(input);
-                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+                        if (p.getCurrent_player().deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
                             break;
                         }
                     } catch (RiskGameException ex) {

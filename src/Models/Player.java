@@ -46,7 +46,7 @@ public class Player implements Serializable {
       
       testp1.setStrategy(new Aggressive());    
       testp2.setStrategy(new Random());
-//
+
 //      testp1.excuteStrategy();
 //      testp2.excuteStrategy();
 
@@ -465,6 +465,21 @@ public class Player implements Serializable {
         }
 
 
+    }
+
+    public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
+
+
+        if (num >= p.getCurrent_player().getNumOfDice()) {
+            p.getCurrent_player().fortify(from, to, num);
+            p.inBattle(false);
+            p.checkAttackingIsPossible();
+            return true;
+        } else {
+
+            throw new MustBeEqualOrMoreThanNumOfDice();
+
+        }
     }
 
 
