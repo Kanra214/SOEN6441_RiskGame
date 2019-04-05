@@ -396,19 +396,24 @@ public class Controller {
                         }
                         if (tournamentArray.get(1) != 4){
                             while (strategyArray.size() != tournamentArray.get(1)){
-                                int i = (int)(Math.random()*3);
+                                int i = (int) (Math.random() * 4 + 1);;
                                 if (!strategyArray.contains(i)){
                                     strategyArray.add(i);
                                 }
                             }
                         }else {
-                            strategyArray.add(0);
                             strategyArray.add(1);
                             strategyArray.add(2);
                             strategyArray.add(3);
+                            strategyArray.add(4);
                         }
                         Collections.sort(strategyArray);
-                        startTournament(tournamentArray.get(0), strategyArray, tournamentArray.get(2), tournamentArray.get(3));
+                        System.out.println(strategyArray);
+                        int[] playerValues = new int[strategyArray.size()];
+                        for(int i = 0;i < strategyArray.size(); i++){
+                            playerValues[i] = strategyArray.get(i);
+                        }
+                        startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
                     	//First Choose Maps
 //                    	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
 //                    	tMapNum =Integer.parseInt(mapNumString);
@@ -471,8 +476,20 @@ public class Controller {
 
             p.addObserver(window);
             int[] playerValues = window.decidePlayers();
+            System.out.println(playerValues);
             p.gameSetUp(playerValues);
             addListeners();
+
+        }
+
+        public void startTournament(int numMaps, int[] playerValues, int numGames, int numTurns){
+//                for (int i = 0; i < numMaps * numGames; i++){
+//
+//                }
+            String map1 ="DemoMap-SmallSize.map";
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(map1);
+            p = new Phases(tempMap.get(0), tempMap.get(1));
+            p.gameSetUp(playerValues);
 
         }
 
@@ -548,11 +565,7 @@ public class Controller {
             return tournamentArray;
         }
 
-        public void startTournament(int numMaps, ArrayList<Integer> strategies, int numGames, int numTurns){
-            for (int i = 0; i < numMaps * numGames; i++){
 
-            }
-        }
 
         public void addListeners(){
             Listener lis = new Listener();
