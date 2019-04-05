@@ -28,7 +28,8 @@ public class Controller {
     String mapFileName, loadFileName, saveFileName;
     
     String[] tournamentMapName=new String[5];
-
+    int tMapNum=0;
+    int tNum;
 
 
     /**
@@ -73,7 +74,7 @@ public class Controller {
             }
 
             if(e.getSource() == window.phasePanel.saveButton){
-                if(chooseFile(6)){
+                if(ChooseFile(6)){
                     writeToFile(saveFileName);
                 }
             }
@@ -246,11 +247,12 @@ public class Controller {
             startmanu.setVisible(true);
 
             startManuAction lisStart = new startManuAction(1);
-            startManuAction lisLoadMap = new startManuAction(5);
-            startManuAction lisEditMap = new startManuAction(2);
-            startManuAction lisInstruction = new startManuAction(3);
-            startManuAction lisExit = new startManuAction(4);
-            startManuAction lisTorna = new startManuAction(6);
+            startManuAction lisTorna = new startManuAction(2);
+            startManuAction lisEditMap = new startManuAction(3);
+            startManuAction lisLoadMap = new startManuAction(5);   
+            startManuAction lisInstruction = new startManuAction(4);
+            startManuAction lisExit = new startManuAction(6);
+         
 
             startmanu.startGame.addActionListener(lisStart);
             startmanu.editMap.addActionListener(lisEditMap);
@@ -265,7 +267,7 @@ public class Controller {
          * @return boolean
          */
 
-        public boolean ChooseFile(int i,int tournamentMap) {
+        public boolean ChooseFile(int i) {
 
             JFileChooser jfc = new JFileChooser(".");
 
@@ -291,8 +293,10 @@ public class Controller {
                 else if(i == 5){
                     loadFileName = selectedFile.getName();
                 }
-                else if(i == 6){
-                	 tournamentMapName[tournamentMap] = selectedFile.getName();
+                else if(i == 2){
+                	System.out.println("tNumIn file choose"+tNum);
+                	
+                	 tournamentMapName[tNum] = selectedFile.getName();
                 }
 
                 return true;
@@ -333,7 +337,7 @@ public class Controller {
                 switch (buttonFlag) {
                     case 1:
 
-                        if (ChooseFile(1,-1)) {
+                        if (ChooseFile(1)) {
 
                             startmanu.dispose();
                             try {
@@ -345,7 +349,7 @@ public class Controller {
                         }
                         break;
 
-                    case 2:
+                    case 3:
                         mapeditor = new MapEditorGUI();
                         mapeditor.frame.setVisible(true);
                         startmanu.dispose();
@@ -357,7 +361,7 @@ public class Controller {
 
                     case 5:
 
-                        if (ChooseFile(5,-1)) {
+                        if (ChooseFile(5)) {
 
                             startmanu.dispose();
 
@@ -367,29 +371,29 @@ public class Controller {
                         }
                         break;
                      //Tournament Mode
-                    case 6:
-                    	
+                    case 2:
+                    	//,int tMapNum
                     	//First Choose Maps
                     	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
-                    	int mapNum=Integer.parseInt(mapNumString);
+                    	tMapNum =Integer.parseInt(mapNumString);
                     	System.out.println(Integer.parseInt(mapNumString));
                     	
-                    	if(mapNum<1||mapNum>5) {
+                    	if(tMapNum<1||tMapNum>5) {
                     		window.infoBox("Please input between 1-5", "Warning");
                     		mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
-                    		mapNum=Integer.parseInt(mapNumString);
+                    		tMapNum=Integer.parseInt(mapNumString);
                     	}
-                    	
-                    	for(int tNum=0;tNum<mapNum;tNum++) {
+                    	System.out.println(tMapNum+"tmapnum");
+                    	for(tNum=0;tNum<tMapNum;tNum++) {
                     		
                     		System.out.println("tUnm"+tNum);
                         	
-                    		ChooseFile(6,tNum);
+                    		ChooseFile(2);
                     	}
                     	
-                    	//System.out.println("tname"+tournamentMapName[0]);
-                    	//System.out.println("tname"+tournamentMapName[1]);
-                    	//System.out.println("tname"+tournamentMapName[2]);
+                    	System.out.println("tname"+tournamentMapName[0]);
+                    	System.out.println("tname"+tournamentMapName[1]);
+                    	System.out.println("tname"+tournamentMapName[2]);
                     	
                     	//Choose Players
                     
