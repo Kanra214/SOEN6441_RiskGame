@@ -1,6 +1,5 @@
 package Models;
 //import View_Components.CardExchangeView;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +22,7 @@ public class Phases extends Observable implements Serializable {
     protected boolean gameOver = false;
     protected boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     public boolean cardExchanged = false;
-    protected boolean fortified = false;
+    public boolean fortified = false;
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
 
 
@@ -509,20 +508,7 @@ public class Phases extends Observable implements Serializable {
      * @throws OutOfArmyException throw exception
      * @throws MoveAtLeastOneArmyException throw exception
      */
-    public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
 
-
-        if (num >= current_player.getNumOfDice()) {
-            current_player.fortify(from, to, num);
-            inBattle(false);
-            checkAttackingIsPossible();
-            return true;
-        } else {
-
-            throw new MustBeEqualOrMoreThanNumOfDice();
-
-        }
-    }
 
     /**
      * get whole the countries in the map
@@ -545,7 +531,8 @@ public class Phases extends Observable implements Serializable {
 
     }
 
-    void inBattle(boolean flag) {
+
+    public void inBattle(boolean flag) {
         inBattle = flag;
         updateWindow();
     }

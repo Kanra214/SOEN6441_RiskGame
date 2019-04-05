@@ -23,7 +23,7 @@ public class Card implements Serializable {
  	 */
 	public Card(Phases p) {
 		cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
-		cardNumber = new int[]{3,3,1};
+		cardNumber = new int[]{0,0,0};
 		this.p = p;
 
 
