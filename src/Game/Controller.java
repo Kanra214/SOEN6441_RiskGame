@@ -491,10 +491,22 @@ public class Controller {
 //                for (int i = 0; i < numMaps * numGames; i++){
 //
 //                }
-            String map1 ="DemoMap-SmallSize.map";
-            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(map1);
+            ArrayList<Integer> winners = new ArrayList<>();
+            ArrayList<String> maps = new ArrayList<>();
+            String[] mapArray = {"DemoMap-SmallSize.map",
+                                "DemoMap-SmallSize.map",
+                                "DemoMap-SmallSize.map",
+                                "DemoMap-SmallSize.map",
+                                "DemoMap-SmallSize.map"};
+            for (int i = 0; i < numMaps; i++){
+                maps.add(mapArray[i]);
+            }
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[0]);
             p = new Phases(tempMap.get(0), tempMap.get(1));
             p.gameSetUp(playerValues);
+//            if (p.checkWinner()){
+//                winners.add(p.getCurrent_player().getId());
+//            }
 
         }
 
