@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Random implements Strategy {
     @Override
-    public void execute(Phases p)
-        throws OutOfArmyException, TargetCountryNotAdjacent, AttackCountryArmyMoreThanOne, AttackingCountryOwner, WrongDiceNumber, AttackedCountryOwner {
+    public void execute(Phases p){
         Player player = p.getCurrent_player();
         ArrayList<Country> realms = player.getRealms();
         if(p.getCurrentPhase() == 0){
@@ -58,8 +57,12 @@ public class Random implements Strategy {
                     }catch(WrongDiceNumber e) {
                         System.out.println("Random wrong dice number.");
                         continue;
+                    } catch (AttackingCountryOwner attackingCountryOwner) {
+                      attackingCountryOwner.printStackTrace();
+                    } catch (AttackedCountryOwner attackedCountryOwner) {
+                      attackedCountryOwner.printStackTrace();
                     }
-                    num--;
+                  num--;
 
                 }
                 else{
@@ -86,6 +89,8 @@ public class Random implements Strategy {
                     System.out.println("Random move at least 1 army");
                 } catch (NoSuchPathException e) {
                     continue;
+                } catch (OutOfArmyException e) {
+                  e.printStackTrace();
                 }
             }
             p.nextPhase();
