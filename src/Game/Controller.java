@@ -2,14 +2,14 @@ package Game;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 import Models.*;
 import View_Components.CardExchangeView;
 import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
+
 import java.util.ArrayList;
 
 import MapEditor.MapEditorGUI;
@@ -25,9 +25,7 @@ public class Controller {
     Phases p;
     StartManu startmanu;
     MapEditorGUI mapeditor;
-
-    String mapFilename;
-    String loadFileName;
+    String mapFileName, loadFileName, saveFileName;
     
     String[] tournamentMapName=new String[5];
 
@@ -75,7 +73,9 @@ public class Controller {
             }
 
             if(e.getSource() == window.phasePanel.saveButton){
-                writeToFile(p);
+                if(chooseFile(6)){
+                    writeToFile(saveFileName);
+                }
             }
 
 
@@ -117,7 +117,7 @@ public class Controller {
                                 if (attackerInput.isEmpty()) {//all out mode
                                     System.out.println("all out");
                                     if (p.attackPhase(chosenFrom, chosenTo)) {
-                                        if (p.gameOver) {
+                                        if (p.isGameOver()) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
                                         }
@@ -139,7 +139,7 @@ public class Controller {
                                     int defendDice = Integer.parseInt(defenderInput);
 
                                     if (p.attackPhase(chosenFrom, chosenTo, attackDice, defendDice)) {
-                                        if (p.gameOver) {
+                                        if (p.isGameOver()) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);
                                         }
@@ -176,30 +176,29 @@ public class Controller {
             }
 
             if (e.getSource() == window.cardExchangeView.Exchange3Infantry) {
-                window.cardExchangeView.setVisible(false);
                 p.getCurrent_player().addPlayerArmyBySameCards(0);
                 p.phaseOneFirstStep();
 
             }
             if (e.getSource() == window.cardExchangeView.Exchange3Cavalry) {
-                window.cardExchangeView.setVisible(false);
+
                 p.getCurrent_player().addPlayerArmyBySameCards(1);
                 p.phaseOneFirstStep();
             }
             if (e.getSource() == window.cardExchangeView.Exchange3Artillery) {
-                window.cardExchangeView.setVisible(false);
+
                 p.getCurrent_player().addPlayerArmyBySameCards(2);
                 p.phaseOneFirstStep();
             }
 
             if (e.getSource() == window.cardExchangeView.Exchange3Diff) {
-                window.cardExchangeView.setVisible(false);
+
                 p.getCurrent_player().addPlayerArmyByDiffCards();
                 p.phaseOneFirstStep();
 
             }
             if (e.getSource() == window.cardExchangeView.Cancel) {
-                window.cardExchangeView.setVisible(false);
+                p.cardExchanged = true;
                 p.phaseOneFirstStep();
             }
 
@@ -265,15 +264,30 @@ public class Controller {
          * Check file is correct or not
          * @return boolean
          */
+
         public boolean ChooseFile(int i,int tournamentMap) {
+
             JFileChooser jfc = new JFileChooser(".");
 
             int returnValue = jfc.showOpenDialog(null);
             if (returnValue == JFileChooser.APPROVE_OPTION) {
-                File selectedFile = jfc.getSelectedFile();
-                if(i == 1) {
-                    mapFilename = selectedFile.getName();
+
+                if (i == 1) {
+                    jfc.setDialogTitle("Open a map file");
+                } else if (i == 5) {
+                    jfc.setDialogTitle("Load a SER file");
+                } else if (i == 6) {// save file option
+                    jfc.setDialogTitle("Save");
                 }
+                File selectedFile = jfc.getSelectedFile();
+                if (i == 1) {
+                    mapFileName = selectedFile.getAbsolutePath();
+                } else if (i == 5) {
+                    loadFileName = selectedFile.getAbsolutePath();
+                } else if (i == 6) {// save file option
+                    saveFileName = selectedFile.getAbsolutePath();
+                }
+
                 else if(i == 5){
                     loadFileName = selectedFile.getName();
                 }
@@ -281,9 +295,16 @@ public class Controller {
                 	 tournamentMapName[tournamentMap] = selectedFile.getName();
                 }
 
+                return true;
+
+
+
             }
-            return true;
+
+            return false;
         }
+
+
 
         /**
          * Start Menu action control
@@ -311,7 +332,9 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 switch (buttonFlag) {
                     case 1:
+
                         if (ChooseFile(1,-1)) {
+
                             startmanu.dispose();
                             try {
                                 start();
@@ -333,7 +356,9 @@ public class Controller {
                         break;
 
                     case 5:
+
                         if (ChooseFile(5,-1)) {
+
                             startmanu.dispose();
 
                             loadGame();
@@ -386,9 +411,9 @@ public class Controller {
 
         public void start() throws IOException {
 
-            System.out.println(mapFilename);
+            System.out.println(mapFileName);
 
-            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapFilename);
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapFileName);
             if (tempMap.isEmpty()) {
                 window.showMsg("Empty map");
                 System.exit(0);
@@ -412,9 +437,10 @@ public class Controller {
         }
 
         public void loadGame(){
-            p = GameLoader.parseMap(loadFileName);//TODO: implement this class to create phases object with map
+
+            p = loadPhases();//TODO: implement this class to create phases object with map
             p.addObserver(window);
-            GameLoader.gameResume(p);//TODO: implement this class to pass datas from txt file to phases
+            p.resume();//TODO: implement this class to pass datas from txt file to phases
             addListeners();
 
         }
@@ -439,9 +465,48 @@ public class Controller {
 
         }
 
-        public void writeToFile(Phases p){
+        public void writeToFile(String saveFileName){
+            try {
+                FileOutputStream f = new FileOutputStream(new File(saveFileName));
+                ObjectOutputStream o = new ObjectOutputStream(f);
+
+                // Write objects to file
+                o.writeObject(p);
+
+                o.close();
+                f.close();
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
+        public Phases loadPhases(){
+            try {
+                FileInputStream fi = new FileInputStream(new File(loadFileName));
+                ObjectInputStream oi = new ObjectInputStream(fi);
+                Phases p = (Phases)oi.readObject();
+
+
+                oi.close();
+                fi.close();
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            return p;
+
+
+        }
+
+
 
 
 

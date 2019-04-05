@@ -56,24 +56,24 @@ public class PhasePanel extends JPanel {
         if(currentPhase == 2){
             if(p.getInBattle()) {
                 completePhaseButton.setEnabled(false);
-            }
-            else{
-                completePhaseButton.setEnabled(true);
+                saveButton.setEnabled(false);
             }
 
         }
-        else if(currentPhase == 3){
-            completePhaseButton.setEnabled(true);
-        }
         //phase 0 and phase 1 when no army, enable button
-        else if((currentPlayer.isArmyLeft()) || cev.isVisible()) {
+        else if((currentPlayer.isArmyLeft())) {
 
 
             completePhaseButton.setEnabled(false);
         }
+        else if(cev.isVisible()){
+            completePhaseButton.setEnabled(false);
+            saveButton.setEnabled(false);
+        }
 
         else{
             completePhaseButton.setEnabled(true);
+            saveButton.setEnabled(true);
         }
     }
 
