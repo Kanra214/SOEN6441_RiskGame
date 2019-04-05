@@ -1,11 +1,12 @@
 package Models;
 
 import javax.swing.*;
+import java.io.Serializable;
 
 /**
  * This class is card collection that each player holds
  */
-public class Card {
+public class Card implements Serializable {
 
 
 

@@ -5,6 +5,7 @@
 package Models;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.*;
 import Game.MapLoader;
 import MapEditor.MapEditorGUI;
@@ -17,7 +18,7 @@ import MapEditor.MapEditorGUI;
 
 
 
-public class Player {
+public class Player implements Serializable {
     private static Color[] ALL_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.LIGHT_GRAY, Color.ORANGE};
     private Phases p;
     private Color playerColor;
@@ -220,10 +221,7 @@ public class Player {
                 incrementMapArmies();
                 country.incrementArmy();
             }
-            else{
-                System.out.println("out of armies in deploy army");
-                throw new OutOfArmyException();
-            }
+
 
         }
         else{
@@ -424,6 +422,47 @@ public class Player {
         p.at_least_once = false;
 
         return false;
+
+
+    }
+    /**
+     * attack all-in mode
+     * @param from country by current player
+     * @param to    current player chosed country
+     * @throws OutOfArmyException
+     */
+
+    public boolean attack(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+
+        boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
+
+
+        while (true) {
+            try {
+                int attackDice = Math.min(from.getArmy() - 1, 3);
+                int defendDice = Math.min(to.getArmy(), 2);
+
+                if (attack(from, to, attackDice, defendDice)) {
+                    p.at_least_once = true;
+
+
+                    return true;
+                }
+                validated = true;//any exception after this will be caught and break the while
+
+
+            } catch (RiskGameException e) {
+                if (validated) {
+                    p.at_least_once = false;
+                    return false;
+                } else {
+                    throw e;
+                }
+
+            }
+
+
+        }
 
 
     }

@@ -1,4 +1,5 @@
 package Models;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import View_Components.*;
@@ -7,7 +8,7 @@ import View_Components.*;
  * <h1>Country</h1>
  * This class is for country object
  */
-public class Country {
+public class Country implements Serializable {
 
 
     private String name;

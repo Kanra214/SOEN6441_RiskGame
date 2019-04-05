@@ -1,5 +1,6 @@
 package Models;
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.Random;
 
 
@@ -11,7 +12,7 @@ import java.util.HashSet;
  * <h1>Continent</h1>
  * This class is for continent object
  */
-public class Continent {
+public class Continent implements Serializable {
     private String name;
     private ArrayList<Country> countries;
     private int control_value;

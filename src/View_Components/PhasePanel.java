@@ -58,6 +58,11 @@ public class PhasePanel extends JPanel {
                 completePhaseButton.setEnabled(false);
                 saveButton.setEnabled(false);
             }
+            else{
+                completePhaseButton.setEnabled(true);
+                saveButton.setEnabled(true);
+
+            }
 
         }
         //phase 0 and phase 1 when no army, enable button

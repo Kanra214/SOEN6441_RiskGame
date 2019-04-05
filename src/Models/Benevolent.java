@@ -1,9 +1,10 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Benevolent implements Strategy {
+public class Benevolent implements Strategy, Serializable {
 
     @Override
     public void execute(Phases p) {
