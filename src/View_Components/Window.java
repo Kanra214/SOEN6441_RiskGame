@@ -291,6 +291,19 @@ public class Window extends JFrame implements Observer {
         return values;
     }
 
+    public String decideMaps(String dialog) {
+    	
+    	//JTextField xField = new JTextField(5);
+    	String input = JOptionPane.showInputDialog(this, dialog);
+    	//System.out.println("Number of human players: " + dialog.getText());
+    	return input ;
+    }
+    
+    public void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
     public void displayGUI(Controller c) {
         JOptionPane.showMessageDialog(null, getPanel(c), "Output : ",
                 JOptionPane.INFORMATION_MESSAGE);

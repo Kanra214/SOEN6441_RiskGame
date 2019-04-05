@@ -28,6 +28,8 @@ public class Controller {
 
     String mapFilename;
     String loadFileName;
+    
+    String[] tournamentMapName=new String[5];
 
 
 
@@ -249,19 +251,21 @@ public class Controller {
             startManuAction lisEditMap = new startManuAction(2);
             startManuAction lisInstruction = new startManuAction(3);
             startManuAction lisExit = new startManuAction(4);
+            startManuAction lisTorna = new startManuAction(6);
 
             startmanu.startGame.addActionListener(lisStart);
             startmanu.editMap.addActionListener(lisEditMap);
             startmanu.loadMap.addActionListener(lisLoadMap);
             startmanu.instructions.addActionListener(lisInstruction);
             startmanu.exit.addActionListener(lisExit);
+            startmanu.startTournament.addActionListener(lisTorna);
         }
 
         /**
          * Check file is correct or not
          * @return boolean
          */
-        public boolean ChooseFile(int i) {
+        public boolean ChooseFile(int i,int tournamentMap) {
             JFileChooser jfc = new JFileChooser(".");
 
             int returnValue = jfc.showOpenDialog(null);
@@ -272,6 +276,9 @@ public class Controller {
                 }
                 else if(i == 5){
                     loadFileName = selectedFile.getName();
+                }
+                else if(i == 6){
+                	 tournamentMapName[tournamentMap] = selectedFile.getName();
                 }
 
             }
@@ -304,7 +311,7 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 switch (buttonFlag) {
                     case 1:
-                        if (ChooseFile(1)) {
+                        if (ChooseFile(1,-1)) {
                             startmanu.dispose();
                             try {
                                 start();
@@ -326,7 +333,7 @@ public class Controller {
                         break;
 
                     case 5:
-                        if (ChooseFile(5)) {
+                        if (ChooseFile(5,-1)) {
                             startmanu.dispose();
 
                             loadGame();
@@ -334,8 +341,35 @@ public class Controller {
                             startmanu.dispose();
                         }
                         break;
-
-
+                     //Tournament Mode
+                    case 6:
+                    	
+                    	//First Choose Maps
+                    	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
+                    	int mapNum=Integer.parseInt(mapNumString);
+                    	System.out.println(Integer.parseInt(mapNumString));
+                    	
+                    	if(mapNum<1||mapNum>5) {
+                    		window.infoBox("Please input between 1-5", "Warning");
+                    		mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
+                    		mapNum=Integer.parseInt(mapNumString);
+                    	}
+                    	
+                    	for(int tNum=0;tNum<mapNum;tNum++) {
+                    		
+                    		System.out.println("tUnm"+tNum);
+                        	
+                    		ChooseFile(6,tNum);
+                    	}
+                    	
+                    	//System.out.println("tname"+tournamentMapName[0]);
+                    	//System.out.println("tname"+tournamentMapName[1]);
+                    	//System.out.println("tname"+tournamentMapName[2]);
+                    	
+                    	//Choose Players
+                    
+                    	int[] playersInT = window.decidePlayers();
+                    	
                 }
             }
         }
