@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Cheater implements Strategy {
 
     @Override
-    public void execute(Phases p) throws OutOfArmyException {
+    public void execute(Phases p) {
 
         Player player = p.getCurrent_player();
         ArrayList<Country> realms = player.getRealms();
@@ -88,6 +88,8 @@ public class Cheater implements Strategy {
             } catch (SourceIsTargetException e) {
                 e.printStackTrace();
             } catch (MoveAtLeastOneArmyException e) {
+                e.printStackTrace();
+            } catch (OutOfArmyException e) {
                 e.printStackTrace();
             }
             p.nextPhase();
