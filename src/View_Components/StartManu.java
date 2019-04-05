@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 public class StartManu extends JFrame{
 
 	    public JPanel startPanel;
-	    public JButton startGame,editMap,instructions,exit;
+	    public JButton startGame,editMap,loadMap,instructions,exit, startTournament;
 	    private int buttonH=30;
-	    private int buttonW=120;
+	    private int buttonW=150;
 
 	/**
 	 * This is constructor
@@ -43,18 +43,24 @@ public class StartManu extends JFrame{
 	        
 	        startPanel = new JPanel();
 	        startGame = new JButton("Start Game");
-	        editMap = new JButton("Edit Map");	 
+	        startTournament = new JButton("Start Tournament");
+	        editMap = new JButton("Edit Map");
+	        loadMap = new JButton("Load Map");
 	        instructions = new JButton("Instructions");
 	        exit = new JButton("Exit Game");	
 	        
 	        startPanel.setLayout(null);
 	        startGame.setBounds(w/2-buttonW/2, y, buttonW, buttonH);
-	        editMap.setBounds(w/2-buttonW/2, y+60, buttonW, buttonH);
-	        instructions.setBounds(w/2-buttonW/2, y+120, buttonW, buttonH);
-	        exit.setBounds(w/2-buttonW/2, y+180, buttonW, buttonH);
+	        startTournament.setBounds(w/2-buttonW/2, y+40, buttonW, buttonH);
+	        editMap.setBounds(w/2-buttonW/2, y+80, buttonW, buttonH);
+			loadMap.setBounds(w/2-buttonW/2, y+120, buttonW, buttonH);
+	        instructions.setBounds(w/2-buttonW/2, y+160, buttonW, buttonH);
+	        exit.setBounds(w/2-buttonW/2, y+200, buttonW, buttonH);
 	        
 	        startPanel.add(startGame);
+	        startPanel.add(startTournament);
 	        startPanel.add(editMap);
+	        startPanel.add(loadMap);
 	        startPanel.add(instructions);
 	        startPanel.add(exit);
 	        add(startPanel);

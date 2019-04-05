@@ -15,6 +15,7 @@ public class PhasePanel extends JPanel {
     private JLabel currentPlayerLabel;
     private JLabel detailLabel;
     public JButton completePhaseButton;
+    public JButton saveButton;
     private CardExchangeView cev;
 
     /**
@@ -25,8 +26,10 @@ public class PhasePanel extends JPanel {
         currentPhaseLabel = new JLabel();
         detailLabel = new JLabel();
         completePhaseButton = new JButton("complete this phase");
+        saveButton = new JButton("save game");
         this.cev = cev;
         add(completePhaseButton);
+        add(saveButton);
         add(currentPlayerLabel);
         add(currentPhaseLabel);
         add(detailLabel);
@@ -53,24 +56,24 @@ public class PhasePanel extends JPanel {
         if(currentPhase == 2){
             if(p.getInBattle()) {
                 completePhaseButton.setEnabled(false);
-            }
-            else{
-                completePhaseButton.setEnabled(true);
+                saveButton.setEnabled(false);
             }
 
         }
-        else if(currentPhase == 3){
-            completePhaseButton.setEnabled(true);
-        }
         //phase 0 and phase 1 when no army, enable button
-        else if((currentPlayer.isArmyLeft()) || cev.isVisible()) {
+        else if((currentPlayer.isArmyLeft())) {
 
 
             completePhaseButton.setEnabled(false);
         }
+        else if(cev.isVisible()){
+            completePhaseButton.setEnabled(false);
+            saveButton.setEnabled(false);
+        }
 
         else{
             completePhaseButton.setEnabled(true);
+            saveButton.setEnabled(true);
         }
     }
 

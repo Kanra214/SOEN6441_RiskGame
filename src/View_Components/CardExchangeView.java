@@ -39,7 +39,6 @@ public class CardExchangeView extends JFrame{
 	private CardPanel cp;
 	private JPanel mainPanel;
 	public JButton Exchange3Infantry,Exchange3Cavalry,Exchange3Artillery,Exchange3Diff,Cancel;
-	public boolean cardOpenned = false;
 
 
 
@@ -112,57 +111,59 @@ public class CardExchangeView extends JFrame{
 	}
 
     public void setContext(Phases p) {
-		if(p.getCurrent_player().getStrategy() == null) {//only human player needs card exchange view
+		if(!isVisible() && p.getCurrentPhase() == 1 && (!p.cardExchanged) && p.getCurrentTurn() >= p.getNumOfPlayers() * 2 && p.getCurrent_player().getStrategy() == null){
+		//only human player needs card exchange view
 
 
 			//cp.cardLabels[0].setText("Your current cards: ");
 			//cp.cardLabels[1].setText(cardToString(p.getCurrent_player()));
-			if (p.getCurrentPhase() == 1 && p.getCurrentTurn() >= p.getNumOfPlayers() * 2 && (!this.isVisible()) && (!cardOpenned)) {
-				cardOpenned = true;
-				setVisible(true);
 
 
-				if (p.getCurrent_player().getCards().cardBigger3(0)) {
-					Exchange3Infantry.setEnabled(true);
-				} else {
-					Exchange3Infantry.setEnabled(false);
-				}
-				if (p.getCurrent_player().getCards().cardBigger3(1)) {
-					Exchange3Cavalry.setEnabled(true);
-				} else {
-					Exchange3Cavalry.setEnabled(false);
-				}
-				if (p.getCurrent_player().getCards().cardBigger3(2)) {
 
-					Exchange3Artillery.setEnabled(true);
-				} else {
-					Exchange3Artillery.setEnabled(false);
-				}
-
-
-				if (p.getCurrent_player().getCards().checkThreeDiffCards()) {
-					Exchange3Diff.setEnabled(true);
-				} else {
-					Exchange3Diff.setEnabled(false);
-				}
-				if (p.getCurrent_player().getCards().checkCardSum()) {
-					Cancel.setEnabled(true);
-				} else {
-					Cancel.setEnabled(false);
-				}
-				cp.setContext(p.getCurrent_player());
+			if (p.getCurrent_player().getCards().cardBigger3(0)) {
+				Exchange3Infantry.setEnabled(true);
+			} else {
+				Exchange3Infantry.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().cardBigger3(1)) {
+				Exchange3Cavalry.setEnabled(true);
+			} else {
+				Exchange3Cavalry.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().cardBigger3(2)) {
+				Exchange3Artillery.setEnabled(true);
+			} else {
+				Exchange3Artillery.setEnabled(false);
+			}
 
 
-			} else if (p.getCurrentPhase() != 1) {
-				cardOpenned = false;
+			if (p.getCurrent_player().getCards().checkThreeDiffCards()) {
+				Exchange3Diff.setEnabled(true);
+			} else {
+				Exchange3Diff.setEnabled(false);
+			}
+			if (p.getCurrent_player().getCards().checkCardSum()) {
+				Cancel.setEnabled(true);
+			} else {
+				Cancel.setEnabled(false);
+			}
+			cp.setContext(p.getCurrent_player());
+			setVisible(true);
+
 
 			}
+
+		else{
+			setVisible(false);
+
 		}
 
 
 
 
+
     }
+
 	//extends JFrame implements Observer 
 
 	

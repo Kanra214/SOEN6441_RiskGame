@@ -1,6 +1,7 @@
 package View_Components;
 
 
+import Game.Controller;
 import Models.Card;
 import Models.Country;
 import Models.Phases;
@@ -103,7 +104,7 @@ public class Window extends JFrame implements Observer {
 
         phasePanel.setBounds(PHASE_PANEL_X,PHASE_PANEL_Y,PHASE_PANEL_WIDTH,PHASE_PANEL_HEIGHT );
         phasePanel.setBackground(Color.YELLOW);
-        phasePanel.setLayout(new GridLayout(1,4));
+        phasePanel.setLayout(new GridLayout(1,5));
 
 
         //side panel settings
@@ -156,6 +157,7 @@ public class Window extends JFrame implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
+        mapPanel.repaint();
         Phases p = (Phases) o;
         if(p.getCurrent_player().getStrategy() != null){
             //disable all the buttons and popping outs
@@ -287,6 +289,56 @@ public class Window extends JFrame implements Observer {
         values[4] = 0;
         //TODO: retrieve user input. values[0] = number of human players, value[1] = number of aggressive players etc..
         return values;
+    }
+
+    public String decideMaps(String dialog) {
+    	
+    	//JTextField xField = new JTextField(5);
+    	String input = JOptionPane.showInputDialog(this, dialog);
+    	//System.out.println("Number of human players: " + dialog.getText());
+    	return input ;
+    }
+    
+    public void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void displayGUI(Controller c) {
+        JOptionPane.showMessageDialog(null, getPanel(c), "Output : ",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private JPanel getPanel(Controller c) {
+        JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
+        JTextField xField = new JTextField(5);
+        JTextField yField = new JTextField(5);
+        panel.add(new JLabel("Number of human players: "));
+        panel.add(xField);
+        panel.add(Box.createHorizontalStrut(10)); // a spacer
+        panel.add(new JLabel("Number of aggressive players: "));
+        panel.add(yField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel,
+                "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            if (Integer.parseInt(xField.getText()) + Integer.parseInt(yField.getText()) <= 6 && Integer.parseInt(xField.getText()) + Integer.parseInt(yField.getText())>=2){
+                c.coorrect = true;
+                System.out.println("Number of human players: " + xField.getText());
+                System.out.println("Number of aggressive players: " + yField.getText());
+            }
+
+
+        }
+        if (result == JOptionPane.CANCEL_OPTION) {
+            System.exit(0);
+        }
+
+        return panel;
+    }
+
+    private JLabel getLabel(String title) {
+        return new JLabel(title);
     }
 
 
