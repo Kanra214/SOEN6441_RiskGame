@@ -409,9 +409,11 @@ public class Controller {
                         }
                         Collections.sort(strategyArray);
                         System.out.println(strategyArray);
-                        int[] playerValues = new int[strategyArray.size()];
+
+                        int[] playerValues = new int[5];
+                        playerValues[0] = 0;
                         for(int i = 0;i < strategyArray.size(); i++){
-                            playerValues[i] = strategyArray.get(i);
+                            playerValues[strategyArray.get(i)] = 1;
                         }
                         startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
                     	//First Choose Maps
