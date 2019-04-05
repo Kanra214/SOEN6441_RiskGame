@@ -10,6 +10,8 @@ import View_Components.CountryButton;
 import View_Components.Window;
 import View_Components.StartManu;
 
+import java.util.Collections;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import MapEditor.MapEditorGUI;
@@ -29,7 +31,11 @@ public class Controller {
     
     String[] tournamentMapName=new String[5];
     int tMapNum=0;
+    int tStrategyNum=0;
+    int tGameNum=0;
+    int tTurnsNum=0;
     int tNum;
+
 
 
     /**
@@ -224,7 +230,7 @@ public class Controller {
 
                     try {
                         int numDeploy = Integer.parseInt(input);
-                        if (p.deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
+                        if (p.getCurrent_player().deploymentAfterConquer(chosenFrom, chosenTo, numDeploy)) {
                             break;
                         }
                     } catch (RiskGameException ex) {
@@ -342,7 +348,7 @@ public class Controller {
              * @param e button
              */
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 switch (buttonFlag) {
                     case 1:
 
@@ -382,31 +388,57 @@ public class Controller {
                      //Tournament Mode
                     case 2:
                     	//,int tMapNum
+                        ArrayList<Integer> tournamentArray = tournament();
+                        ArrayList<Integer> strategyArray = new ArrayList<>();
+                        if (tournamentArray.size() != 4){
+                            window.infoBox("Unknow error", "Warning");
+                            System.exit(0);
+                        }
+                        if (tournamentArray.get(1) != 4){
+                            while (strategyArray.size() != tournamentArray.get(1)){
+                                int i = (int) (Math.random() * 4 + 1);;
+                                if (!strategyArray.contains(i)){
+                                    strategyArray.add(i);
+                                }
+                            }
+                        }else {
+                            strategyArray.add(1);
+                            strategyArray.add(2);
+                            strategyArray.add(3);
+                            strategyArray.add(4);
+                        }
+                        Collections.sort(strategyArray);
+                        System.out.println(strategyArray);
+                        int[] playerValues = new int[strategyArray.size()];
+                        for(int i = 0;i < strategyArray.size(); i++){
+                            playerValues[i] = strategyArray.get(i);
+                        }
+                        startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
                     	//First Choose Maps
-                    	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
-                    	tMapNum =Integer.parseInt(mapNumString);
-                    	System.out.println(Integer.parseInt(mapNumString));
+//                    	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
+//                    	tMapNum =Integer.parseInt(mapNumString);
+//                    	System.out.println(Integer.parseInt(mapNumString));
+//                    	if(tMapNum<1||tMapNum>5) {
+//                    		window.infoBox("Please input between 1-5", "Warning");
+//                    		mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
+//                    		tMapNum=Integer.parseInt(mapNumString);
+//                            System.out.println(Integer.parseInt(mapNumString));
+//                    	}
+//                    	System.out.println(tMapNum+"tmapnum");
+//                    	for(tNum=0;tNum<tMapNum;tNum++) {
+//
+//                    		System.out.println("tUnm"+tNum);
+//
+//                    		ChooseFile(2);
+//                    	}
+//
+//                    	System.out.println("tname"+tournamentMapName[0]);
+//                    	System.out.println("tname"+tournamentMapName[1]);
+//                    	System.out.println("tname"+tournamentMapName[2]);
                     	
-                    	if(tMapNum<1||tMapNum>5) {
-                    		window.infoBox("Please input between 1-5", "Warning");
-                    		mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
-                    		tMapNum=Integer.parseInt(mapNumString);
-                    	}
-                    	System.out.println(tMapNum+"tmapnum");
-                    	for(tNum=0;tNum<tMapNum;tNum++) {
-                    		
-                    		System.out.println("tUnm"+tNum);
-                        	
-                    		ChooseFile(2);
-                    	}
-                    	
-                    	System.out.println("tname"+tournamentMapName[0]);
-                    	System.out.println("tname"+tournamentMapName[1]);
-                    	System.out.println("tname"+tournamentMapName[2]);
-                    	
-                    	//Choose Players
-                    
-                    	int[] playersInT = window.decidePlayers();
+//                    	//Choose Players
+//
+////                    	int[] playersInT = window.decidePlayers();
                     	
                 }
             }
@@ -443,9 +475,24 @@ public class Controller {
 
 
             p.addObserver(window);
+            while (!coorrect){
+                window.displayGUI(this);
+            }
             int[] playerValues = window.decidePlayers();
+            System.out.println(playerValues);
             p.gameSetUp(playerValues);
             addListeners();
+
+        }
+
+        public void startTournament(int numMaps, int[] playerValues, int numGames, int numTurns){
+//                for (int i = 0; i < numMaps * numGames; i++){
+//
+//                }
+            String map1 ="DemoMap-SmallSize.map";
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(map1);
+            p = new Phases(tempMap.get(0), tempMap.get(1));
+            p.gameSetUp(playerValues);
 
         }
 
@@ -463,6 +510,66 @@ public class Controller {
             }
 
         }
+
+        public ArrayList<Integer> tournament(){
+            ArrayList<Integer> tournamentArray = new ArrayList<>();
+            String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
+            tMapNum =Integer.parseInt(mapNumString);
+            if(tMapNum<1||tMapNum>5) {
+                do {
+                    window.infoBox("Please input between 1-5", "Warning");
+                    mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
+                    tMapNum=Integer.parseInt(mapNumString);
+                }
+                while (tMapNum < 1 || tMapNum > 5);
+            }
+            tournamentArray.add(tMapNum);
+            System.out.println("Maps:" + tMapNum);
+
+            String strategyNumString=window.decideMaps("How many strategies for the Tournament?(Please input between 2-4)");
+            tStrategyNum =Integer.parseInt(strategyNumString);
+            if(tStrategyNum<2||tStrategyNum>4) {
+                do {
+                    window.infoBox("Please input between 2-4", "Warning");
+                    strategyNumString=window.decideMaps("How many strategies for the Tournament?(Please input between 2-4)");
+                    tStrategyNum =Integer.parseInt(strategyNumString);
+                }
+                while (tStrategyNum < 2 || tStrategyNum > 4);
+            }
+            tournamentArray.add(tStrategyNum);
+            System.out.println("Strategies:" + tStrategyNum);
+
+            String gameNumString=window.decideMaps("How many games for the Tournament?(Please input between 1-5)");
+            tGameNum =Integer.parseInt(gameNumString);
+            if(tGameNum<1||tGameNum>5) {
+                do {
+                    window.infoBox("Please input between 1-5", "Warning");
+                    gameNumString=window.decideMaps("How many games for the Tournament?(Please input between 1-5)");
+                    tGameNum =Integer.parseInt(gameNumString);
+                }
+                while (tGameNum < 1 || tGameNum > 5);
+            }
+            tournamentArray.add(tGameNum);
+            System.out.println("Games:" + tGameNum);
+
+            String turnNumString=window.decideMaps("How many turns for the Tournament?(Please input between 10-50)");
+            tTurnsNum =Integer.parseInt(turnNumString);
+            if(tTurnsNum<10||tTurnsNum>50) {
+                do {
+                    window.infoBox("Please input between 10-50", "Warning");
+                    turnNumString=window.decideMaps("How many turns for the Tournament?(Please input between 10-50)");
+                    tTurnsNum =Integer.parseInt(turnNumString);
+                }
+                while (tTurnsNum < 10 || tTurnsNum > 50);
+            }
+            tournamentArray.add(tTurnsNum);
+            System.out.println("Turns:" + tTurnsNum);
+
+            return tournamentArray;
+        }
+
+
+
         public void addListeners(){
             Listener lis = new Listener();
 //            p.gameSetUp(numOfPlayers);

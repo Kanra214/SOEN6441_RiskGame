@@ -545,7 +545,7 @@ public class Phases extends Observable implements Serializable {
 
     }
 
-    private void inBattle(boolean flag) {
+    void inBattle(boolean flag) {
         inBattle = flag;
         updateWindow();
     }
