@@ -26,7 +26,7 @@ public class Player implements Serializable {
     private int mapArmies = 0;//the total number of armies this player owns on the world map(excluding unassigned_armies)
     private int id;//this is primary key for players
     private Card cards;
-    private int numOfDice;
+    private int numOfDice = 0;
     protected ArrayList<Integer> dice = new ArrayList<>();
     protected ArrayList<Country> realms;
     private Strategy strategy = null;//im human
@@ -307,10 +307,13 @@ public class Player implements Serializable {
         }
 
         else{
-            if(!p.isFortified()) {
+
+            if(!p.isFortified() || p.getCurrentPhase() != 3) {
                 from.decreaseArmy(num);
                 to.increaseArmy(num);
-                p.fortified = true;
+                if(p.getCurrentPhase() == 3) {
+                    p.fortified = true;
+                }
             }
         }
     }
@@ -436,6 +439,7 @@ public class Player implements Serializable {
     public boolean attack(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 
         boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
+        int formerDefenderDice = to.getOwner().getNumOfDice();
 
 
         while (true) {
@@ -445,6 +449,7 @@ public class Player implements Serializable {
 
                 if (attack(from, to, attackDice, defendDice)) {
                     p.at_least_once = true;
+                    to.getOwner().setNumOfDice(formerDefenderDice);
 
 
                     return true;
@@ -455,6 +460,7 @@ public class Player implements Serializable {
             } catch (RiskGameException e) {
                 if (validated) {
                     p.at_least_once = false;
+                    to.getOwner().setNumOfDice(formerDefenderDice);
                     return false;
                 } else {
                     throw e;

@@ -53,6 +53,7 @@ public class PhasePanel extends JPanel {
 
 
 
+
         if(currentPhase == 2){
             if(p.getInBattle()) {
                 completePhaseButton.setEnabled(false);
@@ -70,6 +71,7 @@ public class PhasePanel extends JPanel {
 
 
             completePhaseButton.setEnabled(false);
+            saveButton.setEnabled(true);
         }
         else if(cev.isVisible()){
             completePhaseButton.setEnabled(false);
