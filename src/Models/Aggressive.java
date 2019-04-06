@@ -1,6 +1,5 @@
 package Models;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -122,15 +121,6 @@ public class Aggressive implements Strategy {
     }
 
 
-    @Override
-    public void defend(Player pl) {
-        pl.setNumOfDice(1);//TODO
-    }
-    @Override
-    public String getName() {
-        return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
-    }
-
 
 
     private void attack(Player player,ArrayList<Country> allCountries) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
@@ -157,10 +147,25 @@ public class Aggressive implements Strategy {
                 target=t;
 
                 //attack until this country has 1 army or the target has been conquered
-
-                while(chosen.getArmy()>1||t.getOwner()==player) {
-                    player.attack(chosen, target, 1);
-
+                while(chosen.getArmy()>0||t.getOwner()==player) {
+                  
+                  System.out.println(chosen.getOwner().getId()+"before attack"+target.getOwner().getId());
+                   
+                  player.attack(chosen, target);
+                  // player.attack(chosen, target, Math.min(3, chosen.getArmy()), Math.min(2, target.getArmy()));
+                    if(t.getOwner()==player) {
+                      try {
+                        player.fortify(chosen, target, chosen.getArmy()-1);
+                        
+                        this.attack(player, allCountries);
+                        
+                      } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException
+                          | SourceIsTargetException | MoveAtLeastOneArmyException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                      }
+                    }
+                    System.out.println(chosen.getOwner()+"after attack"+target.getOwner());
                     //TODO need to decide he number of dice
                 }
 
@@ -177,11 +182,7 @@ public class Aggressive implements Strategy {
 
     
     
-    
-    public void fortificate(Player player) {
-        // TODO Auto-generated method stub
 
-    }
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
@@ -207,6 +208,22 @@ public class Aggressive implements Strategy {
         public int compare(Country a, Country b) {
             return a.getArmy() - b.getArmy();
         }
+    }
+
+
+    @Override
+    public void defend(Player pl) {
+      // TODO Auto-generated method stub
+      pl.setNumOfDice(1);
+    }
+
+
+
+
+    @Override
+    public String getName() {
+      return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
+     
     }
 
 }
