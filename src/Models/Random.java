@@ -47,9 +47,16 @@ public class Random implements Strategy {
                       System.out.println("Random: allout");
                     boolean conquer = player.attack(sourceCountry,targetCountry);
                     if (conquer == true) {
-                      int sourceCountryArmy = sourceCountry.getArmy() - 1 ;
-                      int numOfDice = player.getNumOfDice() + 1;
-                      int assignAfterConquer = getRandom(Math.min(sourceCountryArmy,numOfDice) + 1,Math.max(sourceCountryArmy,numOfDice));
+                      int sourceCountryArmy = sourceCountry.getArmy() ;
+                      int numOfDice = player.getNumOfDice();
+                      int assignAfterConquer;
+                      if (sourceCountryArmy > numOfDice){
+                        assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
+                      }
+                      else {
+                        assignAfterConquer = sourceCountryArmy - 1;
+
+                      }
                       System.out.println("Random: assign after couquer: " + assignAfterConquer);
 
                         player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
@@ -64,15 +71,20 @@ public class Random implements Strategy {
                   else {
                       System.out.println("Random: not allout");
                     int numOfattack = getRandom(1,4);
-                    int numOfdefend = targetCountry.getOwner().getNumOfDice();
                     boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack);
                     if (conquer == true) {
-                      int sourceCountryArmy = sourceCountry.getArmy() - 1 ;
-                      int numOfDice = player.getNumOfDice() + 1;
-                      int assignAfterConquer = getRandom(Math.min(sourceCountryArmy,numOfDice) + 1,Math.max(sourceCountryArmy,numOfDice));
+                      int sourceCountryArmy = sourceCountry.getArmy() ;
+                      int numOfDice = player.getNumOfDice();
+                      int assignAfterConquer;
+                      if (sourceCountryArmy > numOfDice){
+                        assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
+                      }
+                      else {
+                        assignAfterConquer = sourceCountryArmy - 1;
 
-                        player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
-                        System.out.println("Random: assign after couquer: " + assignAfterConquer);
+                      }
+                      player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
+                      System.out.println("Random: assign after couquer: " + assignAfterConquer);
 
 
                       if (p.isGameOver()) {
