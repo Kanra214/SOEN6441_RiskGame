@@ -503,7 +503,8 @@ public class Controller {
             }
             ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[0]);
             p = new Phases(tempMap.get(0), tempMap.get(1));
-            p.gameSetUp(playerValues);
+            int[] a = {0,1,1,1,0};
+            p.gameSetUp(a);
 //            if (p.checkWinner()){
 //                winners.add(p.getCurrent_player().getId());
 //            }
