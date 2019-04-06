@@ -146,7 +146,7 @@ public class Aggressive implements Strategy {
                 target=t;
 
                 //attack until this country has 1 army or the target has been conquered
-                while(chosen.getArmy()>0||t.getOwner()==player) {
+                while(chosen.getArmy()>=2&&t.getOwner()!=player) {
                   
                   System.out.println(chosen.getOwner().getId()+"before attack"+target.getOwner().getId());
                    
