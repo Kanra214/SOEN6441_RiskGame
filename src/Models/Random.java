@@ -130,34 +130,30 @@ public class Random implements Strategy {
             //phase 3
             System.out.println("Inside Phase3");
             int numOfphase3 = 6;
-            while (numOfphase3 > 0){
-              numOfphase3--;
               boolean flagFindpath = false;
-              while(flagFindpath == false){
-                Country sourceCountry = realms.get(getRandom(0,realms.size()));
-                Country targetCountry = realms.get(getRandom(0,realms.size()));
-                int assignArmy = getRandom(1,sourceCountry.getArmy());
-                try{
-                  flagFindpath = player.findPath(sourceCountry,targetCountry);
-                  player.fortify(sourceCountry,targetCountry,assignArmy);
-                } catch (SourceIsTargetException e) {
-                  System.out.println("Random source can not be target");
-                  continue;
-                } catch (CountryNotInRealms countryNotInRealms) {
-                  System.out.println("Random not in realms");
-                } catch (MoveAtLeastOneArmyException e) {
-                  System.out.println("Random move at least 1 army");
-                } catch (NoSuchPathException e) {
-                  System.out.println("Random NoSuchPathException");
-                  continue;
-                } catch (OutOfArmyException e) {
-                  System.out.println("Random OutOfArmyException");
-                  continue;
-                }
+            while(flagFindpath == false && numOfphase3 > 0){
+              numOfphase3--;
+              Country sourceCountry = realms.get(getRandom(0,realms.size()));
+              Country targetCountry = realms.get(getRandom(0,realms.size()));
+              int assignArmy = getRandom(1,sourceCountry.getArmy());
+              try{
+                flagFindpath = player.findPath(sourceCountry,targetCountry);
+                player.fortify(sourceCountry,targetCountry,assignArmy);
+              } catch (SourceIsTargetException e) {
+                System.out.println("Random source can not be target");
+                continue;
+              } catch (CountryNotInRealms countryNotInRealms) {
+                System.out.println("Random not in realms");
+              } catch (MoveAtLeastOneArmyException e) {
+                System.out.println("Random move at least 1 army");
+              } catch (NoSuchPathException e) {
+                System.out.println("Random NoSuchPathException");
+                continue;
+              } catch (OutOfArmyException e) {
+                System.out.println("Random OutOfArmyException");
+                continue;
               }
-              break;
             }
-
             p.nextPhase();
 
           }
