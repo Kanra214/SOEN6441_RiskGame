@@ -11,7 +11,9 @@ public class Human implements Strategy {
 
     @Override
     public void defend(Player pl) {
-        pl.setNumOfDice(1);//TODO
+        String input = JOptionPane.showInputDialog("How many dice for defender to roll? ");
+        int defendDice = Integer.parseInt(input);
+        pl.setNumOfDice(defendDice);//TODO:how to loop popping out until the defend dice is correct
 
     }
 

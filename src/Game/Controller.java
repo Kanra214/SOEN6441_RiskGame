@@ -143,11 +143,11 @@ public class Controller {
 
                                     System.out.println("not all out");
                                     int defendDice;
-                                    if(chosenTo.getOwner().getStrategy().getName().equals("Human")) {//human defender
-                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
-                                        defendDice = Integer.parseInt(defenderInput);
-                                        chosenTo.getOwner().setNumOfDice(defendDice);
-                                    }
+//                                    if(chosenTo.getOwner().getStrategy().getName().equals("Human")) {//human defender
+//                                        String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
+//                                        defendDice = Integer.parseInt(defenderInput);
+//                                        chosenTo.getOwner().setNumOfDice(defendDice);
+//                                    }
 
                                     if (p.getCurrent_player().attack(chosenFrom, chosenTo, attackDice)) {
                                         if (p.isGameOver()) {

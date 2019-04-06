@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99b44a98-e26a-4997-a09a-a67ae2e4586f" name="Default Changelist" comment="cardView improvement">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$Listener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller$startManuAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Game/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Aggressive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Aggressive.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Benevolent$WeakestCountryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Benevolent$WeakestCountryComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Benevolent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Benevolent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Cheater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Cheater.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Phases.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Random.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Random.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/Models/Strategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SOEN6441_RiskGame/View_Components/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Aggressive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Aggressive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Benevolent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Benevolent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Cheater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Cheater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Phases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Phases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Random.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Random.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Strategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/SidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View_Components/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View_Components/Window.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,12 +20,14 @@
     <session id="1536953692">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="38516" />
+          <entry key="java" value="38660" />
+          <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="38516" />
+          <entry key="JAVA" value="38660" />
+          <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -56,7 +35,7 @@
           <entry key="class" value="5" />
           <entry key="classpath" value="1" />
           <entry key="gitignore" value="1" />
-          <entry key="java" value="167" />
+          <entry key="java" value="168" />
           <entry key="map" value="1" />
           <entry key="txt" value="1" />
           <entry key="xml" value="2" />
@@ -66,7 +45,7 @@
         <counts>
           <entry key="CLASS" value="5" />
           <entry key="Eclipse" value="1" />
-          <entry key="JAVA" value="167" />
+          <entry key="JAVA" value="168" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="2" />
         </counts>
@@ -166,22 +145,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Models/Cheater.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3670#3671#0" expanded="true" />
-                <element signature="e#3688#3689#0" expanded="true" />
-                <element signature="e#3783#3784#0" expanded="true" />
-                <element signature="e#3885#3886#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="593">
@@ -193,8 +156,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="496" column="31" lean-forward="true" selection-start-line="496" selection-start-column="31" selection-end-line="496" selection-end-column="31" />
+            <state relative-caret-position="364">
+              <caret line="374" column="36" lean-forward="true" selection-start-line="374" selection-start-column="36" selection-end-line="374" selection-end-column="36" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -210,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1875">
-              <caret line="146" column="82" lean-forward="true" selection-start-line="146" selection-start-column="82" selection-end-line="146" selection-end-column="82" />
+            <state relative-caret-position="407">
+              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
             </state>
           </provider>
         </entry>
@@ -240,10 +203,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Random.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-280">
+            <state relative-caret-position="-160">
               <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
               <folding>
                 <element signature="e#908#917#0" expanded="true" />
@@ -257,12 +220,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Aggressive.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1845">
+              <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+              <folding>
+                <element signature="e#3694#3695#0" expanded="true" />
+                <element signature="e#3796#3797#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Human.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            <state relative-caret-position="225">
+              <caret line="15" column="99" selection-start-line="15" selection-start-column="99" selection-end-line="15" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
                 <element signature="e#404#405#0" expanded="true" />
               </folding>
             </state>
@@ -379,17 +356,17 @@
         <option value="$PROJECT_DIR$/src/Game/MapLoader.java" />
         <option value="$PROJECT_DIR$/src/Models/Card.java" />
         <option value="$PROJECT_DIR$/src/Models/Phases.java" />
-        <option value="$PROJECT_DIR$/src/Models/Player.java" />
         <option value="$PROJECT_DIR$/src/Models/Strategy.java" />
         <option value="$PROJECT_DIR$/src/Models/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/Models/Benevolent.java" />
         <option value="$PROJECT_DIR$/src/Models/Cheater.java" />
         <option value="$PROJECT_DIR$/src/Models/Random.java" />
-        <option value="$PROJECT_DIR$/src/Models/Human.java" />
         <option value="$PROJECT_DIR$/src/View_Components/CardExchangeView.java" />
-        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
         <option value="$PROJECT_DIR$/src/View_Components/SidePanel.java" />
         <option value="$PROJECT_DIR$/src/View_Components/Window.java" />
+        <option value="$PROJECT_DIR$/src/Game/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Models/Player.java" />
+        <option value="$PROJECT_DIR$/src/Models/Human.java" />
       </list>
     </option>
   </component>
@@ -468,7 +445,7 @@
     <property name="SearchEverywhereHistoryKey" value="ou&#9;PSI&#9;JAVA://Models.OutOfArmyException&#10;decrement&#9;PSI&#9;JAVA://Models.Country#decrementArmy" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554533812645" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554535256908" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -1485,7 +1462,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554527380309</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added human, fixed bugs">
+      <created>1554533873422</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1554533873422</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1536,7 +1520,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.763986" visible="true" weight="0.16523606" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.763986" visible="true" weight="0.16523606" />
       <window_info id="Structure" order="1" sideWeight="0.23601398" side_tool="true" visible="true" weight="0.18864469" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1545,7 +1529,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3284974" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4892704" visible="true" weight="0.21566264" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4892704" visible="true" weight="0.21566264" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33124346" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1641,7 +1625,8 @@
     <MESSAGE value="modified cheater,random" />
     <MESSAGE value="remove deploymentAfter Conquer from Phases to Player" />
     <MESSAGE value="defend() needs to be implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="defend() needs to be implemented" />
+    <MESSAGE value="added human, fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="added human, fixed bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1859,19 +1844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Aggressive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-          <folding>
-            <element signature="e#3636#3637#0" expanded="true" />
-            <element signature="e#3676#3677#0" expanded="true" />
-            <element signature="e#3694#3695#0" expanded="true" />
-            <element signature="e#3796#3797#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Benevolent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -1922,17 +1894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Human.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View_Components/StartManu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="593">
@@ -1944,13 +1905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="114" column="171" lean-forward="true" selection-start-line="114" selection-start-column="171" selection-end-line="114" selection-end-column="187" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="146" column="82" lean-forward="true" selection-start-line="146" selection-start-column="82" selection-end-line="146" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -1968,10 +1922,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Aggressive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1845">
+          <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+          <folding>
+            <element signature="e#3694#3695#0" expanded="true" />
+            <element signature="e#3796#3797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-160">
+          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+          <folding>
+            <element signature="e#908#917#0" expanded="true" />
+            <element signature="e#7007#7008#0" expanded="true" />
+            <element signature="e#7054#7055#0" expanded="true" />
+            <element signature="e#7098#7099#0" expanded="true" />
+            <element signature="e#7200#7201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="496" column="31" lean-forward="true" selection-start-line="496" selection-start-column="31" selection-end-line="496" selection-end-column="31" />
+        <state relative-caret-position="364">
+          <caret line="374" column="36" lean-forward="true" selection-start-line="374" selection-start-column="36" selection-end-line="374" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1983,16 +1969,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Random.java">
+    <entry file="file://$PROJECT_DIR$/src/Models/Human.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+        <state relative-caret-position="225">
+          <caret line="15" column="99" selection-start-line="15" selection-start-column="99" selection-end-line="15" selection-end-column="99" />
           <folding>
-            <element signature="e#908#917#0" expanded="true" />
-            <element signature="e#7007#7008#0" expanded="true" />
-            <element signature="e#7054#7055#0" expanded="true" />
-            <element signature="e#7098#7099#0" expanded="true" />
-            <element signature="e#7200#7201#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
           </folding>
         </state>
       </provider>
