@@ -50,7 +50,7 @@ public class Random implements Strategy {
                                 int sourceCountryArmy = sourceCountry.getArmy();
                                 int numOfDice = player.getNumOfDice();
                                 int assignAfterConquer;
-                                if (sourceCountryArmy > numOfDice) {
+                                if (sourceCountryArmy > numOfDice+1) {
                                     assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
                                 } else {
                                     assignAfterConquer = sourceCountryArmy - 1;
@@ -66,7 +66,8 @@ public class Random implements Strategy {
                                     System.exit(0);
                                 }
                             }
-                        } else {
+                        }
+                        else {
                             System.out.println("Random: not allout");
                             int numOfattack = getRandom(1, 4);
                             boolean conquer = player.attack(sourceCountry, targetCountry, numOfattack);
@@ -74,7 +75,7 @@ public class Random implements Strategy {
                                 int sourceCountryArmy = sourceCountry.getArmy();
                                 int numOfDice = player.getNumOfDice();
                                 int assignAfterConquer;
-                                if (sourceCountryArmy > numOfDice) {
+                                if (sourceCountryArmy > numOfDice+1) {
                                     assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
                                 } else {
                                     assignAfterConquer = sourceCountryArmy - 1;
