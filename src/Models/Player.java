@@ -365,18 +365,20 @@ public class Player implements Serializable {
 
     public void executeStrategy() {
 
-        if (strategy != null) {
-            strategy.execute(p);
-        }
-        else if(p.getRival() == this){
-            strategy.defend(this);
-        }
+
+
+
+            if (p.getRival() == this) {
+                strategy.defend(this);
+            }
+            else if(p.getCurrent_player() == this) {
+
+                strategy.execute(p);
+            }
+
 
 
     }
-
-
-
 
 
     public Strategy getStrategy() {
@@ -463,6 +465,8 @@ public class Player implements Serializable {
             try {
                 int attackDice = Math.min(from.getArmy() - 1, 3);
                 int defendDice = Math.min(to.getArmy(), 2);
+                p.rival = to.getOwner();
+                p.rival.setNumOfDice(defendDice);
 
                 if (attack(from, to, attackDice, defendDice)) {
                     p.at_least_once = true;

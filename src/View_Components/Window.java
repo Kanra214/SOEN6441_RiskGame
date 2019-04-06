@@ -159,7 +159,8 @@ public class Window extends JFrame implements Observer {
     public void update(Observable o, Object arg) {
         mapPanel.repaint();
         Phases p = (Phases) o;
-        if(p.getCurrent_player().getStrategy() != null){
+//        System.out.println("window: " + p.getCurrent_player().getStrategy().getName());
+        if(!p.getCurrent_player().getStrategy().getName().equals("Human")){
             //disable all the buttons and popping outs
 
             phasePanel.completePhaseButton.setEnabled(false);
@@ -221,16 +222,6 @@ public class Window extends JFrame implements Observer {
 
 
             }
-
-
-
-
-
-
-
-
-
-
     }
 
     private String diceToString(ArrayList<Integer> dice){
@@ -278,25 +269,23 @@ public class Window extends JFrame implements Observer {
             mapPanel.comps.add(country);
         }
     }
-
+    int[] values = new int[5];
     public int[] decidePlayers(){
-        int[] values = new int[5];
-        //test
-        values[0] = 1;//human
-        values[1] = 0;//aggressive
-        values[2] = 0;//benevolent
-        values[3] = 1;//random
-        values[4] = 0;//cheater
-        //TODO: retrieve user input. values[0] = number of human players, value[1] = number of aggressive players etc..
-        return values;
+//        int[] value = new int[5];
+//        value[0] = 1;
+//        value[1] = 0;
+//        value[2] = 0;
+//        value[3] = 1;
+//        value[4] = 0;
+        return values;//TODO: values
     }
 
     public String decideMaps(String dialog) {
-    	
-    	//JTextField xField = new JTextField(5);
-    	String input = JOptionPane.showInputDialog(this, dialog);
-    	//System.out.println("Number of human players: " + dialog.getText());
-    	return input ;
+        
+        //JTextField xField = new JTextField(5);
+        String input = JOptionPane.showInputDialog(this, dialog);
+        //System.out.println("Number of human players: " + dialog.getText());
+        return input ;
     }
     
     public void infoBox(String infoMessage, String titleBar)
@@ -309,26 +298,44 @@ public class Window extends JFrame implements Observer {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private JPanel getPanel(Controller c) {
+    private JPanel getPanel(Controller cont) {
         JPanel panel = new JPanel(new GridLayout(0, 1, 5, 5));
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
+        JTextField pField = new JTextField(5);
+        JTextField aField = new JTextField(5);
+        JTextField bField = new JTextField(5);
+        JTextField rField = new JTextField(5);
+        JTextField cField = new JTextField(5);
         panel.add(new JLabel("Number of human players: "));
-        panel.add(xField);
-        panel.add(Box.createHorizontalStrut(10)); // a spacer
+        panel.add(pField);
+        panel.add(Box.createHorizontalStrut(5)); // a spacer
         panel.add(new JLabel("Number of aggressive players: "));
-        panel.add(yField);
+        panel.add(aField);
+        panel.add(Box.createHorizontalStrut(5)); // a spacer
+        panel.add(new JLabel("Number of benevolent players: "));
+        panel.add(bField);
+        panel.add(Box.createHorizontalStrut(5)); // a spacer
+        panel.add(new JLabel("Number of random players: "));
+        panel.add(rField);
+        panel.add(Box.createHorizontalStrut(5)); // a spacer
+        panel.add(new JLabel("Number of cheater players: "));
+        panel.add(cField);
 
         int result = JOptionPane.showConfirmDialog(null, panel,
-                "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+                "Please Enter number of Human and type of AI players", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            if (Integer.parseInt(xField.getText()) + Integer.parseInt(yField.getText()) <= 6 && Integer.parseInt(xField.getText()) + Integer.parseInt(yField.getText())>=2){
-                c.coorrect = true;
-                System.out.println("Number of human players: " + xField.getText());
-                System.out.println("Number of aggressive players: " + yField.getText());
+            int p = Integer.parseInt(pField.getText());
+            int a = Integer.parseInt(aField.getText());
+            int b = Integer.parseInt(bField.getText());
+            int r = Integer.parseInt(rField.getText());
+            int c = Integer.parseInt(cField.getText());
+            if (p+a+b+r+c <= 6 && p+a+b+r+c >=2) {
+                cont.coorrect = true;
+                values[0] = p;//human
+                values[1] = a;//aggressive
+                values[2] = b;//benevolent
+                values[3] = r;
+                values[4] = c;
             }
-
-
         }
         if (result == JOptionPane.CANCEL_OPTION) {
             System.exit(0);

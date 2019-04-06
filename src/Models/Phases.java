@@ -109,7 +109,7 @@ public class Phases extends Observable implements Serializable {
         
         switch(i){
             case 0:
-                return null;
+                return new Human();
             case 1:
                 return new Aggressive();
             case 2:
@@ -248,6 +248,7 @@ public class Phases extends Observable implements Serializable {
 
         switch (currentPhase) {
             case 0:
+
                 nextTurn();
 
                 if (currentTurn > numOfPlayers - 1) {
@@ -372,9 +373,7 @@ public class Phases extends Observable implements Serializable {
     protected void attackSimulation(Country from, Country to, int attackDice, int defendDice) throws OutOfArmyException {
 
         inBattle(true);
-        rival = to.getOwner();
         current_player.setNumOfDice(attackDice);
-        rival.setNumOfDice(defendDice);
 
 
         current_player.rollDice();

@@ -4,16 +4,14 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class  Benevolent implements Strategy, Serializable {
+
+public class Benevolent implements Strategy {
 
     @Override
     public void execute(Phases p) {
 
         Player player = p.getCurrent_player();
-        if(player == p.rival) {
-            player.setNumOfDice(1);
-        }
-        else {
+
 
 
             if (p.getCurrentPhase() == 0) {
@@ -89,12 +87,20 @@ public class  Benevolent implements Strategy, Serializable {
 
             }
         }
-        }
+
 
     @Override
     public void defend(Player pl) {
         pl.setNumOfDice(1);
     }
+
+    @Override
+    public String getName() {
+        return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
+    }
+
+
+
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
