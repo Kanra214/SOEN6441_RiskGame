@@ -373,13 +373,24 @@ public class Player implements Serializable {
     }
 
 
+
+
     public Strategy getStrategy() {
       // TODO Auto-generated method stub
       return strategy;
     }
 
-    
- 
+
+    public boolean attack(Country from, Country to, int attackDice) throws TargetCountryNotAdjacent, AttackCountryArmyMoreThanOne, AttackingCountryOwner, WrongDiceNumber, AttackedCountryOwner {
+        p.rival = to.getOwner();
+        to.getOwner().executeStrategy();
+        int defendDice = to.getOwner().getNumOfDice();
+        return attack(from,to,attackDice, defendDice);
+    }
+
+
+
+
 
 
     /**
@@ -393,7 +404,8 @@ public class Player implements Serializable {
      * @throws AttackingCountryOwner        the owner of attacking country must be current player
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
-    public boolean attack(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+    private boolean attack(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+
 
         try {
             if (p.attackValidation(from, to, attackDice, defendDice)) {
@@ -417,6 +429,7 @@ public class Player implements Serializable {
             if(p.getRival().getRealms().size() == 0){
                 receiveEnemyCards(p.getRival());
             }
+            p.rival = null;
 
             return true;
 
@@ -424,7 +437,7 @@ public class Player implements Serializable {
         }
         p.checkAttackingIsPossible();
         p.at_least_once = false;
-
+        p.rival = null;
         return false;
 
 
@@ -439,7 +452,7 @@ public class Player implements Serializable {
     public boolean attack(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 
         boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-        int formerDefenderDice = to.getOwner().getNumOfDice();
+
 
 
         while (true) {
@@ -449,7 +462,6 @@ public class Player implements Serializable {
 
                 if (attack(from, to, attackDice, defendDice)) {
                     p.at_least_once = true;
-                    to.getOwner().setNumOfDice(formerDefenderDice);
 
 
                     return true;
@@ -460,7 +472,6 @@ public class Player implements Serializable {
             } catch (RiskGameException e) {
                 if (validated) {
                     p.at_least_once = false;
-                    to.getOwner().setNumOfDice(formerDefenderDice);
                     return false;
                 } else {
                     throw e;

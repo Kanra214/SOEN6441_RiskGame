@@ -146,12 +146,11 @@ public class Controller {
                                     if(chosenTo.getOwner().getStrategy() == null) {//human defender
                                         String defenderInput = window.promptPlayer("How many dice for defender to roll? max: " + Math.min(chosenTo.getArmy(), 2) + ", min: 1");
                                         defendDice = Integer.parseInt(defenderInput);
-                                    }
-                                    else{
-                                        defendDice = chosenTo.getOwner().getNumOfDice();
+                                        chosenTo.getOwner().setNumOfDice(defendDice);
                                     }
 
-                                    if (p.getCurrent_player().attack(chosenFrom, chosenTo, attackDice, defendDice)) {
+
+                                    if (p.getCurrent_player().attack(chosenFrom, chosenTo, attackDice)) {
                                         if (p.isGameOver()) {
                                             window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
                                             System.exit(0);

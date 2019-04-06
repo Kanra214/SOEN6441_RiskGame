@@ -125,7 +125,7 @@ public class Aggressive implements Strategy {
 
                 //attack until this country has 1 army or the target has been conquered
                 while(chosen.getArmy()>1||t.getOwner()==player) {
-                    player.attack(chosen, target, 1, 1);
+                    player.attack(chosen, target, 1);
                     //TODO need to decide he number of dice
                 }
 
