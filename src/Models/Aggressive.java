@@ -82,20 +82,37 @@ public class Aggressive implements Strategy {
         
                       
         //Phase 3
+        Country secondStrong;
         //Comparator cp = new WeakestCountryComparator();
         //int ith = player.getRealms().size()-1;
-        Country secondStrong = player.getRealms().get(ith-1);
-        
-        int armiesToMove = secondStrong.getArmy() - 1;
-        try {
-            player.fortify(secondStrong, chosen, armiesToMove);
-        } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException | SourceIsTargetException
-                | MoveAtLeastOneArmyException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+         ith = player.getRealms().size()-1;
+        if(ith-1==0) {
+         p.nextPhase();
+        }else {
+          System.out.println(player.getRealms().size()+"  Realmssize");
+          System.out.println(ith-1+"  Index");
+         secondStrong = player.getRealms().get(ith-1);
+         int armiesToMove = secondStrong.getArmy() - 1;
+         
+         if(armiesToMove==0) {
+           p.nextPhase();
+         }else {
+           try {
+             player.fortify(secondStrong, chosen, armiesToMove);
+         } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException | SourceIsTargetException
+                 | MoveAtLeastOneArmyException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         }
 
-        p.nextPhase();
+         p.nextPhase();
+         }
+         
+
+        
+        }
+        
+
     }
 
 
@@ -125,7 +142,19 @@ public class Aggressive implements Strategy {
 
                 //attack until this country has 1 army or the target has been conquered
                 while(chosen.getArmy()>1||t.getOwner()==player) {
-                    player.attack(chosen, target, 1, 1);
+                  
+                  System.out.println(chosen.getOwner().getId()+"before attack"+target.getOwner().getId());
+                    player.attack(chosen, target, Math.min(3, chosen.getArmy()), Math.min(2, target.getArmy()));
+                    if(t.getOwner()==player) {
+                      try {
+                        player.fortify(chosen, target, chosen.getArmy()-1);
+                      } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException
+                          | SourceIsTargetException | MoveAtLeastOneArmyException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                      }
+                    }
+                    System.out.println(chosen.getOwner()+"after attack"+target.getOwner());
                     //TODO need to decide he number of dice
                 }
 
