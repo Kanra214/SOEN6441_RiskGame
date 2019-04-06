@@ -43,7 +43,7 @@ public class Controller {
      */
     public Controller() {
         this.window = new Window();
-
+        
     }
 ///////
 
@@ -149,6 +149,7 @@ public class Controller {
                                     }
                                     else{
                                         defendDice = chosenTo.getOwner().getNumOfDice();
+                                        System.out.println("num of def dice"+chosenTo.getOwner().getNumOfDice());
                                     }
 
                                     if (p.getCurrent_player().attack(chosenFrom, chosenTo, attackDice, defendDice)) {

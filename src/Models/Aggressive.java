@@ -28,7 +28,7 @@ public class Aggressive implements Strategy {
             
             try {
                 player.reinforce( firstCountry );
-                System.out.println("the current turn is"+p.getCurrentTurn());
+               // System.out.println("the current turn is"+p.getCurrentTurn());
             } catch (OutOfArmyException e) {
                 
                 e.printStackTrace();
@@ -53,18 +53,7 @@ public class Aggressive implements Strategy {
           Comparator cp = new WeakestCountryComparator();
           int ith = player.getRealms().size()-1;
           Country chosen = player.getRealms().get(ith);
-          /*
-          Country chosen=new Country(player.getId(), player.getId(), null, null);
 
-          //If all the countries are the same number,the chosen will be the first country
-          int max=0;
-          for(Country c: ownedCountries) {
-              if(c.getArmy()>max) {
-                  chosen = c;
-                  max=c.getArmy();
-              }
-          }
-           */
           while(player.getUnassigned_armies()>0) {
          
               try {
@@ -85,6 +74,8 @@ public class Aggressive implements Strategy {
               
               e.printStackTrace();
           }
+          
+          player.setNumOfDice(1);
           p.nextPhase();
           
                         
