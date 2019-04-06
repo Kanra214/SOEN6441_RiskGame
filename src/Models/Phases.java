@@ -248,12 +248,13 @@ public class Phases extends Observable implements Serializable {
 
         switch (currentPhase) {
             case 0:
+                //current_player.executeStrategy();
                 nextTurn();
-                current_player.executeStrategy();
+                //current_player.executeStrategy();
                 if (currentTurn > numOfPlayers - 1) {
                     currentPhase = 1;
                 }
-
+                current_player.executeStrategy();
                 break;
             case 1:
                 currentPhase = 2;
