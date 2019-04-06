@@ -476,9 +476,9 @@ public class Controller {
 
 
             p.addObserver(window);
-            while (!coorrect){
-                window.displayGUI(this);
-            }
+//            while (!coorrect){
+//                window.displayGUI(this);
+//            }//TODO
             int[] playerValues = window.decidePlayers();
             System.out.println(playerValues);
             p.gameSetUp(playerValues);

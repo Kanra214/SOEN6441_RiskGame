@@ -1,5 +1,6 @@
 package Models;
 //import View_Components.CardExchangeView;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +23,7 @@ public class Phases extends Observable implements Serializable {
     protected boolean gameOver = false;
     protected boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     public boolean cardExchanged = false;
-    public boolean fortified = false;
+    protected boolean fortified = false;
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
 
 
@@ -248,11 +249,12 @@ public class Phases extends Observable implements Serializable {
         switch (currentPhase) {
             case 0:
                 nextTurn();
-//                current_player.executeStrategy();
+
                 if (currentTurn > numOfPlayers - 1) {
                     currentPhase = 1;
                 }
                 current_player.executeStrategy();
+
                 break;
             case 1:
                 currentPhase = 2;
@@ -531,8 +533,7 @@ public class Phases extends Observable implements Serializable {
 
     }
 
-
-    public void inBattle(boolean flag) {
+    void inBattle(boolean flag) {
         inBattle = flag;
         updateWindow();
     }
