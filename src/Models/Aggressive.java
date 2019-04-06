@@ -1,5 +1,6 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -119,6 +120,14 @@ public class Aggressive implements Strategy {
 
     }
 
+    @Override
+    public void defend(Player pl) {
+        pl.setNumOfDice(1);//TODO
+    }
+    @Override
+    public String getName() {
+        return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
+    }
 
 
 
@@ -149,7 +158,7 @@ public class Aggressive implements Strategy {
                 while(chosen.getArmy()>0||t.getOwner()==player) {
                   
                   System.out.println(chosen.getOwner().getId()+"before attack"+target.getOwner().getId());
-                    player.attack(chosen, target, Math.min(3, chosen.getArmy()), Math.min(2, target.getArmy()));
+                    player.attack(chosen, target, Math.min(3, chosen.getArmy()));//TODO:, Math.min(2, target.getArmy())
                     if(t.getOwner()==player) {
                       try {
                         player.fortify(chosen, target, chosen.getArmy()-1);

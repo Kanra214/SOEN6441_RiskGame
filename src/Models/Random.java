@@ -7,10 +7,8 @@ public class Random implements Strategy {
     public void execute(Phases p){
         Player player = p.getCurrent_player();
         ArrayList<Country> realms = player.getRealms();
-        if (p.getRival() == player){
-          player.setNumOfDice(getRandom(1,3));
-        }
-        else{
+
+
           if(p.getCurrentPhase() == 0){
             assignArmyTocountry(player,realms);
             p.nextPhase();
@@ -46,21 +44,17 @@ public class Random implements Strategy {
                 try {
                   int Allout = getRandom(0,2);
                   if (Allout == 1) {
+                      System.out.println("Random: allout");
                     boolean conquer = player.attack(sourceCountry,targetCountry);
                     if (conquer == true) {
                       int sourceCountryArmy = sourceCountry.getArmy() - 1 ;
                       int numOfDice = player.getNumOfDice() + 1;
                       int assignAfterConquer = getRandom(Math.min(sourceCountryArmy,numOfDice) + 1,Math.max(sourceCountryArmy,numOfDice));
-                      System.out.println(1);
-                      if(p.fortified == true) {
-                        p.fortified= false;
+                      System.out.println("Random: assign after couquer: " + assignAfterConquer);
+
                         player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
 
-                      }
-                      else{
-                        player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
 
-                      }
                       if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
                         System.exit(0);
@@ -68,22 +62,19 @@ public class Random implements Strategy {
                     }
                   }
                   else {
+                      System.out.println("Random: not allout");
                     int numOfattack = getRandom(1,4);
                     int numOfdefend = targetCountry.getOwner().getNumOfDice();
-                    boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack,numOfdefend);
+                    boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack);
                     if (conquer == true) {
                       int sourceCountryArmy = sourceCountry.getArmy() - 1 ;
                       int numOfDice = player.getNumOfDice() + 1;
                       int assignAfterConquer = getRandom(Math.min(sourceCountryArmy,numOfDice) + 1,Math.max(sourceCountryArmy,numOfDice));
-                      if (p.fortified == true) {
-                        p.fortified = false;
-                        player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
 
-                      }
-                      else{
                         player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
+                        System.out.println("Random: assign after couquer: " + assignAfterConquer);
 
-                      }
+
                       if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
                         System.exit(0);
@@ -125,7 +116,9 @@ public class Random implements Strategy {
                 break;
               }
             }
-            p.nextPhase();
+            if(p.getAttackingIsPossible()) {
+                p.nextPhase();
+            }
 
             //phase 3
             System.out.println("Inside Phase3");
@@ -139,6 +132,7 @@ public class Random implements Strategy {
               try{
                 flagFindpath = player.findPath(sourceCountry,targetCountry);
                 player.fortify(sourceCountry,targetCountry,assignArmy);
+                System.out.println("Random: fortify: "  + assignArmy);
               } catch (SourceIsTargetException e) {
                 System.out.println("Random source can not be target");
                 continue;
@@ -160,9 +154,19 @@ public class Random implements Strategy {
 
         }
 
+    @Override
+    public void defend(Player pl) {
+        pl.setNumOfDice(getRandom(1,3));
+    }
+    @Override
+    public String getName() {
+        return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
+    }
 
 
-}
+
+
+
 
 
     public void exchangeCards(Phases p){
@@ -196,9 +200,11 @@ public class Random implements Strategy {
 
     public void assignArmyTocountry(Player player, ArrayList<Country> realms){
         while (player.isArmyLeft()){
+            System.out.println("???");
                 Country tempCountry = realms.get(getRandom(0,realms.size()));
                 int assignedArmy = getRandom(1,player.getUnassigned_armies() + 1);
                 while( assignedArmy > 0){
+                    System.out.println("???");
                     try{
                         player.reinforce(tempCountry);
                         assignedArmy--;

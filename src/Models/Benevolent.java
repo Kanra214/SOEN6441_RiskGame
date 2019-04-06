@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Benevolent implements Strategy, Serializable {
+public class Benevolent implements Strategy {
 
     @Override
     public void execute(Phases p) {
 
         Player player = p.getCurrent_player();
-        player.setNumOfDice(1);
+
 
 
             if (p.getCurrentPhase() == 0) {
@@ -18,7 +18,7 @@ public class Benevolent implements Strategy, Serializable {
                 //TODO: phase 0
                 int countryCount = 0;
                 int countryTurn = 0;
-                while(player.isArmyLeft()){
+                while (player.isArmyLeft()) {
                     Country currentCountry = player.getRealms().get(countryTurn);
                     try {
                         player.reinforce(currentCountry);
@@ -58,10 +58,10 @@ public class Benevolent implements Strategy, Serializable {
                     p.nextPhase();
                 }
                 //phase 3
-                int ith = player.getRealms().size()-1;
+                int ith = player.getRealms().size() - 1;
                 Collections.sort(player.getRealms(), cp);
                 Country weakest = player.getRealms().get(0);
-                while(true) {
+                while (true) {
                     try {
                         Country strongest = player.getRealms().get(ith);
                         int armiesToMove = (strongest.getArmy() - weakest.getArmy()) / 2;
@@ -84,11 +84,19 @@ public class Benevolent implements Strategy, Serializable {
                 p.nextPhase();
 
 
-
-
-
             }
         }
+
+    @Override
+    public void defend(Player pl) {
+        pl.setNumOfDice(1);
+    }
+    @Override
+    public String getName() {
+        return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
+    }
+
+
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();

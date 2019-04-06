@@ -159,7 +159,8 @@ public class Window extends JFrame implements Observer {
     public void update(Observable o, Object arg) {
         mapPanel.repaint();
         Phases p = (Phases) o;
-        if(p.getCurrent_player().getStrategy() != null){
+//        System.out.println("window: " + p.getCurrent_player().getStrategy().getName());
+        if(!p.getCurrent_player().getStrategy().getName().equals("Human")){
             //disable all the buttons and popping outs
 
             phasePanel.completePhaseButton.setEnabled(false);
@@ -270,7 +271,13 @@ public class Window extends JFrame implements Observer {
     }
     int[] values = new int[5];
     public int[] decidePlayers(){
-        return values;
+//        int[] value = new int[5];
+//        value[0] = 1;
+//        value[1] = 0;
+//        value[2] = 0;
+//        value[3] = 1;
+//        value[4] = 0;
+        return values;//TODO: values
     }
 
     public String decideMaps(String dialog) {

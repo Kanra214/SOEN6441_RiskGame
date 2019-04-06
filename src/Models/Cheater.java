@@ -1,6 +1,7 @@
 package Models;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Cheater implements Strategy {
@@ -99,6 +100,15 @@ public class Cheater implements Strategy {
 
 
         }
+
+    @Override
+    public void defend(Player pl) {
+        pl.setNumOfDice(1);//TODO
+    }
+    @Override
+    public String getName() {
+        return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
+    }
 
 
     public void exchangeCards(Phases p){

@@ -88,7 +88,7 @@ public class SidePanel extends JPanel {
 
     }
     private String strategyToString(Player player){
-        if(player.getStrategy() == null){
+        if(player.getStrategy().getName().equals("Human")){
             return "Human";
         }
         else{

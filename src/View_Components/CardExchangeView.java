@@ -111,7 +111,8 @@ public class CardExchangeView extends JFrame{
 	}
 
     public void setContext(Phases p) {
-		if(!isVisible() && p.getCurrentPhase() == 1 && (!p.cardExchanged) && p.getCurrentTurn() >= p.getNumOfPlayers() * 2 && p.getCurrent_player().getStrategy() == null){
+
+		if(!isVisible() && p.getCurrentPhase() == 1 && (!p.cardExchanged) && p.getCurrentTurn() >= p.getNumOfPlayers() * 2 && p.getCurrent_player().getStrategy().getName().equals("Human") ){
 		//only human player needs card exchange view
 
 
