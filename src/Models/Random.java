@@ -50,7 +50,7 @@ public class Random implements Strategy {
                       int sourceCountryArmy = sourceCountry.getArmy() ;
                       int numOfDice = player.getNumOfDice();
                       int assignAfterConquer;
-                      if (sourceCountryArmy > numOfDice){
+                      if (sourceCountryArmy > numOfDice + 1){
                         assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
                       }
                       else {
@@ -76,7 +76,7 @@ public class Random implements Strategy {
                       int sourceCountryArmy = sourceCountry.getArmy() ;
                       int numOfDice = player.getNumOfDice();
                       int assignAfterConquer;
-                      if (sourceCountryArmy > numOfDice){
+                      if (sourceCountryArmy > numOfDice + 1){
                         assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
                       }
                       else {
