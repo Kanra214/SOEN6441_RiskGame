@@ -76,7 +76,7 @@ public class MapLoader {
         result.add(graph);
         result.add(worldmap);
 
-        System.out.println(1);
+//        System.out.println(1);
         return result;
     }
 
