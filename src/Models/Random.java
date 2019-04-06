@@ -4,168 +4,167 @@ import java.util.ArrayList;
 
 public class Random implements Strategy {
     @Override
-    public void execute(Phases p){
+    public void execute(Phases p) {
         Player player = p.getCurrent_player();
         ArrayList<Country> realms = player.getRealms();
 
 
-          if(p.getCurrentPhase() == 0){
-            assignArmyTocountry(player,realms);
+        if (p.getCurrentPhase() == 0) {
+            assignArmyTocountry(player, realms);
             p.nextPhase();
-          }
-          else{
+        } else {
             //phase 1
             exchangeCards(p);
             p.phaseOneFirstStep();
-            assignArmyTocountry(player,realms);
+            assignArmyTocountry(player, realms);
             p.nextPhase();
 
             //phase 2
-            int num = getRandom(1,6);// number of times for attack
-            while(num > 0){
-              p.checkAttackingIsPossible();
-              if(p.getAttackingIsPossible()){
-                Country sourceCountry = null;
-                Country targetCountry = null;
-                ArrayList<Country> neighbours = new ArrayList<Country>();
-                while(true) {
-                  sourceCountry = realms.get(getRandom(0,realms.size()));
-                  for (Country neighbour : sourceCountry.getNeighbours()) {
-                    if (neighbour.getOwner() != sourceCountry.getOwner()){
-                      neighbours.add(neighbour);
+            int num = getRandom(1, 6);// number of times for attack
+            while (num > 0) {
+                p.checkAttackingIsPossible();
+                if (p.getAttackingIsPossible()) {
+                    Country sourceCountry = null;
+                    Country targetCountry = null;
+                    ArrayList<Country> neighbours = new ArrayList<Country>();
+                    while (true) {
+                        sourceCountry = realms.get(getRandom(0, realms.size()));
+                        for (Country neighbour : sourceCountry.getNeighbours()) {
+                            if (neighbour.getOwner() != sourceCountry.getOwner()) {
+                                neighbours.add(neighbour);
+                            }
+                        }
+                        if (neighbours.size() != 0) {
+                            targetCountry = neighbours.get(getRandom(0, neighbours.size()));
+                            break;
+                        } else {
+                            continue;
+                        }
                     }
-                  }
-                  if(neighbours.size() != 0) {
-                    targetCountry = neighbours.get(getRandom(0,neighbours.size()));
+                    try {
+                        int Allout = getRandom(0, 2);
+                        if (Allout == 1) {
+                            System.out.println("Random: allout");
+                            boolean conquer = player.attack(sourceCountry, targetCountry);
+                            if (conquer == true) {
+                                int sourceCountryArmy = sourceCountry.getArmy();
+                                int numOfDice = player.getNumOfDice();
+                                int assignAfterConquer;
+                                if (sourceCountryArmy > numOfDice) {
+                                    assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
+                                } else {
+                                    assignAfterConquer = sourceCountryArmy - 1;
+
+                                }
+                                System.out.println("Random: assign after couquer: " + assignAfterConquer);
+
+                                player.deploymentAfterConquer(sourceCountry, targetCountry, assignAfterConquer);
+
+
+                                if (p.isGameOver()) {
+                                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                    System.exit(0);
+                                }
+                            }
+                        } else {
+                            System.out.println("Random: not allout");
+                            int numOfattack = getRandom(1, 4);
+                            boolean conquer = player.attack(sourceCountry, targetCountry, numOfattack);
+                            if (conquer == true) {
+                                int sourceCountryArmy = sourceCountry.getArmy();
+                                int numOfDice = player.getNumOfDice();
+                                int assignAfterConquer;
+                                if (sourceCountryArmy > numOfDice) {
+                                    assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
+                                } else {
+                                    assignAfterConquer = sourceCountryArmy - 1;
+
+                                }
+                                player.deploymentAfterConquer(sourceCountry, targetCountry, assignAfterConquer);
+                                System.out.println("Random: assign after couquer: " + assignAfterConquer);
+
+
+                                if (p.isGameOver()) {
+                                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                    System.exit(0);
+                                }
+                            }
+                        }
+
+                    } catch (TargetCountryNotAdjacent e) {
+                        System.out.println("Random target country is not adjacent to the attacking country.");
+                    } catch (AttackCountryArmyMoreThanOne e) {
+                        System.out.println("Random attacking country must have at least two armies.");
+                        continue;
+                    } catch (WrongDiceNumber e) {
+                        System.out.println("Random wrong dice number.");
+                        continue;
+                    } catch (AttackingCountryOwner attackingCountryOwner) {
+                        System.out.println("Random attackingCountryOwner error");
+                    } catch (AttackedCountryOwner attackedCountryOwner) {
+                        System.out.println("Random attackedCountryOwner error");
+                    } catch (SourceIsTargetException e) {
+                        System.out.println("Random SourceIsTargetException error");
+                    } catch (MoveAtLeastOneArmyException e) {
+                        System.out.println("Random MoveAtLeastOneArmyException");
+                    } catch (OutOfArmyException e) {
+                        System.out.println("Random OutOfArmyException");
+                    } catch (CountryNotInRealms countryNotInRealms) {
+                        System.out.println("Random CountryNotInRealms countryNotInRealms");
+                    } catch (NoSuchPathException e) {
+                        System.out.println("Random NoSuchPathException");
+                    } catch (MustBeEqualOrMoreThanNumOfDice mustBeEqualOrMoreThanNumOfDice) {
+                        System.out.println("Random MustBeEqualOrMoreThanNumOfDice");
+                        continue;
+                    }
+                    num--;
+
+                } else {
+                    System.out.println("Phase2 finished");
                     break;
-                  }
-                  else { continue;}
                 }
-                try {
-                  int Allout = getRandom(0,2);
-                  if (Allout == 1) {
-                      System.out.println("Random: allout");
-                    boolean conquer = player.attack(sourceCountry,targetCountry);
-                    if (conquer == true) {
-                      int sourceCountryArmy = sourceCountry.getArmy() ;
-                      int numOfDice = player.getNumOfDice();
-                      int assignAfterConquer;
-                      if (sourceCountryArmy > numOfDice){
-                        assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
-                      }
-                      else {
-                        assignAfterConquer = sourceCountryArmy - 1;
-
-                      }
-                      System.out.println("Random: assign after couquer: " + assignAfterConquer);
-
-                        player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
-
-                      }
-                      if (p.isGameOver()) {
-                        System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-                        System.exit(0);
-                      }
-                    }
-                  }
-                  else {
-                      System.out.println("Random: not allout");
-                    int numOfattack = getRandom(1,4);
-                    boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack);
-                    if (conquer == true) {
-                      int sourceCountryArmy = sourceCountry.getArmy() ;
-                      int numOfDice = player.getNumOfDice();
-                      int assignAfterConquer;
-                      if (sourceCountryArmy > numOfDice){
-                        assignAfterConquer = getRandom(numOfDice + 1, sourceCountryArmy);
-                      }
-                      else {
-                        assignAfterConquer = sourceCountryArmy - 1;
-
-                      }
-                      player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
-                      System.out.println("Random: assign after couquer: " + assignAfterConquer);
-
-
-                      if (p.isGameOver()) {
-                        System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-                        System.exit(0);
-                      }
-                    }
-                  }
-
-                }catch(TargetCountryNotAdjacent e) {
-                  System.out.println("Random target country is not adjacent to the attacking country.");
-                }catch(AttackCountryArmyMoreThanOne e) {
-                  System.out.println("Random attacking country must have at least two armies.");
-                  continue;
-                }catch(WrongDiceNumber e) {
-                  System.out.println("Random wrong dice number.");
-                  continue;
-                } catch (AttackingCountryOwner attackingCountryOwner) {
-                  System.out.println("Random attackingCountryOwner error");
-                } catch (AttackedCountryOwner attackedCountryOwner) {
-                  System.out.println("Random attackedCountryOwner error");
-                } catch (SourceIsTargetException e) {
-                  System.out.println("Random SourceIsTargetException error");
-                } catch (MoveAtLeastOneArmyException e) {
-                  System.out.println("Random MoveAtLeastOneArmyException");
-                } catch (OutOfArmyException e) {
-                  System.out.println("Random OutOfArmyException");
-                } catch (CountryNotInRealms countryNotInRealms) {
-                  System.out.println("Random CountryNotInRealms countryNotInRealms");
-                } catch (NoSuchPathException e) {
-                  System.out.println("Random NoSuchPathException");
-                } catch (MustBeEqualOrMoreThanNumOfDice mustBeEqualOrMoreThanNumOfDice) {
-                  System.out.println("Random MustBeEqualOrMoreThanNumOfDice");
-                  continue;
-                }
-                num--;
-
-              }
-              else{
-                System.out.println("Phase2 finished");
-                break;
-              }
             }
-            if(p.getAttackingIsPossible()) {
+            if (p.getAttackingIsPossible()) {
                 p.nextPhase();
             }
 
             //phase 3
             System.out.println("Inside Phase3");
             int numOfphase3 = 6;
-              boolean flagFindpath = false;
-            while(flagFindpath == false && numOfphase3 > 0){
-              numOfphase3--;
-              Country sourceCountry = realms.get(getRandom(0,realms.size()));
-              Country targetCountry = realms.get(getRandom(0,realms.size()));
-              int assignArmy = getRandom(1,sourceCountry.getArmy());
-              try{
-                flagFindpath = player.findPath(sourceCountry,targetCountry);
-                player.fortify(sourceCountry,targetCountry,assignArmy);
+            boolean flagFindpath = false;
+            while (flagFindpath == false && numOfphase3 > 0) {
+                numOfphase3--;
+                Country sourceCountry = realms.get(getRandom(0, realms.size()));
+                Country targetCountry = realms.get(getRandom(0, realms.size()));
+                int assignArmy = getRandom(1, sourceCountry.getArmy());
+                try {
+                    flagFindpath = player.findPath(sourceCountry, targetCountry);
+                    player.fortify(sourceCountry, targetCountry, assignArmy);
 
-                System.out.println("Random: fortify: "  + assignArmy);
-              } catch (SourceIsTargetException e) {
-                System.out.println("Random source can not be target");
-                continue;
-              } catch (CountryNotInRealms countryNotInRealms) {
-                System.out.println("Random not in realms");
-              } catch (MoveAtLeastOneArmyException e) {
-                System.out.println("Random move at least 1 army");
-              } catch (NoSuchPathException e) {
-                System.out.println("Random NoSuchPathException");
-                continue;
-              } catch (OutOfArmyException e) {
-                System.out.println("Random OutOfArmyException");
-                continue;
-              }
+                    System.out.println("Random: fortify: " + assignArmy);
+                } catch (SourceIsTargetException e) {
+                    System.out.println("Random source can not be target");
+                    continue;
+                } catch (CountryNotInRealms countryNotInRealms) {
+                    System.out.println("Random not in realms");
+                } catch (MoveAtLeastOneArmyException e) {
+                    System.out.println("Random move at least 1 army");
+                } catch (NoSuchPathException e) {
+                    System.out.println("Random NoSuchPathException");
+                    continue;
+                } catch (OutOfArmyException e) {
+                    System.out.println("Random OutOfArmyException");
+                    continue;
+                }
             }
             p.nextPhase();
 
-          }
-
         }
+    }
+
+
+
+
 
     @Override
     public void defend(Player pl) {
@@ -177,7 +176,7 @@ public class Random implements Strategy {
     }
 
 
-}
+
 
 
     public void exchangeCards(Phases p){

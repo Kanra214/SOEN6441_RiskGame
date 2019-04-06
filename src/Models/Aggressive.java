@@ -215,11 +215,7 @@ public class Aggressive implements Strategy {
     }
 
 
-    @Override
-    public void defend(Player pl) {
-      // TODO Auto-generated method stub
-      pl.setNumOfDice(1);
-    }
+
 
 
 
