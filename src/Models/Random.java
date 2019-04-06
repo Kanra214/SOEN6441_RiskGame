@@ -61,7 +61,7 @@ public class Random implements Strategy {
 
                         player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
 
-
+                      }
                       if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
                         System.exit(0);
@@ -177,9 +177,7 @@ public class Random implements Strategy {
     }
 
 
-
-
-
+}
 
 
     public void exchangeCards(Phases p){
@@ -213,7 +211,7 @@ public class Random implements Strategy {
 
     public void assignArmyTocountry(Player player, ArrayList<Country> realms){
         while (player.isArmyLeft()){
-            System.out.println("deploy");
+            System.out.println("???");
                 Country tempCountry = realms.get(getRandom(0,realms.size()));
                 int assignedArmy = getRandom(1,player.getUnassigned_armies() + 1);
                 while( assignedArmy > 0){
