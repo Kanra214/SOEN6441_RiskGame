@@ -36,6 +36,7 @@ public class Aggressive implements Strategy {
             }
             
         }
+        p.nextPhase();
         }else {
           if (p.checkWinner()) {//this attacker conquered all the countries
             p.gameOver = true;

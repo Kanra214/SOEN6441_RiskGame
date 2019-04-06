@@ -441,8 +441,12 @@ public class Player implements Serializable {
 
 
         }
+        catch(RiskGameException e2){
+            p.rival = null;
+            throw e2;
+        }
         p.checkAttackingIsPossible();
-        p.at_least_once = false;
+//        p.at_least_once = false;
         p.rival = null;
         return false;
 
@@ -469,7 +473,7 @@ public class Player implements Serializable {
                 p.rival.setNumOfDice(defendDice);
 
                 if (attack(from, to, attackDice, defendDice)) {
-                    p.at_least_once = true;
+//                    p.at_least_once = true;
 
 
                     return true;
@@ -479,7 +483,7 @@ public class Player implements Serializable {
 
             } catch (RiskGameException e) {
                 if (validated) {
-                    p.at_least_once = false;
+//                    p.at_least_once = false;
                     return false;
                 } else {
                     throw e;

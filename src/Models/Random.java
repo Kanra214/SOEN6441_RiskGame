@@ -201,7 +201,7 @@ public class Random implements Strategy {
 
     public void assignArmyTocountry(Player player, ArrayList<Country> realms){
         while (player.isArmyLeft()){
-            System.out.println("???");
+            System.out.println("deploy");
                 Country tempCountry = realms.get(getRandom(0,realms.size()));
                 int assignedArmy = getRandom(1,player.getUnassigned_armies() + 1);
                 while( assignedArmy > 0){

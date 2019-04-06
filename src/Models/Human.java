@@ -11,8 +11,18 @@ public class Human implements Strategy {
 
     @Override
     public void defend(Player pl) {
-        String input = JOptionPane.showInputDialog("How many dice for defender to roll? ");
-        int defendDice = Integer.parseInt(input);
+        int defendDice;
+        while(true) {
+            String input = JOptionPane.showInputDialog("How many dice for defender to roll? ");
+            try {
+                defendDice = Integer.parseInt(input);
+                break;
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Wrong number of dice, try again please.");
+                continue;
+            }
+        }
         pl.setNumOfDice(defendDice);//TODO:how to loop popping out until the defend dice is correct
 
     }
