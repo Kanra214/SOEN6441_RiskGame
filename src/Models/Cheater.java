@@ -100,6 +100,11 @@ public class Cheater implements Strategy {
 
         }
 
+    @Override
+    public void defend(Player pl) {
+        pl.setNumOfDice(1);//TODO
+    }
+
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();

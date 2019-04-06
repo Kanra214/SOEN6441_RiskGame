@@ -7,10 +7,8 @@ public class Random implements Strategy {
     public void execute(Phases p){
         Player player = p.getCurrent_player();
         ArrayList<Country> realms = player.getRealms();
-        if (p.getRival() == player){
-          player.setNumOfDice(getRandom(1,3));
-        }
-        else{
+
+
           if(p.getCurrentPhase() == 0){
             assignArmyTocountry(player,realms);
             p.nextPhase();
@@ -70,7 +68,7 @@ public class Random implements Strategy {
                   else {
                     int numOfattack = getRandom(1,4);
                     int numOfdefend = targetCountry.getOwner().getNumOfDice();
-                    boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack,numOfdefend);
+                    boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack);
                     if (conquer == true) {
                       int sourceCountryArmy = sourceCountry.getArmy() - 1 ;
                       int numOfDice = player.getNumOfDice() + 1;
@@ -125,7 +123,9 @@ public class Random implements Strategy {
                 break;
               }
             }
-            p.nextPhase();
+            if(p.getAttackingIsPossible()) {
+                p.nextPhase();
+            }
 
             //phase 3
             System.out.println("Inside Phase3");
@@ -139,6 +139,7 @@ public class Random implements Strategy {
               try{
                 flagFindpath = player.findPath(sourceCountry,targetCountry);
                 player.fortify(sourceCountry,targetCountry,assignArmy);
+                System.out.println("?????");
               } catch (SourceIsTargetException e) {
                 System.out.println("Random source can not be target");
                 continue;
@@ -162,7 +163,11 @@ public class Random implements Strategy {
 
 
 
+
+public void defend(Player pl){
+    pl.setNumOfDice(getRandom(1,3));
 }
+
 
 
     public void exchangeCards(Phases p){

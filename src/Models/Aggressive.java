@@ -97,6 +97,10 @@ public class Aggressive implements Strategy {
 
         p.nextPhase();
     }
+    @Override
+    public void defend(Player pl){
+        pl.setNumOfDice(1);//TODO
+    }
 
 
 

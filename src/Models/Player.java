@@ -368,9 +368,13 @@ public class Player implements Serializable {
         if (strategy != null) {
             strategy.execute(p);
         }
+        else if(p.getRival() == this){
+            strategy.defend(this);
+        }
 
 
     }
+
 
 
 

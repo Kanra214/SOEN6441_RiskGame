@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Benevolent implements Strategy, Serializable {
+public class  Benevolent implements Strategy, Serializable {
 
     @Override
     public void execute(Phases p) {
@@ -90,6 +90,11 @@ public class Benevolent implements Strategy, Serializable {
             }
         }
         }
+
+    @Override
+    public void defend(Player pl) {
+        pl.setNumOfDice(1);
+    }
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
