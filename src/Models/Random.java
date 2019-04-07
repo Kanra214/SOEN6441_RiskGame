@@ -55,7 +55,8 @@ public class Random implements Strategy {
 
                       if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-                        System.exit(0);
+                        return;
+                        //System.exit(0);
                       }
                     }
                   }
@@ -71,7 +72,7 @@ public class Random implements Strategy {
 
                       if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-                        System.exit(0);
+                        //System.exit(0);
                       }
                     }
                   }

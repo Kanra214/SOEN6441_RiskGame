@@ -77,6 +77,11 @@ public class Aggressive implements Strategy {
           }
           
           player.setNumOfDice(1);
+            if (p.isGameOver()) {
+                System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                return;
+                //System.exit(0);
+            }
           p.nextPhase();
           
                         

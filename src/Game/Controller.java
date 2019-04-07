@@ -35,6 +35,7 @@ public class Controller {
     int tGameNum=0;
     int tTurnsNum=0;
     int tNum;
+    boolean tournament = false;
 
 
 
@@ -487,28 +488,32 @@ public class Controller {
 
         }
 
-        public void startTournament(int numMaps, int[] playerValues, int numGames, int numTurns){
+        public void startTournament(int numMaps, int[] playerValues, int numGames, int numTurns) {
 //                for (int i = 0; i < numMaps * numGames; i++){
 //
 //                }
             ArrayList<Integer> winners = new ArrayList<>();
             ArrayList<String> maps = new ArrayList<>();
             String[] mapArray = {"DemoMap-SmallSize.map",
-                                "DemoMap-SmallSize.map",
+                                "DemoMap-BigSize.txt",
                                 "DemoMap-SmallSize.map",
                                 "DemoMap-SmallSize.map",
                                 "DemoMap-SmallSize.map"};
             for (int i = 0; i < numMaps; i++){
                 maps.add(mapArray[i]);
             }
-            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[0]);
+            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
             p = new Phases(tempMap.get(0), tempMap.get(1));
-            int[] a = {0,1,1,1,0};
+            tournament = true;
+            int[] a = {-1,1,1,0,1};
+            p.checkturn(20);
             p.gameSetUp(a);
-//            if (p.checkWinner()){
+           
+
+
+//            if (p.isGameOver()) {
 //                winners.add(p.getCurrent_player().getId());
 //            }
-
         }
 
         public void loadGame(){
