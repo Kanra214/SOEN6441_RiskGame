@@ -35,7 +35,9 @@ public class Cheater implements Strategy {
 //            }
             //must be in phase 1
             System.out.println("Inside cheater phase1");
-            exchangeCards(p);
+            if(p.cardExchanged) {
+                exchangeCards(p);
+            }
             p.phaseOneFirstStep();
             System.out.println("cheater phase one first step, unassigned army = " + player.getUnassigned_armies());
             player.setUnassigned_armies(0);

@@ -23,7 +23,9 @@ public class Random implements Strategy {
               }
 
             //phase 1
-            exchangeCards(p);
+              if(p.cardExchanged) {
+                  exchangeCards(p);
+              }
             p.phaseOneFirstStep();
             assignArmyTocountry(player,realms);
             p.nextPhase();

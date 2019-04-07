@@ -40,7 +40,9 @@ public class Benevolent implements Strategy {
                 }
 
                 //must be in phase 1
-                exchangeCards(p);
+                if(p.cardExchanged) {
+                    exchangeCards(p);
+                }
                 System.out.println("benevolent card exchange");
                 p.phaseOneFirstStep();
                 System.out.println("benevolent phase one first step, unassigned army = " + player.getUnassigned_armies());
@@ -60,15 +62,13 @@ public class Benevolent implements Strategy {
                 p.nextPhase();
                 //no attack
                 //this player might not be able to attack, next phase automatically, to avoid next phase twice, check AttackingIsPossible
-                p.checkAttackingIsPossible();
+
                 if (p.isGameOver()) {
                     if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
                     return;
                     //System.exit(0);
                 }
-                if (p.getAttackingIsPossible()) {
-                    p.nextPhase();
-                }
+                p.nextPhase();
                 //phase 3
                 int ith = player.getRealms().size() - 1;
                 Collections.sort(player.getRealms(), cp);

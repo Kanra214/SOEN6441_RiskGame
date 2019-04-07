@@ -470,7 +470,10 @@ public class Phases extends Observable implements Serializable {
         attackingIsPossible = false;
         System.out.println("attacking not possible");
         updateWindow();
-        nextPhase();
+        if(current_player.getStrategy().getName().equals("Human")) {
+            System.out.println("auto nextphase");
+            nextPhase();
+        }
 
     }
 

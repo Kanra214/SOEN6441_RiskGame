@@ -47,7 +47,9 @@ public class Aggressive implements Strategy {
         //Phase 1
           System.out.println("player"+player.getId()+"  inside aggerssive reinforce");
           System.out.println("the current phase is"+p.getCurrentPhase());
-          exchangeCards(p);
+          if(p.cardExchanged) {
+              exchangeCards(p);
+          }
 
           p.phaseOneFirstStep();
           
