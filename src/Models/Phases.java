@@ -25,6 +25,8 @@ public class Phases extends Observable implements Serializable {
     public boolean cardExchanged = false;
     protected boolean fortified = false;
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
+    public int maxTurn;
+    boolean tournament = false;
 
 
     protected boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
@@ -75,7 +77,7 @@ public class Phases extends Observable implements Serializable {
             case 3:
                 return 35;
             case 2:
-                return 10;//TODO 45
+                return 45;//TODO 45
             default:
                 return 100;
         }
@@ -99,6 +101,9 @@ public class Phases extends Observable implements Serializable {
             }
         }
 
+        if(playerValue[0] == -1){
+            tournament = true;
+        }
 
         determineOrder();
         countryAssignment();
@@ -208,6 +213,15 @@ public class Phases extends Observable implements Serializable {
 
         currentTurn++;
 
+        if (tournament){
+            if (currentTurn > maxTurn){
+                gameOver = true;
+            }
+        }
+        if (gameOver){
+            return;
+        }
+
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
 
         if (current_player.getRealms().size() == 0) {//if the player is ruled out of the game
@@ -218,6 +232,7 @@ public class Phases extends Observable implements Serializable {
 
 
     }
+
 
 
     /**
@@ -364,8 +379,9 @@ public class Phases extends Observable implements Serializable {
 
 
 
-
-
+    public void checkturn(int turn){
+        maxTurn = turn;
+    }
 
 
 

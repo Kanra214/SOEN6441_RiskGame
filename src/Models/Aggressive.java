@@ -65,7 +65,10 @@ public class Aggressive implements Strategy {
 
 
           }
-          p.nextPhase();
+     
+            p.nextPhase();
+          
+    
           
           //Phase 2
           try {
@@ -77,35 +80,44 @@ public class Aggressive implements Strategy {
           }
           
           player.setNumOfDice(1);
-          p.nextPhase();
+         // 
+          
+          if(p.getCurrentPhase()==2) {
+            p.nextPhase();
+          }
           
                         
           //Phase 3
           System.out.println("player"+player.getId()+"  inside aggerssive fortify");
           Country secondStrong;
-          //Comparator cp = new WeakestCountryComparator();
-          //int ith = player.getRealms().size()-1;
+     
            ith = player.getRealms().size()-1;
-          if(ith-1==0||ith-1==-1) {
+          if(ith-1<=0) {
            p.nextPhase();
           }else {
             System.out.println(player.getRealms().size()+"  Realmssize");
-            System.out.println(ith-1+"  Index");
+            
            secondStrong = player.getRealms().get(ith-1);
            int armiesToMove = secondStrong.getArmy() - 1;
-           
-           if(armiesToMove==0) {
+           System.out.println(ith-1+"  Index"+" armiesToMove "+armiesToMove);
+           if(armiesToMove==0||secondStrong==chosen) {
+             System.out.println("armiesToMove"+armiesToMove);
+             
+             System.out.println(secondStrong.getName()+chosen.getName());
+             
              p.nextPhase();
            }else {
              try {
                player.fortify(secondStrong, chosen, armiesToMove);
+               System.out.println("fortified");
+               p.nextPhase();
            } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException | SourceIsTargetException
                    | MoveAtLeastOneArmyException e) {
                // TODO Auto-generated catch block
                e.printStackTrace();
            }
 
-           p.nextPhase();
+          // p.nextPhase();
            }
            
           
@@ -159,12 +171,12 @@ public class Aggressive implements Strategy {
                   // player.attack(chosen, target, Math.min(3, chosen.getArmy()), Math.min(2, target.getArmy()));
                     if(t.getOwner()==player) {
                       try {
-                        player.fortify(chosen, target, chosen.getArmy()-1);
-                        
+                        //player.fortify(chosen, target, chosen.getArmy()-1);
+                      player.deploymentAfterConquer(chosen, target, chosen.getArmy()-1);
                         this.attack(player, allCountries);
                         
                       } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException
-                          | SourceIsTargetException | MoveAtLeastOneArmyException e) {
+                          | SourceIsTargetException | MoveAtLeastOneArmyException | MustBeEqualOrMoreThanNumOfDice e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                       }
