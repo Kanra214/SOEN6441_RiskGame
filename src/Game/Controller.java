@@ -396,6 +396,18 @@ public class Controller {
                             window.infoBox("Unknow error", "Warning");
                             System.exit(0);
                         }
+
+                        ArrayList<String> maps = new ArrayList<>();
+                        String[] mapArray = {"DemoMap-SmallSize.map",
+                                "DemoMap-BigSize.txt",
+                                "DemoMap-SmallSize.map",
+                                "DemoMap-SmallSize.map",
+                                "DemoMap-SmallSize.map"};
+                        for (int i = 0; i < tournamentArray.get(0); i++){
+                            maps.add(mapArray[i]);
+                        }
+
+
                         if (tournamentArray.get(1) != 4){
                             while (strategyArray.size() != tournamentArray.get(1)){
                                 int i = (int) (Math.random() * 4 + 1);;
@@ -416,10 +428,55 @@ public class Controller {
                         for(int i = 0;i < strategyArray.size(); i++){
                             playerValues[strategyArray.get(i)] = 1;
                         }
-                        ArrayList<String> winners = startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
-                        System.out.println("------------------"+winners);
+                        ArrayList<String> winners = startTournament(maps, playerValues, tournamentArray.get(2), tournamentArray.get(3));
+                        System.out.println("Tournament Report"+"\n"+"------------------------------------------------------------");
+                        String mapString = "M: ";
+                        for (int i = 0; i < maps.size(); i++){
+                            mapString += maps.get(i) + " , ";
+                        }
+                        System.out.println(mapString);
+                        ArrayList<String> players = new ArrayList<>();
+                        for (int j = 1; j < playerValues.length; j++){
+                            if (playerValues[j] == 1){
+                                if (j == 1){ players.add("Aggressive"); }
+                                if (j == 2){ players.add("Benevolent"); }
+                                if (j == 3){ players.add("Random"); }
+                                if (j == 4){ players.add("Cheater"); }
+                            }
+                        }
+                        String playerString = "P: ";
+                        for (int w = 0; w < players.size(); w++){
+                            if (w != players.size() - 1){
+                                playerString += players.get(w) + ", ";
+                            }else {
+                                playerString += players.get(w) + ".";
+                            }
+                        }
+                        System.out.println(playerString+"\n"+"G: "+tournamentArray.get(2)+"\n"+"D: "+tournamentArray.get(3));
+                        String firstLine = "        ";
+                        for (int h = 0; h < tournamentArray.get(2); h++){
+                            String game = String.format("%-9s",  "Game"+ (h + 1));
+                            firstLine += game;
+                        }
+                        System.out.println(firstLine);
+                        int s = 0;
+                        int gameTime = tournamentArray.get(2);
+                        int initialGame = gameTime;
+                        for (int p = 0; p < maps.size(); p++){
+                            String restLine = "";
+                           restLine += " Map "+ ( p + 1 ) +"  ";
+                           while (s < gameTime && s < winners.size()){
+                               String player = String.format("%-9s",  winners.get(s));
+                                restLine += player;
+                                s++;
+                            }
+                            gameTime = gameTime + initialGame;
+                            System.out.println(restLine);
+                        }
 
-                    	
+
+
+
                 }
             }
         }
@@ -465,23 +522,23 @@ public class Controller {
 
         }
 
-        public ArrayList<String> startTournament(int numMaps, int[] playerValues, int numGames, int numTurns) {
+        public ArrayList<String> startTournament(ArrayList<String> mapArray, int[] playerValues, int numGames, int numTurns) {
             ArrayList<String> winners = new ArrayList<>();
-            ArrayList<String> maps = new ArrayList<>();
-            String[] mapArray = {"DemoMap-SmallSize.map",
-                                 "DemoMap-BigSize.txt",
-                                 "DemoMap-SmallSize.map",
-                                 "DemoMap-SmallSize.map",
-                                 "DemoMap-SmallSize.map"};
-            for (int i = 0; i < numMaps; i++){
-                maps.add(mapArray[i]);
-            }
+//            ArrayList<String> maps = new ArrayList<>();
+//            String[] mapArray = {"DemoMap-SmallSize.map",
+//                                 "DemoMap-BigSize.txt",
+//                                 "DemoMap-SmallSize.map",
+//                                 "DemoMap-SmallSize.map",
+//                                 "DemoMap-SmallSize.map"};
+//            for (int i = 0; i < numMaps; i++){
+//                maps.add(mapArray[i]);
+//            }
             for (int w = 0; w < playerValues.length; w++){
                 System.out.println("a:"+playerValues[w]);
             }
-                for (int i = 0; i < numMaps; i++){
+                for (int i = 0; i < mapArray.size(); i++){
                     for (int j = 0; j < numGames; j++){
-                        ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[i]);
+                        ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray.get(i));
                         p = new Phases(tempMap.get(0), tempMap.get(1));
                         p.checkturn(numTurns);
                         p.gameSetUp(playerValues);
