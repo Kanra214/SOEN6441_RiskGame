@@ -33,12 +33,6 @@ public class Benevolent implements Strategy {
                 p.nextPhase();
             } else {
 
-                if (p.checkWinner()) {//this attacker conquered all the countries
-                    p.gameOver = true;
-                    //p.winner.add("Benevolent");
-                    p.winner = "Benevolent";
-                }
-
                 //must be in phase 1
                 if(p.cardExchanged) {
                     exchangeCards(p);
@@ -62,6 +56,11 @@ public class Benevolent implements Strategy {
                 p.nextPhase();
                 //no attack
                 //this player might not be able to attack, next phase automatically, to avoid next phase twice, check AttackingIsPossible
+                if (p.checkWinner()) {//this attacker conquered all the countries
+                    p.gameOver = true;
+                    //p.winner.add("Benevolent");
+                    p.winner = "Benevolent";
+                }
 
                 if (p.isGameOver()) {
                     if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}

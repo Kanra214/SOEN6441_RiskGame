@@ -15,13 +15,6 @@ public class Random implements Strategy {
           }
           else{
 
-              if (p.checkWinner()) {//this attacker conquered all the countries
-                  p.gameOver = true;
-                  //p.winner.add("Random");
-                  p.winner = "Random";
-
-              }
-
             //phase 1
               if(p.cardExchanged) {
                   exchangeCards(p);
@@ -62,9 +55,16 @@ public class Random implements Strategy {
 
                         player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
 
+                        if (p.checkWinner()) {//this attacker conquered all the countries
+                            p.gameOver = true;
+                            //p.winner.add("Random");
+                            p.winner = "Random";
+
+                        }
+
 
                       if (p.isGameOver()) {
-                        System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                          if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
                         return;
                         //System.exit(0);
                       }

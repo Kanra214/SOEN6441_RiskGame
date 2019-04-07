@@ -416,41 +416,9 @@ public class Controller {
                         for(int i = 0;i < strategyArray.size(); i++){
                             playerValues[strategyArray.get(i)] = 1;
                         }
-                        startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
-                        //System.out.println("------------------"+p.winner);
+                        ArrayList<String> winners = startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
+                        System.out.println("------------------"+winners);
 
-
-
-
-
-
-
-
-                    	//First Choose Maps
-//                    	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
-//                    	tMapNum =Integer.parseInt(mapNumString);
-//                    	System.out.println(Integer.parseInt(mapNumString));
-//                    	if(tMapNum<1||tMapNum>5) {
-//                    		window.infoBox("Please input between 1-5", "Warning");
-//                    		mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
-//                    		tMapNum=Integer.parseInt(mapNumString);
-//                            System.out.println(Integer.parseInt(mapNumString));
-//                    	}
-//                    	System.out.println(tMapNum+"tmapnum");
-//                    	for(tNum=0;tNum<tMapNum;tNum++) {
-//
-//                    		System.out.println("tUnm"+tNum);
-//
-//                    		ChooseFile(2);
-//                    	}
-//
-//                    	System.out.println("tname"+tournamentMapName[0]);
-//                    	System.out.println("tname"+tournamentMapName[1]);
-//                    	System.out.println("tname"+tournamentMapName[2]);
-                    	
-//                    	//Choose Players
-//
-////                    	int[] playersInT = window.decidePlayers();
                     	
                 }
             }
@@ -497,8 +465,8 @@ public class Controller {
 
         }
 
-        public void startTournament(int numMaps, int[] playerValues, int numGames, int numTurns) {
-
+        public ArrayList<String> startTournament(int numMaps, int[] playerValues, int numGames, int numTurns) {
+            ArrayList<String> winners = new ArrayList<>();
             ArrayList<String> maps = new ArrayList<>();
             String[] mapArray = {"DemoMap-SmallSize.map",
                                  "DemoMap-BigSize.txt",
@@ -513,25 +481,16 @@ public class Controller {
             }
                 for (int i = 0; i < numMaps; i++){
                     for (int j = 0; j < numGames; j++){
-                        ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
-                        //p1 = new Phases(tempMap.get(0), tempMap.get(i));
-                        //p1.checkturn(numTurns);
-                        //p1.gameSetUp(playerValues);
+                        ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[i]);
+                        p = new Phases(tempMap.get(0), tempMap.get(1));
+                        p.checkturn(numTurns);
+                        p.gameSetUp(playerValues);
+                        winners.add(p.winner);
                         System.out.println("----------------------------------------------------------");
                     }
                 }
+                return winners;
 
-            //System.out.println(p1.winner);
-            //ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
-//            p =  new Phases(tempMap.get(0), tempMap.get(1));
-//            int[] a = {-1,1,1,1,1};
-//            p.checkturn(20);
-//            p.gameSetUp(a);
-//            System.out.println("-------------------------------------------------");
-//            p =  new Phases(tempMap.get(0), tempMap.get(1));
-//            int[] b = {-1,1,1,1,1};
-//            p.checkturn(20);
-//            p.gameSetUp(b);
         }
 
         public void loadGame(){
