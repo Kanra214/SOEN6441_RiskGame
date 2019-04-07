@@ -3,12 +3,12 @@ package Models;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import Game.Controller;
 import Models.Benevolent.WeakestCountryComparator;
 
 
 
 public class Aggressive implements Strategy {
-
 
     //private int id;
 
@@ -84,7 +84,9 @@ public class Aggressive implements Strategy {
           player.setNumOfDice(1);
 
             if (p.isGameOver()) {
-                System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                if (p.winner != "Draw"){
+                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                }
                 return;
                 //System.exit(0);
             }

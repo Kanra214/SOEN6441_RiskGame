@@ -274,6 +274,9 @@ public class Phases extends Observable implements Serializable {
             case 0:
 
                 nextTurn();
+//                if (gameOver){
+//                    return;
+//                }
 
                 if (currentTurn > numOfPlayers - 1) {
                     currentPhase = 1;

@@ -37,6 +37,7 @@ public class Controller {
     int tNum;
     boolean tournament = false;
     ArrayList<String> results;
+    Phases p1;
 
 
     /**
@@ -500,45 +501,37 @@ public class Controller {
 
             ArrayList<String> maps = new ArrayList<>();
             String[] mapArray = {"DemoMap-SmallSize.map",
-                    "DemoMap-BigSize.txt",
-                    "DemoMap-SmallSize.map",
-                    "DemoMap-SmallSize.map",
-                    "DemoMap-SmallSize.map"};
+                                 "DemoMap-BigSize.txt",
+                                 "DemoMap-SmallSize.map",
+                                 "DemoMap-SmallSize.map",
+                                 "DemoMap-SmallSize.map"};
             for (int i = 0; i < numMaps; i++){
                 maps.add(mapArray[i]);
             }
             for (int w = 0; w < playerValues.length; w++){
                 System.out.println("a:"+playerValues[w]);
             }
-//                for (int i = 0; i < numMaps; i++){
-//                    ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[i]);
-//                    for (int j = 0; j < numGames; j++){
-//                        Phases p1;
-//                        p1 = new Phases(tempMap.get(0), tempMap.get(i));
-//                        tournament = true;
-//                        p1.checkturn(numTurns);
-//                        p1.gameSetUp(playerValues);
-//                        System.out.println("----------------------------------------------------------");
-//                    }
-//                }
+                for (int i = 0; i < numMaps; i++){
+                    for (int j = 0; j < numGames; j++){
+                        ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
+                        //p1 = new Phases(tempMap.get(0), tempMap.get(i));
+                        //p1.checkturn(numTurns);
+                        //p1.gameSetUp(playerValues);
+                        System.out.println("----------------------------------------------------------");
+                    }
+                }
 
             //System.out.println(p1.winner);
-            ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
-            p =  new Phases(tempMap.get(0), tempMap.get(1));
-            tournament = true;
-            int[] a = {-1,1,1,1,0};
-            p.checkturn(20);
-            p.gameSetUp(a);
-            System.out.println("-------------------------------------------------");
-            Phases p1 =  new Phases(tempMap.get(0), tempMap.get(1));
-            tournament = true;
-            int[] b = {-1,0,1,1,1};
-            p1.checkturn(20);
-            p1.gameSetUp(b);
-
-//            if (p.isGameOver()) {
-//                winners.add(p.getCurrent_player().getId());
-//            }
+            //ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
+//            p =  new Phases(tempMap.get(0), tempMap.get(1));
+//            int[] a = {-1,1,1,1,1};
+//            p.checkturn(20);
+//            p.gameSetUp(a);
+//            System.out.println("-------------------------------------------------");
+//            p =  new Phases(tempMap.get(0), tempMap.get(1));
+//            int[] b = {-1,1,1,1,1};
+//            p.checkturn(20);
+//            p.gameSetUp(b);
         }
 
         public void loadGame(){

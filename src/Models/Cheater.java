@@ -85,7 +85,7 @@ public class Cheater implements Strategy {
                         player.receiveEnemyCards(neighbour.getOwner());
                     }
                     if (p.isGameOver()) {
-                        System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                        if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
                         return;
                         //System.exit(0);
                     }
