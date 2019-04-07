@@ -14,6 +14,14 @@ public class Random implements Strategy {
             p.nextPhase();
           }
           else{
+
+              if (p.checkWinner()) {//this attacker conquered all the countries
+                  p.gameOver = true;
+                  //p.winner.add("Random");
+                  p.winner = "Random";
+
+              }
+
             //phase 1
             exchangeCards(p);
             p.phaseOneFirstStep();
@@ -72,6 +80,7 @@ public class Random implements Strategy {
 
                       if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                        return;
                         //System.exit(0);
                       }
                     }

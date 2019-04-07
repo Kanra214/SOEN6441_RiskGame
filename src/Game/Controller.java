@@ -36,7 +36,7 @@ public class Controller {
     int tTurnsNum=0;
     int tNum;
     boolean tournament = false;
-
+    ArrayList<String> results;
 
 
     /**
@@ -409,14 +409,22 @@ public class Controller {
                             strategyArray.add(4);
                         }
                         Collections.sort(strategyArray);
-                        System.out.println(strategyArray);
 
                         int[] playerValues = new int[5];
-                        playerValues[0] = 0;
+                        playerValues[0] = -1;
                         for(int i = 0;i < strategyArray.size(); i++){
                             playerValues[strategyArray.get(i)] = 1;
                         }
                         startTournament(tournamentArray.get(0), playerValues, tournamentArray.get(2), tournamentArray.get(3));
+                        //System.out.println("------------------"+p.winner);
+
+
+
+
+
+
+
+
                     	//First Choose Maps
 //                    	String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
 //                    	tMapNum =Integer.parseInt(mapNumString);
@@ -489,27 +497,44 @@ public class Controller {
         }
 
         public void startTournament(int numMaps, int[] playerValues, int numGames, int numTurns) {
-//                for (int i = 0; i < numMaps * numGames; i++){
-//
-//                }
-            ArrayList<Integer> winners = new ArrayList<>();
+
             ArrayList<String> maps = new ArrayList<>();
             String[] mapArray = {"DemoMap-SmallSize.map",
-                                "DemoMap-BigSize.txt",
-                                "DemoMap-SmallSize.map",
-                                "DemoMap-SmallSize.map",
-                                "DemoMap-SmallSize.map"};
+                    "DemoMap-BigSize.txt",
+                    "DemoMap-SmallSize.map",
+                    "DemoMap-SmallSize.map",
+                    "DemoMap-SmallSize.map"};
             for (int i = 0; i < numMaps; i++){
                 maps.add(mapArray[i]);
             }
+            for (int w = 0; w < playerValues.length; w++){
+                System.out.println("a:"+playerValues[w]);
+            }
+//                for (int i = 0; i < numMaps; i++){
+//                    ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[i]);
+//                    for (int j = 0; j < numGames; j++){
+//                        Phases p1;
+//                        p1 = new Phases(tempMap.get(0), tempMap.get(i));
+//                        tournament = true;
+//                        p1.checkturn(numTurns);
+//                        p1.gameSetUp(playerValues);
+//                        System.out.println("----------------------------------------------------------");
+//                    }
+//                }
+
+            //System.out.println(p1.winner);
             ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray[1]);
-            p = new Phases(tempMap.get(0), tempMap.get(1));
+            p =  new Phases(tempMap.get(0), tempMap.get(1));
             tournament = true;
-            int[] a = {-1,1,1,0,1};
+            int[] a = {-1,1,1,1,0};
             p.checkturn(20);
             p.gameSetUp(a);
-           
-
+            System.out.println("-------------------------------------------------");
+            Phases p1 =  new Phases(tempMap.get(0), tempMap.get(1));
+            tournament = true;
+            int[] b = {-1,0,1,1,1};
+            p1.checkturn(20);
+            p1.gameSetUp(b);
 
 //            if (p.isGameOver()) {
 //                winners.add(p.getCurrent_player().getId());

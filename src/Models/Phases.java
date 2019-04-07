@@ -27,11 +27,16 @@ public class Phases extends Observable implements Serializable {
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
     public int maxTurn;
     boolean tournament = false;
+//    public ArrayList<String> winner;
+    public String winner;
 
 
     protected boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
 
     public boolean isGameOver() {
+        if (winner != null){
+            System.out.println(winner);
+        }
         return gameOver;
     }
 
@@ -216,11 +221,15 @@ public class Phases extends Observable implements Serializable {
         if (tournament){
             if (currentTurn > maxTurn){
                 gameOver = true;
+                //winner.add("draw");
+                winner = "Draw";
+                return;
             }
         }
-        if (gameOver){
-            return;
-        }
+//        if (gameOver){
+//            //System.exit(0);
+//            return;
+//        }
 
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
 
@@ -433,8 +442,6 @@ public class Phases extends Observable implements Serializable {
      */
     public boolean checkWinner() {//check if current player win the whole game
         return current_player.realms.size() == graph.size();
-
-
     }
 
     /**
