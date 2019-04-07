@@ -29,7 +29,10 @@ public class Cheater implements Strategy {
             }
             p.nextPhase();
         } else {
-
+//            if (p.checkWinner()) {//this attacker conquered all the countries
+//                p.gameOver = true;
+//
+//            }
             //must be in phase 1
             System.out.println("Inside cheater phase1");
             exchangeCards(p);
@@ -83,7 +86,8 @@ public class Cheater implements Strategy {
                     }
                     if (p.isGameOver()) {
                         System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-                        System.exit(0);
+                        return;
+                        //System.exit(0);
                     }
 
                 }

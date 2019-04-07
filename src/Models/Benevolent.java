@@ -55,6 +55,11 @@ public class Benevolent implements Strategy {
                 //no attack
                 //this player might not be able to attack, next phase automatically, to avoid next phase twice, check AttackingIsPossible
                 p.checkAttackingIsPossible();
+                if (p.isGameOver()) {
+                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                    return;
+                    //System.exit(0);
+                }
                 if (p.getAttackingIsPossible()) {
                     p.nextPhase();
                 }
