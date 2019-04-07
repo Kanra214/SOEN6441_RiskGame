@@ -10,15 +10,13 @@ public class Cheater implements Strategy {
 
         Player player = p.getCurrent_player();
         ArrayList<Country> realms = player.getRealms();
-        player.setNumOfDice(1);
-
 
         if (p.getCurrentPhase() == 0) {
             System.out.println("Cheater phase 0");
             //TODO: phase 0
             int countryCount = 0;
             int countryTurn = 0;
-            while(player.isArmyLeft()){
+            while (player.isArmyLeft()) {
                 Country currentCountry = realms.get(countryTurn);
                 try {
                     player.reinforce(currentCountry);
@@ -33,17 +31,21 @@ public class Cheater implements Strategy {
         } else {
 
             //must be in phase 1
+            System.out.println("Inside cheater phase1");
             exchangeCards(p);
-            while (player.isArmyLeft()) {
-                for (Country tempCountry : realms) {
-                    int armyNum = tempCountry.getArmy() * 2;
-                    while (armyNum > 0) {
-                        try {
-                            player.reinforce(tempCountry);
-                        } catch (OutOfArmyException e) {
-                            System.out.println("cheater phase 1 out of army");
-                            break;
-                        }
+            p.phaseOneFirstStep();
+            System.out.println("cheater phase one first step, unassigned army = " + player.getUnassigned_armies());
+            player.setUnassigned_armies(0);
+            for (int i = 0; i < realms.size(); i++) {
+                Country tempCountry = realms.get(i);
+                player.setUnassigned_armies(tempCountry.getArmy() * 2);
+                System.out.println(
+                    tempCountry.getName() + " unassigned army = " + player.getUnassigned_armies());
+                while (player.isArmyLeft()) {
+                    try {
+                        player.reinforce(tempCountry);
+                    } catch (OutOfArmyException e) {
+                        System.out.println("cheater" + tempCountry.getName() + "out of army");
                     }
                 }
             }
@@ -51,54 +53,72 @@ public class Cheater implements Strategy {
 
             //phase2
             //this player might not be able to attack, next phase automatically, to avoid next phase twice, check AttackingIsPossible
+            System.out.println("Inside phase 2");
             p.checkAttackingIsPossible();
             if (p.getAttackingIsPossible()) {
+                ArrayList<Country> targetcountries = new ArrayList<>();
+                for (Country tempCountry : realms) {
+                    for (Country neighbour : tempCountry.getNeighbours()) {
+                        if (tempCountry.getOwner() != neighbour.getOwner()) {
+                            targetcountries.add(neighbour);
+
+                        }
+                    }
+                }
+                for (Country neighbour : targetcountries) {
+                    neighbour.swapOwnership(neighbour.getOwner(), player);
+                    if(neighbour.getCont().getOwner() == p.getRival()){
+                        neighbour.getCont().free();
+                    }
+
+
+                    if (p.checkWinner()) {//this attacker conquered all the countries
+                        p.gameOver = true;
+
+                    }
+                    p.at_least_once = true;
+                    p.checkContinentOwner(neighbour.getCont(),player);//check if this player gets control of the continent
+                    if(neighbour.getOwner().getRealms().size() == 0){
+                        player.receiveEnemyCards(neighbour.getOwner());
+                    }
+                    if (p.isGameOver()) {
+                        System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                        System.exit(0);
+                    }
+
+                }
+
                 p.nextPhase();
             }
             //phase 3
-            ArrayList<Country> sourceCountries = new ArrayList<>();
-            ArrayList<Country> supportCountries = new ArrayList<>();
+            System.out.println("Inside cheater phase3");
+            ArrayList<Country> boaderCountries = new ArrayList<>();
             for (Country tempCountry : realms) {
                 for (Country neighbour : tempCountry.getNeighbours()) {
                     if (tempCountry.getOwner() != neighbour.getOwner()) {
-                        sourceCountries.add(tempCountry);
+                        boaderCountries.add(tempCountry);
                     }
                 }
             }
-            for (Country tempCountry : realms) {
-                if (!sourceCountries.contains(tempCountry)) {
-                    supportCountries.add(tempCountry);
-                }
-            }
-            try {
-                if (supportCountries != null) {
-                    for (Country tempCountry : sourceCountries) {
-                        Country supportCountry = supportCountries.get(0);
-                        int moveArmy = tempCountry.getArmy() * 2;
-                        if (moveArmy < supportCountry.getArmy()) {
-                            player.fortify(supportCountry, tempCountry, moveArmy);
-                        }
+            for (int i = 0; i < boaderCountries.size(); i++) {
+                Country tempCountry = boaderCountries.get(i);
+                player.setUnassigned_armies(tempCountry.getArmy() * 2);
+                System.out.println("cheater phase3 " + tempCountry.getName() + " unassigned army = " + player.getUnassigned_armies());
+                while (player.isArmyLeft()) {
+                    try {
+                        player.reinforce(tempCountry);
+                    } catch (OutOfArmyException e) {
+                        System.out.println("cheater phase3" + tempCountry.getName() + "out of army");
                     }
-
-                }//
-            } catch (CountryNotInRealms countryNotInRealms) {
-                countryNotInRealms.printStackTrace();
-            } catch (NoSuchPathException e) {
-                e.printStackTrace();
-            } catch (SourceIsTargetException e) {
-                e.printStackTrace();
-            } catch (MoveAtLeastOneArmyException e) {
-                e.printStackTrace();
-            } catch (OutOfArmyException e) {
-                e.printStackTrace();
+                }
             }
             p.nextPhase();
         }
+    }
 
 
 
 
-        }
 
     @Override
     public void defend(Player pl) {

@@ -234,7 +234,7 @@ public class Player implements Serializable {
 
     }
 
-    private void setUnassigned_armies(int unassigned_armies) {
+    public void setUnassigned_armies(int unassigned_armies) {
         this.unassigned_armies = unassigned_armies;
         p.updateWindow();
 
