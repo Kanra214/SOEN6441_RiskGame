@@ -43,9 +43,8 @@ public class Cheater implements Strategy {
             player.setUnassigned_armies(0);
             for (int i = 0; i < realms.size(); i++) {
                 Country tempCountry = realms.get(i);
-                player.setUnassigned_armies(tempCountry.getArmy() * 2);
-                System.out.println(
-                    tempCountry.getName() + " unassigned army = " + player.getUnassigned_armies());
+                player.setUnassigned_armies(tempCountry.getArmy());
+                System.out.println(tempCountry.getName() + " unassigned army = " + player.getUnassigned_armies());
                 while (player.isArmyLeft()) {
                     try {
                         player.reinforce(tempCountry);
@@ -65,13 +64,26 @@ public class Cheater implements Strategy {
                 for (Country tempCountry : realms) {
                     for (Country neighbour : tempCountry.getNeighbours()) {
                         if (tempCountry.getOwner() != neighbour.getOwner()) {
+                          int attackedArmy = neighbour.getArmy();
+                          System.out.println("Inside change army in view");
+                          if(!targetcountries.contains(neighbour)){
+                            while(attackedArmy > 0) {
+                              player.incrementMapArmies();
+                              neighbour.getOwner().decrementMapArmies();
+                              attackedArmy--;
+                            }
                             targetcountries.add(neighbour);
+
+                          }
+                          System.out.println(player.getMapArmies() +"  "+ neighbour.getOwner().getMapArmies());
+
 
                         }
                     }
                 }
                 for (Country neighbour : targetcountries) {
                     neighbour.swapOwnership(neighbour.getOwner(), player);
+
                     if(neighbour.getCont().getOwner() == p.getRival()){
                         neighbour.getCont().free();
                     }
@@ -93,7 +105,6 @@ public class Cheater implements Strategy {
                     }
 
                 }
-
                 p.nextPhase();
             }
             //phase 3
@@ -108,7 +119,7 @@ public class Cheater implements Strategy {
             }
             for (int i = 0; i < boaderCountries.size(); i++) {
                 Country tempCountry = boaderCountries.get(i);
-                player.setUnassigned_armies(tempCountry.getArmy() * 2);
+                player.setUnassigned_armies(tempCountry.getArmy());
                 System.out.println("cheater phase3 " + tempCountry.getName() + " unassigned army = " + player.getUnassigned_armies());
                 while (player.isArmyLeft()) {
                     try {

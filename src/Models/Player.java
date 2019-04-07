@@ -227,12 +227,19 @@ public class Player implements Serializable {
         }
     }
 
-    private void incrementMapArmies() {
+    public void incrementMapArmies() {
         mapArmies++;
         p.updateWindow();
 
 
     }
+    public void decrementMapArmies() {
+        mapArmies--;
+        p.updateWindow();
+
+
+    }
+
 
     public void setUnassigned_armies(int unassigned_armies) {
         this.unassigned_armies = unassigned_armies;
