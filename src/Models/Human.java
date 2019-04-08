@@ -6,6 +6,9 @@ import java.io.Serializable;
 public class Human implements Strategy,Serializable {
     @Override
     public void execute(Phases p) {
+        if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)){
+            p.phaseOneFirstStep();
+        }
 
     }
 

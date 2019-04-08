@@ -158,7 +158,12 @@ public class Window extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         mapPanel.repaint();
+
         Phases p = (Phases) o;
+        if(p.isGameOver() && (!p.tournament)){
+            showMsg("Game Over, player " + p.getCurrent_player().getId() + " wins! Exiting...");
+            System.exit(0);
+        }
 //        System.out.println("window: " + p.getCurrent_player().getStrategy().getName());
         if(!p.getCurrent_player().getStrategy().getName().equals("Human")){
             //disable all the buttons and popping outs
@@ -189,8 +194,8 @@ public class Window extends JFrame implements Observer {
             phasePanel.setContext(p);
             sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
 
-            if (p.getCurrentPhase() == 2) {
-                if (arg instanceof Player && p.getCurrent_player().getStrategy().getName().equals("Human")) {
+            if (p.getCurrentPhase() == 2 && p.getCurrent_player().getStrategy().getName().equals("Human")) {
+                if (arg instanceof Player) {
                     Player player = (Player) arg;
                     String msg = "<html><body>" +
                             "<h1>Attacker: </h1>" +

@@ -81,25 +81,6 @@ public class Aggressive implements Strategy, Serializable {
           
           player.setNumOfDice(1);
 
-          checkWinner(p); 
-          
-            if (p.checkWinner()) {//this attacker conquered all the countries
-                p.gameOver = true;            
-                p.winner = "Aggressive";
-
-            }
-            if (p.isGameOver()) {
-                if (p.winner != "Draw"){
-                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                        
-                    }
-                
-                if(p.tournament==true) {
-                          return;
-                          }
-                else System.exit(0);
-                
-                }
-
  
             if(p.getCurrentPhase()==2) {
               p.nextPhase();
@@ -207,20 +188,19 @@ public class Aggressive implements Strategy, Serializable {
                   player.attack(chosen, target);
                   // player.attack(chosen, target, Math.min(3, chosen.getArmy()), Math.min(2, target.getArmy()));
                     if(t.getOwner()==player) {
-                      try {
-                          if(p.checkWinner()){
+                        if(p.checkWinner()){
+                            if(p.tournament){
+                                if (p.winner != "Draw") {
+                                    p.winner = "Cheater";
+                                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                                }
+                                return;
+                            }
 
-                              if(p.tournament){
-                                  if (p.winner != "Draw")
-                                      p.winner = "Aggressive";
-                                  {System.out.println("Tournament: Player " + p.getCurrent_player().getId() + " wins the game!");}
-                                  return;
-                              }
-                              else{
-                                  System.out.println("Player " + p.getCurrent_player().getId() + "wins");
-                                  System.exit(0);
-                              }
-                          }
+
+                        }
+                      try {
+
 
                         //player.fortify(chosen, target, chosen.getArmy()-1);
                       player.deploymentAfterConquer(chosen, target, chosen.getArmy()-1);
@@ -245,28 +225,28 @@ public class Aggressive implements Strategy, Serializable {
         //return false;
 
     }
-
-    private void checkWinner(Phases p) {
-      
-      if (p.checkWinner()) {//this attacker conquered all the countries
-        p.gameOver = true;
-        //p.winner.add("Aggressive");
-        p.winner = "Aggressive";
-
-    }
-    if (p.isGameOver()) {
-        if (p.winner != "Draw"){
-            System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                        
-            }
-        
-        if(p.tournament==true) {
-                  return;
-                  }
-        else System.exit(0);
-        
-        }
-
-    }
+//
+//    private void checkWinner(Phases p) {
+//
+//      if (p.checkWinner()) {//this attacker conquered all the countries
+//        p.gameOver = true;
+//        //p.winner.add("Aggressive");
+//        p.winner = "Aggressive";
+//
+//    }
+//    if (p.isGameOver()) {
+//        if (p.winner != "Draw"){
+//            System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+//            }
+//
+//        if(p.tournament==true) {
+//                  return;
+//                  }
+//        else System.exit(0);
+//
+//        }
+//
+//    }
     
     
 

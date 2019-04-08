@@ -98,10 +98,7 @@ public class Cheater implements Strategy, Serializable {
                             }
                             return;
                         }
-                        else{
-                            System.out.println("Player " + p.getCurrent_player().getId() + "wins");
-                            System.exit(0);
-                        }
+
 
                     }
 

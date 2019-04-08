@@ -454,6 +454,8 @@ public class Phases extends Observable implements Serializable {
     public boolean checkWinner() {//check if current player win the whole game
         System.out.println("Checking winner");
         if(current_player.realms.size() == graph.size()){
+            gameOver = true;
+            updateWindow();
             System.out.println("we have a winner");
             return true;
         }

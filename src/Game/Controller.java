@@ -76,9 +76,9 @@ public class Controller {
                 System.out.println(p.getCurrentPhase());
                 System.out.println(p.getCurrentTurn());
                 p.nextPhase();
-                if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
-                    p.phaseOneFirstStep();
-                }
+//                if((p.getCurrentPhase() == 1) && (p.getCurrentTurn() < p.getNumOfPlayers()*2)) {
+//                    p.phaseOneFirstStep();
+//                }
             }
 
             if(e.getSource() == window.phasePanel.saveButton){

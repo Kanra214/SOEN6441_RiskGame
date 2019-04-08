@@ -239,17 +239,16 @@ public class Random implements Strategy, Serializable {
       return  assignAfterConquer;
     }
     public void checkWinner(Phases p){
-        if(p.gameOver){
+        if(p.checkWinner()){
             if(p.tournament){
-                if (p.winner != "Draw")
-                p.winner = "Random";
-                {System.out.println("Tournament: Player " + p.getCurrent_player().getId() + " wins the game!");}
+                if (p.winner != "Draw") {
+                    p.winner = "Cheater";
+                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                }
                 return;
             }
-            else{
-                System.out.println("Player " + p.getCurrent_player().getId() + "wins");
-                System.exit(0);
-            }
+
+
         }
 
     }
