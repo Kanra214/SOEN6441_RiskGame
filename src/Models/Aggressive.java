@@ -50,6 +50,7 @@ public class Aggressive implements Strategy {
           ArrayList<Country> ownedCountries= player.getRealms();
           
           Comparator cp = new WeakestCountryComparator();
+          player.realms.sort(cp);
           int ith = player.getRealms().size()-1;
           Country chosen = player.getRealms().get(ith);
 
@@ -107,8 +108,11 @@ public class Aggressive implements Strategy {
                         
           //Phase 3
           System.out.println("player"+player.getId()+"  inside aggerssive fortify");
+            player.realms.sort(cp);
+            ith = player.getRealms().size()-1;
+            chosen = player.getRealms().get(ith);
           Country secondStrong;    
-           ith = player.getRealms().size()-1;
+
            if(ith-1<=0) {
              p.nextPhase();
             }else {
