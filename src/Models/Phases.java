@@ -26,7 +26,7 @@ public class Phases extends Observable implements Serializable {
     protected boolean fortified = false;
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
     public int maxTurn;
-    boolean tournament = false;
+    public boolean tournament = false;
 //    public ArrayList<String> winner;
     public String winner = "Draw";
 
@@ -40,9 +40,6 @@ public class Phases extends Observable implements Serializable {
         return gameOver;
     }
 
-    public boolean isInBattle() {
-        return inBattle;
-    }
 
 
     public boolean isFortified() {
@@ -276,9 +273,10 @@ public class Phases extends Observable implements Serializable {
             case 0:
 
                 nextTurn();
-//                if (gameOver){
-//                    return;
-//                }
+                if (gameOver){
+                    updateWindow();
+                    return;
+                }
 
                 if (currentTurn > numOfPlayers - 1) {
                     currentPhase = 1;
@@ -304,10 +302,15 @@ public class Phases extends Observable implements Serializable {
 //                }
 //                else {
                     nextTurn();
+                    if (gameOver){
+                        updateWindow();
+                        return;
+                    }
                     fortified = false;
                     cardExchanged = false;
                     currentPhase = 1;
                     current_player.executeStrategy();
+
 //                }
                 break;
         }

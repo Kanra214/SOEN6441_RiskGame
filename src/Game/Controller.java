@@ -127,9 +127,16 @@ public class Controller {
                                 if (attackerInput.isEmpty()) {//all out mode
                                     System.out.println("all out");
                                     if (p.getCurrent_player().attack(chosenFrom, chosenTo)) {
-                                        if (p.isGameOver()) {
-                                            window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
-                                            System.exit(0);
+                                        if(p.checkWinner()){
+                                            if(p.tournament){
+                                                if (p.winner != "Draw")
+                                                {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                                                return;
+                                            }
+                                            else{
+                                                System.out.println("Player " + p.getCurrent_player().getId() + "wins");
+                                                System.exit(0);
+                                            }
                                         }
                                         forceUserInputCorrectlyForDeploymentAfterConquer();
 
@@ -154,9 +161,16 @@ public class Controller {
 
 
                                     if (p.getCurrent_player().attack(chosenFrom, chosenTo, attackDice)) {
-                                        if (p.isGameOver()) {
-                                            window.showMsg("Player " + p.getCurrent_player().getId() + " wins the game!");
-                                            System.exit(0);
+                                        if(p.checkWinner()){
+                                            if(p.tournament){
+                                                if (p.winner != "Draw")
+                                                {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                                                return;
+                                            }
+                                            else{
+                                                System.out.println("Player " + p.getCurrent_player().getId() + "wins");
+                                                System.exit(0);
+                                            }
                                         }
 
                                         forceUserInputCorrectlyForDeploymentAfterConquer();
