@@ -435,7 +435,7 @@ public class Controller {
                             playerValues[strategyArray.get(i)] = 1;
                         }
                         ArrayList<String> winners = startTournament(maps, playerValues, tournamentArray.get(2), tournamentArray.get(3));
-                        System.out.println("Tournament Report"+"\n"+"------------------------------------------------------------");
+                        System.out.println("\n"+"Tournament Report"+"\n"+"----------------------------------------------------------");
                         String mapString = "M: ";
                         for (int i = 0; i < maps.size(); i++){
                             mapString += maps.get(i) + "  ";
@@ -530,9 +530,6 @@ public class Controller {
 
         public ArrayList<String> startTournament(ArrayList<String> mapArray, int[] playerValues, int numGames, int numTurns) {
             ArrayList<String> winners = new ArrayList<>();
-            for (int w = 0; w < playerValues.length; w++){
-                System.out.println("a:"+playerValues[w]);
-            }
                 for (int i = 0; i < mapArray.size(); i++){
                     for (int j = 0; j < numGames; j++){
                         ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray.get(i));
