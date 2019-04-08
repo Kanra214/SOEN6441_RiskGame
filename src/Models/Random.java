@@ -54,6 +54,7 @@ public class Random implements Strategy {
                     boolean conquer = player.attack(sourceCountry,targetCountry);
                     if (conquer == true) {
                         System.out.println("Random: attack true");
+                        checkWinner(p);
                       int assignAfterConquer = assignAfterConquer(sourceCountry,player);
                       System.out.println("Random: assign after couquer: " + assignAfterConquer);
 
@@ -66,13 +67,6 @@ public class Random implements Strategy {
                             p.winner = "Random";
 
                         }
-
-
-                      if (p.isGameOver()) {
-                          if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
-                        return;
-                        //System.exit(0);
-                      }
                     }
                   }
                   else {
@@ -80,16 +74,11 @@ public class Random implements Strategy {
                     int numOfattack = getRandom(1,4);
                     boolean conquer = player.attack(sourceCountry,targetCountry,numOfattack);
                     if (conquer == true) {
+                      checkWinner(p);
                       int assignAfterConquer = assignAfterConquer(sourceCountry,player);
                       player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
                       System.out.println("Random: assign after couquer: " + assignAfterConquer);
 
-
-                      if (p.isGameOver()) {
-                          if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
-                        return;
-                        //System.exit(0);
-                      }
                     }
                   }
 
@@ -240,6 +229,17 @@ public class Random implements Strategy {
       System.out.println("Random: assign after couquer: " + assignAfterConquer);
 
       return  assignAfterConquer;
+    }
+    public void checkWinner(Phases p){
+      if (p.isGameOver()) {
+        if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+        if (p.tournament == true) {
+          return;
+        }else {
+          System.exit(0);
+        }
+      }
+
     }
 
 }

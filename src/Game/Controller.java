@@ -405,12 +405,18 @@ public class Controller {
                                 "DemoMap-SmallSize.map"};
                         for (int i = 0; i < tournamentArray.get(0); i++){
                             maps.add(mapArray[i]);
+//                            int r = (int) (Math.random() * 4);
+//                            if (!maps.contains(mapArray[r])){
+//                                maps.add(mapArray[r]);
+//                            }else {
+//                                i--;
+//                            }
                         }
 
 
                         if (tournamentArray.get(1) != 4){
                             while (strategyArray.size() != tournamentArray.get(1)){
-                                int i = (int) (Math.random() * 4 + 1);;
+                                int i = (int) (Math.random() * 4 + 1);
                                 if (!strategyArray.contains(i)){
                                     strategyArray.add(i);
                                 }
@@ -429,10 +435,10 @@ public class Controller {
                             playerValues[strategyArray.get(i)] = 1;
                         }
                         ArrayList<String> winners = startTournament(maps, playerValues, tournamentArray.get(2), tournamentArray.get(3));
-                        System.out.println("Tournament Report"+"\n"+"------------------------------------------------------------");
+                        System.out.println("\n"+"Tournament Report"+"\n"+"----------------------------------------------------------");
                         String mapString = "M: ";
                         for (int i = 0; i < maps.size(); i++){
-                            mapString += maps.get(i) + " , ";
+                            mapString += maps.get(i) + "  ";
                         }
                         System.out.println(mapString);
                         ArrayList<String> players = new ArrayList<>();
@@ -524,18 +530,6 @@ public class Controller {
 
         public ArrayList<String> startTournament(ArrayList<String> mapArray, int[] playerValues, int numGames, int numTurns) {
             ArrayList<String> winners = new ArrayList<>();
-//            ArrayList<String> maps = new ArrayList<>();
-//            String[] mapArray = {"DemoMap-SmallSize.map",
-//                                 "DemoMap-BigSize.txt",
-//                                 "DemoMap-SmallSize.map",
-//                                 "DemoMap-SmallSize.map",
-//                                 "DemoMap-SmallSize.map"};
-//            for (int i = 0; i < numMaps; i++){
-//                maps.add(mapArray[i]);
-//            }
-            for (int w = 0; w < playerValues.length; w++){
-                System.out.println("a:"+playerValues[w]);
-            }
                 for (int i = 0; i < mapArray.size(); i++){
                     for (int j = 0; j < numGames; j++){
                         ArrayList<ArrayList> tempMap = new MapLoader().loadMap(mapArray.get(i));
