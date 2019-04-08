@@ -371,17 +371,22 @@ public class Player implements Serializable {
     
 
     public void executeStrategy() {
-
-
+        if(realms.size() != 0) {
 
 
             if (p.getRival() == this) {
+                System.out.println("execute defend");
                 strategy.defend(this);
-            }
-            else if(p.getCurrent_player() == this) {
+            } else if (p.getCurrent_player() == this) {
 
+                System.out.println("execute strategy: " + strategy.getName());
                 strategy.execute(p);
+
             }
+        }
+        else{
+            System.out.println("current player " + id +" is dead");
+        }
 
 
     }
@@ -423,6 +428,7 @@ public class Player implements Serializable {
 
         try {
             if (p.attackValidation(from, to, attackDice, defendDice)) {
+                System.out.println("Attacking player " + to.getOwner().getId());
 
                 p.attackSimulation(from, to, attackDice, defendDice);
 

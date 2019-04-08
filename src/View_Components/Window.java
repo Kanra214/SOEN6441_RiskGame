@@ -216,7 +216,7 @@ public class Window extends JFrame implements Observer {
 
                 }
 
-                if (!p.getAttackingIsPossible()) {
+                if (!p.getAttackingIsPossible() && p.getCurrent_player().getStrategy().getName().equals("Human")) {
                     showMsg("No attacking can be made. Moving onto the next phase...");
                 }
 

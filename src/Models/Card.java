@@ -61,6 +61,7 @@ public class Card implements Serializable {
 			cardNumber[i]+=enemy.getCards().cardNumber[i];
 			enemy.getCards().cardNumber[i] = 0;
 		}
+		System.out.println("You receive cards from enemy");
 		p.updateWindow();
 
 

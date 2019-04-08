@@ -105,8 +105,9 @@ public class Cheater implements Strategy {
                     }
 
                 }
-                p.nextPhase();
+
             }
+            p.nextPhase();
             //phase 3
             System.out.println("Inside cheater phase3");
             ArrayList<Country> boaderCountries = new ArrayList<>();

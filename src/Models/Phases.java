@@ -234,6 +234,7 @@ public class Phases extends Observable implements Serializable {
         current_player = players.get(currentTurn % numOfPlayers);//first player is players[0]
 
         if (current_player.getRealms().size() == 0) {//if the player is ruled out of the game
+            System.out.println("current player " + current_player.getId() +" is dead");
             nextTurn();
 
         }
@@ -269,6 +270,7 @@ public class Phases extends Observable implements Serializable {
      * Move to the next phase and updates the window
      */
     public void nextPhase() {
+        System.out.println("nextPhase()");
 
         switch (currentPhase) {
             case 0:
@@ -297,18 +299,19 @@ public class Phases extends Observable implements Serializable {
 
                 break;
             case 3:
-                if (current_player.getRealms().size() == 0) {
-                    nextPhase();
-                }
-                else {
+//                if (current_player.getRealms().size() == 0) {
+//                    nextPhase();
+//                }
+//                else {
                     nextTurn();
                     fortified = false;
                     cardExchanged = false;
                     currentPhase = 1;
                     current_player.executeStrategy();
-                }
+//                }
                 break;
         }
+
         updateWindow();
     }
 
@@ -444,7 +447,14 @@ public class Phases extends Observable implements Serializable {
      * @return true for win the game
      */
     public boolean checkWinner() {//check if current player win the whole game
-        return current_player.realms.size() == graph.size();
+        if(current_player.realms.size() == graph.size()){
+            System.out.println("we have a winner");
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     /**
