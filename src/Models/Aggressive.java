@@ -78,20 +78,27 @@ public class Aggressive implements Strategy {
           }
           
           player.setNumOfDice(1);
-//            if (p.checkWinner()) {//this attacker conquered all the countries
-//                p.gameOver = true;
-//                //p.winner.add("Aggressive");
-//                p.winner = "Aggressive";
-//
-//            }
-//            if (p.isGameOver()) {
-//                if (p.winner != "Draw"){
-//                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-//                }
-//                return;
-//                //System.exit(0);
-//            }
 
+          checkWinner(p); 
+          
+            if (p.checkWinner()) {//this attacker conquered all the countries
+                p.gameOver = true;            
+                p.winner = "Aggressive";
+
+            }
+            if (p.isGameOver()) {
+                if (p.winner != "Draw"){
+                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                        
+                    }
+                
+                if(p.tournament==true) {
+                          return;
+                          }
+                else System.exit(0);
+                
+                }
+
+ 
             if(p.getCurrentPhase()==2) {
               p.nextPhase();
             }
@@ -218,7 +225,27 @@ public class Aggressive implements Strategy {
 
     }
 
+    private void checkWinner(Phases p) {
+      
+      if (p.checkWinner()) {//this attacker conquered all the countries
+        p.gameOver = true;
+        //p.winner.add("Aggressive");
+        p.winner = "Aggressive";
 
+    }
+    if (p.isGameOver()) {
+        if (p.winner != "Draw"){
+            System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                        
+            }
+        
+        if(p.tournament==true) {
+                  return;
+                  }
+        else System.exit(0);
+        
+        }
+
+    }
     
     
 
