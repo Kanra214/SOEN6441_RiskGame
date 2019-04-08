@@ -87,20 +87,19 @@ public class Aggressive implements Strategy {
             }
             if (p.isGameOver()) {
                 if (p.winner != "Draw"){
-                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                    
-                    if(p.tournament==true) {
-                      return;
-                    }else {
-                     
-                      System.exit(0);
-                   
+                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                        
                     }
+                
+                if(p.tournament==true) {
+                          return;
+                          }
+                else System.exit(0);
                 
                 }
 
                
                 //
-            }
+           // }
 
             if(p.getCurrentPhase()==2) {
               p.nextPhase();
