@@ -231,14 +231,17 @@ public class Random implements Strategy {
       return  assignAfterConquer;
     }
     public void checkWinner(Phases p){
-      if (p.isGameOver()) {
-        if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
-        if (p.tournament == true) {
-          return;
-        }else {
-          System.exit(0);
+        if(p.checkWinner()){
+            if(p.tournament){
+                if (p.winner != "Draw")
+                {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                return;
+            }
+            else{
+                System.out.println("Player " + p.getCurrent_player().getId() + "wins");
+                System.exit(0);
+            }
         }
-      }
 
     }
 

@@ -89,9 +89,16 @@ public class Cheater implements Strategy {
                     }
 
 
-                    if (p.checkWinner()) {//this attacker conquered all the countries
-                        p.gameOver = true;
-                        p.winner = "Cheater";
+                    if(p.checkWinner()){
+                        if(p.tournament){
+                            if (p.winner != "Draw")
+                            {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                            return;
+                        }
+                        else{
+                            System.out.println("Player " + p.getCurrent_player().getId() + "wins");
+                            System.exit(0);
+                        }
                     }
                     p.at_least_once = true;
                     p.checkContinentOwner(neighbour.getCont(),player);//check if this player gets control of the continent

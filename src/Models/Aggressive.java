@@ -70,7 +70,7 @@ public class Aggressive implements Strategy {
           
           //Phase 2
           try {
-              attack(player,ownedCountries);
+              attack(player,ownedCountries, p);
           } catch (AttackingCountryOwner | AttackedCountryOwner | WrongDiceNumber | AttackCountryArmyMoreThanOne
                   | TargetCountryNotAdjacent e) {
               
@@ -78,19 +78,19 @@ public class Aggressive implements Strategy {
           }
           
           player.setNumOfDice(1);
-            if (p.checkWinner()) {//this attacker conquered all the countries
-                p.gameOver = true;
-                //p.winner.add("Aggressive");
-                p.winner = "Aggressive";
-
-            }
-            if (p.isGameOver()) {
-                if (p.winner != "Draw"){
-                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-                }
-                return;
-                //System.exit(0);
-            }
+//            if (p.checkWinner()) {//this attacker conquered all the countries
+//                p.gameOver = true;
+//                //p.winner.add("Aggressive");
+//                p.winner = "Aggressive";
+//
+//            }
+//            if (p.isGameOver()) {
+//                if (p.winner != "Draw"){
+//                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+//                }
+//                return;
+//                //System.exit(0);
+//            }
 
             if(p.getCurrentPhase()==2) {
               p.nextPhase();
@@ -150,7 +150,7 @@ public class Aggressive implements Strategy {
 
 
 
-    private void attack(Player player,ArrayList<Country> allCountries) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
+    private void attack(Player player,ArrayList<Country> allCountries, Phases p) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 
         Country chosen=new Country(player.getId(), player.getId(), null, null);
         Country target=new Country(player.getId(), player.getId(), null, null);
@@ -182,9 +182,21 @@ public class Aggressive implements Strategy {
                   // player.attack(chosen, target, Math.min(3, chosen.getArmy()), Math.min(2, target.getArmy()));
                     if(t.getOwner()==player) {
                       try {
+                          if(p.checkWinner()){
+                              if(p.tournament){
+                                  if (p.winner != "Draw")
+                                  {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                                  return;
+                              }
+                              else{
+                                  System.out.println("Player " + p.getCurrent_player().getId() + "wins");
+                                  System.exit(0);
+                              }
+                          }
+
                         //player.fortify(chosen, target, chosen.getArmy()-1);
                       player.deploymentAfterConquer(chosen, target, chosen.getArmy()-1);
-                        this.attack(player, allCountries);
+                        this.attack(player, allCountries, p);
                         
                       } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException
                           | SourceIsTargetException | MoveAtLeastOneArmyException | MustBeEqualOrMoreThanNumOfDice e) {
