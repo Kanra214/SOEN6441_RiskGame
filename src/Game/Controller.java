@@ -414,9 +414,9 @@ public class Controller {
                         ArrayList<String> maps = new ArrayList<>();
                         String[] mapArray = {"DemoMap-SmallSize.map",
                                 "DemoMap-BigSize.txt",
-                                "DemoMap-SmallSize.map",
-                                "DemoMap-SmallSize.map",
-                                "DemoMap-SmallSize.map"};//TODO
+                                "1.txt",
+                                "Aden.map",
+                                "Asia.map"};//TODO
                         for (int i = 0; i < tournamentArray.get(0); i++){
                             maps.add(mapArray[i]);
 //                            int r = (int) (Math.random() * 4);
@@ -493,6 +493,7 @@ public class Controller {
                             gameTime = gameTime + initialGame;
                             System.out.println(restLine);
                         }
+                        System.exit(0);
 
 
 

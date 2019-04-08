@@ -28,7 +28,7 @@ public class Phases extends Observable implements Serializable {
     public int maxTurn;
     public boolean tournament = false;
 
-    public String winner = null;
+    public String winner = null;//TODO
 
 
 
