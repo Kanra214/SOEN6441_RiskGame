@@ -107,15 +107,23 @@ public class Aggressive implements Strategy {
                         
           //Phase 3
           System.out.println("player"+player.getId()+"  inside aggerssive fortify");
-          Country secondStrong;
-     
+          Country secondStrong;    
            ith = player.getRealms().size()-1;
-          if(ith-1<=0) {
-           p.nextPhase();
-          }else {
-            System.out.println(player.getRealms().size()+"  Realmssize");
-            
-           secondStrong = player.getRealms().get(ith-1);
+           if(ith-1<=0) {
+             p.nextPhase();
+            }else {
+           secondStrong = player.getRealms().get(ith-1);           
+           try {
+            while(!player.findPath(secondStrong, chosen)&&ith-1>0) {
+              ith--;
+              secondStrong = player.getRealms().get(ith-1);
+             }
+          } catch (CountryNotInRealms | SourceIsTargetException e1) {
+            System.out.println("");
+          }          
+           if(ith-1<=0) {
+             p.nextPhase();
+            }else {                   
            int armiesToMove = secondStrong.getArmy() - 1;
            System.out.println(ith-1+"  Index"+" armiesToMove "+armiesToMove);
            if(armiesToMove==0||secondStrong==chosen) {
@@ -126,21 +134,27 @@ public class Aggressive implements Strategy {
              p.nextPhase();
            }else {
              try {
-               player.fortify(secondStrong, chosen, armiesToMove);
+               try {
+                 
+                player.fortify(secondStrong, chosen, armiesToMove);
+                
+                
+              } catch (NoSuchPathException e) {
+                System.out.println("NoSuchPath in aggressive");               
+              }
                System.out.println("fortified");
                p.nextPhase();
-           } catch (CountryNotInRealms | OutOfArmyException | NoSuchPathException | SourceIsTargetException
+           } catch (CountryNotInRealms | OutOfArmyException | SourceIsTargetException
                    | MoveAtLeastOneArmyException e) {
-               // TODO Auto-generated catch block
                e.printStackTrace();
            }
 
-          // p.nextPhase();
+
            }
            
           
-          
-        }
+         }
+       }
         
         
 
