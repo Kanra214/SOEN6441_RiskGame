@@ -190,7 +190,7 @@ public class Window extends JFrame implements Observer {
             sidePanel.setContext(p.getPlayers(), mapPanel.comps, p.getWorldmap());
 
             if (p.getCurrentPhase() == 2) {
-                if (arg instanceof Player) {
+                if (arg instanceof Player && p.getCurrent_player().getStrategy().getName().equals("Human")) {
                     Player player = (Player) arg;
                     String msg = "<html><body>" +
                             "<h1>Attacker: </h1>" +
