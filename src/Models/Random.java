@@ -78,6 +78,13 @@ public class Random implements Strategy {
                       int assignAfterConquer = assignAfterConquer(sourceCountry,player);
                       player.deploymentAfterConquer(sourceCountry,targetCountry,assignAfterConquer);
                       System.out.println("Random: assign after couquer: " + assignAfterConquer);
+                      if (p.checkWinner()) {//this attacker conquered all the countries
+                        p.gameOver = true;
+
+                        //p.winner.add("Random");
+                        p.winner = "Random";
+
+                      }
 
                     }
                   }
@@ -231,7 +238,7 @@ public class Random implements Strategy {
       return  assignAfterConquer;
     }
     public void checkWinner(Phases p){
-        if(p.checkWinner()){
+        if(p.gameOver){
             if(p.tournament){
                 if (p.winner != "Draw")
                 {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
