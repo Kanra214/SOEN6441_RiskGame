@@ -1,5 +1,6 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -8,7 +9,7 @@ import Models.Benevolent.WeakestCountryComparator;
 
 
 
-public class Aggressive implements Strategy {
+public class Aggressive implements Strategy, Serializable {
 
     //private int id;
 

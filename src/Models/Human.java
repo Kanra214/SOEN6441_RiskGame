@@ -3,7 +3,7 @@ package Models;
 import javax.swing.*;
 import java.io.Serializable;
 
-public class Human implements Strategy {
+public class Human implements Strategy,Serializable {
     @Override
     public void execute(Phases p) {
 
