@@ -100,15 +100,19 @@ public class Cheater implements Strategy {
                     }
                     if (p.isGameOver()) {
                         if (p.winner != "Draw"){System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
-                        return;
-                        //System.exit(0);
+                        if (p.tournament == true) {
+                          return;
+                        }else{
+                          System.exit(0);
+                        }
                     }
 
                 }
 
+
             }
             p.nextPhase();
-            //phase 3
+
             System.out.println("Inside cheater phase3");
             ArrayList<Country> boaderCountries = new ArrayList<>();
             for (Country tempCountry : realms) {
