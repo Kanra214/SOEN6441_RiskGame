@@ -28,7 +28,7 @@ public class Phases extends Observable implements Serializable {
     public int maxTurn;
     public boolean tournament = false;
 //    public ArrayList<String> winner;
-    public String winner = "Draw";
+    public String winner = "Null";
 
 
     protected boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
