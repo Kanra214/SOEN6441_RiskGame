@@ -78,6 +78,7 @@ public class Aggressive implements Strategy {
           }
           
           player.setNumOfDice(1);
+          
             if (p.checkWinner()) {//this attacker conquered all the countries
                 p.gameOver = true;
                 //p.winner.add("Aggressive");
@@ -86,10 +87,19 @@ public class Aggressive implements Strategy {
             }
             if (p.isGameOver()) {
                 if (p.winner != "Draw"){
-                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
+                    System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");                    
+                    if(p.tournament==true) {
+                      return;
+                    }else {
+                     
+                      System.exit(0);
+                   
+                    }
+                
                 }
-                return;
-                //System.exit(0);
+
+               
+                //
             }
 
             if(p.getCurrentPhase()==2) {
