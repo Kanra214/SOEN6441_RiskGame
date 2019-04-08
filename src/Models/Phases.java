@@ -28,7 +28,7 @@ public class Phases extends Observable implements Serializable {
     public int maxTurn;
     public boolean tournament = false;
 //    public ArrayList<String> winner;
-    public String winner = "Draw";
+    public String winner = null;
 
 
     protected boolean at_least_once = false;//used to determine the current player is qualified  to receive a card
@@ -214,6 +214,7 @@ public class Phases extends Observable implements Serializable {
         at_least_once = false;
 
         currentTurn++;
+        System.out.println("-------------current turn: " + currentTurn + "---------------");
 
         if (tournament){
             if (currentTurn > maxTurn){
@@ -450,6 +451,7 @@ public class Phases extends Observable implements Serializable {
      * @return true for win the game
      */
     public boolean checkWinner() {//check if current player win the whole game
+        System.out.println("Checking winner");
         if(current_player.realms.size() == graph.size()){
             System.out.println("we have a winner");
             return true;

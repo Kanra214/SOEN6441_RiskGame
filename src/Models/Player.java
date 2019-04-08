@@ -450,7 +450,7 @@ public class Player implements Serializable {
                 receiveEnemyCards(p.getRival());
             }
             p.rival = null;
-
+            System.out.println("ATTACKING RETURN TRUE");
             return true;
 
 
@@ -462,6 +462,7 @@ public class Player implements Serializable {
         p.checkAttackingIsPossible();
 //        p.at_least_once = false;
         p.rival = null;
+        System.out.println("ATTACKING RETURN FALSE");
         return false;
 
 

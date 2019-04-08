@@ -183,9 +183,11 @@ public class Aggressive implements Strategy {
                     if(t.getOwner()==player) {
                       try {
                           if(p.checkWinner()){
+
                               if(p.tournament){
                                   if (p.winner != "Draw")
-                                  {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                                      p.winner = "Aggressive";
+                                  {System.out.println("Tournament: Player " + p.getCurrent_player().getId() + " wins the game!");}
                                   return;
                               }
                               else{

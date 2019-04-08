@@ -234,7 +234,8 @@ public class Random implements Strategy {
         if(p.checkWinner()){
             if(p.tournament){
                 if (p.winner != "Draw")
-                {System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");}
+                p.winner = "Random";
+                {System.out.println("Tournament: Player " + p.getCurrent_player().getId() + " wins the game!");}
                 return;
             }
             else{

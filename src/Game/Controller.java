@@ -416,7 +416,7 @@ public class Controller {
                                 "DemoMap-BigSize.txt",
                                 "DemoMap-SmallSize.map",
                                 "DemoMap-SmallSize.map",
-                                "DemoMap-SmallSize.map"};
+                                "DemoMap-SmallSize.map"};//TODO
                         for (int i = 0; i < tournamentArray.get(0); i++){
                             maps.add(mapArray[i]);
 //                            int r = (int) (Math.random() * 4);
