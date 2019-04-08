@@ -530,15 +530,6 @@ public class Controller {
 
         public ArrayList<String> startTournament(ArrayList<String> mapArray, int[] playerValues, int numGames, int numTurns) {
             ArrayList<String> winners = new ArrayList<>();
-//            ArrayList<String> maps = new ArrayList<>();
-//            String[] mapArray = {"DemoMap-SmallSize.map",
-//                                 "DemoMap-BigSize.txt",
-//                                 "DemoMap-SmallSize.map",
-//                                 "DemoMap-SmallSize.map",
-//                                 "DemoMap-SmallSize.map"};
-//            for (int i = 0; i < numMaps; i++){
-//                maps.add(mapArray[i]);
-//            }
             for (int w = 0; w < playerValues.length; w++){
                 System.out.println("a:"+playerValues[w]);
             }
