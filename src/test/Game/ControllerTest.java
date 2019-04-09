@@ -102,7 +102,26 @@ public void testLoadGame() throws Exception {
 */ 
 @Test
 public void testTournament() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+  String[] mapArray = {"DemoMap-SmallSize.map",
+      "DemoMap-BigSize.txt",
+      "1.txt",
+      "Aden.map",
+      "Asia.map"};
+  ArrayList<String> maps = new ArrayList<>();
+  boolean flag = false;
+  maps.add( "DemoMap-BigSize.txt");
+  int[] playerValues = {-1,1,1,1,1};
+  ArrayList<String> winners = controller.startTournament(maps ,playerValues,3,50);
+  for(String winner : winners){
+    System.out.println(winner);
+    if(winner.equals("Random") || winner.equals("Cheater") || winner.equals("Aggressive") || winner.equals("Benevolent") || winner.equals("Draw")) {
+      flag = true;
+    }else{
+      flag = false;
+    }
+  }
+  assertEquals(true,flag);
 } 
 
 /** 
