@@ -290,7 +290,11 @@ public class Controller {
             startmanu.startTournament.addActionListener(lisTorna);
         }
 
-        /**
+    public void setP(Phases p) {
+        this.p = p;
+    }
+
+    /**
          * Check file is correct or not
          * @return boolean
          */
@@ -696,9 +700,12 @@ public class Controller {
 
         }
 
+    public Phases getP() {
+        return p;
+    }
 
-
-
-
+    public void setLoadFileName(String loadFileName) {
+        this.loadFileName = loadFileName;
+    }
 }
 
