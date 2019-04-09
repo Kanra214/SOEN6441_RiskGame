@@ -8,12 +8,20 @@ import Game.Controller;
 import Models.Benevolent.WeakestCountryComparator;
 
 
+/**
+ * <h1>Aggressive</h1>
+ * This class that controls the behavior of the Aggressive Player
+ */
 
 public class Aggressive implements Strategy, Serializable {
 
     //private int id;
 
-    
+	/**
+	 * override the execute method of strategy 
+	 * @param p phase
+	 * 
+	 */
     @Override
     public void execute(Phases p){
         
@@ -29,7 +37,7 @@ public class Aggressive implements Strategy, Serializable {
             
             try {
                 player.reinforce( firstCountry );
-               // System.out.println("the current turn is"+p.getCurrentTurn());
+
             } catch (OutOfArmyException e) {
                 
                 e.printStackTrace();
@@ -67,9 +75,7 @@ public class Aggressive implements Strategy, Serializable {
           }
      
             p.nextPhase();
-          
-    
-          
+                   
           //Phase 2
           try {
               attack(player,ownedCountries, p);
@@ -86,8 +92,7 @@ public class Aggressive implements Strategy, Serializable {
               p.nextPhase();
             }
 
-          
-                        
+                                  
           //Phase 3
           System.out.println("player"+player.getId()+"  inside aggerssive fortify");
             player.realms.sort(cp);
@@ -149,6 +154,14 @@ public class Aggressive implements Strategy, Serializable {
         
 
     }
+    
+    /**
+     * Set the number of dice when defending
+     * @param beingAttacked the attacked country
+     * 
+     * 
+     */
+    
     @Override
     public void defend(Country beingAttacked){
         beingAttacked.getOwner().setNumOfDice(1);//TODO
@@ -225,31 +238,12 @@ public class Aggressive implements Strategy, Serializable {
         //return false;
 
     }
-//
-//    private void checkWinner(Phases p) {
-//
-//      if (p.checkWinner()) {//this attacker conquered all the countries
-//        p.gameOver = true;
-//        //p.winner.add("Aggressive");
-//        p.winner = "Aggressive";
-//
-//    }
-//    if (p.isGameOver()) {
-//        if (p.winner != "Draw"){
-//            System.out.println("Player " + p.getCurrent_player().getId() + " wins the game!");
-//            }
-//
-//        if(p.tournament==true) {
-//                  return;
-//                  }
-//        else System.exit(0);
-//
-//        }
-//
-//    }
-    
-    
 
+    /**
+     * Execute the card exchange
+     * @param p the phase
+     * 
+     */
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
@@ -269,6 +263,10 @@ public class Aggressive implements Strategy, Serializable {
 
     }
     
+    /**
+     * Implement the Comparator
+     * 
+     */
     
     class WeakestCountryComparator implements Comparator<Country> {
         @Override
@@ -279,9 +277,11 @@ public class Aggressive implements Strategy, Serializable {
 
 
 
-
-
-
+    /**
+     * get the name of this strategy
+     * @return the name of this strategy
+     * 
+     */
 
     @Override
     public String getName() {

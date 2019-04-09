@@ -549,6 +549,17 @@ public class Controller {
 
         }
 
+        
+        /**
+         * Start the tournament mode
+         * @param mapArray the map
+         * @param playerValues the strategy of player
+         * @param numGames number of games
+         * @param numTurns number of max turns
+         * 
+         */
+
+        
         public ArrayList<String> startTournament(ArrayList<String> mapArray, int[] playerValues, int numGames, int numTurns) {
             ArrayList<String> winners = new ArrayList<>();
                 for (int i = 0; i < mapArray.size(); i++){
@@ -566,6 +577,12 @@ public class Controller {
 
         }
 
+        
+        /**
+         * load game
+         * 
+         */
+        
         public void loadGame(){
 
             p = loadPhases();//TODO: implement this class to create phases object with map
@@ -581,6 +598,12 @@ public class Controller {
 
         }
 
+        
+        /**
+         * Input procedure of the tournament mode
+         * @return the parameters of tournament
+         * 
+         */
         public ArrayList<Integer> tournament(){
             ArrayList<Integer> tournamentArray = new ArrayList<>();
             String mapNumString=window.decideMaps("How many maps for the Tournament?(Please input between 1-5)");
@@ -638,7 +661,10 @@ public class Controller {
             return tournamentArray;
         }
 
-
+        /**
+         * add listeners
+         * 
+         */
 
         public void addListeners(){
             Listener lis = new Listener();
@@ -661,6 +687,11 @@ public class Controller {
 
         }
 
+        /**
+         * save to file 
+         * @param saveFileName the name of the savefile
+         *
+         */
         public void writeToFile(String saveFileName){
             try {
                 FileOutputStream f = new FileOutputStream(new File(saveFileName));
@@ -680,6 +711,13 @@ public class Controller {
             }
 
         }
+        
+        /**
+         * load phases
+         * @return the phases
+         *
+         */
+        
         public Phases loadPhases(){
             Phases ph = null;
             try {
@@ -703,10 +741,22 @@ public class Controller {
 
         }
 
+        /**
+         * get the phase from controller
+         * @return p the phase
+         * 
+         */
+              
     public Phases getP() {
         return p;
     }
 
+    /**
+     * set LoadFile Name
+     * @param loadFileName the name of loadfile 
+     * 
+     */
+    
     public void setLoadFileName(String loadFileName) {
         this.loadFileName = loadFileName;
     }
