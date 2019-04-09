@@ -5,7 +5,7 @@ package Models;
 public interface Strategy {
   /*** Method whose implementation varies depending on the strategy adopted. */
   void execute(Phases p);
-  void defend(Player pl);
+  void defend(Country beingAttacked);
   String getName();
 
 

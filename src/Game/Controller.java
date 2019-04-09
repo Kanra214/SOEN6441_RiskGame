@@ -644,7 +644,7 @@ public class Controller {
             }
             window.phasePanel.completePhaseButton.addActionListener(lis);
             window.phasePanel.saveButton.addActionListener(lis);
-            p.connectView(); //after this updating window is enabled
+//            p.connectView(); //after this updating window is enabled
             window.setVisible(true);
             window.cardExchangeView.Exchange3Infantry.addActionListener(lis);
             window.cardExchangeView.Exchange3Artillery.addActionListener(lis);

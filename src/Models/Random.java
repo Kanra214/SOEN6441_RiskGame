@@ -162,8 +162,9 @@ public class Random implements Strategy, Serializable {
         }
 
     @Override
-    public void defend(Player pl) {
-        pl.setNumOfDice(getRandom(1,3));
+    public void defend(Country c) {
+        int maxDice = Math.min(c.getArmy(),2);
+        c.getOwner().setNumOfDice(getRandom(1,maxDice));
     }
     @Override
     public String getName() {

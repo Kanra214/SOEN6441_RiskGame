@@ -13,20 +13,28 @@ public class Human implements Strategy,Serializable {
     }
 
     @Override
-    public void defend(Player pl) {
+    public void defend(Country c) {
+        int maxDice = Math.min(c.getArmy(),2);
         int defendDice;
         while(true) {
-            String input = JOptionPane.showInputDialog("How many dice for defender to roll? ");
+            String input = JOptionPane.showInputDialog("How many dice for defender to roll? put integer in range [1, " + maxDice + "].");
             try {
                 defendDice = Integer.parseInt(input);
-                break;
+                if(defendDice <= maxDice && defendDice >= 1){
+                    break;
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Wrong number of dice, try again please.");
+                    continue;
+
+                }
             }
             catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null,"Wrong number of dice, try again please.");
                 continue;
             }
         }
-        pl.setNumOfDice(defendDice);//TODO:how to loop popping out until the defend dice is correct
+        c.getOwner().setNumOfDice(defendDice);//TODO:how to loop popping out until the defend dice is correct
 
     }
 

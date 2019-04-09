@@ -145,8 +145,8 @@ public class Cheater implements Strategy, Serializable {
 
 
     @Override
-    public void defend(Player pl) {
-        pl.setNumOfDice(1);//TODO
+    public void defend(Country c) {
+        c.getOwner().setNumOfDice(1);//TODO
     }
 
     @Override

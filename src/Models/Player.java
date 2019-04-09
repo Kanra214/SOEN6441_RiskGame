@@ -371,24 +371,24 @@ public class Player implements Serializable {
     
 
     public void executeStrategy() {
-        if(realms.size() != 0) {
+        if (realms.size() != 0) {
 
 
-            if (p.getRival() == this) {
-                System.out.println("execute defend");
-                strategy.defend(this);
-            } else if (p.getCurrent_player() == this) {
+            if (p.getCurrent_player() == this) {
 
                 System.out.println("execute strategy: " + strategy.getName());
                 strategy.execute(p);
 
             }
-        }
-        else{
-            System.out.println("current player " + id +" is dead");
-        }
+            if (p.getRival() == this && realms.contains(p.beingAttacked)) {
+                System.out.println("execute defend");
+                strategy.defend(p.beingAttacked);
+            } else {
+                System.out.println("current player " + id + " is dead");
+            }
 
 
+        }
     }
 
 
@@ -402,6 +402,7 @@ public class Player implements Serializable {
 
     public boolean attack(Country from, Country to, int attackDice) throws TargetCountryNotAdjacent, AttackCountryArmyMoreThanOne, AttackingCountryOwner, WrongDiceNumber, AttackedCountryOwner {
         p.rival = to.getOwner();
+        p.beingAttacked = to;
         to.getOwner().executeStrategy();
         int defendDice = to.getOwner().getNumOfDice();
         return attack(from,to,attackDice, defendDice);
@@ -450,6 +451,7 @@ public class Player implements Serializable {
                 receiveEnemyCards(p.getRival());
             }
             p.rival = null;
+            p.beingAttacked = null;
             System.out.println("ATTACKING RETURN TRUE");
             return true;
 
@@ -457,11 +459,13 @@ public class Player implements Serializable {
         }
         catch(RiskGameException e2){
             p.rival = null;
+            p.beingAttacked = null;
             throw e2;
         }
         p.checkAttackingIsPossible();
 //        p.at_least_once = false;
         p.rival = null;
+        p.beingAttacked = null;
         System.out.println("ATTACKING RETURN FALSE");
         return false;
 

@@ -100,8 +100,8 @@ public class Benevolent implements Strategy,Serializable {
 
 
     @Override
-    public void defend(Player pl) {
-        pl.setNumOfDice(1);
+    public void defend(Country c) {
+        c.getOwner().setNumOfDice(1);
     }
 
     @Override
