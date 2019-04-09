@@ -540,6 +540,8 @@ public class Controller {
             System.out.println(playerValues);
             p.gameSetUp(playerValues);
             addListeners();
+            window.showMsg("game start");
+            p.nextPhase();
 
         }
 
@@ -551,6 +553,7 @@ public class Controller {
                         p = new Phases(tempMap.get(0), tempMap.get(1));
                         p.checkturn(numTurns);
                         p.gameSetUp(playerValues);
+                        p.nextPhase();
                         winners.add(p.winner);
                         System.out.println("----------------------------------------------------------");
                     }

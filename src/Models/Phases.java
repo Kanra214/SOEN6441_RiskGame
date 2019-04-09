@@ -113,7 +113,7 @@ public class Phases extends Observable implements Serializable {
         countryAssignment();
         current_player = players.get(0);
         connectView();
-        nextPhase();
+//        nextPhase();
     }
     private Strategy intToStrategy(int i){
       

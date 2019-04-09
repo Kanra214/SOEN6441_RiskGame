@@ -227,6 +227,7 @@ public class Window extends JFrame implements Observer {
 
 
             }
+
     }
 
     private String diceToString(ArrayList<Integer> dice){
