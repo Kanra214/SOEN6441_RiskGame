@@ -94,8 +94,6 @@ public void testLoadGame() throws Exception {
   controller.setLoadFileName(test);
   controller.loadPhases();
   assertEquals(true,p.equals(controller.getP()));
-
-//TODO: Test goes here... 
 } 
 
 /** 
@@ -104,8 +102,7 @@ public void testLoadGame() throws Exception {
 * 
 */ 
 @Test
-public void testTournament() throws Exception { 
-//TODO: Test goes here...
+public void testTournament() throws Exception {
   String[] mapNumString= {"6", "7", "0", "5"};
   int tMapNum;
   int i = 0;
@@ -118,66 +115,6 @@ public void testTournament() throws Exception {
   assertEquals(5, tMapNum);
 } 
 
-/** 
-* 
-* Method: addListeners() 
-* 
-*/ 
-@Test
-public void testAddListeners() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: writeToFile(String saveFileName) 
-* 
-*/ 
-@Test
-public void testWriteToFile() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: loadPhases() 
-* 
-*/ 
-@Test
-public void testLoadPhases() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: actionPerformed(ActionEvent e) 
-* 
-*/ 
-@Test
-public void testActionPerformedE() throws Exception { 
-//TODO: Test goes here... 
-}
-
-
-  /**
-* 
-* Method: forceUserInputCorrectlyForDeploymentAfterConquer() 
-* 
-*/ 
-@Test
-public void testForceUserInputCorrectlyForDeploymentAfterConquer() throws Exception { 
-//TODO: Test goes here... 
-/* 
-try { 
-   Method method = Controller.getClass().getMethod("forceUserInputCorrectlyForDeploymentAfterConquer"); 
-   method.setAccessible(true); 
-   method.invoke(<Object>, <Parameters>); 
-} catch(NoSuchMethodException e) { 
-} catch(IllegalAccessException e) { 
-} catch(InvocationTargetException e) { 
-} 
-*/ 
-}
   @Override
   public boolean equals(Object o) {
     if (this == o) {

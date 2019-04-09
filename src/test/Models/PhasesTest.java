@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.After;
 
 import java.util.ArrayList;
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.*;
 
 /**
  * reinforcement Tester.
@@ -182,6 +183,30 @@ public class PhasesTest {
 
       }
 
+    }
+
+    @Test
+    public void testAttackingIsPossible(){
+        for (Country c: player1.getRealms()){
+            c.setArmy(10);
+        }
+        for (Country c: player2.getRealms()){
+            c.setArmy(10);
+        }
+
+        p2.checkAttackingIsPossible();
+
+        assertTrue(p2.getAttackingIsPossible());
+    }
+
+    @Test
+    public void testNextPhase() throws Exception{
+        int prev = p1.getCurrentPhase();
+        p1.setCurrent_player(p1.getPlayers().get(0));
+        p1.nextPhase();
+        p1.nextPhase();
+        System.out.println(p1.getPlayers().get(0).getRealms().size());
+        assertEquals(prev+1, p1.getCurrentPhase());
     }
 
     @Test

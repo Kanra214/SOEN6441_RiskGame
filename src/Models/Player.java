@@ -448,8 +448,7 @@ public class Player implements Serializable {
             return true;
 
 
-        }
-        catch(RiskGameException e2){
+        } catch(RiskGameException e2){
             p.rival = null;
             p.beingAttacked = null;
             throw e2;
@@ -482,13 +481,9 @@ public class Player implements Serializable {
 
                 if (attack(from, to, attackDice, defendDice)) {
 //                    p.at_least_once = true;
-
-
                     return true;
                 }
                 validated = true;//any exception after this will be caught and break the while
-
-
             } catch (RiskGameException e) {
                 if (validated) {
 //                    p.at_least_once = false;
@@ -496,25 +491,19 @@ public class Player implements Serializable {
                 } else {
                     throw e;
                 }
-
             }
-
-
         }
-
-
     }
 
-    public boolean deploymentAfterConquer(Country from, Country to, int num) throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms, OutOfArmyException, MoveAtLeastOneArmyException {
-
-
+    public boolean deploymentAfterConquer(Country from, Country to, int num)
+            throws MustBeEqualOrMoreThanNumOfDice, SourceIsTargetException, NoSuchPathException, CountryNotInRealms,
+            OutOfArmyException, MoveAtLeastOneArmyException {
         if (num >= p.getCurrent_player().getNumOfDice()) {
             p.getCurrent_player().fortify(from, to, num);
             p.inBattle(false);
             p.checkAttackingIsPossible();
             return true;
         } else {
-
             throw new MustBeEqualOrMoreThanNumOfDice();
 
         }

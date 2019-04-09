@@ -636,11 +636,14 @@ public class Phases extends Observable implements Serializable {
     public void setCurrent_player(Player current_player) {
         this.current_player = current_player;
     }
+
+
     public void resume(){
         current_player.executeStrategy();
         updateWindow();
 
     }
+
     public Country getBeingAttacked(){
         return beingAttacked;
     }

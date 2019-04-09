@@ -1,6 +1,5 @@
 
 package test.Models;
-import Game.Controller;
 import test.Game.ControllerTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
