@@ -422,13 +422,13 @@ public class Controller {
                                 "Aden.map",
                                 "Asia.map"};//TODO
                         for (int i = 0; i < tournamentArray.get(0); i++){
-                            maps.add(mapArray[i]);
-//                            int r = (int) (Math.random() * 4);
-//                            if (!maps.contains(mapArray[r])){
-//                                maps.add(mapArray[r]);
-//                            }else {
-//                                i--;
-//                            }
+                            //maps.add(mapArray[i]);
+                            int r = (int) (Math.random() * 5);
+                            if (!maps.contains(mapArray[r])){
+                                maps.add(mapArray[r]);
+                            }else {
+                                i--;
+                            }
                         }
 
 
