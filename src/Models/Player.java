@@ -74,8 +74,6 @@ public class Player implements Serializable {
      * @return cards
      */
     public Card getCards() {
-        //p.updateWindow();
-        //System.out.println("update card");
         return cards;
     }
 
@@ -170,7 +168,6 @@ public class Player implements Serializable {
      */
     public void addPlayerOneCard() {
         cards.addCard();
-       // p.updateWindow();
     }
 
     /**
@@ -178,7 +175,6 @@ public class Player implements Serializable {
      * @param enemy player enemy
      */
     public void receiveEnemyCards(Player enemy) {
-      //  p.updateWindow();
         cards.addCard(enemy);
     }
 
@@ -191,9 +187,6 @@ public class Player implements Serializable {
             System.out.println("card turn " + Card.getCardTurn());
             p.updateWindow();
         }
-
-        //p.updateWindow();
-        //System.out.println("update card");
     }
 
     public void addPlayerArmyByDiffCards(){
@@ -271,7 +264,7 @@ public class Player implements Serializable {
                     for (Country loopCountry : realms) {
                         for (Country neighbour : tempCountry.getNeighbours()){
                             if (neighbour != loopCountry){
-                                continue;
+                                continue;//?
                             }
                             else{
                                 if (!set.contains(neighbour)) {
@@ -346,6 +339,10 @@ public class Player implements Serializable {
     public int getNumOfDice(){
         return numOfDice;
     }
+    /**
+     * set number of dice
+     * @param n number of dices
+     */
     public void setNumOfDice(int n){
         numOfDice = n;
     }
@@ -360,9 +357,6 @@ public class Player implements Serializable {
 
         country.decrementArmy();
     }
-
-
-
     
     public void setStrategy(Strategy strategy) 
     {
@@ -424,9 +418,7 @@ public class Player implements Serializable {
      * @throws AttackingCountryOwner        the owner of attacking country must be current player
      * @throws AttackedCountryOwner         the owner of attacked country must be the enemy
      */
-    private boolean attack(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
-
-
+    public boolean attack(Country from, Country to, int attackDice, int defendDice) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
         try {
             if (p.attackValidation(from, to, attackDice, defendDice)) {
                 System.out.println("Attacking player " + to.getOwner().getId());
@@ -481,9 +473,6 @@ public class Player implements Serializable {
     public boolean attack(Country from, Country to) throws AttackingCountryOwner, AttackedCountryOwner, WrongDiceNumber, AttackCountryArmyMoreThanOne, TargetCountryNotAdjacent {
 
         boolean validated = false;//only first validateAttack() will throw exceptions to controller, after that, exceptions thrown by validateAttack() will be caught
-
-
-
         while (true) {
             try {
                 int attackDice = Math.min(from.getArmy() - 1, 3);

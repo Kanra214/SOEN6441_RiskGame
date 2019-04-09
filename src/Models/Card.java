@@ -30,6 +30,9 @@ public class Card implements Serializable {
 	}
 
 
+	public void setCardNumber(int[] cardNumber) {
+		this.cardNumber = cardNumber;
+	}
 
 	/**
 	 * Get the number of certain card
@@ -130,25 +133,27 @@ public class Card implements Serializable {
 	}
 
 
-
-
+	/**
+	 * Exchanges 3 the same card
+	 * @param cardId of the 3 the same card
+	 */
 	protected void exchangeSameCards(int cardId){
 		cardNumber[cardId] -= 3;
 		cardTurn++;
 		System.out.println("card++");
-
-
 	}
+
+	/**
+	 * Exchange 3 different cards
+	 */
 	protected void exchangeDiffCards(){
 		for(int i = 0; i < 3; i ++){
 			cardNumber[i] -= 1;
 
-
 		}
 		cardTurn++;
-		System.out.println("card++");
-
 	}
+
 	public static int getCardTurn(){return cardTurn;}
 
 	

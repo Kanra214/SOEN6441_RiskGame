@@ -27,8 +27,16 @@ public class RefactoringTest {
         System.out.println("Inside before");
         p1 = new Phases(tempMap1.get(0), tempMap1.get(1));
         p2 = new Phases(tempMap1.get(0), tempMap1.get(1));
-//        p1.gameSetUp(1);
-//        p2.gameSetUp(2);
+		int[] values = new int[5];
+		values[0] = 1;
+		values[1] = 0;
+		values[2] = 0;
+		values[3] = 0;
+		values[4] = 0;
+		p1.gameSetUp(values);
+
+		values[0] = 2;
+		p2.gameSetUp(values);
         player1 = p2.getPlayers().get(0);
         player2 = p2.getPlayers().get(1);
         p2.setCurrent_player(player1);
@@ -50,50 +58,20 @@ public class RefactoringTest {
 
 	    /**
 	     *
-	     * method: Test initial cardTurn Value
-	     */
-	    @Test
-	    public void testMovecardTurnValue() {
-//	        assertEquals(1,p1.CardTurn);
-	    }
-
-	    /**
-	     *
-	     * method: Test initial cardCancelTrigger Value
-	     */
-//	    @Test
-//	    public void testRenamecardCancelTriggerValue() {
-//	        assertEquals(false,p1.cardCancelTrigger);
-//	    }
-	    
-	    /**
-	     *
 	     * method: Test the functions of reinforcementPhase in Player
 	     */
 	    @Test
-	    public void testPlayer_reinforcementPhase() {	    	
+	    public void testPlayer_reinforcementPhase() {
 
-//	        player1.reinforcementPhase(from);
-	       
-	        assertEquals(from.getArmy(),2);
-	    }
-	
-	    /**
-	     *
-	     * method: Test the functions of attackPhase in Player
-	     */
-	    @Test
-	    public void testPlayer_attackPhase() {	    	
-
-	        try {
-				
-//				assertEquals(player1.attackPhase(from, to),true);
+			try {
+				player1.reinforce(from);
 			} catch (Exception e) {
-	
-			} 
-     
+				e.printStackTrace();
+			}
+
+			assertEquals(from.getArmy(),2);
 	    }
-	    
+	
 	    /**
 	     *
 	     * method: Test the functions of fortificationsPhase in Player
@@ -107,7 +85,7 @@ public class RefactoringTest {
 	            to.setArmy(3);
 	            from.setOwner(player1);
 	            to.setOwner(player1);
-//	        	player1.fortificationsPhase(from, to, 1);
+	        	player1.fortify(from, to, 1);
 				
 	        	assertEquals(to.getArmy(),4);
 			} catch (Exception e) {

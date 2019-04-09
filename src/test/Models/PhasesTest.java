@@ -33,8 +33,17 @@ public class PhasesTest {
         System.out.println("Inside before");
         p1 = new Phases(tempMap1.get(0), tempMap1.get(1));
         p2 = new Phases(tempMap1.get(0), tempMap1.get(1));
-//        p1.gameSetUp(1);
-//        p2.gameSetUp(2);
+        int[] values = new int[5];
+        values[0] = 1;
+        values[1] = 0;
+        values[2] = 0;
+        values[3] = 0;
+        values[4] = 0;
+        p1.gameSetUp(values);
+
+        values[0] = 2;
+        p2.gameSetUp(values);
+
         player1 = p2.getPlayers().get(0);
         player2 = p2.getPlayers().get(1);
         p2.setCurrent_player(player1);

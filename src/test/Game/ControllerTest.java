@@ -41,37 +41,7 @@ public void before() throws Exception {
 public void after() throws Exception {
   System.out.println("Inside ControllerTest after");
 
-} 
-
-/** 
-* 
-* Method: startManu() 
-* 
-*/ 
-@Test
-public void testStartManu() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: ChooseFile(int i) 
-* 
-*/ 
-@Test
-public void testChooseFile() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: start() 
-* 
-*/ 
-@Test
-public void testStart() throws Exception { 
-//TODO: Test goes here... 
-} 
+}
 
 /** 
 * 
