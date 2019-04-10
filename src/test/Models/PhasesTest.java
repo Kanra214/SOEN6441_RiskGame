@@ -31,7 +31,7 @@ public class PhasesTest {
     public void before() {
         ArrayList<ArrayList> tempMap1 = new MapLoader().loadMap("DemoMap-SmallSize.map");
 //        CardExchangeView cardExchangeView = new CardExchangeView();
-        System.out.println("Inside before");
+        System.out.println("Inside PhasesTest before");
         p1 = new Phases(tempMap1.get(0), tempMap1.get(1));
         p2 = new Phases(tempMap1.get(0), tempMap1.get(1));
         int[] values = new int[5];
@@ -53,7 +53,7 @@ public class PhasesTest {
 
     @After
     public void after() {
-        System.out.println("Inside after");
+        System.out.println("Inside PhasesTest after");
     }
 
     /**
@@ -249,6 +249,14 @@ public class PhasesTest {
     @Test
     public void checkWinner() {
       assertEquals(true,p1.checkWinner());
+    }
+
+  /**
+   * method: isGameOver();
+   */
+    @Test
+    public void isGameOver(){
+      assertEquals(false,p1.isGameOver());
     }
 
 }

@@ -103,6 +103,9 @@ public class PlayerTest {
 
     }
 
+    /**
+     * Method: testShowPlayerCards()
+     */
     @Test
     public void testShowPlayerCards(){
         int[] cardIni = {2, 3, 1};
@@ -111,6 +114,9 @@ public class PlayerTest {
             assertEquals(player1.showPlayerCards(i), cardIni[i]);
     }
 
+    /**
+     * Method: testReceiveEnemyCards()
+     */
     @Test
     public void testReceiveEnemyCards(){
         int[] cardIni = {2, 3, 1};
@@ -122,6 +128,9 @@ public class PlayerTest {
             assertEquals(player1.showPlayerCards(i), 2*cardIni[i]);
     }
 
+    /**
+     * Method: testAddPlayerArmyBySameCards()
+     */
     @Test
     public void testAddPlayerArmyBySameCards(){
         int[] cardIni = {2, 3, 1};
@@ -132,6 +141,9 @@ public class PlayerTest {
         assertEquals(player1.getUnassigned_armies(), army + 5);
     }
 
+    /**
+     * Method: testAddPlayerArmyByDiffCards()
+     */
     @Test
     public void testAddPlayerArmyByDiffCards(){
         int[] cardIni = {2, 3, 1};
@@ -165,6 +177,10 @@ public class PlayerTest {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Method: CountryNotInRealms()
+     */
     @Test
     public void CountryNotInRealms() {
         from = player2.getRealms().get(0);
@@ -178,6 +194,9 @@ public class PlayerTest {
 
     }
 
+    /**
+     * Method: SourceIsTargetException()
+     */
     @Test
     public void SourceIsTargetException() {
         from = player1.getRealms().get(0);
@@ -190,7 +209,10 @@ public class PlayerTest {
 
     }
 
-
+    /**
+     * Method: testAttack()
+     * @throws Exception
+     */
     @Test
     public void testAttack() throws Exception{
         for (Country from : player1.getRealms()){

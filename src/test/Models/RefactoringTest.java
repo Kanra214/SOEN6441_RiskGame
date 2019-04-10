@@ -58,7 +58,7 @@ public class RefactoringTest {
 
 	    /**
 	     *
-	     * method: Test the functions of reinforcementPhase in Player
+	     * Method: Test the functions of reinforcementPhase in Player
 	     */
 	    @Test
 	    public void testPlayer_reinforcementPhase() {
@@ -74,7 +74,7 @@ public class RefactoringTest {
 	
 	    /**
 	     *
-	     * method: Test the functions of fortificationsPhase in Player
+	     * Method: Test the functions of fortificationsPhase in Player
 	     */
 	    @Test
 	    public void testPlayer_fortificate() {	    	
