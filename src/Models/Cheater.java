@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * <h1>Benevolent</h1>
+ * <h1>Cheater</h1>
  * This class that controls the behavior of the Cheater Player
  */
 
