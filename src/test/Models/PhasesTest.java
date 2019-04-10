@@ -90,6 +90,12 @@ public class PhasesTest {
         assertEquals(p1.reinforcementArmy(n), 3);
 
     }
+    
+    /**
+    *
+    * method: Attack Country Arm yMore Than One
+    */
+    
     @Test
       public void Exception_AttackCountryArmyMoreThanOne() {
         p2.reinforcementArmy(player1);
@@ -106,6 +112,12 @@ public class PhasesTest {
         }
 
       }
+    
+    /**
+    *
+    * method: Attacking Country Owner
+    */
+    
       @Test
       public void Exception_AttackingCountryOwner() {
         p2.reinforcementArmy(player1);
@@ -121,6 +133,11 @@ public class PhasesTest {
 
       }
 
+      /**
+      *
+      * method: TargetCountryNotAdjacent
+      */ 
+      
     @Test
     public void Exception_TargetCountryNotAdjacent() {
       p2.reinforcementArmy(player1);
@@ -141,6 +158,12 @@ public class PhasesTest {
       }
 
     }
+    
+    /**
+    *
+    * method: WrongDiceNumber
+    */ 
+    
     @Test
     public void Exception_WrongDiceNumber() {
       p2.reinforcementArmy(player1);
@@ -161,7 +184,10 @@ public class PhasesTest {
       }
 
     }
-
+    /**
+    *
+    * method: attackValidation
+    */ 
     @Test
     public void attackValidation() {
       p2.reinforcementArmy(player1);
@@ -185,6 +211,10 @@ public class PhasesTest {
 
     }
 
+    /**
+    *
+    * method: checkAttackingIsPossible()
+    */ 
     @Test
     public void testAttackingIsPossible(){
         for (Country c: player1.getRealms()){
@@ -199,6 +229,10 @@ public class PhasesTest {
         assertTrue(p2.getAttackingIsPossible());
     }
 
+    /**
+    *
+    * method: nextPhase();
+    */ 
     @Test
     public void testNextPhase() throws Exception{
         int prev = p1.getCurrentPhase();
@@ -208,7 +242,10 @@ public class PhasesTest {
         System.out.println(p1.getPlayers().get(0).getRealms().size());
         assertEquals(prev+1, p1.getCurrentPhase());
     }
-
+    /**
+    *
+    * method: checkWinner();
+    */ 
     @Test
     public void checkWinner() {
       assertEquals(true,p1.checkWinner());
