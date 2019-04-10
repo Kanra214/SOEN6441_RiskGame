@@ -45,36 +45,66 @@ public class CardTest {
 	public void after(){
 		System.out.println("Inside after");
 	}
-
+	/** 
+	* 
+	* Method: showCardsNumber()
+	* 
+	* 
+	*/ 
 	@Test
 	public void showCardsNumber() {
 		assertEquals(card.showCardsNumber(0), 2);
 		assertEquals(card.showCardsNumber(1), 3);
 		assertEquals(card.showCardsNumber(2), 1);
 	}
-
+	/** 
+	* 
+	* Method: card.cardSum()
+	* 
+	* 
+	*/ 
 	@Test
 	public void cardSum() {
 		assertEquals(card.cardSum(), 6);
 	}
-
+	/** 
+	* 
+	* Method: checkCardSum
+	* 
+	* 
+	*/ 
 	@Test
 	public void checkCardSum() {
 		assertFalse(card.checkCardSum());
 	}
-
+	/** 
+	* 
+	* Method: checkThreeDiffCards
+	* 
+	* 
+	*/ 
 	@Test
 	public void checkThreeDiffCards() {
 		assertTrue((card.checkThreeDiffCards()));
 	}
-
+	/** 
+	* 
+	* Method: cardBigger3()
+	* 
+	* 
+	*/ 
 	@Test
 	public void cardBigger3() {
 		assertTrue((card.cardBigger3(1)));
 		assertFalse((card.cardBigger3(0)));
 		assertFalse((card.cardBigger3(2)));
 	}
-
+	/** 
+	* 
+	* Method: showCardsName() 
+	* 
+	* 
+	*/ 
 	@Test
 	public void showCardsName() {
 		String[] cardName = new String[]{"Infantry", "Cavalry", "Artillery"};
