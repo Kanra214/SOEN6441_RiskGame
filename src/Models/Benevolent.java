@@ -107,7 +107,7 @@ public class Benevolent implements Strategy,Serializable {
     
     /**
      * Set the number of dice when defending
-     * @param beingAttacked the attacked country
+     * @param c the attacked country
      * 
      */
 
