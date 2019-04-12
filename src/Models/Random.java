@@ -3,6 +3,12 @@ package Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * <h1>Random</h1>
+ * This class that controls the behavior of the Random Player
+ */
+
+
 public class Random implements Strategy, Serializable {
     @Override
     public void execute(Phases p){
@@ -161,21 +167,37 @@ public class Random implements Strategy, Serializable {
 
         }
 
+    /**
+     * Set the number of dice when defending
+     * @param beingAttacked the attacked country
+     * 
+     * 
+     */
+
     @Override
     public void defend(Country c) {
         int maxDice = Math.min(c.getArmy(),2);
         c.getOwner().setNumOfDice(getRandom(1,maxDice));
     }
+    
+    /**
+     * get the name of this strategy
+     * @return the name of this strategy
+     * 
+     */
+    
+    
     @Override
     public String getName() {
         return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
     }
 
 
-
-
-
-
+    /**
+     * Execute the card exchange
+     * @param p the phase
+     * 
+     */
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
@@ -206,6 +228,15 @@ public class Random implements Strategy, Serializable {
         return result;
     }
 
+    
+    /**
+     * assign army to country
+     * @param player current player
+     * @param realms the countries owned by player
+     * 
+     */
+
+    
     public void assignArmyTocountry(Player player, ArrayList<Country> realms){
         while (player.isArmyLeft()){
             System.out.println("Random: assigning armies to countries");
@@ -224,6 +255,13 @@ public class Random implements Strategy, Serializable {
 
     }
 
+    /**
+     * assign army to the conquered country
+     * @param player current player
+     * @param sourceCountry the attack country 
+     * 
+     */
+    
     public int assignAfterConquer(Country sourceCountry,Player player){
       int sourceCountryArmy = sourceCountry.getArmy() ;
       int numOfDice = player.getNumOfDice();
@@ -239,6 +277,13 @@ public class Random implements Strategy, Serializable {
 
       return  assignAfterConquer;
     }
+    
+    /**
+     * check winner
+     * @param p phase
+     *  
+     */
+    
     public void checkWinner(Phases p){
         if(p.checkWinner()){
             if(p.tournament){

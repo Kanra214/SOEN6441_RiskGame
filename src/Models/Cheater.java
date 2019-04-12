@@ -4,6 +4,12 @@ package Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * <h1>Cheater</h1>
+ * This class that controls the behavior of the Cheater Player
+ */
+
+
 public class Cheater implements Strategy, Serializable {
 
     @Override
@@ -142,19 +148,34 @@ public class Cheater implements Strategy, Serializable {
 
 
 
-
+    /**
+     * Set the number of dice when defending
+     * @param beingAttacked the attacked country
+     * 
+     * 
+     */
 
     @Override
     public void defend(Country c) {
         c.getOwner().setNumOfDice(1);//TODO
     }
 
+    /**
+     * get the name of this strategy
+     * @return the name of this strategy
+     * 
+     */
+    
     @Override
     public String getName() {
         return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
     }
 
-
+    /**
+     * Execute the card exchange
+     * @param p the phase
+     * 
+     */
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();

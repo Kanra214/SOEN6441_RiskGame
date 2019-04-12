@@ -5,6 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
+/**
+ * <h1>Benevolent</h1>
+ * This class that controls the behavior of the Benevolent Player
+ */
+
+
 public class Benevolent implements Strategy,Serializable {
 
     @Override
@@ -98,19 +104,34 @@ public class Benevolent implements Strategy,Serializable {
             }
         }
 
+    
+    /**
+     * Set the number of dice when defending
+     * @param beingAttacked the attacked country
+     * 
+     */
 
     @Override
     public void defend(Country c) {
         c.getOwner().setNumOfDice(1);
     }
 
+    
+    /**
+     * get the name of this strategy
+     * @return the name of this strategy
+     * 
+     */
     @Override
     public String getName() {
         return this.getClass().getName().substring(this.getClass().getName().indexOf(".") + 1);
     }
 
-
-
+    /**
+     * Execute the card exchange
+     * @param p the phase
+     * 
+     */
 
     public void exchangeCards(Phases p){
         Card cards = p.getCurrent_player().getCards();
@@ -128,6 +149,13 @@ public class Benevolent implements Strategy,Serializable {
         }
 
     }
+    
+    
+    /**
+     * Implement the Comparator
+     * 
+     */
+    
     class WeakestCountryComparator implements Comparator<Country> {
         @Override
         public int compare(Country a, Country b) {

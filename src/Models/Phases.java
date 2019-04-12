@@ -15,7 +15,7 @@ public class Phases extends Observable implements Serializable {
     private ArrayList<Player> players;
     private ArrayList<Country> graph;
     private ArrayList<Continent> worldmap;
-    protected Player current_player;
+    private Player current_player;
     protected Player rival;//the player being attacked in the attack phase
     protected Country beingAttacked;
     private int currentPhase = 0;
@@ -641,11 +641,14 @@ public class Phases extends Observable implements Serializable {
     public void setCurrent_player(Player current_player) {
         this.current_player = current_player;
     }
+
+
     public void resume(){
         current_player.executeStrategy();
         updateWindow();
 
     }
+
     public Country getBeingAttacked(){
         return beingAttacked;
     }

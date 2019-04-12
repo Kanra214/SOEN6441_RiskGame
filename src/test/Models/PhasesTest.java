@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.After;
 
 import java.util.ArrayList;
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.*;
 
 /**
  * reinforcement Tester.
@@ -30,11 +31,20 @@ public class PhasesTest {
     public void before() {
         ArrayList<ArrayList> tempMap1 = new MapLoader().loadMap("DemoMap-SmallSize.map");
 //        CardExchangeView cardExchangeView = new CardExchangeView();
-        System.out.println("Inside before");
+        System.out.println("Inside PhasesTest before");
         p1 = new Phases(tempMap1.get(0), tempMap1.get(1));
         p2 = new Phases(tempMap1.get(0), tempMap1.get(1));
-//        p1.gameSetUp(1);
-//        p2.gameSetUp(2);
+        int[] values = new int[5];
+        values[0] = 1;
+        values[1] = 0;
+        values[2] = 0;
+        values[3] = 0;
+        values[4] = 0;
+        p1.gameSetUp(values);
+
+        values[0] = 2;
+        p2.gameSetUp(values);
+
         player1 = p2.getPlayers().get(0);
         player2 = p2.getPlayers().get(1);
         p2.setCurrent_player(player1);
@@ -43,7 +53,7 @@ public class PhasesTest {
 
     @After
     public void after() {
-        System.out.println("Inside after");
+        System.out.println("Inside PhasesTest after");
     }
 
     /**
@@ -80,6 +90,12 @@ public class PhasesTest {
         assertEquals(p1.reinforcementArmy(n), 3);
 
     }
+    
+    /**
+    *
+    * method: Attack Country Arm yMore Than One
+    */
+    
     @Test
       public void Exception_AttackCountryArmyMoreThanOne() {
         p2.reinforcementArmy(player1);
@@ -96,6 +112,12 @@ public class PhasesTest {
         }
 
       }
+    
+    /**
+    *
+    * method: Attacking Country Owner
+    */
+    
       @Test
       public void Exception_AttackingCountryOwner() {
         p2.reinforcementArmy(player1);
@@ -111,6 +133,11 @@ public class PhasesTest {
 
       }
 
+      /**
+      *
+      * method: TargetCountryNotAdjacent
+      */ 
+      
     @Test
     public void Exception_TargetCountryNotAdjacent() {
       p2.reinforcementArmy(player1);
@@ -131,6 +158,12 @@ public class PhasesTest {
       }
 
     }
+    
+    /**
+    *
+    * method: WrongDiceNumber
+    */ 
+    
     @Test
     public void Exception_WrongDiceNumber() {
       p2.reinforcementArmy(player1);
@@ -151,7 +184,10 @@ public class PhasesTest {
       }
 
     }
-
+    /**
+    *
+    * method: attackValidation
+    */ 
     @Test
     public void attackValidation() {
       p2.reinforcementArmy(player1);
@@ -175,9 +211,52 @@ public class PhasesTest {
 
     }
 
+    /**
+    *
+    * method: checkAttackingIsPossible()
+    */ 
+    @Test
+    public void testAttackingIsPossible(){
+        for (Country c: player1.getRealms()){
+            c.setArmy(10);
+        }
+        for (Country c: player2.getRealms()){
+            c.setArmy(10);
+        }
+
+        p2.checkAttackingIsPossible();
+
+        assertTrue(p2.getAttackingIsPossible());
+    }
+
+    /**
+    *
+    * method: nextPhase();
+    */ 
+    @Test
+    public void testNextPhase() throws Exception{
+        int prev = p1.getCurrentPhase();
+        p1.setCurrent_player(p1.getPlayers().get(0));
+        p1.nextPhase();
+        p1.nextPhase();
+        System.out.println(p1.getPlayers().get(0).getRealms().size());
+        assertEquals(prev+1, p1.getCurrentPhase());
+    }
+    /**
+    *
+    * method: checkWinner();
+    */ 
     @Test
     public void checkWinner() {
       assertEquals(true,p1.checkWinner());
+    }
+
+  /**
+   * method: isGameOver();
+   */
+    @Test
+    public void isGameOver(){
+      assertEquals(false,p1.isGameOver());
     }
 
 }

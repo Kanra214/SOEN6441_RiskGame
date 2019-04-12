@@ -34,16 +34,8 @@ public void after() throws Exception {
 * 
 */ 
 @Test
-public void testLoadMapFile() throws Exception {
-    assertEquals(true,map.loadMapFile("1.map"));
-    map.clear();
-    assertEquals(false,map.loadMapFile("2.map"));
-    map.clear();
-    assertEquals(false,map.loadMapFile("3.map"));
-    map.clear();
-    assertEquals(false,map.loadMapFile("4.map"));
-    map.clear();
-    assertEquals(false,map.loadMapFile("5.map"));
+public void testLoadMapFile() {
+    assertEquals(true,map.loadMapFile("1.txt"));
     map.clear();
 }
 
@@ -56,9 +48,8 @@ public void testLoadMapFile() throws Exception {
 @Test
 public void testFindCountry() throws Exception { 
 //TODO: Test goes here...
-    map.loadMapFile("1.map");
-    assertEquals(null,map.findCountry("Territory01"));
-    assertEquals(null,map.findCountry("Left Wing"));
+    map.loadMapFile("1.txt");
+    assertEquals(null,map.findCountry("k"));
     map.clear();
 } 
 
@@ -70,8 +61,8 @@ public void testFindCountry() throws Exception {
 @Test
 public void testFindContinent() throws Exception { 
 //TODO: Test goes here...
-    map.loadMapFile("1.map");
-    assertEquals(null,map.findContinent("Source Ameriacn"));
+    map.loadMapFile("1.txt");
+    assertEquals(null,map.findContinent("pop"));
     map.clear();
 } 
 
@@ -82,10 +73,9 @@ public void testFindContinent() throws Exception {
 */ 
 @Test
 public void testAddCountry() throws Exception {
-//TODO: Test goes here...
-    map.loadMapFile("1.map");
+    map.loadMapFile("1.txt");
     assertEquals(false,map.addCountry("Left_Wing1","Left Wing",100,200));
-    assertEquals(true,map.addCountry("Left Wing1","Left Wing",100,200));
+    assertEquals(true,map.addCountry("m","z",100,200));
     map.clear();
 
 
@@ -100,9 +90,9 @@ public void testAddCountry() throws Exception {
 @Test
 public void testAddContinent() throws Exception { 
 //TODO: Test goes here...
-    map.loadMapFile("1.map");
-    assertEquals(false,map.addContinent("Fuselage",10));
-    assertEquals(true,map.addContinent("Ameriacn",10));
+    map.loadMapFile("1.txt");
+    assertEquals(false,map.addContinent("z",10));
+    assertEquals(true,map.addContinent("America",10));
     map.clear();
 
 
@@ -116,9 +106,9 @@ public void testAddContinent() throws Exception {
 @Test
 public void testAddConnection() throws Exception {
 //TODO: Test goes here...
-    map.loadMapFile("1.map");
-    assertEquals(true,map.addConnection("Left_Wing1","Left_Wing2"));
-    assertEquals(false,map.addConnection("Territory01","Territory03"));
+    map.loadMapFile("1.txt");
+    assertEquals(true,map.addConnection("f","e"));
+    assertEquals(false,map.addConnection("a","e"));
     map.clear();
 
 
@@ -135,13 +125,13 @@ public void testAddConnection() throws Exception {
 @Test
 public void testCheckValid() throws Exception {
 //TODO: Test goes here...
-    map.loadMapFile("1.map");
+    map.loadMapFile("1.txt");
     assertEquals(true,map.checkValid());
     map.clear();
-    map.loadMapFile("6.map");
+    map.loadMapFile("WrongFormat1-NotConnectedGraph.map");
     assertEquals(false,map.checkValid());
     map.clear();
-    map.loadMapFile("7.map");
+    map.loadMapFile("WrongFormat2-DupicateConnections.map");
     assertEquals(false,map.checkValid());
     map.clear();
 } 
