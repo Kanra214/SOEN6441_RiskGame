@@ -24,10 +24,12 @@ public class Phases extends Observable implements Serializable {
     protected boolean gameOver = false;
     protected boolean inBattle = false;//used to enable complete button, when during the dice consuming battle, player can't go to the next phase
     public boolean cardExchanged = false;
+    public boolean firstStepDone = false;
     protected boolean fortified = false;
     private boolean attackingIsPossible = true;//if false, the game automatically skip the attack phase
     public int maxTurn;
     public boolean tournament = false;
+
 
     public String winner = null;//TODO
 
@@ -261,8 +263,10 @@ public class Phases extends Observable implements Serializable {
      * First step of phase one where amount of the reinforcement army is being determined where min he gets is 3
      */
     public void phaseOneFirstStep() {
+        if(!firstStepDone) {
 
-        current_player.getReinforcement(reinforcementArmy(current_player));
+            current_player.getReinforcement(reinforcementArmy(current_player));
+        }
 
 
     }
@@ -313,6 +317,7 @@ public class Phases extends Observable implements Serializable {
                     }
                     fortified = false;
                     cardExchanged = false;
+                    firstStepDone = false;
                     currentPhase = 1;
                     current_player.executeStrategy();
 

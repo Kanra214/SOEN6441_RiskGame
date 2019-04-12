@@ -19,7 +19,7 @@ public class Random implements Strategy, Serializable {
 
             //phase 1
               System.out.println("Random phase 1");
-              if(p.cardExchanged) {
+              if(!p.cardExchanged) {
                   exchangeCards(p);
               }
             p.phaseOneFirstStep();

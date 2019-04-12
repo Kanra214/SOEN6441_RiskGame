@@ -36,7 +36,7 @@ public class Cheater implements Strategy, Serializable {
 //            }
             //must be in phase 1
             System.out.println("Inside cheater phase1");
-            if(p.cardExchanged) {
+            if(!p.cardExchanged) {
                 exchangeCards(p);
             }
             p.phaseOneFirstStep();

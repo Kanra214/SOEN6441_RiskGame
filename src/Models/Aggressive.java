@@ -42,7 +42,7 @@ public class Aggressive implements Strategy, Serializable {
         //Phase 1
           System.out.println("player"+player.getId()+"  inside aggerssive reinforce");
           System.out.println("the current phase is"+p.getCurrentPhase());
-          if(p.cardExchanged) {
+          if(!p.cardExchanged) {
               exchangeCards(p);
           }
 

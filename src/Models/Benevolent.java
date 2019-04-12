@@ -34,7 +34,7 @@ public class Benevolent implements Strategy,Serializable {
             } else {
 
                 //must be in phase 1
-                if(p.cardExchanged) {
+                if(!p.cardExchanged) {
                     exchangeCards(p);
                 }
                 System.out.println("benevolent card exchange");
