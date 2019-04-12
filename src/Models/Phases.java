@@ -266,6 +266,7 @@ public class Phases extends Observable implements Serializable {
         if(!firstStepDone) {
 
             current_player.getReinforcement(reinforcementArmy(current_player));
+            firstStepDone = true;
         }
 
 
